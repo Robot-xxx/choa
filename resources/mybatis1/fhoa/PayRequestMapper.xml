@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PayRequestMapper">
+
+    <!--表名 -->
+    <sql id="tableName">
+		oa_payrequest
+	</sql>
+
+    <!--数据字典表名 -->
+    <sql id="dicTableName">
+		SYS_DICTIONARIES
+	</sql>
+
+    <!-- 字段 -->
+    <sql id="Field">
+		f.REQUEST_NO,	
+		f.REQUEST_DATE,	
+		f.RESPONSIBLEPERSON,	
+		f.REQUEST_TYPE,	
+		f.PAY_METHOD,	
+		f.PAYEE,	
+		f.PAYEEADDRESS,	
+		f.PAYEEBANK,	
+		f.BANKACCOUNT,	
+		f.POSTSCRIPT,	
+		f.PROJIECT_ID,	
+		f.PROJECT_NAME,	
+		f.CONTRACT_NO,	
+		f.MONEY,	
+		f.PAY_ACCOUNT,	
+		f.PAY_UNIT,	
+		f.YUYUEFUKUAN,	
+		f.FUKUANYUEDING,	
+		f.ACCOUNT_TYPE,
+		f.PAYEE_ID,
+		f.STATUS,
+		f.ACT_ID,
+		f.USERID,
+		f.ISHEZUO,
+		f.PARTNERS,
+		f.COMPANY_NAME,
+		f.REQUEST_ID
+	</sql>
+
+    <!-- 字段用于新增 -->
+    <sql id="Field2">
+		REQUEST_NO,	
+		REQUEST_DATE,	
+		RESPONSIBLEPERSON,	
+		REQUEST_TYPE,	
+		PAY_METHOD,	
+		PAYEE,	
+		PAYEEADDRESS,	
+		PAYEEBANK,	
+		BANKACCOUNT,	
+		POSTSCRIPT,	
+		PROJIECT_ID,	
+		PROJECT_NAME,	
+		CONTRACT_NO,	
+		MONEY,	
+		PAY_ACCOUNT,	
+		PAY_UNIT,	
+		YUYUEFUKUAN,	
+		FUKUANYUEDING,	
+		ACCOUNT_TYPE,
+		PAYEE_ID,
+		STATUS,
+		ACT_ID,
+		USERID,
+		ISHEZUO,
+		PARTNERS,
+		COMPANY_NAME,
+		REQUEST_ID
+	</sql>
+
+    <!-- 字段值 -->
+    <sql id="FieldValue">
+		#{REQUEST_NO},	
+		#{REQUEST_DATE},	
+		#{RESPONSIBLEPERSON},	
+		#{REQUEST_TYPE},	
+		#{PAY_METHOD},	
+		#{PAYEE},	
+		#{PAYEEADDRESS},	
+		#{PAYEEBANK},	
+		#{BANKACCOUNT},	
+		#{POSTSCRIPT},	
+		#{PROJIECT_ID},	
+		#{PROJECT_NAME},	
+		#{CONTRACT_NO},	
+		#{MONEY},	
+		#{PAY_ACCOUNT},	
+		#{PAY_UNIT},	
+		#{YUYUEFUKUAN},	
+		#{FUKUANYUEDING},	
+		#{ACCOUNT_TYPE},
+		#{PAYEE_ID},
+		#{STATUS},
+		#{ACT_ID},
+		#{USERID},
+		#{ISHEZUO},
+		#{PARTNERS},
+		#{COMPANY_NAME},
+		#{REQUEST_ID}
+	</sql>
+
+    <!-- 新增-->
+    <insert id="save" parameterType="pd">
+        insert into
+        <include refid="tableName"></include>
+        (
+        <include refid="Field2"></include>
+        ) values (
+        <include refid="FieldValue"></include>
+        )
+    </insert>
+
+    <!-- 删除-->
+    <delete id="delete" parameterType="pd">
+        delete from
+        <include refid="tableName"></include>
+        where
+        REQUEST_ID = #{REQUEST_ID}
+    </delete>
+
+    <!-- 修改 -->
+    <update id="edit" parameterType="pd">
+        update
+        <include refid="tableName"></include>
+        set
+        REQUEST_NO = #{REQUEST_NO},
+        REQUEST_DATE = #{REQUEST_DATE},
+        RESPONSIBLEPERSON = #{RESPONSIBLEPERSON},
+        REQUEST_TYPE = #{REQUEST_TYPE},
+        PAY_METHOD = #{PAY_METHOD},
+        PAYEE = #{PAYEE},
+        PAYEEADDRESS = #{PAYEEADDRESS},
+        PAYEEBANK = #{PAYEEBANK},
+        BANKACCOUNT = #{BANKACCOUNT},
+        POSTSCRIPT = #{POSTSCRIPT},
+        PROJIECT_ID = #{PROJIECT_ID},
+        PROJECT_NAME = #{PROJECT_NAME},
+        CONTRACT_NO = #{CONTRACT_NO},
+        MONEY = #{MONEY},
+        PAY_ACCOUNT = #{PAY_ACCOUNT},
+        PAY_UNIT = #{PAY_UNIT},
+        YUYUEFUKUAN = #{YUYUEFUKUAN},
+        FUKUANYUEDING = #{FUKUANYUEDING},
+        PAYEE_ID = #{PAYEE_ID},
+        ACCOUNT_TYPE = #{ACCOUNT_TYPE},
+        STATUS = #{STATUS},
+        ACT_ID = #{ACT_ID},
+        USERID = #{USERID},
+        ISHEZUO = #{ISHEZUO},
+        PARTNERS = #{PARTNERS},
+        COMPANY_NAME = #{COMPANY_NAME},
+        REQUEST_ID = REQUEST_ID
+        where
+        REQUEST_ID = #{REQUEST_ID}
+    </update>
+
+    <!-- 通过ID获取数据 -->
+    <select id="findById" parameterType="pd" resultType="pd">
+        select
+        <include refid="Field"></include>
+        from
+        <include refid="tableName"></include>
+        f
+        where
+        f.REQUEST_ID = #{REQUEST_ID}
+    </select>
+
+    <!-- 列表 -->
+    <select id="datalistPage" parameterType="page" resultType="pd">
+        select
+        <include refid="Field"></include>
+        from
+        <include refid="tableName"></include>
+        f
+        where 1=1
+        <if test="pd.USERID!= null and pd.USERID != ''"><!-- 关键词检索 -->
+            and USERID=#{pd.USERID}
+        </if>
+        <if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
+            and
+            (
+            REQUEST_NO LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+            <!--	根据需求自己加检索条件
+                字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+                 or
+                字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+            -->
+            )
+        </if>
+    </select>
+
+    <!-- 列表(全部) -->
+    <select id="listAll" parameterType="pd" resultType="pd">
+        select
+        <include refid="Field"></include>
+        from
+        <include refid="tableName"></include>
+        f
+    </select>
+
+    <!-- 批量删除 -->
+    <delete id="deleteAll" parameterType="String">
+        delete from
+        <include refid="tableName"></include>
+        where
+        REQUEST_ID in
+        <foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+
+
+    <select id="taskAll" parameterType="pd" resultType="pd">
+        select
+          *
+        from
+          act_hi_taskinst
+        where
+          PROC_INST_ID_ =#{id}
+    </select>
+    <!-- fh313596790qq(青苔) -->
+</mapper>

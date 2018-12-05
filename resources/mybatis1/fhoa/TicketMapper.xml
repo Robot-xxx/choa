@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TicketMapper">
+	
+	<!--表名 -->
+	<sql id="tableName">
+		OA_OPEN_TICKET
+	</sql>
+	
+	<!--数据字典表名 -->
+	<sql id="dicTableName">
+		SYS_DICTIONARIES
+	</sql>
+	
+	<!-- 字段 -->
+	<sql id="Field">
+		f.SYS_ID,	
+		f.SALES_CONTRACT_ID,	
+		f.TICKET_INFO,	
+		f.TICKET_PRICE,	
+		f.OPEN_TICKET_PRICE,	
+		f.INVOICE_NUMBER,	
+		f.INVOICE,	
+		f.ENTRYTICKETNAME,
+		f.JINXIANGID,
+		f.SELECTCOMPANY,
+		f.OPEN_TICKET_YUANYIN,
+		f.STATUS,
+		f.ACT_ID,
+		f.USERID,
+		f.TICKET_ID
+	</sql>
+	
+	<!-- 字段用于新增 -->
+	<sql id="Field2">
+		SYS_ID,	
+		SALES_CONTRACT_ID,	
+		TICKET_INFO,	
+		TICKET_PRICE,	
+		OPEN_TICKET_PRICE,	
+		INVOICE_NUMBER,	
+		INVOICE,	
+		ENTRYTICKETNAME,
+		JINXIANGID,
+		SELECTCOMPANY,
+		OPEN_TICKET_YUANYIN,
+		STATUS,
+		ACT_ID,
+		USERID,
+		TICKET_ID
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{SYS_ID},	
+		#{SALES_CONTRACT_ID},	
+		#{TICKET_INFO},	
+		#{TICKET_PRICE},	
+		#{OPEN_TICKET_PRICE},	
+		#{INVOICE_NUMBER},	
+		#{INVOICE},	
+		#{ENTRYTICKETNAME},
+		#{JINXIANGID},
+		#{SELECTCOMPANY},
+		#{OPEN_TICKET_YUANYIN},
+		#{STATUS},
+		#{ACT_ID},
+		#{USERID},
+		#{TICKET_ID}
+	</sql>
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into 
+	<include refid="tableName"></include>
+		(
+	<include refid="Field2"></include>
+		) values (
+	<include refid="FieldValue"></include>
+		)
+	</insert>
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			TICKET_ID = #{TICKET_ID}
+	</delete>
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update
+		<include refid="tableName"></include>
+		set 
+			SYS_ID = #{SYS_ID},
+			SALES_CONTRACT_ID = #{SALES_CONTRACT_ID},
+			TICKET_INFO = #{TICKET_INFO},
+			TICKET_PRICE = #{TICKET_PRICE},
+			OPEN_TICKET_PRICE = #{OPEN_TICKET_PRICE},
+			INVOICE_NUMBER = #{INVOICE_NUMBER},
+			INVOICE = #{INVOICE},
+		ENTRYTICKETNAME = #{ENTRYTICKETNAME},
+		JINXIANGID = #{JINXIANGID},
+		SELECTCOMPANY = #{SELECTCOMPANY},
+		OPEN_TICKET_YUANYIN = #{OPEN_TICKET_YUANYIN},
+		STATUS = #{STATUS},
+		ACT_ID = #{ACT_ID},
+		USERID = #{USERID},
+			TICKET_ID = TICKET_ID
+		where 
+			TICKET_ID = #{TICKET_ID}
+	</update>
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include> f
+		where 
+			f.TICKET_ID = #{TICKET_ID}
+	</select>
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include> f
+		where 1=1
+		<if test="pd.USERID!= null and pd.USERID != ''"><!-- 关键词检索 -->
+			and USERID=#{pd.USERID}
+		</if>
+		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
+			and
+				(
+			SYS_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+				<!--	根据需求自己加检索条件
+					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+					 or 
+					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
+				-->
+				)
+		</if>
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include> f
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			TICKET_ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+	<!-- fh313596790qq(青苔) -->
+</mapper>

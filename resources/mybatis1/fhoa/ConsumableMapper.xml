@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ConsumableMapper">
+	
+	<!--表名 -->
+	<sql id="tableName">
+		OA_CONSUMABLE
+	</sql>
+	
+	<!--数据字典表名 -->
+	<sql id="dicTableName">
+		SYS_DICTIONARIES
+	</sql>
+	
+	<!-- 字段 -->
+	<sql id="Field">
+		f.DICTIONARIES,	
+		f.SYS_ID,	
+		f.PRODUCT_NAME,	
+		f.MODEL,	
+		f.MANUFACTURERS,	
+		f.REGISTRATION,	
+		f.BUSINESS,	
+		f.BATCH,	
+		f.VALIDITY,	
+		f.ACCESSORY,	
+		f.STATUS,
+		f.ACT_ID,
+		f.ISZILIAOQQ,
+		f.FUZEREN,
+		f.CONSUMABLE_ID
+	</sql>
+	
+	<!-- 字段用于新增 -->
+	<sql id="Field2">
+		DICTIONARIES,	
+		SYS_ID,	
+		PRODUCT_NAME,	
+		MODEL,	
+		MANUFACTURERS,	
+		REGISTRATION,	
+		BUSINESS,	
+		BATCH,	
+		VALIDITY,	
+		ACCESSORY,	
+		STATUS,
+		ACT_ID,
+		ISZILIAOQQ,
+		FUZEREN,
+		CONSUMABLE_ID
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{DICTIONARIES},	
+		#{SYS_ID},	
+		#{PRODUCT_NAME},	
+		#{MODEL},	
+		#{MANUFACTURERS},	
+		#{REGISTRATION},	
+		#{BUSINESS},	
+		#{BATCH},	
+		#{VALIDITY},	
+		#{ACCESSORY},	
+		#{STATUS},
+		#{ACT_ID},
+		#{ISZILIAOQQ},
+		#{FUZEREN},
+		#{CONSUMABLE_ID}
+	</sql>
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into 
+	<include refid="tableName"></include>
+		(
+	<include refid="Field2"></include>
+		) values (
+	<include refid="FieldValue"></include>
+		)
+	</insert>
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			CONSUMABLE_ID = #{CONSUMABLE_ID}
+	</delete>
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update
+		<include refid="tableName"></include>
+		set 
+			DICTIONARIES = #{DICTIONARIES},
+			SYS_ID = #{SYS_ID},
+			PRODUCT_NAME = #{PRODUCT_NAME},
+			MODEL = #{MODEL},
+			MANUFACTURERS = #{MANUFACTURERS},
+			REGISTRATION = #{REGISTRATION},
+			BUSINESS = #{BUSINESS},
+			BATCH = #{BATCH},
+			VALIDITY = #{VALIDITY},
+			ACCESSORY = #{ACCESSORY},
+		STATUS = #{STATUS},
+		ACT_ID = #{ACT_ID},
+		ISZILIAOQQ = #{ISZILIAOQQ},
+		FUZEREN = #{FUZEREN},
+			CONSUMABLE_ID = CONSUMABLE_ID
+		where 
+			CONSUMABLE_ID = #{CONSUMABLE_ID}
+	</update>
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include> f
+		where 
+			f.CONSUMABLE_ID = #{CONSUMABLE_ID}
+	</select>
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+			d1.BIANMA BIANMA1,
+			d1.NAME DNAME1,
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include> f
+			left join 
+			<include refid="dicTableName"></include> d1
+			on f.DICTIONARIES = d1.BIANMA
+		where 1=1
+		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
+			and
+				(
+				SYS_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			PRODUCT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+
+
+				)
+		</if>
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include> f
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			CONSUMABLE_ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+	<!-- fh313596790qq(青苔) -->
+</mapper>

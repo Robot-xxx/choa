@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AccessoryFileMapper">
+
+    <!--表名 -->
+    <sql id="tableName">
+		OA_ACCESSORYFILE
+	</sql>
+
+    <!--数据字典表名 -->
+    <sql id="dicTableName">
+		SYS_DICTIONARIES
+	</sql>
+
+    <!-- 字段 -->
+    <sql id="Field">
+		f.NAME,	
+		f.FILEPATH,	
+		f.CTIME,	
+		f.BZ,	
+		f.USERNAME,	
+		f.PARENT_ID,	
+		f.FILESIZE,
+		f.FILETYPE,
+		f.ISZILIAO,
+		f.OAFILE_ID
+	</sql>
+
+    <!-- 字段用于新增 -->
+    <sql id="Field2">
+		NAME,	
+		FILEPATH,	
+		CTIME,	
+		BZ,	
+		USERNAME,	
+		PARENT_ID,	
+		FILESIZE,
+		FILETYPE,
+		ISZILIAO,
+		OAFILE_ID
+	</sql>
+
+    <!-- 字段值 -->
+    <sql id="FieldValue">
+		#{NAME},	
+		#{FILEPATH},	
+		#{CTIME},	
+		#{BZ},	
+		#{USERNAME},	
+		#{PARENT_ID},	
+		#{FILESIZE},	
+		#{FILETYPE},
+		#{ISZILIAO},
+		#{OAFILE_ID}
+	</sql>
+
+    <!-- 新增-->
+    <insert id="save" parameterType="pd">
+        insert into
+        <include refid="tableName"></include>
+        (
+        <include refid="Field2"></include>
+        ) values (
+        <include refid="FieldValue"></include>
+        )
+    </insert>
+
+    <!-- 删除-->
+    <delete id="delete" parameterType="pd">
+        delete from
+        <include refid="tableName"></include>
+        where
+        OAFILE_ID = #{OAFILE_ID}
+    </delete>
+
+    <!-- 修改 -->
+    <update id="edit" parameterType="pd">
+        update
+        <include refid="tableName"></include>
+        set
+        NAME = #{NAME},
+        FILEPATH = #{FILEPATH},
+        CTIME = #{CTIME},
+        BZ = #{BZ},
+        USERNAME = #{USERNAME},
+        PARENT_ID = #{PARENT_ID},
+        FILESIZE = #{FILESIZE},
+        FILETYPE = #{FILETYPE},
+        ISZILIAO = #{ISZILIAO},
+        OAFILE_ID = OAFILE_ID
+        where
+        OAFILE_ID = #{OAFILE_ID}
+    </update>
+
+    <!-- 通过ID获取数据 -->
+    <select id="findById" parameterType="pd" resultType="pd">
+        select
+        <include refid="Field"></include>
+        from
+        <include refid="tableName"></include>
+        f
+        where
+        f.OAFILE_ID = #{OAFILE_ID}
+    </select>
+
+    <!-- 列表 -->
+    <select id="datalistPage" parameterType="page" resultType="pd">
+        select
+        <include refid="Field"></include>
+        from
+        <include refid="tableName"></include>
+        f
+        where 1=1
+        <if test='pd.fileName != null and pd.fileName!=""'>
+          and  f.NAME LIKE CONCAT(CONCAT('%', #{pd.fileName}),'%')
+        </if>
+        and
+        (
+            f.PARENT_ID = #{pd.keywords}
+        )
+
+    </select>
+
+    <!-- 列表(全部) -->
+    <select id="listAll" parameterType="pd" resultType="pd">
+        select
+        <include refid="Field"></include>
+        from
+        <include refid="tableName"></include>
+        f
+    </select>
+
+    <!-- 批量删除 -->
+    <delete id="deleteAll" parameterType="String">
+        delete from
+        <include refid="tableName"></include>
+        where
+        OAFILE_ID in
+        <foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <!--更新PARENT_ID-->
+    <update id="oaFileEdit" parameterType="Map">
+        update
+        <include refid="tableName"></include>
+        set
+        PARENT_ID =#{oafileid}
+        where
+        OAFILE_ID in
+        <foreach item="ids" collection="ids" open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+    </update>
+
+</mapper>

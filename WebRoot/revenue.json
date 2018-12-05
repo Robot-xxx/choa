@@ -1,0 +1,32 @@
+[
+	{
+		"incomeUnit": "项目编号",
+		"firm": "项目名称",
+		"number": "项目负责人",
+		"instructionType": "中标金额",
+		"dept": "项目回款金额",
+		"totalPrice": "尾款时间",
+		"child": [
+			{
+				"var1": "JK0001-112",
+				"var2": "印江项目",
+				"var3": "李敏芳",
+				"var4": "70000000",
+				"var5": "30000000",
+				"var6": "2018-02-02"
+			}
+		]
+	}, {
+		"incomeUnit": "",
+		"firm": "",
+		"number": "",
+		"instructionType": "",
+		"dept": "",
+		"totalPrice": "",
+
+		"child": [
+
+		]
+	}
+]
+

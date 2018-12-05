@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProjectBidMapper">
+
+    <!--表名 -->
+    <sql id="tableName">
+        OA_PROJECT_BID
+    </sql>
+
+    <!--数据字典表名 -->
+    <sql id="dicTableName">
+        SYS_DICTIONARIES
+    </sql>
+
+    <!-- 字段 -->
+    <sql id="Field">
+        f
+        .
+        SYS_ID
+        ,
+        f
+        .
+        PROJECT_NAME,
+        f
+        .
+        HOSPITAL,
+        f
+        .
+        WINNING_UNIT,
+        f
+        .
+        WINNING_PRICE,
+        f
+        .
+        GUARANTEE_MONEY,
+        f
+        .
+        SCHEDULED_TIME,
+        f
+        .
+        PRACTICAL_TIME,
+        f
+        .
+        BID_OPEN_TIME,
+        f
+        .
+        SERVICE_PRICE,
+        f
+        .
+        SCHEDULED_SERVICE_PRICE_TIME,
+        f
+        .
+        PRACTICAL_SERVICE_PRICE_TIME,
+        f
+        .
+        ADVICE,
+        f
+        .
+        CONTRACT_MODEL_TIME,
+        f
+        .
+        COUNTER_SIGN_TIME,
+        f
+        .
+        WITHDRAWAL_SECURITY,
+        f
+        .
+        SELECTCOMPANY,
+        f
+        .
+        TEBDERING,
+        f
+        .
+        REPRESENTATIVE,
+        f
+        .
+        STATUS,
+        f
+        .
+        ACT_ID,
+        f
+        .
+        HOSPITALID,
+        f
+        .
+        PRODUCT,
+        f
+        .
+        SUPPLIER,
+        f
+        .
+        CLIENT,
+        f
+        .
+        FUZEREN,
+        f.BIAOSHUZHIZUOREN,
+        f.CHANPINDAOQIRI,
+        f.ISZILIAOQQ,
+        f.BZ,
+        f
+        .
+        PROJECT_BID_ID
+    </sql>
+
+    <!-- 字段用于新增 -->
+    <sql id="Field2">
+        SYS_ID,
+        PROJECT_NAME,
+        HOSPITAL,
+        WINNING_UNIT,
+        WINNING_PRICE,
+        GUARANTEE_MONEY,
+        SCHEDULED_TIME,
+        PRACTICAL_TIME,
+        BID_OPEN_TIME,
+        SERVICE_PRICE,
+        SCHEDULED_SERVICE_PRICE_TIME,
+        PRACTICAL_SERVICE_PRICE_TIME,
+        ADVICE,
+        CONTRACT_MODEL_TIME,
+        COUNTER_SIGN_TIME,
+        WITHDRAWAL_SECURITY,
+        SELECTCOMPANY,
+        TEBDERING,
+        REPRESENTATIVE,
+        STATUS,
+        ACT_ID,
+        HOSPITALID,
+        PRODUCT,
+        SUPPLIER,
+        CLIENT,
+        FUZEREN,
+        BIAOSHUZHIZUOREN,
+        CHANPINDAOQIRI,
+        ISZILIAOQQ,
+        BZ,
+        PROJECT_BID_ID
+    </sql>
+
+    <!-- 字段值 -->
+    <sql id="FieldValue">
+        #{SYS_ID}
+        ,
+        #{PROJECT_NAME},
+        #{HOSPITAL},
+        #{WINNING_UNIT},
+        #{WINNING_PRICE},
+        #{GUARANTEE_MONEY},
+        #{SCHEDULED_TIME},
+        #{PRACTICAL_TIME},
+        #{BID_OPEN_TIME},
+        #{SERVICE_PRICE},
+        #{SCHEDULED_SERVICE_PRICE_TIME},
+        #{PRACTICAL_SERVICE_PRICE_TIME},
+        #{ADVICE},
+        #{CONTRACT_MODEL_TIME},
+        #{COUNTER_SIGN_TIME},
+        #{WITHDRAWAL_SECURITY},
+        #{SELECTCOMPANY},
+        #{TEBDERING},
+        #{REPRESENTATIVE},
+        #{STATUS},
+        #{ACT_ID},
+        #{HOSPITALID},
+        #{PRODUCT},
+        #{SUPPLIER},
+        #{CLIENT},
+        #{FUZEREN},
+        #{BIAOSHUZHIZUOREN},
+        #{CHANPINDAOQIRI},
+        #{ISZILIAOQQ},
+        #{BZ},
+        #{PROJECT_BID_ID}
+    </sql>
+
+    <!-- 新增-->
+    <insert id="save" parameterType="pd">
+        insert into
+        <include refid="tableName"></include>
+        (
+        <include refid="Field2"></include>
+        ) values (
+        <include refid="FieldValue"></include>
+        )
+    </insert>
+
+    <!-- 删除-->
+    <delete id="delete" parameterType="pd">
+        delete from
+        <include refid="tableName"></include>
+        where
+        PROJECT_BID_ID = #{PROJECT_BID_ID}
+    </delete>
+
+    <!-- 修改 -->
+    <update id="edit" parameterType="pd">
+        update
+        <include refid="tableName"></include>
+        set
+        SYS_ID = #{SYS_ID},
+        PROJECT_NAME = #{PROJECT_NAME},
+        HOSPITAL = #{HOSPITAL},
+        WINNING_UNIT = #{WINNING_UNIT},
+        WINNING_PRICE = #{WINNING_PRICE},
+        GUARANTEE_MONEY = #{GUARANTEE_MONEY},
+        SCHEDULED_TIME = #{SCHEDULED_TIME},
+        PRACTICAL_TIME = #{PRACTICAL_TIME},
+        BID_OPEN_TIME = #{BID_OPEN_TIME},
+        SERVICE_PRICE = #{SERVICE_PRICE},
+        SCHEDULED_SERVICE_PRICE_TIME = #{SCHEDULED_SERVICE_PRICE_TIME},
+        PRACTICAL_SERVICE_PRICE_TIME = #{PRACTICAL_SERVICE_PRICE_TIME},
+        ADVICE = #{ADVICE},
+        CONTRACT_MODEL_TIME = #{CONTRACT_MODEL_TIME},
+        COUNTER_SIGN_TIME = #{COUNTER_SIGN_TIME},
+        WITHDRAWAL_SECURITY = #{WITHDRAWAL_SECURITY},
+        SELECTCOMPANY = #{SELECTCOMPANY},
+        TEBDERING = #{TEBDERING},
+        REPRESENTATIVE = #{REPRESENTATIVE},
+        STATUS = #{STATUS},
+        ACT_ID = #{ACT_ID},
+        HOSPITALID = #{HOSPITALID},
+        PRODUCT = #{PRODUCT},
+        SUPPLIER = #{SUPPLIER},
+        CLIENT = #{CLIENT},
+        FUZEREN = #{FUZEREN},
+        BIAOSHUZHIZUOREN = #{BIAOSHUZHIZUOREN},
+        CHANPINDAOQIRI = #{CHANPINDAOQIRI},
+        ISZILIAOQQ = #{ISZILIAOQQ},
+        BZ = #{BZ},
+        PROJECT_BID_ID = PROJECT_BID_ID
+        where
+        PROJECT_BID_ID = #{PROJECT_BID_ID}
+    </update>
+
+    <!-- 通过ID获取数据 -->
+    <select id="findById" parameterType="pd" resultType="pd">
+        select
+        <include refid="Field"></include>
+        from
+        <include refid="tableName"></include>
+        f
+        where
+        f.PROJECT_BID_ID = #{PROJECT_BID_ID}
+    </select>
+
+    <!-- 列表 -->
+    <select id="datalistPage" parameterType="page" resultType="pd">
+        select
+        <include refid="Field"></include>
+        from
+        <include refid="tableName"></include>
+        f
+        where 1=1
+        <if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
+            and
+            (
+            SYS_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+            PROJECT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+            HOSPITAL LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+            TEBDERING LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+            <!--	根据需求自己加检索条件
+                字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+                 or
+                字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+            -->
+            )
+        </if>
+        <if test="pd.STATUS!= null and pd.STATUS != ''"><!-- 关键词检索 -->
+            and
+            (
+            STATUS =#{pd.STATUS}
+
+            )
+        </if>
+        <if test="pd.SYS_ID!= null and pd.SYS_ID != ''"><!-- 关键词检索 -->
+            and
+            (
+            SYS_ID =#{pd.SYS_ID}
+
+            )
+        </if>
+    </select>
+
+    <!-- 列表(全部) -->
+    <select id="listAll" parameterType="pd" resultType="pd">
+        select
+        <include refid="Field"></include>
+        from
+        <include refid="tableName"></include>
+        f
+    </select>
+
+    <!-- 批量删除 -->
+    <delete id="deleteAll" parameterType="String">
+        delete from
+        <include refid="tableName"></include>
+        where
+        PROJECT_BID_ID in
+        <foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <!-- 获取项目数据 -->
+    <select id="projectAll" parameterType="pd" resultType="pd">
+        select
+            SYS_ID,
+            PROJECT_NAME,
+            PROJECT_ID,
+            PROJECT_ID,
+            FUZEREN
+        from
+            oa_project
+        where STATUS = 1
+    </select>
+
+    <!-- 通过id获取项目数据 -->
+    <select id="projectById" parameterType="pd" resultType="pd">
+        select
+            PROJECT_NAME,
+            SYS_ID
+        from
+            oa_project
+        where
+            PROJECT_ID = #{PROJECT_ID}
+    </select>
+
+
+</mapper>

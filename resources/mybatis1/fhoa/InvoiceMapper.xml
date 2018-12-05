@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="InvoiceMapper">
+	
+	<!--表名 -->
+	<sql id="tableName">
+		OA_INVOICE
+	</sql>
+	
+	<!--数据字典表名 -->
+	<sql id="dicTableName">
+		SYS_DICTIONARIES
+	</sql>
+	
+	<!-- 字段 -->
+	<sql id="Field">
+		f.BY_STAGES,	
+		f.INVOICENUMBER,	
+		f.BZ,	
+		f.MONEY,
+		f.PARENT_ID,
+		f.SYS_ID,
+		f.NAME,
+		f.FILEPATH
+	</sql>
+	
+	<!-- 字段用于新增 -->
+	<sql id="Field2">
+		BY_STAGES,	
+		INVOICENUMBER,	
+		BZ,	
+		MONEY,
+		PARENT_ID,
+		SYS_ID,
+		NAME,
+		FILEPATH
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{BY_STAGES},	
+		#{INVOICENUMBER},	
+		#{BZ},	
+		#{MONEY},
+		#{PARENT_ID},
+		#{SYS_ID},
+		#{NAME},
+		#{FILEPATH}
+	</sql>
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into 
+	<include refid="tableName"></include>
+		(
+	<include refid="Field2"></include>
+		) values (
+	<include refid="FieldValue"></include>
+		)
+	</insert>
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from
+		<include refid="tableName"></include>
+		where
+		SYS_ID = #{SYS_ID}
+	</delete>
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update
+		<include refid="tableName"></include>
+		set 
+			BY_STAGES = #{BY_STAGES},
+			INVOICENUMBER = #{INVOICENUMBER},
+			BZ = #{BZ},
+			MONEY = #{MONEY},
+		MONEY = #{PARENT_ID},
+		NAME = #{NAME},
+		FILEPATH = #{FILEPATH},
+		SYS_ID = SYS_ID
+		where
+		SYS_ID = #{SYS_ID}
+	</update>
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include> f
+		where 
+			f.SYS_ID = #{SYS_ID}
+	</select>
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include> f
+		where 1=1
+
+		<if test="pd.ticket_id!= null and pd.ticket_id != ''"><!-- 关键词检索 -->
+			and f.PARENT_ID = #{pd.ticket_id}
+		</if>
+		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
+			and f.INVOICENUMBER LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+		</if>
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include> f
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from
+		<include refid="tableName"></include>
+		where
+			SYS_ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+	<!-- fh313596790qq(青苔) -->
+</mapper>
