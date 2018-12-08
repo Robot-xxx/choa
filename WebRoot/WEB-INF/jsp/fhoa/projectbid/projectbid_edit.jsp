@@ -77,7 +77,7 @@
                             </tr>
                             <tr>
                                 <td style="width:75px;text-align: right;padding-top: 13px;">招标代表:</td>
-                                <td><input type="text" name="REPRESENTATIVE" id="REPRESENTATIVE" value="${pd.REPRESENTATIVE}" maxlength="12" placeholder="招标代表" title="招标代表" style="width:98%;"/></td>
+                                <td><input type="text" name="REPRESENTATIVE" id="REPRESENTATIVE" value="${pd.REPRESENTATIVE}" maxlength="100" placeholder="招标代表" title="招标代表" style="width:98%;"/></td>
                             </tr>
                             <tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">中标单位:</td>
@@ -120,7 +120,7 @@
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">标书制作人:</td>
-								<td><input class="span10 date-picker" name="BIAOSHUZHIZUOREN" id="BIAOSHUZHIZUOREN" value="${pd.BIAOSHUZHIZUOREN}" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="中标服务费实际缴纳时间" title="中标服务费实际缴纳时间" style="width:98%;"/></td>
+								<td><input  name="BIAOSHUZHIZUOREN" id="BIAOSHUZHIZUOREN" value="${pd.BIAOSHUZHIZUOREN}" type="text"  placeholder="标书制作人" title="标书制作人" style="width:98%;"/></td>
 							</tr>
 
 							<tr>
@@ -144,6 +144,8 @@
                                            value="${pd.PRODUCT}"
                                            maxlength="100" placeholder="这里输入产品资质" title="产品资质"
                                            style="width:48%;"/>
+									<input type="text" hidden name="PROJECT_ID" id="PROJECT_ID"
+										   value="${pd.PROJECT_ID}"   maxlength="100"  style="width:48%;"/>
 									<span style="color: red">注:需先在器械管理处填写资料并通过质控审批后才能选择</span>
                                 </td>
 
@@ -377,14 +379,14 @@
                 $("#WINNING_PRICE").focus();
                 return false;
             }
-            if($("#c_selectCompany").val()==""){
-                $("#c_selectCompany").tips({
+            if($("#PRODUCT").val()==""){
+                $("#PRODUCT").tips({
                     side:3,
                     msg:'请选择产品编号',
                     bg:'#AE81FF',
                     time:2
                 });
-                $("#c_selectCompany").focus();
+                $("#PRODUCT").focus();
                 return false;
             }
             if($("#SERVICE_PRICE").val()==""){
@@ -577,9 +579,12 @@
             //项目编号
             $("#projectId").change(function (){
                 var str = $("#projectId").val();
+                var str1 = $("#projectId option:selected").text();
+                console.log(str1)
                 $("#PROJECT_NAME").val('');
                 $("#HOSPITAL").val('');
                 $("#SYS_ID").val('');
+                $("#PROJECT_ID").val('');
                 $.ajax({
                     type: "POST",
                     url: '<%=basePath%>/projectbid/projectById.do?PROJECT_ID=' +str.substring(0,str.indexOf("=")) ,
@@ -590,9 +595,10 @@
                             $("#PROJECT_NAME").val(data.pd.PROJECT_NAME);
                             $("#HOSPITAL").val(data.pd.HOSPITAL);
                             $("#SYS_ID").val(str.substring(0,str.indexOf("=")));
+                            $("#PROJECT_ID").val(str1.substring(0,str1.lastIndexOf("-")));
                             $("#FUZEREN").val(str.substring(str.indexOf("=")+1,str.length));
-                            console.log(str.substring(str.indexOf("=")+1,str.length))
-                            console.log($("#projectId").val())
+
+
                         }
                     }
                 });

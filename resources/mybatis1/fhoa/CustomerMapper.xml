@@ -167,8 +167,8 @@
 			and
 				(
 
-			SYS_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-			COMPANY_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+			SYS_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			COMPANY_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			LINKMAN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 				<!--	根据需求自己加检索条件
 					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')

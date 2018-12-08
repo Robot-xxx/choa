@@ -46,28 +46,28 @@ SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         List<PageData> varList = accessoryFileService.listAll(pd);        //列出Fhfile列表
         List<PageData> nvarList = new ArrayList<PageData>();
         for (int i = 0; i < varList.size(); i++) {
-            if(varList.get(i).get("FILETYPE")!=null&&varList.get(i).getString("FILETYPE").equals("中标通知书")){
+            if(!varList.get(i).getString("FILETYPE").equals("中标通知书")){
                 PageData pd1 = new PageData();
                 pd1.put("USERNAME",  varList.get(i).getString("USERNAME"));
                 pd1.put("CTIME",  varList.get(i).getString("CTIME"));
                 pd1.put("FILETYPE",  varList.get(i).getString("FILETYPE"));
                 nvarList.add(pd1);
             }
-            if(varList.get(i).get("FILETYPE")!=null&&varList.get(i).getString("FILETYPE").equals("合同模版")){
+            if(varList.get(i).getString("FILETYPE").equals("合同模版")){
                 PageData pd1 = new PageData();
                 pd1.put("USERNAME",  varList.get(i).getString("USERNAME"));
                 pd1.put("CTIME",  varList.get(i).getString("CTIME"));
                 pd1.put("FILETYPE",  varList.get(i).getString("FILETYPE"));
                 nvarList.add(pd1);
             }
-            if(varList.get(i).get("FILETYPE")!=null&&varList.get(i).getString("FILETYPE").equals("合同初稿")){
+            if(varList.get(i).getString("FILETYPE").equals("合同初稿")){
                 PageData pd1 = new PageData();
                 pd1.put("USERNAME",  varList.get(i).getString("USERNAME"));
                 pd1.put("CTIME",  varList.get(i).getString("CTIME"));
                 pd1.put("FILETYPE",  varList.get(i).getString("FILETYPE"));
                 nvarList.add(pd1);
             }
-            if(varList.get(i).get("FILETYPE")!=null&&varList.get(i).getString("FILETYPE").equals("合同双签")){
+            if(!varList.get(i).getString("FILETYPE").equals("合同双签")){
                 PageData pd1 = new PageData();
                 pd1.put("USERNAME",  varList.get(i).getString("USERNAME"));
                 pd1.put("CTIME",  varList.get(i).getString("CTIME"));

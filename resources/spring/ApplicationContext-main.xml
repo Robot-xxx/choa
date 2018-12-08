@@ -34,7 +34,7 @@
 	</bean>
 
 	<task:scheduled-tasks>
-		<task:scheduled ref="quartzBean" method="quartzJobTestMethod" cron="0 0 23 * * ?" />
+		<task:scheduled ref="quartzBean" method="quartzJobTestMethod" cron="0 0 10,16 * * ?" />
 	</task:scheduled-tasks>
 
 	<bean id="quartzBean" class="com.fh.controller.fhoa.time.quartzBean"> </bean>

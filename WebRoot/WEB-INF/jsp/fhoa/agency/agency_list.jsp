@@ -83,8 +83,8 @@
 											<td class='center'>${var.COMPANY_NAME}</td>
 											<td class='center'>${var.COMPANY_BOSS}</td>
 											<td class='center'>${var.BOSS_PHONE}</td>
-											<td class='center'>${var.BUSINESS_PEOPLE}</td>
 											<td class='center'>${var.LINKMAN}</td>
+											<td class='center'>${var.BUSINESS_PEOPLE}</td>
 											<td class='center'>${var.KHANALYZE}</td>
 											<td class='center'>${var.FUZEREN}</td>
 											<td class="center">

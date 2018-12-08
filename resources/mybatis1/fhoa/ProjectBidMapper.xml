@@ -97,6 +97,7 @@
         f.CHANPINDAOQIRI,
         f.ISZILIAOQQ,
         f.BZ,
+        f.PROJECT_ID,
         f
         .
         PROJECT_BID_ID
@@ -134,6 +135,7 @@
         CHANPINDAOQIRI,
         ISZILIAOQQ,
         BZ,
+        PROJECT_ID,
         PROJECT_BID_ID
     </sql>
 
@@ -170,6 +172,7 @@
         #{CHANPINDAOQIRI},
         #{ISZILIAOQQ},
         #{BZ},
+        #{PROJECT_ID},
         #{PROJECT_BID_ID}
     </sql>
 
@@ -227,6 +230,7 @@
         CHANPINDAOQIRI = #{CHANPINDAOQIRI},
         ISZILIAOQQ = #{ISZILIAOQQ},
         BZ = #{BZ},
+        PROJECT_ID = #{PROJECT_ID},
         PROJECT_BID_ID = PROJECT_BID_ID
         where
         PROJECT_BID_ID = #{PROJECT_BID_ID}

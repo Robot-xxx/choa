@@ -102,7 +102,7 @@ public class ProjectBidController extends AcStartController {
             /** 工作流的操作 **/
             Map<String,Object> map1 = new LinkedHashMap<String, Object>();
             map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
-            map1.put("项目编号", pd.getString("SYS_ID"));
+            map1.put("项目编号", pd.getString("PROJECT_ID"));
             map1.put("项目名称", pd.getString("PROJECT_NAME"));
             map1.put("医院", pd.getString("HOSPITAL"));
             map1.put("中标单位", pd.getString("WINNING_UNIT"));
