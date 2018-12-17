@@ -36,7 +36,7 @@
 								<td>
 									<div class="nav-search">
 										<span class="input-icon">
-											<input type="text" placeholder="这里输入产品名称" class="nav-search-input" id="nav-search-input" autocomplete="off" name="keywords" value="${pd.keywords }" placeholder="这里输入器械编号"/>
+											<input type="text" placeholder="这里输入名称丶型号" class="nav-search-input" id="nav-search-input" autocomplete="off" name="keywords" value="${pd.keywords }" "/>
 											<i class="ace-icon fa fa-search nav-search-icon"></i>
 										</span>
 									</div>
@@ -57,8 +57,8 @@
 									</th>
 									<th class="center" style="width:50px;">序号</th>
 									<th class="center">器械编号</th>
-									<th class="center">产品名称</th>
-									<th class="center">型号丶规格</th>
+									<th class="center">器械名称</th>
+									<th class="center">器械型号</th>
 									<th class="center">生产厂家</th>
 									<th class="center">注册证号</th>
 									<th class="center">注册证类别</th>

@@ -205,6 +205,7 @@
                     dataType: 'json',
                     cache: false,
                     success: function (data) {
+                        console.log(data)
                          $("#BID_PRICE").val(data.list[0].WINNING_PRICE);
                          $("#PROJECT_MONEY").val(data.count);
 

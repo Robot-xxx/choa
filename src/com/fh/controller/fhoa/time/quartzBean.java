@@ -46,28 +46,29 @@ SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         List<PageData> varList = accessoryFileService.listAll(pd);        //列出Fhfile列表
         List<PageData> nvarList = new ArrayList<PageData>();
         for (int i = 0; i < varList.size(); i++) {
-            if(!varList.get(i).getString("FILETYPE").equals("中标通知书")){
+            if(varList.get(i).get("FILETYPE")!=null&&varList.get(i).getString("FILETYPE").equals("中标通知书")){
                 PageData pd1 = new PageData();
                 pd1.put("USERNAME",  varList.get(i).getString("USERNAME"));
                 pd1.put("CTIME",  varList.get(i).getString("CTIME"));
                 pd1.put("FILETYPE",  varList.get(i).getString("FILETYPE"));
                 nvarList.add(pd1);
             }
-            if(varList.get(i).getString("FILETYPE").equals("合同模版")){
+            if(varList.get(i).get("FILETYPE")!=null&&varList.get(i).getString("FILETYPE").equals("合同模版")){
                 PageData pd1 = new PageData();
                 pd1.put("USERNAME",  varList.get(i).getString("USERNAME"));
                 pd1.put("CTIME",  varList.get(i).getString("CTIME"));
                 pd1.put("FILETYPE",  varList.get(i).getString("FILETYPE"));
                 nvarList.add(pd1);
             }
-            if(varList.get(i).getString("FILETYPE").equals("合同初稿")){
+            if(varList.get(i).get("FILETYPE")!=null&&varList.get(i).getString("FILETYPE").equals("合同初稿")){
                 PageData pd1 = new PageData();
                 pd1.put("USERNAME",  varList.get(i).getString("USERNAME"));
                 pd1.put("CTIME",  varList.get(i).getString("CTIME"));
                 pd1.put("FILETYPE",  varList.get(i).getString("FILETYPE"));
                 nvarList.add(pd1);
             }
-            if(!varList.get(i).getString("FILETYPE").equals("合同双签")){
+            if(varList.get(i).get("FILETYPE")!=null&&varList.get(i).getString("FILETYPE").equals("合同双签")){
+
                 PageData pd1 = new PageData();
                 pd1.put("USERNAME",  varList.get(i).getString("USERNAME"));
                 pd1.put("CTIME",  varList.get(i).getString("CTIME"));
@@ -82,12 +83,8 @@ SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 
 
 
-    /**
-     * 发站内信通知审批结束
-     *
 
-     * @throws Exception
-     */
+
     public void sendSms() throws Exception {
 
         List<PageData> list = list();
@@ -97,11 +94,13 @@ SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd hh:mm");
             pd.put("SANME_ID", this.get32UUID());            //ID
             pd.put("SEND_TIME", DateUtil.getTime());        //发送时间
             pd.put("FHSMS_ID", this.get32UUID());            //主键
+
             pd.put("TYPE", "1");                            //类型1：收信
             pd.put("FROM_USERNAME", list.get(i).getString("USERNAME"));//收信人
             pd.put("TO_USERNAME", "系统消息");
             Date date=sd.parse(list.get(i).get("CTIME").toString());
             Date date1=new Date();
+
             long from1 = date.getTime();
             long to1 = date1.getTime();
             int days = (int) ((to1 - from1) / (1000 * 60 * 60 * 24));

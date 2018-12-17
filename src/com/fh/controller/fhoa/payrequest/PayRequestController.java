@@ -69,6 +69,11 @@ public class PayRequestController extends AcStartController {
 			map1.put("收款单位", pd.getString("PAYEE"));
 			map1.put("收款单位银行", pd.getString("PAYEEBANK"));
 			map1.put("银行账号", pd.getString("BANKACCOUNT"));
+			map1.put("金额", pd.getString("MONEY"));
+			map1.put("项目编号", pd.getString("PROJIECT_ID"));
+			
+			map1.put("项目名称", pd.getString("PROJECT_NAME"));
+			map1.put("附言", pd.getString("POSTSCRIPT"));
 
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
 

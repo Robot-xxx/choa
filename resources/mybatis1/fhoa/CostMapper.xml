@@ -26,6 +26,7 @@
 		f.STATUS,
 		f.ACT_ID,
 		f.USERID,
+		f.ISJIESUAN,
 		f.COST_ID
 	</sql>
 	
@@ -43,6 +44,7 @@
 		STATUS,
 		ACT_ID,
 		USERID,
+		ISJIESUAN,
 		COST_ID
 	</sql>
 	
@@ -60,6 +62,7 @@
 		#{STATUS},
 		#{ACT_ID},
 		#{USERID},
+		#{ISJIESUAN},
 		#{COST_ID}
 	</sql>
 	
@@ -99,6 +102,7 @@
 		STATUS = #{STATUS},
 		ACT_ID = #{ACT_ID},
 		USERID = #{USERID},
+		ISJIESUAN = #{ISJIESUAN},
 			COST_ID = COST_ID
 		where 
 			COST_ID = #{COST_ID}
