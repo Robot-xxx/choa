@@ -66,7 +66,12 @@ public class PayRequestController extends AcStartController {
 			map1.put("经办人", pd.getString("RESPONSIBLEPERSON"));
 			map1.put("申请类型", pd.getString("REQUEST_TYPE"));
 			map1.put("支付方式", pd.getString("PAY_METHOD"));
-			map1.put("收款单位", pd.getString("COMPANY_NAME"));
+			if ( pd.getString("ISHEZUO").equals("否")) {
+				map1.put("收款单位", pd.getString("COMPANY_NAME"));
+			}else if(pd.getString("ISHEZUO").equals("是")) {
+				map1.put("收款单位", pd.getString("PAYEE"));
+			}
+
 			map1.put("收款单位银行", pd.getString("PAYEEBANK"));
 			map1.put("银行账号", pd.getString("BANKACCOUNT"));
 			map1.put("金额", pd.getString("MONEY"));
