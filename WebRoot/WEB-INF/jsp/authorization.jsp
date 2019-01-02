@@ -27,8 +27,9 @@ footer{height:50px;position:fixed;bottom:0px;left:0px;width:100%;text-align: cen
 		<ul id="tree" class="tree" style="overflow:auto;"></ul>
 	</div>
 	<div id="zhongxin2" class="center" style="display:none"><br/><br/><br/><br/><img src="static/images/jiazai.gif" /><br/><h4 class="lighter block green"></h4></div>
-	
-	
+
+
+
 	<script type="text/javascript" src="static/js/jquery-1.5.1.min.js"></script>
 	<script type="text/javascript" src="plugins/zTree/2.6/jquery.ztree-2.6.min.js"></script>
 	

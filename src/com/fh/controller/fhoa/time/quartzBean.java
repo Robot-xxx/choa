@@ -32,7 +32,7 @@ SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd hh:mm");
     @Resource
     private AccessoryFileManager accessoryFileManager;
     public void quartzJobTestMethod() throws Exception {
-        sendSms();
+      //  sendSms();
     }
     /**
      * 列表

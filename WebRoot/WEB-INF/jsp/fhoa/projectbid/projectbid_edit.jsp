@@ -186,7 +186,22 @@
 
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
-                                                color="red">*</font>器械编号:
+                                                color="red">*</font>产品数量:
+                                        </td>
+                                        <td>
+                                            <select class="chosen-select form-control" name="PRODUCT_NUMBER"
+                                                    id="PRODUCT_NUMBER" data-placeholder="器械编号"
+                                                    style="vertical-align:top;width: 68px;">
+
+                                            </select>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr id="tr1">
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font
+                                                color="red">*</font>产品名称:
                                         </td>
                                         <td>
                                             <select class="chosen-select form-control" name="PRODUCT_ID"
@@ -508,6 +523,11 @@
     }
 
     function fmtDate(obj) {
+
+
+
+
+
         console.log(obj)
         var date = new Date(obj);
         var y = 1900 + date.getYear();
@@ -517,6 +537,37 @@
     }
 
     $(function () {
+
+        var strOpthion='';
+        for (var i = 1; i <=20 ; i++) {
+            strOpthion+='<option value="'+i+'">' + i + '</option>';
+        }
+        $("#PRODUCT_NUMBER").append(strOpthion);
+
+
+        $("#PRODUCT_NUMBER").change(function () {
+            $(".removeTr").remove();
+            var num = $("#PRODUCT_NUMBER").val();
+            console.log(num)
+            for (var i = 0; i < num-1; i++) {
+
+                $("#tr1").after('<tr class="removeTr"> ' +
+                    '<td style="width:75px;text-align: right;padding-top: 13px;">' +
+                    '<font color="red">*</font>产品名称: ' +
+                    '</td>' +
+                    '<td>' +
+                    '<select  name="PRODUCT_ID"  data-placeholder="器械编号" style="vertical-align:top;width: 50%;">' +
+                        '<option value="">请选择器械名称</option>'+
+                    '</select>' +
+                    '<input type="text" readonly name="PRODUCT" id="PRODUCT"   value="" maxlength="100" placeholder="器械名称" title="器械名称"  style="width:48%;"/>  <input type="text" hidden name="PROJECT_ID" id="PROJECT_ID"   value="" maxlength="100" style="width:48%;"/>    <span style="color: red">注:需先在器械管理处填写资料并通过质控审批后才能选择</span>  </td></tr>')
+            }
+
+        })
+
+
+
+
+
         //产品信息
         $("#c_selectCompany").change(function () {
 

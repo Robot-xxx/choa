@@ -71,7 +71,7 @@ public class PayRequestController extends AcStartController {
 			map1.put("银行账号", pd.getString("BANKACCOUNT"));
 			map1.put("金额", pd.getString("MONEY"));
 			map1.put("项目编号", pd.getString("PROJIECT_ID"));
-			
+
 			map1.put("项目名称", pd.getString("PROJECT_NAME"));
 			map1.put("附言", pd.getString("POSTSCRIPT"));
 
@@ -282,7 +282,7 @@ public class PayRequestController extends AcStartController {
 		List<PageData> list= payrequestService.taskAll(pd);
 
 		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i).getString("NAME_").toString().equals("财务")){
+			if(list.get(i).getString("NAME_").toString().equals("财务（崇好）")){
 				map.put("tag","1");
 				return map;
 			}
