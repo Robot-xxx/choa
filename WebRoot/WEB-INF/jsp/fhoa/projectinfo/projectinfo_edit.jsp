@@ -138,9 +138,9 @@
                         $("#projectId").append("<option value=''>请选择项目编号</option>");
                         for (var i = 0; i < data.list.length; i++) {
                             if (data.list[i].SYS_ID  == product) {
-                                $("#projectId").append("<option value=" +  data.list[i].SYS_ID+"-"+data.list[i].PRODUCT_NAME  + " selected='selected'>" + data.list[i].SYS_ID+"-"+data.list[i].PRODUCT_NAME + "</option>");
+                                $("#projectId").append("<option value=" +  data.list[i].SYS_ID+"-"+data.list[i].PRODUCT_NAME  + " selected='selected'>" + data.list[i].MODEL+"-"+data.list[i].PRODUCT_NAME + "</option>");
                             } else {
-                                $("#projectId").append("<option value=" + data.list[i].SYS_ID+"-"+data.list[i].PRODUCT_NAME  + ">" + data.list[i].SYS_ID+"-"+data.list[i].PRODUCT_NAME + "</option>");
+                                $("#projectId").append("<option value=" + data.list[i].SYS_ID+"-"+data.list[i].PRODUCT_NAME  + ">" + data.list[i].MODEL+"-"+data.list[i].PRODUCT_NAME + "</option>");
                             }
                         }
                         downList('projectId');

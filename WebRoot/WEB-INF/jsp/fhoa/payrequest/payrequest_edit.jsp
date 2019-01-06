@@ -32,6 +32,17 @@
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
                                     <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">选择公司:</td>
+                                        <td>
+                                            <select name="LICENCE" id="LICENCE" title=""
+                                                    style="width:38%;"></select>
+                                            <input type="text" hidden name="SELECTCOMPANY" id="xuanzeCompany"
+                                                   value="${pd.SELECTCOMPANY}"
+                                                   maxlength="100" placeholder="这里输入公司名称" title="公司名称"
+                                                   style="width:60%;"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">付款申请编号:</td>
                                         <td><input type="text" name="REQUEST_NO" readonly id="REQUEST_NO"
                                                    value="${pd.REQUEST_NO}" maxlength="100" placeholder="这里输入付款申请编号"
@@ -189,7 +200,7 @@
 
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
-                                                color="red">*</font>金额:
+                                                color="red">*</font>实付金额:
                                         </td>
                                         <td><input type="text" name="MONEY" id="MONEY" value="${pd.MONEY}"
                                                    maxlength="13" placeholder="这里输入金额" title="金额" style="width:98%;"/>
@@ -211,14 +222,14 @@
                                                    maxlength="255" placeholder="这里输入来款单位" title="来款单位"
                                                    style="width:98%;"/></td>
                                     </tr>
-                                    <tr>
+                                   <%-- <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
                                                 color="red">*</font>付款剩余余额:
                                         </td>
                                         <td><input type="text" name="YUYUEFUKUAN" id="YUYUEFUKUAN"
                                                    value="${pd.YUYUEFUKUAN}" maxlength="13" placeholder="这里输入付款剩余余额"
                                                    title="付款剩余余额" style="width:98%;"/></td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">付款约定:</td>
                                         <td><input type="text" name="FUKUANYUEDING" id="FUKUANYUEDING"
@@ -346,6 +357,20 @@
     }
 
     $(function () {
+
+        $("#LICENCE").change(function () {
+            if ($("#LICENCE").val() == "其他") {
+                $("#xuanzeCompany").removeAttr("hidden");
+                $("#xuanzeCompany").val('');
+            } else {
+                $("#xuanzeCompany").attr("hidden", "hidden");
+                $("#xuanzeCompany").val($("#LICENCE").val());
+            }
+
+
+        })
+
+
         var str = '${pd.ISHEZUO}';
         var msg = '${msg}';
         if (msg == "edit") {
@@ -607,7 +632,34 @@
         //seconds = this.setTimeDateFmt(seconds);
         return now.getFullYear().toString() + month.toString() + day + hour + minutes + seconds + (Math.round(Math.random() * 89 + 100)).toString()
     }
+    var BUSINESS = "${pd.SELECTCOMPANY}";
+    var tagbool = true;
+    $.ajax({
+        type: "POST",
+        url: '<%=basePath%>dictionaries/getLevels.do?tm=' + new Date().getTime(),
+        data: {DICTIONARIES_ID: 'cb8c6f2673bc4358b170efc7e2c6e309'},
+        dataType: 'json',
+        cache: false,
+        success: function (data) {
+            $("#LICENCE").append("<option value=''>请选择类型</option>");
+            $.each(data.list, function (i, dvar) {
+                if (BUSINESS == dvar.NAME) {
+                    tagbool = false;
+                    $("#LICENCE").append("<option value=" + dvar.NAME + " selected='selected'>" + dvar.NAME + "</option>");
+                } else {
+                    $("#LICENCE").append("<option value=" + dvar.NAME + ">" + dvar.NAME + "</option>");
+                }
+            });
+            if ($('#msg').val() == "edit") {
+                if (tagbool) {
+                    $("#xuanzeCompany").removeAttr("hidden");
+                    $("#xuanzeCompany").val(BUSINESS);
+                    $("#LICENCE").val("其他");
 
+                }
+            }
+        }
+    });
 
 </script>
 </body>

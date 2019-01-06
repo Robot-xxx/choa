@@ -40,6 +40,7 @@
 		f.ISHEZUO,
 		f.PARTNERS,
 		f.COMPANY_NAME,
+		f.SELECTCOMPANY,
 		f.REQUEST_ID
 	</sql>
 
@@ -71,6 +72,7 @@
 		ISHEZUO,
 		PARTNERS,
 		COMPANY_NAME,
+        SELECTCOMPANY,
 		REQUEST_ID
 	</sql>
 
@@ -102,6 +104,7 @@
 		#{ISHEZUO},
 		#{PARTNERS},
 		#{COMPANY_NAME},
+		#{SELECTCOMPANY},
 		#{REQUEST_ID}
 	</sql>
 
@@ -155,6 +158,7 @@
         ISHEZUO = #{ISHEZUO},
         PARTNERS = #{PARTNERS},
         COMPANY_NAME = #{COMPANY_NAME},
+        SELECTCOMPANY = #{SELECTCOMPANY},
         REQUEST_ID = REQUEST_ID
         where
         REQUEST_ID = #{REQUEST_ID}

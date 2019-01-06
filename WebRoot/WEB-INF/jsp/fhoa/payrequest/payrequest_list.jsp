@@ -73,6 +73,7 @@
                                                 class="lbl"></span></label>
                                     </th>
                                     <th class="center" style="width:50px;">序号</th>
+                                    <th class="center">选择公司</th>
                                     <th class="center">付款申请编号</th>
                                     <th class="center">申请日期</th>
                                     <th class="center">经办人</th>
@@ -91,7 +92,7 @@
                                     <th class="center">金额</th>
                                     <th class="center">垫付金额</th>
                                     <th class="center">来款单位</th>
-                                    <th class="center">付款剩余余额</th>
+                                    <th class="center">附件</th>
                                     <th class="center">付款约定</th>
                                     <th class="center">操作</th>
                                 </tr>
@@ -112,6 +113,7 @@
                                                     </td>
                                                     <td class='center'
                                                         style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
+                                                    <td class='center'>${var.SELECTCOMPANY}</td>
                                                     <td class='center'>${var.REQUEST_NO}</td>
                                                     <td class='center'>${var.REQUEST_DATE}</td>
                                                     <td class='center'>${var.RESPONSIBLEPERSON}</td>
@@ -138,7 +140,7 @@
                                                     <td class='center'>${var.MONEY}</td>
                                                     <td class='center'>${var.PAY_ACCOUNT}</td>
                                                     <td class='center'>${var.PAY_UNIT}</td>
-                                                    <td class='center'>${var.YUYUEFUKUAN}</td>
+                                                    <td class='center'><a onclick="allOaFile('${var.REQUEST_ID}','27be24c2087b4de88741b831a6b3686c')" style=" cursor:pointer;">查看附件</a></td>
                                                     <td class='center'>${var.FUKUANYUEDING}</td>
                                                     <td class="center">
                                                         <c:if test="${QX.edit != 1 && QX.del != 1 }">
@@ -299,6 +301,8 @@
 <script src="static/ace/js/date-time/bootstrap-datepicker.js"></script>
 <!--提示框-->
 <script type="text/javascript" src="static/js/jquery.tips.js"></script>
+<!-- 文件上传-->
+<script src="upload/oaFile.js"></script>
 <script type="text/javascript">
     $(top.hangge());//关闭加载状态
     function tijiao(REQUEST_ID, obj) {
@@ -355,7 +359,7 @@
     }
 
     $(function () {
-
+        getPath('<%=basePath%>');
         //日期框
         $('.date-picker').datepicker({
             autoclose: true,

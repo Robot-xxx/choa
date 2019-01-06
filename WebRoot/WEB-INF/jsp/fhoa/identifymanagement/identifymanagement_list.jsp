@@ -75,11 +75,13 @@
                                     <th class="center" style="width:50px;">序号</th>
                           <%--          <th class="center">项目编号</th>
                                     <th class="center">项目名称</th>--%>
-                                    <th class="center">回款期数</th>
+                                   <%-- <th class="center">回款期数</th>--%>
                                     <th class="center">进款金额</th>
                                     <th class="center">回款单位</th>
                                     <th class="center">日期</th>
+
                                     <th class="center">汇款备注</th>
+                                    <th class="center">附件</th>
                                     <th class="center">认款</th>
                                     <th class="center">操作</th>
                                 </tr>
@@ -102,11 +104,12 @@
                                                         style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
                                                   <%--  <td class='center'>${var.PROJECT_ID}</td>
                                                     <td class='center'>${var.PROJECT_NAME}</td>--%>
-                                                    <td class='center'>${var.HUIKUAN}</td>
+                                                 <%--   <td class='center'>${var.HUIKUAN}</td>--%>
                                                     <td class='center'>${var.INCOME_MONEY}</td>
                                                     <td class='center'>${var.RETURN_MONEY}</td>
                                                     <td class='center'>${var.CREATE_DATE}</td>
                                                     <td class='center'>${var.BZ}</td>
+                                                    <td class='center'><a onclick="allOaFile('${var.REQUEST_ID}','5e90f10240ad487bbbf12eaea0831258')" style=" cursor:pointer;">查看附件</a></td>
                                                     <td class='center'><a class="btn btn-mini btn-purple" onclick="addRenKuan('${var.INCOME_MONEY}','${var.IDENTIFYMANAGEMENT_ID}','${var.PROJECT_ID}','${var.PROJECT_NAME}')">
                                                         <i class="icon-pencil"></i>认款</a>
                                                     </td>
@@ -239,6 +242,8 @@
 <script src="static/ace/js/date-time/bootstrap-datepicker.js"></script>
 <!--提示框-->
 <script type="text/javascript" src="static/js/jquery.tips.js"></script>
+<!-- 文件上传-->
+<script src="upload/oaFile.js"></script>
 <script type="text/javascript">
     $(top.hangge());//关闭加载状态
     //检索
@@ -248,7 +253,7 @@
     }
 
     $(function () {
-
+        getPath('<%=basePath%>');
         //日期框
         $('.date-picker').datepicker({
             autoclose: true,

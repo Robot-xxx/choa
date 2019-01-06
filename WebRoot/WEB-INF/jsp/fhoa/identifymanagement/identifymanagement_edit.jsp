@@ -45,10 +45,10 @@
 								<td style="width:75px;text-align: right;padding-top: 13px;">项目名称:</td>
 								<td><input readonly type="text" name="PROJECT_NAME" id="PROJECT_NAME" value="${pd.PROJECT_NAME}" maxlength="50" placeholder="这里输入项目名称" title="项目名称" style="width:98%;"/></td>
 							</tr>--%>
-                            <tr>
+                       <%--     <tr>
                                 <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>回款期数:</td>
                                 <td><input type="text" name="HUIKUAN" id="HUIKUAN" value="${pd.HUIKUAN}" maxlength="32" placeholder="这里输入回款期数" title="回款期数" style="width:98%;"/></td>
-                            </tr>
+                            </tr>--%>
                             <tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>进款金额:</td>
 								<td><input type="number" name="INCOME_MONEY" id="INCOME_MONEY" value="${pd.INCOME_MONEY}" maxlength="32" placeholder="这里输入进款金额" title="进款金额" style="width:98%;"/></td>
@@ -132,7 +132,7 @@
 				$("#INCOME_MONEY").focus();
 			return false;
 			}
-			if($("#RETURN_MONEY").val()==""){
+		/*	if($("#RETURN_MONEY").val()==""){
 				$("#RETURN_MONEY").tips({
 					side:3,
 		            msg:'请输入回款单位',
@@ -141,7 +141,7 @@
 		        });
 				$("#RETURN_MONEY").focus();
 			return false;
-			}
+			}*/
 			if($("#CREATE_DATE").val()==""){
 				$("#CREATE_DATE").tips({
 					side:3,

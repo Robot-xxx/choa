@@ -55,8 +55,14 @@
 									<select class="chosen-select form-control"  id="jinxiang" style="vertical-align:top;width: 68px; width: 98%">
 
 									</select>
+									<font style="color: red">	注：仅填写金额最大的一个产品即可</font>
 									<input type="text" hidden name="ENTRYTICKETNAME" id="ENTRYTICKETNAME" value="${pd.ENTRYTICKETNAME}" maxlength="255"  style="width:98%;"/></td>
-									<input type="text" hidden name="JINXIANGID" id="JINXIANGID" value="${pd.JINXIANGID}" maxlength="255"  style="width:98%;"/></td>
+									<input type="text" hidden name="JINXIANGID" id="JINXIANGID" value="${pd.JINXIANGID}" maxlength="255"  style="width:98%;"/>
+
+								</td>
+
+
+
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>进项票总额(万元):</td>

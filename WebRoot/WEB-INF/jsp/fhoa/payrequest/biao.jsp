@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								
 				</div>
 				<div style="text-align: right;float: left;width: 700px;">
-					<input value="${pd.BANKACCOUNT}" style="margin-left:5px;width:700px;border-bottom:1px solid #558db5;border-right: 0px;border-left: 0px;border-top: 0px;"/>
+					<input value="${pd.POSTSCRIPT}" style="margin-left:5px;width:700px;border-bottom:1px solid #558db5;border-right: 0px;border-left: 0px;border-top: 0px;"/>
 								
 				</div>
 			</div>
@@ -175,7 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div style="text-align: right;float: left;width: 700px;">
 						<input value="${pd.YUYUEFUKUAN}"  style="margin-left:5px;width:700px;border-bottom:1px solid #558db5;border-right: 0px;border-left: 0px;border-top: 0px;"/>
-									
+
 					</div>
 					<div style="text-align: right;float: left;width: 700px;">
 						<input value="${pd.FUKUANYUEDING}"  style="margin-left:5px;width:700px;border-bottom:1px solid #558db5;border-right: 0px;border-left: 0px;border-top: 0px;"/>
