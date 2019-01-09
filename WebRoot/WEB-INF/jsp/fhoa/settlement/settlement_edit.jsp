@@ -50,11 +50,11 @@
 								<td><input type="text" name="PROJECT_MAN" id="PROJECT_MAN" value="${pd.PROJECT_MAN}" maxlength="50" placeholder="这里输入项目负责人" title="项目负责人" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">中标金额:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;">中标金额(万元):</td>
 								<td><input readonly type="text" name="BID_PRICE" id="BID_PRICE" value="${pd.BID_PRICE}" maxlength="13" placeholder="这里输入中标金额" title="中标金额" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">项目回款金额:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;">项目回款金额(万元):</td>
 								<td><input readonly type="text" name="PROJECT_MONEY" id="PROJECT_MONEY" value="${pd.PROJECT_MONEY}" maxlength="13" placeholder="这里输入项目回款金额" title="项目回款金额" style="width:98%;"/></td>
 							</tr>
 							<tr>

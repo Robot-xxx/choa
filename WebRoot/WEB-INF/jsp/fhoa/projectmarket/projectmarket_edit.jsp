@@ -35,7 +35,7 @@
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">选择公司:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>选择公司:</td>
                                         <td>
                                             <select name="LICENCE" id="LICENCE" title=""
                                                     style="width:38%;"></select>
@@ -121,7 +121,7 @@
                                     </tr>
 
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>合同总价:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>合同总价(万元):</td>
                                         <td><input type="number" name="CONTRACT_PRICE" id="CONTRACT_PRICE"
                                                    value="${pd.CONTRACT_PRICE}" maxlength="12" placeholder="这里输入合同总价"
                                                    title="合同总价" style="width:98%;"/></td>
@@ -141,7 +141,7 @@
                                                    placeholder="预计到账时间" title="预计到账时间" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>实际到账时间:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">实际到账时间:</td>
                                         <td><input class="span10 date-picker" name="PRACTICAL_ACCOUT_TIME"
                                                    id="PRACTICAL_ACCOUT_TIME" value="${pd.PRACTICAL_ACCOUT_TIME}"
                                                    type="text" data-date-format="yyyy-mm-dd" readonly="readonly"
@@ -154,21 +154,21 @@
                                                    placeholder="这里输入累计开票总额" title="累计开票总额" style="width:98%;"/></td>
                                     </tr>--%>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>到货时间:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">到货时间:</td>
                                         <td><input class="span10 date-picker" name="ARRIVAL_TIME" id="ARRIVAL_TIME"
                                                    value="${pd.ARRIVAL_TIME}" type="text" data-date-format="yyyy-mm-dd"
                                                    readonly="readonly" placeholder="到货时间" title="到货时间"
                                                    style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>验收时间:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">验收时间:</td>
                                         <td><input class="span10 date-picker" name="RECEPTION_TIME" id="RECEPTION_TIME"
                                                    value="${pd.RECEPTION_TIME}" type="text"
                                                    data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="验收时间"
                                                    title="验收时间" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">是否资料齐全:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
                                         <td>
                                             是<input type="radio" name="ISZILIAOQQ"  value="是" <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
                                             否<input type="radio" name="ISZILIAOQQ"  value="否" <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>
@@ -362,7 +362,7 @@
             });
             $("#EQUIPMENT_ADVANCE").focus();
             return false;
-        }
+        }/*
         if ($("#PREDICT_ACCOUNT_TIME").val() == "") {
             $("#PREDICT_ACCOUNT_TIME").tips({
                 side: 3,
@@ -372,7 +372,7 @@
             });
             $("#PREDICT_ACCOUNT_TIME").focus();
             return false;
-        }
+        }*/
   /*    if($("#PRACTICAL_ACCOUT_TIME").val()==""){
                 $("#PRACTICAL_ACCOUT_TIME").tips({
                     side:3,
@@ -392,7 +392,7 @@
             });
             $("#CUMULATIVE_BILLING").focus();
             return false;
-        }*/
+        }*//*
         if ($("#ARRIVAL_TIME").val() == "") {
             $("#ARRIVAL_TIME").tips({
                 side: 3,
@@ -402,7 +402,7 @@
             });
             $("#ARRIVAL_TIME").focus();
             return false;
-        }
+        }*//*
         if ($("#RECEPTION_TIME").val() == "") {
             $("#RECEPTION_TIME").tips({
                 side: 3,
@@ -412,7 +412,8 @@
             });
             $("#RECEPTION_TIME").focus();
             return false;
-        }
+        }*/
+
         if ($("#RECEPTION").val() == "") {
             $("#RECEPTION").tips({
                 side: 3,
@@ -444,9 +445,9 @@
                     $("#projectId").append("<option value=''>请选择项目编号</option>");
                     for (var i = 0; i < data.list.length; i++) {
                         if (data.list[i].PROJECT_ID == project) {
-                            $("#projectId").append("<option value=" + data.list[i].PROJECT_ID +"="+ data.list[i].FUZEREN+ " selected='selected'>" + data.list[i].SYS_ID + "-" + data.list[i].PROJECT_NAME + "</option>");
+                            $("#projectId").append("<option value=" + data.list[i].PROJECT_ID +"="+ data.list[i].FUZEREN+ " selected='selected'>" + data.list[i].SYS_ID + "=》" + data.list[i].PROJECT_NAME + "</option>");
                         } else {
-                            $("#projectId").append("<option value=" + data.list[i].PROJECT_ID +"="+ data.list[i].FUZEREN+ ">" + data.list[i].SYS_ID + "-" + data.list[i].PROJECT_NAME + "</option>");
+                            $("#projectId").append("<option value=" + data.list[i].PROJECT_ID +"="+ data.list[i].FUZEREN+ ">" + data.list[i].SYS_ID + "=》" + data.list[i].PROJECT_NAME + "</option>");
                         }
                     }
                     downList('projectId');
@@ -492,9 +493,13 @@
 
         $("#client_id").change(function () {
 
+
             $("#CLIENT_ID").val( $("#client_id").val());
             $("#CLIENT_NAME").val( $("#client_id option:selected").text());
-
+            $("#JINGYINGXUKEZHENG").val('');
+            $("#FARENSHOUQUAN").val('');
+            $("#SHOUQUANWEITUO").val('');
+            $("#JINGYINGXUKEZHENG").val('');
 
             $.ajax({
                 type: "POST",
@@ -532,7 +537,7 @@
                 success: function (data) {
                     if (data.errInfo == "success") {
                         $("#PROJECT_NAME").val(data.pd.PROJECT_NAME);
-                        $("#SYS_ID").val(str.substring(0,str.indexOf("-")));
+                        $("#SYS_ID").val(str.substring(0,str.indexOf("=》")));
                         $("#FUZEREN").val(str1.substring(str1.indexOf("=")+1,str1.length));
                     }
                 }

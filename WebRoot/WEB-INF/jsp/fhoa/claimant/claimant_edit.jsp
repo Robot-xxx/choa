@@ -58,7 +58,7 @@
 								<td><input type="text" name="CLAIMANT_NAME" id="CLAIMANT_NAME" value="${pd.CLAIMANT_NAME}" maxlength="100" placeholder="这里输入认领人名称" title="认领人名称" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>认领金额:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>认领金额(万元):</td>
 								<td><input type="number" name="CLAIMANT_MONEY" id="CLAIMANT_MONEY" value="${pd.CLAIMANT_MONEY}" maxlength="32" placeholder="这里输入认领金额" title="认领金额" style="width:98%;"/></td>
 							</tr>
 							<tr>

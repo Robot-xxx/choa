@@ -60,7 +60,9 @@
 									<th class="center">选择公司</th>
 									<th class="center">项目名称</th>
 									<th class="center">医院</th>
+<%--
                                     <th class="center">产品</th>
+--%>
 <%--
                                     <th class="center">上游</th>
 --%>
@@ -78,7 +80,10 @@
 									<th class="center">负责人</th>
 									<th class="center">是否资料齐全</th>
 									<th class="center">标书制作人</th>
+
 									<th class="center">备注</th>
+									<th class="center">产品</th>
+
 									<th class="center">附件</th>
 								<%--	<th class="center">合同模板时间（1天)</th>
 									<th class="center">合同双签时间（一周）</th>
@@ -101,7 +106,9 @@
 											<td class='center'>${var.SELECTCOMPANY}</td>
 											<td class='center'>${var.PROJECT_NAME}</td>
 											<td class='center'>${var.HOSPITAL}</td>
+<%--
                                             <td class='center'>${var.PRODUCT}</td>
+--%>
 <%--
                                             <td class='center'>${var.SUPPLIER}</td>
 --%>
@@ -120,6 +127,8 @@
 											<td class='center'>${var.ISZILIAOQQ}</td>
 											<td class='center'>${var.BIAOSHUZHIZUOREN}</td>
 											<td class='center'>${var.BZ}</td>
+											<td class='center'><a onclick="selectProject('${var.PROJECT_BID_ID}')" style=" cursor:pointer;">查看产品</a></td>
+
 											<td class='center'><a onclick="allOaFile('${var.PROJECT_BID_ID}','929f3699b3a14562afbc34ca20a07b07')" style=" cursor:pointer;">查看附件</a></td>
 											<%--<td class='center'>${var.CONTRACT_MODEL_TIME}</td>
 											<td class='center'>${var.COUNTER_SIGN_TIME}</td>
@@ -248,6 +257,26 @@
 	<script src="upload/oaFile.js"></script>
 	<script type="text/javascript">
 		$(top.hangge());//关闭加载状态
+
+
+        //查看产品信息
+        function selectProject(PARENT_ID){
+            top.jzts();
+            var diag = new top.Dialog();
+            diag.Drag=true;
+            diag.Title ="新增";
+            diag.URL = '<%=basePath%>projectproduct/list.do?PARENT_ID='+PARENT_ID;
+            diag.Width = 800;
+            diag.Height = 600;
+            diag.Modal = true;				//有无遮罩窗口
+            diag. ShowMaxButton = true;	//最大化按钮
+            diag.ShowMinButton = true;		//最小化按钮
+            diag.CancelEvent = function(){ //关闭事件
+                diag.close();
+            };
+            diag.show();
+        }
+
 
         function tijiao(PROJECT_BID_ID,obj){
             $.ajax({

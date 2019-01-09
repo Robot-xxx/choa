@@ -32,7 +32,7 @@
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">选择公司:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>选择公司:</td>
                                         <td>
                                             <select name="LICENCE" id="LICENCE" title=""
                                                     style="width:38%;"></select>
@@ -200,7 +200,7 @@
 
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
-                                                color="red">*</font>实付金额:
+                                                color="red">*</font>实付金额(元):
                                         </td>
                                         <td><input type="text" name="MONEY" id="MONEY" value="${pd.MONEY}"
                                                    maxlength="13" placeholder="这里输入金额" title="金额" style="width:98%;"/>
@@ -208,7 +208,7 @@
                                     </tr>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
-                                                color="red">*</font>垫付金额:
+                                                color="red">*</font>垫付金额(元):
                                         </td>
                                         <td><input type="text" name="PAY_ACCOUNT" id="PAY_ACCOUNT"
                                                    value="${pd.PAY_ACCOUNT}" maxlength="13" placeholder="这里输入垫付金额"

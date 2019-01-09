@@ -34,7 +34,7 @@
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">选择公司:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>选择公司:</td>
 								<td>
 									<select name="LICENCE" id="LICENCE" title=""
 											style="width:38%;"></select>
@@ -79,7 +79,7 @@
 									<input type="text" hidden name="SALES_CONTRACT_ID" id="SALES_CONTRACT_ID" value="${pd.SALES_CONTRACT_ID}" maxlength="255"  style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>合同总额:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>合同总额(万元):</td>
 								<td><input type="text" name="OPEN_TICKET_PRICE" id="OPEN_TICKET_PRICE" value="${pd.OPEN_TICKET_PRICE}" maxlength="11" placeholder="这里输入合同总额" title="合同总额" style="width:98%;"/></td>
 							</tr>
                             <tr>

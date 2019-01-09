@@ -72,7 +72,7 @@
 									<th class="center">销售合同编号</th>
 									<th class="center">下游序号</th>
 									<th class="center">下游名称</th>
-									<th class="center">合同总价</th>
+									<th class="center">合同总价(万元)</th>
 									<th class="center">大设备预支款金额</th>
 									<th class="center">预计到账时间</th>
 									<th class="center">实际到账时间</th>

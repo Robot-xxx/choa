@@ -31,18 +31,41 @@
 						<input type="hidden" name="PROJECTPRODUCT_ID" id="PROJECTPRODUCT_ID" value="${pd.PROJECTPRODUCT_ID}"/>
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
+							<tr id="tr1">
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font
+										color="red">*</font>器械名称:
+								</td>
+								<td>
+									<select class="chosen-select form-control" name="PRODUCT_ID"
+											id="c_selectCompany" data-placeholder="器械编号"
+											style="vertical-align:top;width: 68px;">
+
+									</select>
+
+									<input type="text" hidden name="PARENT_ID" id="PARENT_ID"
+										   value="${pd.PARENT_ID}" maxlength="100" style="width:48%;"/>
+									<span style="color: red">注:需先在器械管理处填写资料并通过质控审批后才能选择</span>
+								</td>
+
+							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">器械名称:</td>
 								<td><input type="text" name="PRODUCT_NAME" id="PRODUCT_NAME" value="${pd.PRODUCT_NAME}" maxlength="255" placeholder="这里输入器械名称" title="器械名称" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">器械到期日:</td>
-								<td><input class="span10 date-picker" name="PRODUCT_TIME" id="PRODUCT_TIME" value="${pd.PRODUCT_TIME}" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="器械到期日" title="器械到期日" style="width:98%;"/></td>
-							</tr>
-							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">器械型号:</td>
 								<td><input type="text" name="PRODUCT_MODEL" id="PRODUCT_MODEL" value="${pd.PRODUCT_MODEL}" maxlength="255" placeholder="这里输入器械型号" title="器械型号" style="width:98%;"/></td>
 							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">器械到期日:</td>
+								<td>
+									<input name="PRODUCT_TIME" id="PRODUCT_TIME"
+										   value="${pd.PRODUCT_TIME}" type="text" readonly="readonly"
+										   style="width:98%;"/>
+									<span style="color: red">注:注意核对到期日情况</span>
+								</td>
+							</tr>
+
 							<tr>
 								<td style="text-align: center;" colspan="10">
 									<a class="btn btn-mini btn-primary" onclick="save();">保存</a>
@@ -74,6 +97,8 @@
 	<script src="static/ace/js/date-time/bootstrap-datepicker.js"></script>
 	<!--提示框-->
 	<script type="text/javascript" src="static/js/jquery.tips.js"></script>
+	<!-- 下拉列表框 -->
+	<script src="common/downList.js"></script>
 		<script type="text/javascript">
 		$(top.hangge());
 		//保存
@@ -114,6 +139,57 @@
 		}
 		
 		$(function() {
+
+            var cp = "${pd.PRODUCT_NAME}";
+            //产品管理
+            $.ajax({
+                type: "POST",
+                url: '<%=basePath%>/project/c_ProductAll.do?tm=' + new Date().getTime(),
+                dataType: 'json',
+                cache: false,
+                success: function (data) {
+                    if (data.errInfo == "success") {
+                        $("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
+                        for (var i = 0; i < data.list.length; i++) {
+                            if (data.list[i].SYS_ID == cp) {
+                                $("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + " selected='selected'>" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+                            } else {
+                                $("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+                            }
+                        }
+
+                        downList('c_selectCompany');
+                    }
+                }
+            });
+
+
+            //产品信息
+            $("#c_selectCompany").change(function () {
+                var str1= $("#c_selectCompany option:selected").text();
+                var str = $("#c_selectCompany").val();
+
+                $("#PRODUCT_TIME").val(fmtDate(parseFloat(str.substring(str.indexOf("=") + 1, str.length))));
+
+                $("#PRODUCT_NAME").val('');
+
+                $("#PRODUCT_NAME").val(str1.substring(str1.indexOf("-")+1,str1.length));
+
+                $("#PRODUCT_MODEL").val(str1.substring(0,str1.indexOf("-")));
+
+            })
+
+            function fmtDate(obj) {
+                var date = new Date(obj);
+                var y = 1900 + date.getYear();
+                var m = "0" + (date.getMonth() + 1);
+                var d = "0" + date.getDate();
+                return y + "-" + m.substring(m.length - 2, m.length) + "-" + d.substring(d.length - 2, d.length);
+            }
+            //截取字符串
+            function jiequ(str) {
+                return str.substring(str.lastIndexOf('=') + 1, str.length);
+            }
 			//日期框
 			$('.date-picker').datepicker({autoclose: true,todayHighlight: true});
 			

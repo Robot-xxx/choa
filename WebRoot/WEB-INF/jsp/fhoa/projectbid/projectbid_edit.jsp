@@ -36,7 +36,7 @@
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">选择公司:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>选择公司:</td>
                                         <td>
                                             <select name="LICENCE" id="LICENCE" title=""
                                                     style="width:38%;"></select>
@@ -167,14 +167,14 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">标书制作人:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>标书制作人:</td>
                                         <td><input name="BIAOSHUZHIZUOREN" id="BIAOSHUZHIZUOREN"
                                                    value="${pd.BIAOSHUZHIZUOREN}" type="text" placeholder="标书制作人"
                                                    title="标书制作人" style="width:98%;"/></td>
                                     </tr>
 
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">是否资料齐全:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
                                         <td>
                                             是<input type="radio" name="ISZILIAOQQ" value="是"
                                                     <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
@@ -184,7 +184,7 @@
                                     </tr>
 
 
-                                    <tr>
+                                   <%-- <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
                                                 color="red">*</font>产品数量:
                                         </td>
@@ -196,10 +196,10 @@
                                             </select>
                                         </td>
 
-                                    </tr>
+                                    </tr>--%>
 
 
-                                    <tr id="tr1">
+                                   <%-- <tr id="tr1">
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
                                                 color="red">*</font>产品名称:
                                         </td>
@@ -219,9 +219,9 @@
                                             <span style="color: red">注:需先在器械管理处填写资料并通过质控审批后才能选择</span>
                                         </td>
 
-                                    </tr>
+                                    </tr>--%>
 
-                                    <tr>
+                                    <%--<tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">产品到期日:</td>
                                         <td>
                                             <input name="CHANPINDAOQIRI" id="CHANPINDAOQIRI"
@@ -229,7 +229,7 @@
                                                    style="width:98%;"/>
                                             <span style="color: red">注:注意核对到期日情况</span>
                                         </td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
                                         <td><input type="text" name="BZ" value="${pd.BZ}"
@@ -482,6 +482,17 @@
                 time: 2
             });
             $("#GUARANTEE_MONEY").focus();
+            return false;
+        }
+
+        if ($("#BIAOSHUZHIZUOREN").val() == "") {
+            $("#BIAOSHUZHIZUOREN").tips({
+                side: 3,
+                msg: '请输入标书制作人',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#BIAOSHUZHIZUOREN").focus();
             return false;
         }
         $("#Form").submit();

@@ -61,7 +61,7 @@
 									<th class="center">项目名称</th>
 									<th class="center">认领时间</th>
 									<th class="center">认领人名称</th>
-									<th class="center">认领金额</th>
+									<th class="center">认领金额(万元)</th>
 									<th class="center">备注</th>
 									<th class="center">操作</th>
 								</tr>

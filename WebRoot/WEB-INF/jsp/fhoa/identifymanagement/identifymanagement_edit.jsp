@@ -50,7 +50,7 @@
                                 <td><input type="text" name="HUIKUAN" id="HUIKUAN" value="${pd.HUIKUAN}" maxlength="32" placeholder="这里输入回款期数" title="回款期数" style="width:98%;"/></td>
                             </tr>--%>
                             <tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>进款金额:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>进款金额(万元):</td>
 								<td><input type="number" name="INCOME_MONEY" id="INCOME_MONEY" value="${pd.INCOME_MONEY}" maxlength="32" placeholder="这里输入进款金额" title="进款金额" style="width:98%;"/></td>
 							</tr>
 							<tr>

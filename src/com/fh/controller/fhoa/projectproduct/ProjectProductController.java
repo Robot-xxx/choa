@@ -49,7 +49,7 @@ public class ProjectProductController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd.put("PROJECTPRODUCT_ID", this.get32UUID());	//主键
+		pd.put("PRODUCT_ID", this.get32UUID());	//主键
 		projectproductService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
