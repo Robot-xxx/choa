@@ -191,7 +191,7 @@ public class ProjectProductController extends BaseController {
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
 			vpd.put("var1", varOList.get(i).getString("PRODUCT_NAME"));	    //1
-			vpd.put("var2", varOList.get(i).getString("PRODUCT_TIME"));	    //2
+			vpd.put("var2", varOList.get(i).get("PRODUCT_TIME").toString());	    //2
 			vpd.put("var3", varOList.get(i).getString("PRODUCT_MODEL"));	    //3
 			varList.add(vpd);
 		}
