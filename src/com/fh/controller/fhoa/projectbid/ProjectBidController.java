@@ -425,17 +425,17 @@ public class ProjectBidController extends AcStartController {
         for (int i = 0; i < varOList.size(); i++) {
             PageData vpd = new PageData();
             vpd.put("var1", varOList.get(i).getString("SYS_ID"));        //1
-            vpd.put("var2", varOList.get(i).getString("PROJECT_NAME"));        //2
+           vpd.put("var2", varOList.get(i).getString("PROJECT_NAME"));        //2
             vpd.put("var3", varOList.get(i).getString("HOSPITAL"));        //3
             vpd.put("var4", varOList.get(i).getString("WINNING_UNIT"));        //4
-            vpd.put("var5", varOList.get(i).get("WINNING_PRICE"));        //5
-            vpd.put("var6", varOList.get(i).get("GUARANTEE_MONEY"));        //6
-            vpd.put("var7",  sd.format(varOList.get(i).get("SCHEDULED_TIME")));        //7
-            vpd.put("var8",  sd.format(varOList.get(i).get("PRACTICAL_TIME")));        //8
-            vpd.put("var9",  sd.format( varOList.get(i).get("BID_OPEN_TIME")));        //9
+            vpd.put("var5", varOList.get(i).get("WINNING_PRICE").toString());        //5
+            vpd.put("var6", varOList.get(i).get("GUARANTEE_MONEY").toString());        //6
+            vpd.put("var7",  varOList.get(i).get("SCHEDULED_TIME"));        //7
+            vpd.put("var8",  varOList.get(i).get("PRACTICAL_TIME"));        //8
+            vpd.put("var9",  varOList.get(i).get("BID_OPEN_TIME"));        //9
             vpd.put("var10", varOList.get(i).get("SERVICE_PRICE"));        //10
-            vpd.put("var11", sd.format(varOList.get(i).get("SCHEDULED_SERVICE_PRICE_TIME")));        //11
-            vpd.put("var12", sd.format(varOList.get(i).get("PRACTICAL_SERVICE_PRICE_TIME")));        //12
+            vpd.put("var11", varOList.get(i).get("SCHEDULED_SERVICE_PRICE_TIME"));        //11
+            vpd.put("var12", varOList.get(i).get("PRACTICAL_SERVICE_PRICE_TIME"));        //12
            /* vpd.put("var13", varOList.get(i).getString("ADVICE"));        //13*/
        /*     vpd.put("var14",  sd.format(varOList.get(i).get("CONTRACT_MODEL_TIME")));        //14
             vpd.put("var15",  sd.format(varOList.get(i).get("COUNTER_SIGN_TIME")));        //15
