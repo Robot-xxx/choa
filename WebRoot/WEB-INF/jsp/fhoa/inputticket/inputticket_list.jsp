@@ -72,7 +72,7 @@
 									<th class="center">项目名称</th>
 									<th class="center">进项票总额(万元)</th>
 									<th class="center">发票号</th>
-									<th class="center">金额</th>
+									<th class="center">金额(万元)</th>
 									<th class="center">备注</th>
 									<th class="center">附件</th>
 									<th class="center">操作</th>

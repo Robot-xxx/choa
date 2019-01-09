@@ -64,7 +64,7 @@
 									 <th class="center">进项票产品名称</th>
 									<th class="center">进项备注</th>
 									<th class="center">进项票总额(万元)</th>
-									<th class="center">合同总额</th>
+									<th class="center">合同总额(万元)</th>
 									<th class="center">进项票信息</th>
 									<th class="center">附件</th>
 									<th class="center">操作</th>

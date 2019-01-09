@@ -89,8 +89,8 @@
                                     <th class="center">项目编号</th>
                                     <th class="center">项目名称</th>
                                     <th class="center">合同编号</th>
-                                    <th class="center">金额</th>
-                                    <th class="center">垫付金额</th>
+                                    <th class="center">金额(元)</th>
+                                    <th class="center">垫付金额(元)</th>
                                     <th class="center">来款单位</th>
                                     <th class="center">附件</th>
                                     <th class="center">付款约定</th>

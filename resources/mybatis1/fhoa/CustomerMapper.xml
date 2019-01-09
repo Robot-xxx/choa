@@ -177,6 +177,9 @@
 				-->
 				)
 		</if>
+		<if test="pd.CUSTOMER_ID!= null and pd.CUSTOMER_ID != ''"><!-- 关键词检索 -->
+			and SYS_ID=#{pd.CUSTOMER_ID}
+		</if>
 		<if test="pd.STATUS!= null and pd.STATUS != ''"><!-- 关键词检索 -->
 			and STATUS=#{pd.STATUS}
 		</if>

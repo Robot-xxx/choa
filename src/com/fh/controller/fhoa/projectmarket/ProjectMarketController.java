@@ -57,6 +57,9 @@ public class ProjectMarketController extends AcStartController {
 
 			/** 工作流的操作 **/
 			Map<String,Object> map1 = new LinkedHashMap<String, Object>();
+
+			map1.put("公司",pd.getString("SELECTCOMPANY") );			//选择公司
+
 			map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
 			map1.put("项目编号", pd.getString("SYS_ID"));
 			map1.put("项目名称", pd.getString("PROJECT_NAME"));

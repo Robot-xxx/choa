@@ -17,7 +17,8 @@
 		f.PRODUCT_NAME,	
 		f.PRODUCT_TIME,	
 		f.PRODUCT_MODEL,	
-		f.PROJECTPRODUCT_ID
+		f.PARENT_ID,
+		f.PRODUCT_ID
 	</sql>
 	
 	<!-- 字段用于新增 -->
@@ -25,15 +26,17 @@
 		PRODUCT_NAME,	
 		PRODUCT_TIME,	
 		PRODUCT_MODEL,	
-		PROJECTPRODUCT_ID
+		PARENT_ID,
+		PRODUCT_ID
 	</sql>
 	
 	<!-- 字段值 -->
 	<sql id="FieldValue">
 		#{PRODUCT_NAME},	
 		#{PRODUCT_TIME},	
-		#{PRODUCT_MODEL},	
-		#{PROJECTPRODUCT_ID}
+		#{PRODUCT_MODEL},
+		#{PARENT_ID},
+		#{PRODUCT_ID}
 	</sql>
 	
 	<!-- 新增-->
@@ -51,8 +54,8 @@
 	<delete id="delete" parameterType="pd">
 		delete from
 		<include refid="tableName"></include>
-		where 
-			PROJECTPRODUCT_ID = #{PROJECTPRODUCT_ID}
+		where
+		PRODUCT_ID = #{PRODUCT_ID}
 	</delete>
 	
 	<!-- 修改 -->
@@ -63,9 +66,10 @@
 			PRODUCT_NAME = #{PRODUCT_NAME},
 			PRODUCT_TIME = #{PRODUCT_TIME},
 			PRODUCT_MODEL = #{PRODUCT_MODEL},
-			PROJECTPRODUCT_ID = PROJECTPRODUCT_ID
-		where 
-			PROJECTPRODUCT_ID = #{PROJECTPRODUCT_ID}
+			PARENT_ID = #{PARENT_ID},
+			PRODUCT_ID = PRODUCT_ID
+		where
+			PRODUCT_ID = #{PRODUCT_ID}
 	</update>
 	
 	<!-- 通过ID获取数据 -->
@@ -75,7 +79,7 @@
 		from 
 		<include refid="tableName"></include> f
 		where 
-			f.PROJECTPRODUCT_ID = #{PROJECTPRODUCT_ID}
+			f.PRODUCT_ID = #{PRODUCT_ID}
 	</select>
 	
 	<!-- 列表 -->
@@ -90,11 +94,13 @@
 				(
 				<!--	根据需求自己加检索条件
 					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-					 or 
-					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
+					 or
+					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 				-->
 				)
 		</if>
+		and PARENT_ID=#{pd.PARENT_ID}
+
 	</select>
 	
 	<!-- 列表(全部) -->
@@ -109,8 +115,8 @@
 	<delete id="deleteAll" parameterType="String">
 		delete from
 		<include refid="tableName"></include>
-		where 
-			PROJECTPRODUCT_ID in
+		where
+				PRODUCT_ID in
 		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
                  #{item}
 		</foreach>

@@ -222,7 +222,7 @@
 	<!-- 获取产品数据 -->
 	<select id="c_ProductAll" parameterType="pd" resultType="pd" >
 		select
-			INSTRUMENT_ID,SYS_ID,PRODUCT_NAME,VALIDITY
+			INSTRUMENT_ID,SYS_ID,PRODUCT_NAME,VALIDITY,MODEL
 		from
 			oa_instrument
 			where STATUS=1

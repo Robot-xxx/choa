@@ -76,7 +76,7 @@
                           <%--          <th class="center">项目编号</th>
                                     <th class="center">项目名称</th>--%>
                                    <%-- <th class="center">回款期数</th>--%>
-                                    <th class="center">进款金额</th>
+                                    <th class="center">进款金额(万元)</th>
                                     <th class="center">回款单位</th>
                                     <th class="center">日期</th>
 

@@ -127,8 +127,10 @@ public class CustomerController extends AcStartController {
         PageData pd = new PageData();
         try{
             pd = this.getPageData();
+
             pd.put("STATUS",1);
             page.setPd(pd);
+            page.setShowCount(99999);
             list = customerService.list(page);
         } catch(Exception e){
             errInfo = "error";

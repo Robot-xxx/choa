@@ -62,7 +62,7 @@
 									<th class="center">报销人</th>
 									<th class="center">部门</th>
 
-									<th class="center">总额</th>
+									<%--<th class="center">总额</th>--%>
 									<th class="center">备注</th>
 									<th class="center">费用明细</th>
 									<th class="center">附件</th>

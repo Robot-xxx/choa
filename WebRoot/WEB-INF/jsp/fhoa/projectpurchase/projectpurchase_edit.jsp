@@ -36,7 +36,7 @@
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">选择公司:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>选择公司:</td>
                                         <td>
                                             <select name="LICENCE" id="LICENCE" title=""
                                                     style="width:38%;"></select>
@@ -158,7 +158,7 @@
                                                    placeholder="这里输入合同金额(万元)" title="合同金额(万元)" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">是否资料齐全:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
                                         <td>
                                             是<input type="radio" name="ISZILIAOQQ"  value="是" <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
                                             否<input type="radio" name="ISZILIAOQQ"  value="否" <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>

@@ -289,7 +289,7 @@ public class PayRequestController extends AcStartController {
 		List<PageData> list= payrequestService.taskAll(pd);
 
 		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i).getString("NAME_").toString().equals("财务（崇好）")){
+			if(list.get(i).getString("NAME_").toString().equals("部门经理（运营部）")){
 				map.put("tag","1");
 				return map;
 			}

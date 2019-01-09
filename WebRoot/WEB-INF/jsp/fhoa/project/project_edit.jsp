@@ -33,7 +33,7 @@
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">选择公司:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>选择公司:</td>
                                         <td>
                                             <select name="LICENCE" id="LICENCE" title=""
                                                     style="width:38%;"></select>
