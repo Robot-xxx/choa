@@ -38,6 +38,7 @@ public class TicketController extends AcStartController {
 	@Resource
 	private AccessoryFileManager accessoryFileManager;
 
+	SimpleDateFormat sd =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	@Resource(name="supplierService")
 	private SupplierManager supplierService;
@@ -109,6 +110,8 @@ public class TicketController extends AcStartController {
 		accessoryFileManager.oaFileEdit(map);
 
 		pd.put("TICKET_ID", ticketid);	//主键
+		pd.put("UPDATETIME", sd.format(new Date()));
+
 		ticketService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
@@ -141,6 +144,8 @@ public class TicketController extends AcStartController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
+		pd.put("UPDATETIME", sd.format(new Date()));
+
 		ticketService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

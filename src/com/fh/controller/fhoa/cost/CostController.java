@@ -47,6 +47,7 @@ public class CostController extends AcStartController {
 	private ClaimexpenseService claimexpenseService;
 
 	SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sd1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     @Resource(name="supplierService")
     private SupplierManager supplierService;
     @Resource(name="dictionariesService")
@@ -171,6 +172,7 @@ public class CostController extends AcStartController {
 		map.put("oafileid", costId);
 		map.put("ids", oafileList);
 		accessoryFileManager.oaFileEdit(map);
+		pd.put("UPDATETIME", sd1.format(new Date()));
 
 		pd.put("COST_ID", costId);	//主键
 		costService.save(pd);
@@ -205,6 +207,8 @@ public class CostController extends AcStartController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
+		pd.put("UPDATETIME", sd1.format(new Date()));
+
 		costService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

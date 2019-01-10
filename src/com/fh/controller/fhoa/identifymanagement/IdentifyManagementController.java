@@ -38,6 +38,7 @@ public class IdentifyManagementController extends BaseController {
 	@Resource(name="identifymanagementService")
 	private IdentifyManagementManager identifymanagementService;
 	SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sd1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	/**保存
 	 * @param
 	 * @throws Exception
@@ -50,6 +51,8 @@ public class IdentifyManagementController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		pd.put("IDENTIFYMANAGEMENT_ID", this.get32UUID());	//主键
+		pd.put("UPDATETIME", sd1.format(new Date()));
+
 		identifymanagementService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
@@ -82,6 +85,8 @@ public class IdentifyManagementController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
+		pd.put("UPDATETIME", sd1.format(new Date()));
+
 		identifymanagementService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

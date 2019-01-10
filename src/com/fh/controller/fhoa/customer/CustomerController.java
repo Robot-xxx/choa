@@ -42,7 +42,7 @@ public class CustomerController extends AcStartController {
     private AccessoryFileManager accessoryFileManager;
     @Resource(name="supplierService")
     private SupplierManager supplierService;
-
+    SimpleDateFormat sd =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**提交流程
      * @param
@@ -176,6 +176,7 @@ public class CustomerController extends AcStartController {
 
 
         pd.put("CUSTOMER_ID", customerId);    //主键
+        pd.put("UPDATETIME", sd.format(new Date()));
 
         pd.put("FUZEREN", Jurisdiction.getUsername());
         customerService.save(pd);
@@ -234,6 +235,8 @@ public class CustomerController extends AcStartController {
         if(pd.getString("SHOUQUANWEITUO").equals("")){
             pd.put("SHOUQUANWEITUO",null);
         }
+        pd.put("UPDATETIME", sd.format(new Date()));
+
         customerService.edit(pd);
         mv.addObject("msg", "success");
         mv.setViewName("save_result");

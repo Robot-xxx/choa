@@ -443,6 +443,8 @@
                             $("#PARTNERS1").append("<option value=" + data.list[i].PARTNERS_ID + "-" + data.list[i].BANK_ACCOUNT + "=" + data.list[i].OPEN_ACCOUNT + ">" + data.list[i].COMPANY_NAME + "</option>");
                         }
                     }
+                    downList('PARTNERS1');
+
                 }
             }
         });

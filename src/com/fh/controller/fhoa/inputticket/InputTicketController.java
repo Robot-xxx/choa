@@ -41,6 +41,7 @@ public class InputTicketController extends BaseController {
 	private InputTicketManager inputticketService;
 	@Resource
 	private AccessoryFileManager accessoryFileManager;
+	SimpleDateFormat sd1 =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 
 	/**获取进项票信息byid
@@ -112,6 +113,7 @@ public class InputTicketController extends BaseController {
 		map.put("ids", oafileList);
 		accessoryFileManager.oaFileEdit(map);
 
+		pd.put("UPDATETIME", sd1.format(new Date()));
 
 		pd.put("SYS_ID",inputticketid);	//主键
 		inputticketService.save(pd);
@@ -146,6 +148,8 @@ public class InputTicketController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
+		pd.put("UPDATETIME", sd1.format(new Date()));
+
 		inputticketService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

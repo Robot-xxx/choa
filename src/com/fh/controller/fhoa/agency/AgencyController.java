@@ -38,7 +38,7 @@ public class AgencyController extends AcStartController {
 	private AgencyManager agencyService;
 	@Resource(name="supplierService")
 	private SupplierManager supplierService;
-
+	SimpleDateFormat sd =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 
 
@@ -58,6 +58,8 @@ public class AgencyController extends AcStartController {
 		pd = this.getPageData();
 		pd.put("AGENCY_ID", this.get32UUID());	//主键
 		pd.put("FUZEREN", Jurisdiction.getUsername());	//主键
+		pd.put("UPDATETIME", sd.format(new Date()));
+
 		agencyService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

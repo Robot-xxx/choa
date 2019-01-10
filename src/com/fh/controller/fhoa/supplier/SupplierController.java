@@ -40,6 +40,8 @@ public class SupplierController extends AcStartController {
 	@Resource
 	private AccessoryFileManager accessoryFileManager;
 
+	SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 
 	/**提交流程
 	 * @param
@@ -190,6 +192,7 @@ public class SupplierController extends AcStartController {
 
 		pd.put("SUPPLIER_ID", suppliceid);	//主键
         pd.put("FUZHEREN", Jurisdiction.getUsername());
+		pd.put("UPDATETIME", sd.format(new Date()));
 		supplierService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
@@ -239,6 +242,7 @@ public class SupplierController extends AcStartController {
 			pd.put("SHOUQUANWEITUO",null);
 		}
 
+		pd.put("UPDATETIME", sd.format(new Date()));
 
 		supplierService.edit(pd);
 		mv.addObject("msg","success");

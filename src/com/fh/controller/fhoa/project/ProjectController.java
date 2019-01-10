@@ -45,6 +45,7 @@ public class ProjectController extends AcStartController {
 	@Resource(name="supplierService")
 	private SupplierManager supplierService;
 
+	SimpleDateFormat sd =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	/**提交流程
 	 * @param
@@ -335,6 +336,8 @@ public class ProjectController extends AcStartController {
 		String projectid = this.get32UUID();
 		pd.put("PROJECT_ID", projectid);	//主键
 		pd.put("FUZEREN", Jurisdiction.getUsername());	//主键
+		pd.put("UPDATETIME", sd.format(new Date()));
+
 		projectService.save(pd);
 		mv.addObject("msg","success");
 
@@ -369,6 +372,8 @@ public class ProjectController extends AcStartController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		pd.put("FUZEREN", Jurisdiction.getUsername());	//主键
+		pd.put("UPDATETIME", sd.format(new Date()));
+
 		projectService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

@@ -39,6 +39,7 @@ public class EquipmentController extends AcStartController {
 	private EquipmentManager equipmentService;
 
 	SimpleDateFormat sd= new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sd1= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	@Resource(name="supplierService")
 	private SupplierManager supplierService;
 
@@ -111,6 +112,8 @@ public class EquipmentController extends AcStartController {
 		pd = this.getPageData();
 		pd.put("EQUIPMENT_ID", this.get32UUID());	//主键
 		pd.put("FUZEREN",Jurisdiction.getUsername());	//主键
+		pd.put("UPDATETIME", sd1.format(new Date()));
+
 		equipmentService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
@@ -144,6 +147,8 @@ public class EquipmentController extends AcStartController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		pd.put("FUZEREN",Jurisdiction.getUsername());	//主键
+		pd.put("UPDATETIME", sd1.format(new Date()));
+
 		equipmentService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

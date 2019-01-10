@@ -38,6 +38,7 @@ public class ProjectMarketController extends AcStartController {
 	@Resource
 	private AccessoryFileManager accessoryFileManager;
 	SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sd1=new SimpleDateFormat("yyyy-MM-dd HH:mm:dd");
 
 	@Resource(name="supplierService")
 	private SupplierManager supplierService;
@@ -141,6 +142,7 @@ public class ProjectMarketController extends AcStartController {
 
 		String projectmarketid = this.get32UUID();
 
+
 		if(pd.getString("PRACTICAL_ACCOUT_TIME").equals("")){
 			pd.remove("PRACTICAL_ACCOUT_TIME");
 		}
@@ -156,6 +158,14 @@ public class ProjectMarketController extends AcStartController {
 		if(pd.getString("SHOUQUANWEITUO").equals("")){
 			pd.remove("SHOUQUANWEITUO");
 		}
+		if(pd.getString("ARRIVAL_TIME").equals("")){
+			pd.remove("ARRIVAL_TIME");
+		}
+		if(pd.getString("RECEPTION_TIME").equals("")){
+			pd.remove("RECEPTION_TIME");
+		}
+
+		pd.put("UPDATETIME", sd1.format(new Date()));
 
 		pd.put("PROJECT_MARKET_ID",projectmarketid);	//主键
 		//pd.put("FUZEREN",Jurisdiction.getUsername());	//主键
@@ -207,6 +217,15 @@ public class ProjectMarketController extends AcStartController {
 		if(pd.getString("SHOUQUANWEITUO").equals("")){
 			pd.remove("SHOUQUANWEITUO");
 		}
+
+		if(pd.getString("ARRIVAL_TIME").equals("")){
+			pd.remove("ARRIVAL_TIME");
+		}
+		if(pd.getString("RECEPTION_TIME").equals("")){
+			pd.remove("RECEPTION_TIME");
+		}
+		pd.put("UPDATETIME", sd1.format(new Date()));
+
 		projectmarketService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

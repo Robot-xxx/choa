@@ -24,6 +24,8 @@
 		f.TICKET_NO,
 		f.MONEY,
 		f.USERID,
+		f.CREATETIME,
+		f.UPDATETIME,
 		f.SYS_ID
 	</sql>
 	
@@ -39,6 +41,8 @@
 		TICKET_NO,
 		MONEY,
 		USERID,
+		CREATETIME,
+		UPDATETIME,
 		SYS_ID
 	</sql>
 	
@@ -54,6 +58,8 @@
 		#{TICKET_NO},
 		#{MONEY},
 		#{USERID},
+		#{CREATETIME},
+		#{UPDATETIME},
 		#{SYS_ID}
 	</sql>
 	
@@ -88,9 +94,11 @@
 			JINPRICE = #{JINPRICE},
 			JINBZ = #{JINBZ},
 			FJ = #{FJ},
-		MONEY = #{MONEY},
-		TICKET_NO = #{TICKET_NO},
-		USERID = #{USERID},
+			MONEY = #{MONEY},
+			TICKET_NO = #{TICKET_NO},
+			USERID = #{USERID},
+			CREATETIME = #{CREATETIME},
+			UPDATETIME = #{UPDATETIME},
 		SYS_ID = SYS_ID
 		where
 		SYS_ID = #{SYS_ID}

@@ -128,7 +128,7 @@
                                     </tr>
 
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>大设备预支款金额:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>医院预付款:</td>
                                         <td><input type="text" name="EQUIPMENT_ADVANCE" id="EQUIPMENT_ADVANCE"
                                                    value="${pd.EQUIPMENT_ADVANCE}" maxlength="12"
                                                    placeholder="这里输入大设备预支款金额" title="大设备预支款金额" style="width:98%;"/></td>
@@ -154,14 +154,14 @@
                                                    placeholder="这里输入累计开票总额" title="累计开票总额" style="width:98%;"/></td>
                                     </tr>--%>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">到货时间:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">预计到货时间:</td>
                                         <td><input class="span10 date-picker" name="ARRIVAL_TIME" id="ARRIVAL_TIME"
                                                    value="${pd.ARRIVAL_TIME}" type="text" data-date-format="yyyy-mm-dd"
                                                    readonly="readonly" placeholder="到货时间" title="到货时间"
                                                    style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">验收时间:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">预计验收时间:</td>
                                         <td><input class="span10 date-picker" name="RECEPTION_TIME" id="RECEPTION_TIME"
                                                    value="${pd.RECEPTION_TIME}" type="text"
                                                    data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="验收时间"
@@ -170,7 +170,7 @@
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
                                         <td>
-                                            是<input type="radio" name="ISZILIAOQQ"  value="是" <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
+                                            是<input type="radio" name="ISZILIAOQQ" checked  value="是" <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
                                             否<input type="radio" name="ISZILIAOQQ"  value="否" <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>
                                         </td>
                                     </tr>
@@ -414,16 +414,6 @@
             return false;
         }*/
 
-        if ($("#RECEPTION").val() == "") {
-            $("#RECEPTION").tips({
-                side: 3,
-                msg: '请输入验收附件',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#RECEPTION").focus();
-            return false;
-        }
         $("#Form").submit();
         $("#zhongxin").hide();
         $("#zhongxin2").show();

@@ -1,6 +1,7 @@
 package com.fh.controller.fhoa.claimant;
 
 import java.io.PrintWriter;
+import java.net.SocketImpl;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class ClaimantController extends BaseController {
 	String menuUrl = "claimant/list.do"; //菜单地址(权限用)
 	@Resource(name="claimantService")
 	private ClaimantManager claimantService;
+	SimpleDateFormat sd =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	/**保存
 	 * @param
@@ -55,6 +57,7 @@ public class ClaimantController extends BaseController {
 		pd.put("INCOME_MONEY",money);
 
 		claimantService.updateMoney(pd);
+		pd.put("UPDATETIME", sd.format(new Date()));
 
 		claimantService.save(pd);
 		mv.addObject("msg","success");
@@ -88,6 +91,8 @@ public class ClaimantController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
+		pd.put("UPDATETIME", sd.format(new Date()));
+
 		claimantService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

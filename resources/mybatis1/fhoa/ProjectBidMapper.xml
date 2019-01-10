@@ -98,9 +98,9 @@
         f.ISZILIAOQQ,
         f.BZ,
         f.PROJECT_ID,
-        f
-        .
-        PROJECT_BID_ID
+        f.UPDATETIME,
+        f.CREATETIME,
+        f.PROJECT_BID_ID
     </sql>
 
     <!-- 字段用于新增 -->
@@ -136,6 +136,8 @@
         ISZILIAOQQ,
         BZ,
         PROJECT_ID,
+        UPDATETIME,
+        CREATETIME,
         PROJECT_BID_ID
     </sql>
 
@@ -173,6 +175,8 @@
         #{ISZILIAOQQ},
         #{BZ},
         #{PROJECT_ID},
+        #{UPDATETIME},
+        #{CREATETIME},
         #{PROJECT_BID_ID}
     </sql>
 
@@ -231,6 +235,8 @@
         ISZILIAOQQ = #{ISZILIAOQQ},
         BZ = #{BZ},
         PROJECT_ID = #{PROJECT_ID},
+        UPDATETIME = #{UPDATETIME},
+        CREATETIME = #{CREATETIME},
         PROJECT_BID_ID = PROJECT_BID_ID
         where
         PROJECT_BID_ID = #{PROJECT_BID_ID}

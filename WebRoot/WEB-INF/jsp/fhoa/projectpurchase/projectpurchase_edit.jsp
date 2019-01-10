@@ -443,9 +443,9 @@
                     $("#projectId").append("<option value=''>请选择项目编号</option>");
                     for (var i = 0; i < data.list.length; i++) {
                         if (data.list[i].PROJECT_ID == project) {
-                            $("#projectId").append("<option value=" + data.list[i].PROJECT_ID+"="+data.list[i].FUZEREN + " selected='selected'>" + data.list[i].SYS_ID + "-" + data.list[i].PROJECT_NAME + "</option>");
+                            $("#projectId").append("<option value=" + data.list[i].PROJECT_ID+"="+data.list[i].FUZEREN + " selected='selected'>" + data.list[i].SYS_ID + "=》" + data.list[i].PROJECT_NAME + "</option>");
                         } else {
-                            $("#projectId").append("<option value=" + data.list[i].PROJECT_ID +"="+data.list[i].FUZEREN+">" + data.list[i].SYS_ID + "-" + data.list[i].PROJECT_NAME + "</option>");
+                            $("#projectId").append("<option value=" + data.list[i].PROJECT_ID +"="+data.list[i].FUZEREN+">" + data.list[i].SYS_ID + "=》" + data.list[i].PROJECT_NAME + "</option>");
                         }
                     }
                     downList('projectId');
@@ -542,7 +542,7 @@
                 success: function (data) {
                     if (data.errInfo == "success") {
                         $("#PROJECTNAME").val(data.pd.PROJECT_NAME);
-                        $("#SYS_ID").val(str.substring(0, str.indexOf("-")));
+                        $("#SYS_ID").val(str.substring(0, str.indexOf("=》")));
                         $("#FUZEREN").val(str1.substring( str1.indexOf("=")+1,str1.length));
                     }
                 }

@@ -41,6 +41,8 @@
 		f.PARTNERS,
 		f.COMPANY_NAME,
 		f.SELECTCOMPANY,
+		f.CREATETIME,
+		f.UPDATETIME,
 		f.REQUEST_ID
 	</sql>
 
@@ -73,6 +75,8 @@
 		PARTNERS,
 		COMPANY_NAME,
         SELECTCOMPANY,
+        CREATETIME,
+        UPDATETIME,
 		REQUEST_ID
 	</sql>
 
@@ -105,6 +109,8 @@
 		#{PARTNERS},
 		#{COMPANY_NAME},
 		#{SELECTCOMPANY},
+		#{CREATETIME},
+		#{UPDATETIME},
 		#{REQUEST_ID}
 	</sql>
 
@@ -159,6 +165,8 @@
         PARTNERS = #{PARTNERS},
         COMPANY_NAME = #{COMPANY_NAME},
         SELECTCOMPANY = #{SELECTCOMPANY},
+        CREATETIME = #{CREATETIME},
+        UPDATETIME = #{UPDATETIME},
         REQUEST_ID = REQUEST_ID
         where
         REQUEST_ID = #{REQUEST_ID}

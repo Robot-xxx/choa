@@ -21,6 +21,8 @@
 		f.LINKMAN_PHONE,	
 		f.BZ,	
 		f.FUZEREN,
+		f.UPDATETIME,
+		f.CREATETIME,
 		f.PARTNERS_ID
 	</sql>
 	
@@ -33,6 +35,8 @@
 		LINKMAN_PHONE,	
 		BZ,	
 		FUZEREN,
+		UPDATETIME,
+		CREATETIME,
 		PARTNERS_ID
 	</sql>
 	
@@ -45,6 +49,8 @@
 		#{LINKMAN_PHONE},	
 		#{BZ},	
 		#{FUZEREN},
+		#{UPDATETIME},
+		#{CREATETIME},
 		#{PARTNERS_ID}
 	</sql>
 	
@@ -78,7 +84,9 @@
 			LINKMAN = #{LINKMAN},
 			LINKMAN_PHONE = #{LINKMAN_PHONE},
 			BZ = #{BZ},
-		FUZEREN = #{FUZEREN},
+			FUZEREN = #{FUZEREN},
+			UPDATETIME = #{UPDATETIME},
+			CREATETIME = #{CREATETIME},
 			PARTNERS_ID = PARTNERS_ID
 		where 
 			PARTNERS_ID = #{PARTNERS_ID}

@@ -21,6 +21,8 @@
 		f.PROJECT_MONEY,	
 		f.DATE,
 		f.SYS_ID,
+		f.UPDATETIME,
+		f.CREATETIME,
 		f.SETTLEMENT_ID
 	</sql>
 	
@@ -33,6 +35,8 @@
 		PROJECT_MONEY,	
 		DATE,	
 		SYS_ID,
+		UPDATETIME,
+		CREATETIME,
 		SETTLEMENT_ID
 	</sql>
 	
@@ -45,6 +49,8 @@
 		#{PROJECT_MONEY},	
 		#{DATE},	
 		#{SYS_ID},
+		#{UPDATETIME},
+		#{CREATETIME},
 		#{SETTLEMENT_ID}
 	</sql>
 	
@@ -78,7 +84,9 @@
 			BID_PRICE = #{BID_PRICE},
 			PROJECT_MONEY = #{PROJECT_MONEY},
 			DATE = #{DATE},
-		SYS_ID = #{SYS_ID},
+			SYS_ID = #{SYS_ID},
+			UPDATETIME = #{UPDATETIME},
+			CREATETIME = #{CREATETIME},
 			SETTLEMENT_ID = SETTLEMENT_ID
 		where 
 			SETTLEMENT_ID = #{SETTLEMENT_ID}

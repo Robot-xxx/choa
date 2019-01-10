@@ -40,6 +40,8 @@ public class InstrumentController extends AcStartController {
 	@Resource
 	private AccessoryFileManager accessoryFileManager;
 	SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sd1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 	@Resource(name="supplierService")
 	private SupplierManager supplierService;
 	/**提交流程
@@ -137,6 +139,8 @@ public class InstrumentController extends AcStartController {
 		String InstrumentId= this.get32UUID();
 		pd.put("INSTRUMENT_ID", InstrumentId);	//主键
 		pd.put("FUZEREN", Jurisdiction.getUsername());	//主键
+		pd.put("UPDATETIME", sd1.format(new Date()));
+
 		instrumentService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
@@ -170,6 +174,8 @@ public class InstrumentController extends AcStartController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		pd.put("FUZEREN", Jurisdiction.getUsername());	//主键
+		pd.put("UPDATETIME", sd1.format(new Date()));
+
 		instrumentService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

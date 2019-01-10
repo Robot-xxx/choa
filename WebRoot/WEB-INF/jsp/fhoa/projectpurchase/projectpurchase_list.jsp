@@ -99,7 +99,6 @@
 											<td class='center'>${var.CONTRACT_SIGN_TIME}</td>
 											<td class='center'>${var.CONTRACT_PRICE}</td>
 											<td class='center'>${var.ISZILIAOQQ}</td>
-BZ
 											<td class='center'><a onclick="selectProduct('${var.PURCHASE_ID}')" style=" cursor:pointer;">产看产品信息</a></td>
 											<td class='center'><a onclick="allInvoice('${var.PURCHASE_ID}')" style=" cursor:pointer;">查看进项票信息</a></td>
 											<td class='center'><a onclick="allOaFile('${var.PURCHASE_ID}','514b510ca4f0414492b2942fba27ee97')" style=" cursor:pointer;">查看附件</a></td>

@@ -37,7 +37,7 @@ public class PartnersController extends BaseController {
 	String menuUrl = "partners/list.do"; //菜单地址(权限用)
 	@Resource(name="partnersService")
 	private PartnersManager partnersService;
-
+	SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	/**
 	 * 获取供应商
 	 *
@@ -52,7 +52,9 @@ public class PartnersController extends BaseController {
 		PageData pd = new PageData();
 		try {
 			pd = this.getPageData();
+
 			page.setPd(pd);
+			page.setShowCount(99999);
 			list = partnersService.list(page);
 		} catch (Exception e) {
 			errInfo = "error";
@@ -78,6 +80,8 @@ public class PartnersController extends BaseController {
 		pd = this.getPageData();
 		pd.put("PARTNERS_ID", this.get32UUID());	//主键
 		pd.put("FUZEREN", Jurisdiction.getUsername());	//主键
+		pd.put("UPDATETIME", sd.format(new Date()));
+
 		partnersService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
@@ -111,6 +115,8 @@ public class PartnersController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		pd.put("FUZEREN", Jurisdiction.getUsername());	//主键
+		pd.put("UPDATETIME", sd.format(new Date()));
+
 		partnersService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

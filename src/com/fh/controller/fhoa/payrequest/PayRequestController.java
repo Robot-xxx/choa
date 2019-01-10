@@ -40,6 +40,7 @@ public class PayRequestController extends AcStartController {
 	@Resource
 	private AccessoryFileManager accessoryFileManager;
 	SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sd1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	@Resource(name="supplierService")
 	private SupplierManager supplierService;
 
@@ -60,6 +61,7 @@ public class PayRequestController extends AcStartController {
 
 			/** 工作流的操作 **/
 			Map<String,Object> map1 = new LinkedHashMap<String, Object>();
+			map1.put("公司",  pd.getString("SELECTCOMPANY"));			//当前用户的姓名
 			map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
 			map1.put("付款申请编号", pd.getString("REQUEST_NO"));
 			map1.put("申请日期",sd.format( pd.get("REQUEST_DATE")));
@@ -123,6 +125,8 @@ public class PayRequestController extends AcStartController {
 		pd = this.getPageData();
 		pd.put("USERID",Jurisdiction.getUSERID());
 		pd.put("REQUEST_ID", this.get32UUID());	//主键
+		pd.put("UPDATETIME", sd1.format(new Date()));
+
 		payrequestService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
@@ -156,6 +160,8 @@ public class PayRequestController extends AcStartController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		pd.put("USERID",Jurisdiction.getUSERID());
+		pd.put("UPDATETIME", sd1.format(new Date()));
+
 		payrequestService.edit(pd);
 
 		mv.addObject("msg","success");

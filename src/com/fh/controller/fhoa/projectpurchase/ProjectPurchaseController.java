@@ -44,6 +44,7 @@ public class ProjectPurchaseController extends AcStartController {
     private SupplierManager supplierService;
 
     SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sd1 = new SimpleDateFormat("yyyy-MM-dd");
 
     /**
      * 提交流程
@@ -224,6 +225,7 @@ public class ProjectPurchaseController extends AcStartController {
 
         pd.put("PURCHASE_ID", purchaseid);
         //    pd.put("FUZEREN",Jurisdiction.getUsername());
+        pd.put("UPDATETIME", sd1.format(new Date()));
 
         projectpurchaseService.save(pd);
 
@@ -289,6 +291,8 @@ public class ProjectPurchaseController extends AcStartController {
         if(pd.getString("CONTRACT_PRICE").equals("")){
             pd.put("CONTRACT_PRICE",null);
         }
+        pd.put("UPDATETIME", sd1.format(new Date()));
+
         projectpurchaseService.edit(pd);
         mv.addObject("msg", "success");
         mv.setViewName("save_result");

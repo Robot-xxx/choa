@@ -20,6 +20,8 @@
 		f.CLAIMANT_NAME,	
 		f.CLAIMANT_MONEY,	
 		f.BZ,	
+		f.CREATETIME,
+		f.UPDATETIME,
 
 		f.SYS_ID
 	</sql>
@@ -32,6 +34,8 @@
 		CLAIMANT_NAME,	
 		CLAIMANT_MONEY,	
 		BZ,	
+		CREATETIME,
+		UPDATETIME,
 
 		SYS_ID
 	</sql>
@@ -44,6 +48,8 @@
 		#{CLAIMANT_NAME},	
 		#{CLAIMANT_MONEY},	
 		#{BZ},	
+		#{CREATETIME},
+		#{UPDATETIME},
 
 		#{SYS_ID}
 	</sql>
@@ -78,6 +84,8 @@
 			CLAIMANT_NAME = #{CLAIMANT_NAME},
 			CLAIMANT_MONEY = #{CLAIMANT_MONEY},
 			BZ = #{BZ},
+			CREATETIME = #{CREATETIME},
+			UPDATETIME = #{UPDATETIME},
 
 		SYS_ID = SYS_ID
 		where
