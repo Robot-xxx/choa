@@ -174,15 +174,12 @@
 		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
 			and
 				(
-
 			SYS_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			COMPANY_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			PHONE LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			OPENING_BANK LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			FUZHEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			LINKMAN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-				<!--	根据需求自己加检索条件
-					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-					 or
-					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-				-->
 				)
 		</if>
 		<if test="pd.CUSTOMER_ID!= null and pd.CUSTOMER_ID != ''"><!-- 关键词检索 -->
@@ -191,6 +188,10 @@
 		<if test="pd.STATUS!= null and pd.STATUS != ''"><!-- 关键词检索 -->
 			and STATUS=#{pd.STATUS}
 		</if>
+		<if test="pd.ISSHENPI!= null and pd.ISSHENPI != ''"><!-- 关键词检索 -->
+			and STATUS=#{pd.ISSHENPI}
+		</if>
+				order by UPDATETIME
 	</select>
 	
 	<!-- 列表(全部) -->

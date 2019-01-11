@@ -41,6 +41,14 @@
 										</span>
 									</div>
 								</td>
+                                <td>
+                                    <select class="chosen-select form-control"  id="ISSHENPI" name="ISSHENPI" data-placeholder="请选择" style="vertical-align:top;width: 80px;">
+                                        <option <c:if test="${pd.ISSHENPI==''}">selected</c:if> value="">请选择</option>
+                                        <option <c:if test="${pd.ISSHENPI==1}">selected</c:if> value="1">已审批</option>
+                                        <option <c:if test="${pd.ISSHENPI==2}">selected</c:if> value="2">未审批</option>
+                                        <option <c:if test="${pd.ISSHENPI==3}">selected</c:if> value="3">审批中</option>
+                                    </select>
+                                </td>
 								<%--<td style="padding-left:2px;"><input class="span10 date-picker" name="lastStart" id="lastStart"  value="" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" style="width:88px;" placeholder="开始日期" title="开始日期"/></td>
 								<td style="padding-left:2px;"><input class="span10 date-picker" name="lastEnd" id="lastEnd"  value="" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" style="width:88px;" placeholder="结束日期" title="结束日期"/></td>
 								<td style="vertical-align:top;padding-left:2px;">
@@ -75,7 +83,6 @@
 									<th class="center">开户行</th>
 									<th class="center">开户行账号</th>
 									<th class="center">医疗许可证</th>
-									<th class="center">附件</th>
 									<th class="center">资料是否齐全</th>
 									<th class="center">生产许可证</th>
 									<th class="center">经营许可证</th>
@@ -83,6 +90,8 @@
 									<th class="center">授权委托书</th>
 									<th class="center">上传者</th>
 									<th class="center">备注</th>
+									<th class="center">附件</th>
+
 									<th class="center">操作</th>
 								</tr>
 							</thead>
@@ -107,8 +116,6 @@
 											<td class='center'>${var.OPENING_BANK}</td>
 											<td class='center'>${var.BANKACCOUNT}</td>
 											<td class='center'>${var.DNAME8}</td>
-											<td class='center'><a onclick="allOaFile('${var.CUSTOMER_ID}','cf29c9db335046c58071d5dfc84d3d21')" style=" cursor:pointer;">查看附件</a></td>
-
 											<td class='center'>${var.ISZILIAOQQ}</td>
 											<td class='center'>${var.SHENGCHANXUKEZHENG}</td>
 											<td class='center'>${var.JINGYINGXUKEZHENG}</td>
@@ -116,6 +123,8 @@
 											<td class='center'>${var.SHOUQUANWEITUO}</td>
 											<td class='center'>${var.FUZEREN}</td>
 											<td class='center'>${var.BZ}</td>
+											<td class='center'><a onclick="allOaFile('${var.CUSTOMER_ID}','cf29c9db335046c58071d5dfc84d3d21')" style=" cursor:pointer;">查看附件</a></td>
+
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>

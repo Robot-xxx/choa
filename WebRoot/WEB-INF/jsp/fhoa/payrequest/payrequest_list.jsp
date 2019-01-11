@@ -43,7 +43,14 @@
 										</span>
                                         </div>
                                     </td>
-
+                                    <td>
+                                        <select class="chosen-select form-control"  id="ISSHENPI" name="ISSHENPI" data-placeholder="请选择" style="vertical-align:top;width: 80px;">
+                                            <option <c:if test="${pd.ISSHENPI==''}">selected</c:if> value="">请选择</option>
+                                            <option <c:if test="${pd.ISSHENPI==1}">selected</c:if> value="1">已审批</option>
+                                            <option <c:if test="${pd.ISSHENPI==2}">selected</c:if> value="2">未审批</option>
+                                            <option <c:if test="${pd.ISSHENPI==3}">selected</c:if> value="3">审批中</option>
+                                        </select>
+                                    </td>
                                     <c:if test="${QX.cha == 1 }">
                                         <td style="vertical-align:top;padding-left:2px"><a class="btn btn-light btn-xs"
                                                                                            onclick="tosearch();"

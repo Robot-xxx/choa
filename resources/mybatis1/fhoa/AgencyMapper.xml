@@ -116,14 +116,16 @@
 		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
 			and
 				(
-			COMPANY_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-				<!--	根据需求自己加检索条件
-					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-					 or 
-					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
-				-->
+			COMPANY_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			COMPANY_BOSS LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			BOSS_PHONE LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			BUSINESS_PEOPLE LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			FUZEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			LINKMAN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+
 				)
 		</if>
+		order by UPDATETIME
 	</select>
 	
 	<!-- 列表(全部) -->
@@ -145,5 +147,5 @@
 		</foreach>
 	</delete>
 	
-	<!-- fh313596790qq(青苔) -->
+
 </mapper>

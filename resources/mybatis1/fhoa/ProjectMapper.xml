@@ -183,12 +183,15 @@
 		(
 			SELECTCOMPANY LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			PROJECT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
-		SYS_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-		<!--	根据需求自己加检索条件
-            字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-             or
-            字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-        -->
+			HOSPITAL LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			CORPORATE_COMPANY LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			CORPORATE_BOSS LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			BOSS_PHONE LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			BUSINESS_PEOPLE LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			FUZEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			LINKMAN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			SYS_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+
 		)
 		</if>
 		<if test="pd.STATUS!= null and pd.STATUS != ''"><!-- 关键词检索 -->
@@ -197,6 +200,10 @@
 			STATUS=#{pd.STATUS}
 		)
 		</if>
+		<if test="pd.ISSHENPI!= null and pd.ISSHENPI != ''"><!-- 关键词检索 -->
+			and STATUS=#{pd.ISSHENPI}
+		</if>
+		order by UPDATETIME
 	</select>
 	
 	<!-- 列表(全部) -->

@@ -267,12 +267,10 @@
             SYS_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             PROJECT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             HOSPITAL LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+            TEBDERING LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+            FUZEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             TEBDERING LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-            <!--	根据需求自己加检索条件
-                字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-                 or
-                字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-            -->
+
             )
         </if>
         <if test="pd.STATUS!= null and pd.STATUS != ''"><!-- 关键词检索 -->
@@ -289,6 +287,10 @@
 
             )
         </if>
+        <if test="pd.ISSHENPI!= null and pd.ISSHENPI != ''"><!-- 关键词检索 -->
+            and STATUS=#{pd.ISSHENPI}
+        </if>
+        order by UPDATETIME
     </select>
 
     <!-- 列表(全部) -->

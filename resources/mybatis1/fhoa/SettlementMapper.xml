@@ -115,11 +115,7 @@
 				PROJECT_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 				or
 				PROJECT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-				<!--	根据需求自己加检索条件
 
-					 or 
-					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
-				-->
 				)
 		</if>
 	</select>
@@ -152,5 +148,5 @@
 			PROC_INST_ID_ =#{ACT_ID}
 	</select>
 	
-	<!-- fh313596790qq(青苔) -->
+
 </mapper>

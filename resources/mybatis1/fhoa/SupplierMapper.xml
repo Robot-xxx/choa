@@ -173,13 +173,23 @@
 			COMPANY_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 			or
 			LINKMAN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-				<!--	根据需求自己加检索条件
-					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-					 or
-					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-				-->
+			or
+			PHONE LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+			or
+			OPENING_BANK LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+			or
+			FUZHEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+			or
+			BANKACCOUNT LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+
 				)
 		</if>
+
+		<if test="pd.ISSHENPI!= null and pd.ISSHENPI != ''"><!-- 关键词检索 -->
+			and STATUS=#{pd.ISSHENPI}
+		</if>
+
+		order by UPDATETIME
 	</select>
 
 	<!-- 列表(全部) -->
@@ -222,5 +232,5 @@
 
 
 
-	<!-- fh313596790qq(青苔) -->
+
 </mapper>

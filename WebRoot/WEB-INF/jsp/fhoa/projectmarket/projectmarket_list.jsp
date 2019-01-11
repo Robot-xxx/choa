@@ -41,6 +41,14 @@
 										</span>
 									</div>
 								</td>
+								<td>
+									<select class="chosen-select form-control"  id="ISSHENPI" name="ISSHENPI" data-placeholder="请选择" style="vertical-align:top;width: 80px;">
+										<option <c:if test="${pd.ISSHENPI==''}">selected</c:if> value="">请选择</option>
+										<option <c:if test="${pd.ISSHENPI==1}">selected</c:if> value="1">已审批</option>
+										<option <c:if test="${pd.ISSHENPI==2}">selected</c:if> value="2">未审批</option>
+										<option <c:if test="${pd.ISSHENPI==3}">selected</c:if> value="3">审批中</option>
+									</select>
+								</td>
 								<%--<td style="padding-left:2px;"><input class="span10 date-picker" name="lastStart" id="lastStart"  value="" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" style="width:88px;" placeholder="开始日期" title="开始日期"/></td>
 								<td style="padding-left:2px;"><input class="span10 date-picker" name="lastEnd" id="lastEnd"  value="" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" style="width:88px;" placeholder="结束日期" title="结束日期"/></td>
 								<td style="vertical-align:top;padding-left:2px;">
