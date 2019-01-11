@@ -431,13 +431,8 @@ public class ProjectBidController extends AcStartController {
            vpd.put("var2", varOList.get(i).getString("PROJECT_NAME"));        //2
             vpd.put("var3", varOList.get(i).getString("HOSPITAL"));        //3
             vpd.put("var4", varOList.get(i).getString("WINNING_UNIT"));        //4
-<<<<<<< Updated upstream
-            vpd.put("var5", varOList.get(i).get("WINNING_PRICE").toString());        //5
-            vpd.put("var6", varOList.get(i).get("GUARANTEE_MONEY").toString());        //6
-=======
             vpd.put("var5", varOList.get(i).get("WINNING_PRICE"));        //5
             vpd.put("var6", varOList.get(i).get("GUARANTEE_MONEY"));        //6
->>>>>>> Stashed changes
             vpd.put("var7",  varOList.get(i).get("SCHEDULED_TIME"));        //7
             vpd.put("var8",  varOList.get(i).get("PRACTICAL_TIME"));        //8
             vpd.put("var9",  varOList.get(i).get("BID_OPEN_TIME"));        //9
