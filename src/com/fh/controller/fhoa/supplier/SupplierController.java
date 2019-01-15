@@ -64,7 +64,10 @@ public class SupplierController extends AcStartController {
 			map1.put("联系人", pd.getString("LINKMAN"));
 			map1.put("联系电话", pd.getString("PHONE"));
 			map1.put("税号", pd.getString("DUTY_PARAGRAPH"));
-			map1.put("开户行", pd.getString("OPENING_BANK"));
+			map1.put("开户银行", pd.getString("OPENING_BANK"));
+			map1.put("开户银行账号", pd.getString("BANKACCOUNT"));
+			map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
+
 			map1.put("医疗许可证", pd.getString("DNAME7"));
 
             if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHENGCHANXUKEZHENG").toString().equals("")){
@@ -193,6 +196,8 @@ public class SupplierController extends AcStartController {
 		pd.put("SUPPLIER_ID", suppliceid);	//主键
         pd.put("FUZHEREN", Jurisdiction.getUsername());
 		pd.put("UPDATETIME", sd.format(new Date()));
+		pd.put("STATUS", 2);
+
 		supplierService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

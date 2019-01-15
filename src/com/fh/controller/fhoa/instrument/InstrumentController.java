@@ -62,12 +62,13 @@ public class InstrumentController extends AcStartController {
 			Map<String,Object> map1 = new LinkedHashMap<String, Object>();
 			map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
 			map1.put("器械编号", pd.getString("SYS_ID"));
-			map1.put("产品名称", pd.getString("PRODUCT_NAME"));
-			map1.put("型号、规格", pd.getString("MODEL"));
+			map1.put("器械名称", pd.getString("PRODUCT_NAME"));
+			map1.put("器械型号", pd.getString("MODEL"));
 			map1.put("生产厂家", pd.getString("MANUFACTURERS"));
 			map1.put("注册证号", pd.getString("REGISTRATION"));
 			map1.put("注册证类型", pd.getString("BUSINESS"));
 			map1.put("生产批次", pd.getString("BATCH"));
+			map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
 			map1.put("有效期", pd.get("VALIDITY").toString());
 			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("INSTRUMENT_ID")+"','2edba70525574ebfacda36e4e7607034')\" style=' cursor:pointer;'>查看附件</a>");
 
@@ -140,6 +141,7 @@ public class InstrumentController extends AcStartController {
 		pd.put("INSTRUMENT_ID", InstrumentId);	//主键
 		pd.put("FUZEREN", Jurisdiction.getUsername());	//主键
 		pd.put("UPDATETIME", sd1.format(new Date()));
+		pd.put("STATUS", 2);
 
 		instrumentService.save(pd);
 		mv.addObject("msg","success");

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
@@ -90,7 +93,15 @@
                                                     </td>
                                                     <td class='center'
                                                         style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
-                                                    <td class='center'>${var.NAME}</td>
+                                                    <td class='center'>
+                                                        <img style="margin-top: -3px;" alt="${var.NAME}" src="static/images/extension/${var.fileType}.png">
+                                                            ${var.NAME}${fn:substring(var.FILEPATH ,19,fn:length(var.FILEPATH))}
+                                                        &nbsp;
+                                                        <c:if test="${var.fileType == 'tupian' }"><a style="cursor:pointer;" onmouseover="showTU('uploadFiles/uploadFile/${var.FILEPATH}','yulantu${vs.index+1}');" onmouseout="hideTU('yulantu${vs.index+1}');">[预览]</a></c:if>
+                                                        <c:if test="${var.fileType == 'pdf' }"><a style="cursor:pointer;" onclick="goViewPdf('${var.NAME}${fn:substring(var.FILEPATH ,19,fn:length(var.FILEPATH))}','${var.OAFILE_ID}');">[预览]</a></c:if>
+                                                        <c:if test="${var.fileType == 'wenben' }"><a style="cursor:pointer;" onclick="goViewTxt('${var.NAME}${fn:substring(var.FILEPATH ,19,fn:length(var.FILEPATH))}','${var.OAFILE_ID}','gbk');">[预览]</a></c:if>
+                                                        <div class="yulantu" id="yulantu${vs.index+1}"></div>
+                                                    </td>
                                                     <td class='center'>${var.FILEPATH}</td>
                                                     <td class='center'>${var.CTIME}</td>
                                                     <td class='center'>${var.BZ}</td>
@@ -207,6 +218,53 @@
 <script type="text/javascript" src="static/js/jquery.tips.js"></script>
 <script type="text/javascript">
     $(top.hangge());//关闭加载状态
+
+
+    //预览pdf
+    function goViewPdf(fileName,Id){
+        var diag = new top.Dialog();
+        diag.Drag=true;
+        diag.Title =fileName;
+        diag.URL = '<%=basePath%>oafile/goViewPdf.do?OAFILE_ID='+Id;
+        diag.Width = 1000;
+        diag.Height = 600;
+        diag.Modal = false;				//有无遮罩窗口
+        diag. ShowMaxButton = true;		//最大化按钮
+        diag.ShowMinButton = true;		//最小化按钮
+        diag.CancelEvent = function(){ 	//关闭事件
+            diag.close();
+        };
+        diag.show();
+    }
+
+    //预览txt,java,php,等文本文件页面
+    function goViewTxt(fileName,Id,encoding){
+        var diag = new top.Dialog();
+        diag.Drag=true;
+        diag.Title =fileName;
+        diag.URL = '<%=basePath%>oafile/goViewTxt.do?OAFILE_ID='+Id+'&encoding='+encoding;
+        diag.Width = 1000;
+        diag.Height = 608;
+        diag.Modal = false;				//有无遮罩窗口
+        diag.ShowMinButton = true;		//最小化按钮
+        diag.CancelEvent = function(){ 	//关闭事件
+            diag.close();
+        };
+        diag.show();
+    }
+
+    //显示图片
+    function showTU(path,TPID){
+        $("#"+TPID).html('<img width="300" src="'+path+'">');
+        $("#"+TPID).show();
+    }
+
+    //隐藏图片
+    function hideTU(TPID){
+        $("#"+TPID).hide();
+    }
+
+
     //检索
     function tosearch() {
         top.jzts();

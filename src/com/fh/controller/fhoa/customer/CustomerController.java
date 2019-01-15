@@ -69,6 +69,7 @@ public class CustomerController extends AcStartController {
             map1.put("开户行", pd.getString("OPENING_BANK"));
             map1.put("开户账号", pd.getString("BANKACCOUNT"));
             map1.put("医疗许可证", pd.getString("DNAME8"));
+            map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
 
             if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHENGCHANXUKEZHENG").toString().equals("")){
                 map1.put("生产许可证", pd.get("SHENGCHANXUKEZHENG").toString());
@@ -179,6 +180,8 @@ public class CustomerController extends AcStartController {
         pd.put("UPDATETIME", sd.format(new Date()));
 
         pd.put("FUZEREN", Jurisdiction.getUsername());
+        pd.put("STATUS", 2);
+
         customerService.save(pd);
         mv.addObject("msg", "success");
         mv.setViewName("save_result");

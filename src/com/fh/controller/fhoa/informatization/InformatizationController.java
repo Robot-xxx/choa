@@ -63,12 +63,13 @@ public class InformatizationController extends AcStartController {
 			/** 工作流的操作 **/
 			Map<String,Object> map1 = new LinkedHashMap<String, Object>();
 			map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
-			map1.put("信息化编号", pd.getString("SYS_ID"));
+			map1.put("产品编号", pd.getString("SYS_ID"));
 			map1.put("产品名称", pd.getString("PRODUCT_NAME"));
 			map1.put("型号、规格", pd.getString("MODEL"));
 			map1.put("生产厂家", pd.getString("MANUFACTURERS"));
 			map1.put("注册证号", pd.getString("REGISTRATION"));
-			map1.put("注册证类型", pd.getString("BUSINESS"));
+			map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
+			map1.put("备注", pd.getString("BUSINESS"));
 			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("INFORMATIZATION_ID")+"','55c792a602814c4ebecb1cc118cf6351')\" style=' cursor:pointer;'>查看附件</a>");
 
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
@@ -113,6 +114,7 @@ public class InformatizationController extends AcStartController {
 		pd.put("INFORMATIZATION_ID", informatizationId);	//主键
 		pd.put("FUZEREN",  Jurisdiction.getUsername());	//主键
 		pd.put("UPDATETIME", sd1.format(new Date()));
+		pd.put("STATUS", 2);
 
 		informatizationService.save(pd);
 		mv.addObject("msg","success");

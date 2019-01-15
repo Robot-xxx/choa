@@ -108,9 +108,19 @@ public class ProjectBidController extends AcStartController {
             map1.put("项目编号", pd.getString("PROJECT_ID"));
             map1.put("项目名称", pd.getString("PROJECT_NAME"));
             map1.put("医院", pd.getString("HOSPITAL"));
+            map1.put("招标公司", pd.getString("TEBDERING"));
+            map1.put("招标代表", pd.getString("REPRESENTATIVE"));
             map1.put("中标单位", pd.getString("WINNING_UNIT"));
             map1.put("中标价格（万元）", pd.get("WINNING_PRICE").toString());
+            map1.put("中标服务费垫资金额（万元）", pd.get("SERVICE_PRICE").toString());
             map1.put("投标保证金垫资金额（万元）", pd.get("GUARANTEE_MONEY").toString());
+            map1.put("投标保证金预计缴纳时间", pd.get("SCHEDULED_TIME").toString());
+            map1.put("投标保证金实际缴纳时间", pd.get("PRACTICAL_TIME").toString());
+            map1.put("开标日期", pd.get("BID_OPEN_TIME").toString());
+            map1.put("中标服务费预计缴纳时间", pd.get("SCHEDULED_SERVICE_PRICE_TIME").toString());
+            map1.put("中标服务费实际缴纳时间", pd.get("PRACTICAL_SERVICE_PRICE_TIME").toString());
+            map1.put("标书制作人", pd.get("BIAOSHUZHIZUOREN").toString());
+            map1.put("是否资料齐全", pd.get("ISZILIAOQQ").toString());
             map1.put("备注", pd.getString("BZ"));
             if (pd.get("CHANPINDAOQIRI")!=null&&!pd.get("CHANPINDAOQIRI").toString().equals("")){
                 map1.put("到期日", pd.get("CHANPINDAOQIRI").toString());
@@ -222,10 +232,12 @@ public class ProjectBidController extends AcStartController {
             pd.remove("PRACTICAL_SERVICE_PRICE_TIME");
         }
         pd.put("UPDATETIME", sd1.format(new Date()));
+        pd.put("STATUS", 2);
 
         projectbidService.save(pd);
 
         mv.addObject("msg","success");
+        pd.put("STATUS", 2);
 
 
 

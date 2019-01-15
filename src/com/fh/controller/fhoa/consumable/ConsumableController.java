@@ -125,6 +125,7 @@ public class ConsumableController extends AcStartController {
         pd.put("CONSUMABLE_ID", consumableId);    //主键
         pd.put("FUZEREN", Jurisdiction.getUsername());    //主键
         pd.put("UPDATETIME", sd1.format(new Date()));
+        pd.put("STATUS", 2);
 
         consumableService.save(pd);
         mv.addObject("msg", "success");

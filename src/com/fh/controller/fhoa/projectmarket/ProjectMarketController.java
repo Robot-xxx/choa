@@ -62,10 +62,11 @@ public class ProjectMarketController extends AcStartController {
 			map1.put("公司",pd.getString("SELECTCOMPANY") );			//选择公司
 
 			map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
+			map1.put("选择公司", pd.getString("SELECTCOMPANY"));
 			map1.put("项目编号", pd.getString("SYS_ID"));
 			map1.put("项目名称", pd.getString("PROJECT_NAME"));
 			map1.put("销售合同", pd.getString("SALES_CONTRACT_ID"));
-			map1.put("客户名称", pd.getString("CLIENT_NAME"));
+			map1.put("下游名称", pd.getString("CLIENT_NAME"));
 			if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHENGCHANXUKEZHENG").toString().equals("")){
 				map1.put("生产许可证", pd.get("SHENGCHANXUKEZHENG").toString());
 			}
@@ -78,6 +79,14 @@ public class ProjectMarketController extends AcStartController {
 			if (pd.get("SHOUQUANWEITUO")!=null&&!pd.get("SHOUQUANWEITUO").toString().equals("")){
 				map1.put("授权委托书", pd.get("SHOUQUANWEITUO").toString());
 			}
+			map1.put("合同总价(万元)", pd.getString("CONTRACT_PRICE"));
+			map1.put("医院预付款", pd.getString("EQUIPMENT_ADVANCE"));
+			map1.put("预计到账时间", pd.getString("PREDICT_ACCOUNT_TIME"));
+			map1.put("实际到账时间", pd.getString("PRACTICAL_ACCOUT_TIME"));
+			map1.put("预计到货时间", pd.getString("ARRIVAL_TIME"));
+			map1.put("预计验收时间", pd.getString("RECEPTION_TIME"));
+			map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
+
 			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("PROJECT_MARKET_ID")+"','14b2e7231a604b9f9edfc230fea227d8')\" style=' cursor:pointer;'>查看附件</a>");
 			map1.put("备注", pd.getString("BZ"));
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
@@ -169,6 +178,8 @@ public class ProjectMarketController extends AcStartController {
 
 		pd.put("PROJECT_MARKET_ID",projectmarketid);	//主键
 		//pd.put("FUZEREN",Jurisdiction.getUsername());	//主键
+		pd.put("STATUS", 2);
+
 		projectmarketService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

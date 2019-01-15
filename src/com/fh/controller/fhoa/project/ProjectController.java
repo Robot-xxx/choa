@@ -65,12 +65,18 @@ public class ProjectController extends AcStartController {
 			map1.put("公司",pd.getString("SELECTCOMPANY") );			//选择公司
 
 			map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
-			map1.put("项目编序号", pd.getString("SYS_ID"));
+			map1.put("选择公司", pd.getString("SELECTCOMPANY"));
+			map1.put("项目编号", pd.getString("SYS_ID"));
 			map1.put("项目名称", pd.getString("PROJECT_NAME"));
 			map1.put("医院", pd.getString("HOSPITAL"));
 			map1.put("投标限价（万元）", pd.get("LIMITED_PRICE").toString());
 			map1.put("委托公司", pd.getString("CORPORATE_COMPANY"));
 			map1.put("委托公司老板", pd.getString("CORPORATE_BOSS"));
+			map1.put("委托公司老板电话", pd.getString("BOSS_PHONE"));
+			map1.put("业务联系人", pd.getString("LINKMAN"));
+			map1.put("业务联系人电话", pd.getString("BUSINESS_PEOPLE"));
+			map1.put("客户分析", pd.getString("CUSTOMER"));
+			map1.put("付款约定", pd.getString("ACCESSORY"));
 			map1.put("备注", pd.getString("BZ"));
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
 			String act_id=startProcessInstanceByKeyHasVariables("oa_lixiangliucheng",map1);	//启动流程实例(请假单流程)通过KEY
@@ -337,6 +343,7 @@ public class ProjectController extends AcStartController {
 		pd.put("PROJECT_ID", projectid);	//主键
 		pd.put("FUZEREN", Jurisdiction.getUsername());	//主键
 		pd.put("UPDATETIME", sd.format(new Date()));
+		pd.put("STATUS", 2);
 
 		projectService.save(pd);
 		mv.addObject("msg","success");

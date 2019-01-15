@@ -290,7 +290,7 @@
         <if test="pd.ISSHENPI!= null and pd.ISSHENPI != ''"><!-- 关键词检索 -->
             and STATUS=#{pd.ISSHENPI}
         </if>
-        order by UPDATETIME
+        order by UPDATETIME DESC
     </select>
 
     <!-- 列表(全部) -->

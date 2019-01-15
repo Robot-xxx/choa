@@ -66,11 +66,13 @@ public class ProjectPurchaseController extends AcStartController {
             map1.put("公司",pd.getString("SELECTCOMPANY") );			//选择公司
 
             map1.put("申请人", Jurisdiction.getU_name());            //当前用户的姓名
+            map1.put("选择公司", pd.getString("SELECTCOMPANY"));
             map1.put("项目编号", pd.getString("SYS_ID"));
             map1.put("项目名称", pd.getString("PROJECTNAME"));
             map1.put("销售合同编号", pd.getString("SALES_CONTRACT_ID"));
             map1.put("采购合同编号", pd.getString("PURCHASE_CONTRACT_ID"));
             map1.put("供应商序号", pd.getString("SUPPLIER_ID"));
+            map1.put("供应商名称", pd.getString("SUPPLIERNAME"));
             if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHENGCHANXUKEZHENG").toString().equals("")){
                 map1.put("生产许可证", pd.get("SHENGCHANXUKEZHENG").toString());
             }
@@ -83,7 +85,10 @@ public class ProjectPurchaseController extends AcStartController {
             if (pd.get("SHOUQUANWEITUO")!=null&&!pd.get("SHOUQUANWEITUO").toString().equals("")){
                 map1.put("授权委托书", pd.get("SHOUQUANWEITUO").toString());
             }
-            map1.put("供应商名称", pd.getString("SUPPLIERNAME"));
+
+            map1.put("合同签订时间", pd.getString("CONTRACT_SIGN_TIME"));
+            map1.put("合同金额(万元)", pd.getString("CONTRACT_PRICE"));
+            map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
             map1.put("附件", "<a onclick=\"allOaFile('" + pd.getString("PURCHASE_ID") + "','514b510ca4f0414492b2942fba27ee97')\" style=' cursor:pointer;'>查看附件</a>");
             map1.put("备注", pd.getString("BZ"));
             map1.put("USERNAME", Jurisdiction.getUsername());        //指派代理人为当前用户
@@ -226,6 +231,7 @@ public class ProjectPurchaseController extends AcStartController {
         pd.put("PURCHASE_ID", purchaseid);
         //    pd.put("FUZEREN",Jurisdiction.getUsername());
         pd.put("UPDATETIME", sd1.format(new Date()));
+        pd.put("STATUS", 2);
 
         projectpurchaseService.save(pd);
 

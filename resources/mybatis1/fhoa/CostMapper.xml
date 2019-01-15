@@ -162,7 +162,7 @@
 
 			)
 		</if>
-		order by UPDATETIME
+		order by UPDATETIME DESC
 	</select>
 	
 	<!-- 列表(全部) -->

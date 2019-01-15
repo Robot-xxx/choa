@@ -61,8 +61,8 @@ public class PayRequestController extends AcStartController {
 
 			/** 工作流的操作 **/
 			Map<String,Object> map1 = new LinkedHashMap<String, Object>();
-			map1.put("公司",  pd.getString("SELECTCOMPANY"));			//当前用户的姓名
 			map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
+			map1.put("选择公司",  pd.getString("SELECTCOMPANY"));			//当前用户的姓名
 			map1.put("付款申请编号", pd.getString("REQUEST_NO"));
 			map1.put("申请日期",sd.format( pd.get("REQUEST_DATE")));
 			map1.put("经办人", pd.getString("RESPONSIBLEPERSON"));
@@ -74,13 +74,19 @@ public class PayRequestController extends AcStartController {
 				map1.put("收款单位", pd.getString("PAYEE"));
 			}
 
+			map1.put("是否合作方", pd.getString("ISHEZUO"));
 			map1.put("收款单位银行", pd.getString("PAYEEBANK"));
 			map1.put("银行账号", pd.getString("BANKACCOUNT"));
-			map1.put("金额", pd.getString("MONEY"));
+			map1.put("附言", pd.getString("POSTSCRIPT"));
+			map1.put("合同编号", pd.getString("CONTRACT_NO"));
+
 			map1.put("项目编号", pd.getString("PROJIECT_ID"));
 
 			map1.put("项目名称", pd.getString("PROJECT_NAME"));
-			map1.put("附言", pd.getString("POSTSCRIPT"));
+			map1.put("实付金额(元)", pd.getString("MONEY"));
+			map1.put("垫付金额(元)", pd.getString("PAY_ACCOUNT"));
+			map1.put("来款单位", pd.getString("PAY_UNIT"));
+			map1.put("付款约定", pd.getString("FUKUANYUEDING"));
 
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
 
@@ -126,6 +132,7 @@ public class PayRequestController extends AcStartController {
 		pd.put("USERID",Jurisdiction.getUSERID());
 		pd.put("REQUEST_ID", this.get32UUID());	//主键
 		pd.put("UPDATETIME", sd1.format(new Date()));
+		pd.put("STATUS", 2);
 
 		payrequestService.save(pd);
 		mv.addObject("msg","success");

@@ -69,6 +69,8 @@ public class OtherEquipmentController extends AcStartController {
 			map1.put("注册证类型", pd.getString("BUSINESS"));
 			map1.put("生产批次", pd.getString("BATCH"));
 			map1.put("有效期", pd.getString("VALIDITY"));
+			map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
+			map1.put("备注", pd.getString("ACCESSORY"));
 			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("EQUIPMENT_ID")+"','d5dac6150a934e69a15e5231fe4af3a7')\" style=' cursor:pointer;'>查看附件</a>");
 
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
@@ -108,6 +110,7 @@ public class OtherEquipmentController extends AcStartController {
 		pd.put("EQUIPMENT_ID", this.get32UUID());	//主键
 		pd.put("FUZEREN",Jurisdiction.getUsername());	//主键
 		pd.put("UPDATETIME", sd1.format(new Date()));
+		pd.put("STATUS", 2);
 
 		otherequipmentService.save(pd);
 		mv.addObject("msg","success");
