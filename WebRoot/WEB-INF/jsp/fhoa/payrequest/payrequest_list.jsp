@@ -101,6 +101,7 @@
                                     <th class="center">来款单位</th>
                                     <th class="center">附件</th>
                                     <th class="center">付款约定</th>
+                                    <th class="center">备注</th>
                                     <th class="center">操作</th>
                                 </tr>
                                 </thead>
@@ -149,6 +150,7 @@
                                                     <td class='center'>${var.PAY_UNIT}</td>
                                                     <td class='center'><a onclick="allOaFile('${var.REQUEST_ID}','27be24c2087b4de88741b831a6b3686c')" style=" cursor:pointer;">查看附件</a></td>
                                                     <td class='center'>${var.FUKUANYUEDING}</td>
+                                                    <td class='center'>${var.BZ}</td>
                                                     <td class="center">
                                                         <c:if test="${QX.edit != 1 && QX.del != 1 }">
                                                             <span class="label label-large label-grey arrowed-in-right arrowed-in"><i
