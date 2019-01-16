@@ -322,106 +322,59 @@
     }
     //保存
     function save() {
-        /* if ($("#SYS_ID").val() == "") {
-             $("#SYS_ID").tips({
+       if ($("#xuanzeCompany").val() == "") {
+             $("#xuanzeCompany").tips({
                  side: 3,
-                 msg: '请输入系统编序号',
+                 msg: '请选择公司',
                  bg: '#AE81FF',
                  time: 2
              });
-             $("#SYS_ID").focus();
+             $("#xuanzeCompany").focus();
              return false;
          }
-         if ($("#SALES_CONTRACT_ID").val() == "") {
-             $("#SALES_CONTRACT_ID").tips({
-                 side: 3,
-                 msg: '请输入销售合同编号',
-                 bg: '#AE81FF',
-                 time: 2
-             });
-             $("#SALES_CONTRACT_ID").focus();
-             return false;
-         }
-         if ($("#PURCHASE_CONTRACT_ID").val() == "") {
-             $("#PURCHASE_CONTRACT_ID").tips({
-                 side: 3,
-                 msg: '请输入采购合同编号',
-                 bg: '#AE81FF',
-                 time: 2
-             });
-             $("#PURCHASE_CONTRACT_ID").focus();
-             return false;
-         }
-         if ($("#SUPPLIER_ID").val() == "") {
-             $("#SUPPLIER_ID").tips({
-                 side: 3,
-                 msg: '请输入供应商序号',
-                 bg: '#AE81FF',
-                 time: 2
-             });
-             $("#SUPPLIER_ID").focus();
-             return false;
-         }
-         if ($("#PRODUCT_INFO").val() == "") {
-             $("#PRODUCT_INFO").tips({
-                 side: 3,
-                 msg: '请输入产品信息',
-                 bg: '#AE81FF',
-                 time: 2
-             });
-             $("#PRODUCT_INFO").focus();
-             return false;
-         }
-         if ($("#CONTRACT_SIGN_TIME").val() == "") {
-             $("#CONTRACT_SIGN_TIME").tips({
-                 side: 3,
-                 msg: '请输入合同签订时间',
-                 bg: '#AE81FF',
-                 time: 2
-             });
-             $("#CONTRACT_SIGN_TIME").focus();
-             return false;
-         }
-         if ($("#CONTRACT_PRICE").val() == "") {
-             $("#CONTRACT_PRICE").tips({
-                 side: 3,
-                 msg: '请输入合同金额(万元)',
-                 bg: '#AE81FF',
-                 time: 2
-             });
-             $("#CONTRACT_PRICE").focus();
-             return false;
-         }
-         if ($("#INVOICE_NUMBER").val() == "") {
-             $("#INVOICE_NUMBER").tips({
-                 side: 3,
-                 msg: '请输入发票号码',
-                 bg: '#AE81FF',
-                 time: 2
-             });
-             $("#INVOICE_NUMBER").focus();
-             return false;
-         }
-         if ($("#INVOICE_ACCESSORY").val() == "") {
-             $("#INVOICE_ACCESSORY").tips({
-                 side: 3,
-                 msg: '请输入发票附件',
-                 bg: '#AE81FF',
-                 time: 2
-             });
-             $("#INVOICE_ACCESSORY").focus();
-             return false;
-         }
-         if ($("#AUTHORIZATION").val() == "") {
-             $("#AUTHORIZATION").tips({
-                 side: 3,
-                 msg: '请输入授权书丶随货同行单',
-                 bg: '#AE81FF',
-                 time: 2
-             });
-             $("#AUTHORIZATION").focus();
-             return false;
-         }*/
+        if ($("#PROJECTNAME").val() == "") {
+            $("#PROJECTNAME").tips({
+                side: 3,
+                msg: '请选择项目编号',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#PROJECTNAME").focus();
+            return false;
+        }
+        if ($("#SALES_CONTRACT_ID").val() == "") {
+            $("#SALES_CONTRACT_ID").tips({
+                side: 3,
+                msg: '请选择销售合同',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#SALES_CONTRACT_ID").focus();
+            return false;
+        }
+        if ($("#PURCHASE_CONTRACT_ID").val() == "") {
+            $("#PURCHASE_CONTRACT_ID").tips({
+                side: 3,
+                msg: '请选择采购合同',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#PURCHASE_CONTRACT_ID").focus();
+            return false;
+        }
+        if ($("#SUPPLIERNAME").val() == "") {
+            $("#SUPPLIERNAME").tips({
+                side: 3,
+                msg: '请选择供应商',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#SUPPLIERNAME").focus();
+            return false;
+        }
+
+
+
         $("#Form").submit();
         $("#zhongxin").hide();
         $("#zhongxin2").show();
