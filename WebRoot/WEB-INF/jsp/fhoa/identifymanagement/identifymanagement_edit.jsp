@@ -31,24 +31,7 @@
 						<input type="hidden" name="IDENTIFYMANAGEMENT_ID" id="IDENTIFYMANAGEMENT_ID" value="${pd.IDENTIFYMANAGEMENT_ID}"/>
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
-						<%--	<tr>	<td style="width:75px;text-align: right;padding-top: 13px;">项目编号:</td>
-								<td>
-									<select class="chosen-select form-control"  id="projectId" style="vertical-align:top;width: 68px; width: 98%">
 
-									</select>
-
-									<input hidden type="text" name="PROJECT_ID" id="PROJECT_ID" value="${pd.PROJECT_ID}" maxlength="100" placeholder="这里输入项目编号" title="项目编号" style="width:98%;"/></td>
-
-
-							</tr>
-							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">项目名称:</td>
-								<td><input readonly type="text" name="PROJECT_NAME" id="PROJECT_NAME" value="${pd.PROJECT_NAME}" maxlength="50" placeholder="这里输入项目名称" title="项目名称" style="width:98%;"/></td>
-							</tr>--%>
-                       <%--     <tr>
-                                <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>回款期数:</td>
-                                <td><input type="text" name="HUIKUAN" id="HUIKUAN" value="${pd.HUIKUAN}" maxlength="32" placeholder="这里输入回款期数" title="回款期数" style="width:98%;"/></td>
-                            </tr>--%>
                             <tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>进款金额(万元):</td>
 								<td><input type="number" name="INCOME_MONEY" id="INCOME_MONEY" value="${pd.INCOME_MONEY}" maxlength="32" placeholder="这里输入进款金额" title="进款金额" style="width:98%;"/></td>
@@ -102,26 +85,6 @@
 		$(top.hangge());
 		//保存
 		function save(){
-			if($("#PROJECT_ID").val()==""){
-				$("#PROJECT_ID").tips({
-					side:3,
-		            msg:'请输入项目编号',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#PROJECT_ID").focus();
-			return false;
-			}
-			if($("#PROJECT_NAME").val()==""){
-				$("#PROJECT_NAME").tips({
-					side:3,
-		            msg:'请输入项目名称',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#PROJECT_NAME").focus();
-			return false;
-			}
 			if($("#INCOME_MONEY").val()==""){
 				$("#INCOME_MONEY").tips({
 					side:3,
@@ -132,7 +95,7 @@
 				$("#INCOME_MONEY").focus();
 			return false;
 			}
-		/*	if($("#RETURN_MONEY").val()==""){
+			if($("#RETURN_MONEY").val()==""){
 				$("#RETURN_MONEY").tips({
 					side:3,
 		            msg:'请输入回款单位',
@@ -141,7 +104,7 @@
 		        });
 				$("#RETURN_MONEY").focus();
 			return false;
-			}*/
+			}
 			if($("#CREATE_DATE").val()==""){
 				$("#CREATE_DATE").tips({
 					side:3,

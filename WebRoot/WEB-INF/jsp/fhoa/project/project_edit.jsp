@@ -124,43 +124,7 @@
                                                    style="width:98%;"/>
                                         </td>
                                     </tr>
-                                    <%--<tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">产品编号:</td>
-                                        <td>
-                                            <select class="chosen-select form-control"  name="PRODUCT_ID" id="c_selectCompany" data-placeholder="产品编号" style="vertical-align:top;width: 68px;">
 
-                                            </select>
-
-                                            <input type="text" readonly name="PRODUCT" id="PRODUCT"
-                                                   value="${pd.PRODUCT}"
-                                                   maxlength="100" placeholder="这里输入产品资质" title="产品资质"
-                                                   style="width:48%;"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">供应商编号:</td>
-                                        <td>
-                                            <select class="chosen-select form-control" name="SUPPLIER_ID" id="g_selectCompany" data-placeholder="供应商编号" style="vertical-align:top;width: 68px;">
-
-                                            </select>
-                                            <input readonly type="text" name="SUPPLIER" id="SUPPLIER"
-                                                   value="${pd.SUPPLIER}"
-                                                   maxlength="100" placeholder="这里输入供应商资质" title="供应商资质"
-                                                   style="width:48%;"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">医院编号:</td>
-                                        <td>
-                                            <select class="chosen-select form-control" name="CLIENT_ID" id="k_selectCompany" data-placeholder="客户编号" style="vertical-align:top;width: 68px;">
-
-                                            </select>
-                                            <input readonly type="text" name="CLIENT" id="CLIENT"
-                                                   value="${pd.CLIENT}"
-                                                   maxlength="100" placeholder="这里输入医院" title="医院编号"
-                                                   style="width:48%;"/>
-                                        </td>
-                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">付款约定:</td>
                                         <td><input type="text" name="ACCESSORY" id="ACCESSORY" value="${pd.ACCESSORY}"
@@ -222,10 +186,20 @@
 
     //保存
     function save() {
+        if ($("#xuanzeCompany").val() == "") {
+            $("#xuanzeCompany").tips({
+                side: 3,
+                msg: '请选择公司',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#xuanzeCompany").focus();
+            return false;
+        }
         if ($("#SYS_ID").val() == "") {
             $("#SYS_ID").tips({
                 side: 3,
-                msg: '请输入系统编序号',
+                msg: '请输入项目编号',
                 bg: '#AE81FF',
                 time: 2
             });
@@ -240,6 +214,26 @@
                 time: 2
             });
             $("#PROJECT_NAME").focus();
+            return false;
+        }
+        if ($("#HOSPITAL").val() == "") {
+            $("#HOSPITAL").tips({
+                side: 3,
+                msg: '请输入医院名称',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#HOSPITAL").focus();
+            return false;
+        }
+        if ($("#LIMITED_PRICE").val() == "") {
+            $("#LIMITED_PRICE").tips({
+                side: 3,
+                msg: '请输入投标限价',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#LIMITED_PRICE").focus();
             return false;
         }
 

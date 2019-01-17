@@ -90,66 +90,7 @@
 		$(top.hangge());
 		//保存
 		function save(){
-			if($("#COMPANY_NAME").val()==""){
-				$("#COMPANY_NAME").tips({
-					side:3,
-		            msg:'请输入公司名称',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#COMPANY_NAME").focus();
-			return false;
-			}
-			if($("#BANK_ACCOUNT").val()==""){
-				$("#BANK_ACCOUNT").tips({
-					side:3,
-		            msg:'请输入开户行',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#BANK_ACCOUNT").focus();
-			return false;
-			}
-			if($("#OPEN_ACCOUNT").val()==""){
-				$("#OPEN_ACCOUNT").tips({
-					side:3,
-		            msg:'请输入开户账号',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#OPEN_ACCOUNT").focus();
-			return false;
-			}
-			if($("#LINKMAN").val()==""){
-				$("#LINKMAN").tips({
-					side:3,
-		            msg:'请输入联系人',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#LINKMAN").focus();
-			return false;
-			}
-			if($("#LINKMAN_PHONE").val()==""){
-				$("#LINKMAN_PHONE").tips({
-					side:3,
-		            msg:'请输入联系人电话',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#LINKMAN_PHONE").focus();
-			return false;
-			}
-			if($("#BZ").val()==""){
-				$("#BZ").tips({
-					side:3,
-		            msg:'请输入备注',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#BZ").focus();
-			return false;
-			}
+
 			$("#Form").submit();
 			$("#zhongxin").hide();
 			$("#zhongxin2").show();

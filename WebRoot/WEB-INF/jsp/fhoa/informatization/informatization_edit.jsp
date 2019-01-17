@@ -57,7 +57,7 @@
                             <tr>
                                 <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
                                 <td>
-                                    是<input type="radio" name="ISZILIAOQQ"  value="是" <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
+                                    是<input type="radio" name="ISZILIAOQQ" checked  value="是" <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
                                     否<input type="radio" name="ISZILIAOQQ"  value="否" <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>
                                 </td>
                             </tr>
@@ -66,89 +66,7 @@
 								<td>
 									<input type="text" name="BUSINESS" id="BUSINESS" value="${pd.BUSINESS}" maxlength="255" placeholder="这里输入备注" title="备注" style="width:98%;"/></td>
 							</tr>
-							<%--<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">附件:</td>
-&lt;%&ndash;
-								<td><input type="text" name="ACCESSORY" id="ACCESSORY" value="${pd.ACCESSORY}" maxlength="255" placeholder="这里输入附件" title="附件" style="width:98%;"/></td>
-&ndash;%&gt;
-								<td>
-									<div class="main-container" id="main-container">
-										<!-- /section:basics/sidebar -->
-										<div class="main-content">
-											<div class="main-content-inner">
-												<div class="page-content">
-													<div class="row">
-														<div class="col-xs-12">
 
-															<!-- 检索  -->
-															<form action="oafile/list.do" method="post"
-																  name="Form" id="Form2">
-
-
-																<table id="simple-table"
-																	   class="table table-striped table-bordered table-hover"
-																	   style="margin-top:5px;">
-																	<thead>
-																	<tr>
-																		<th class="center" style="width:35px;">
-																			<label class="pos-rel"><input
-																					type="checkbox" class="ace"
-																					id="zcheckbox"/><span
-																					class="lbl"></span></label>
-																		</th>
-																		<th class="center" style="width:50px;">
-																			序号
-																		</th>
-																		<th class="center">文件名</th>
-																		<th class="center">上传者</th>
-																		<th class="center">上传时间</th>
-																		<th class="center">文件类型</th>
-																		<th class="center">备注</th>
-																	</tr>
-																	</thead>
-																	<tbody id="append">
-
-
-																	</tbody>
-
-																</table>
-																<div class="page-header position-relative">
-																	<table style="width:100%;">
-																		<tr>
-																			<td style="vertical-align:top;">
-																				<a class="btn btn-mini btn-success"
-																				   onclick="add('${pd.INFORMATIZATION_ID}');">上传</a>
-																				<a class="btn btn-mini btn-danger"
-																				   onclick="makeAll('确定要删除选中的数据吗?');"
-																				   title="批量删除"><i
-																						class='ace-icon fa fa-trash-o bigger-120'></i></a>
-																			</td>
-
-																		</tr>
-																	</table>
-																</div>
-															</form>
-
-														</div>
-														<!-- /.col -->
-													</div>
-													<!-- /.row -->
-												</div>
-												<!-- /.page-content -->
-											</div>
-										</div>
-										<!-- /.main-content -->
-
-										<!-- 返回顶部 -->
-										<a href="#" id="btn-scroll-up"
-										   class="btn-scroll-up btn btn-sm btn-inverse">
-											<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-										</a>
-
-									</div>
-
-								</td>
-							</tr>--%>
 							<tr>
 								<td style="text-align: center;" colspan="10">
 									<a class="btn btn-mini btn-primary" onclick="save();">保存</a>
@@ -240,23 +158,13 @@
 				$("#REGISTRATION").focus();
 			return false;
 			}
-			if($("#BUSINESS").val()==""){
-				$("#BUSINESS").tips({
-					side:3,
-		            msg:'请输入生产经营范围',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#BUSINESS").focus();
-			return false;
-			}
+
 
 
 
 			$("#Form").submit();
 			$("#zhongxin").hide();
 			$("#zhongxin2").show();
-            localStorage.setItem("Identification", "save");
 		}
 		
 		$(function() {

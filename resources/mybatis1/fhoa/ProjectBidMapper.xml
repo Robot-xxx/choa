@@ -269,6 +269,7 @@
             HOSPITAL LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             TEBDERING LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             FUZEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+            BZ LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             TEBDERING LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 
             )

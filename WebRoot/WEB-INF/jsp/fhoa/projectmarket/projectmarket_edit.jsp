@@ -85,7 +85,7 @@
 
                                             </select>
                                             <input hidden type="text" name="CLIENT_NAME" id="CLIENT_NAME" value="${pd.CLIENT_NAME}"
-                                                   maxlength="100" placeholder="这里输入客户序号" title="客户序号"
+                                                   maxlength="100" placeholder="这里输入下游名称" title="下游名称"
                                                    style="width:98%;"/>
                                         <span style="color: red">注:需提前在下游管理处填写并通过审批才能选择对应客户</span>
                                         </td>
@@ -180,88 +180,7 @@
                                                    maxlength="255" placeholder="这里输入备注" title="备注"
                                                    style="width:98%;"/></td>
                                     </tr>
-                                    <%--<tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">验收附件:</td>
-                                        &lt;%&ndash;
-                                                                        <td><input type="text" name="RECEPTION" id="RECEPTION" value="${pd.RECEPTION}" maxlength="255" placeholder="这里输入验收附件" title="验收附件" style="width:98%;"/></td>
-                                        &ndash;%&gt;
-                                        <td>
-                                            <div class="main-container" id="main-container">
-                                                <!-- /section:basics/sidebar -->
-                                                <div class="main-content">
-                                                    <div class="main-content-inner">
-                                                        <div class="page-content">
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <!-- 检索  -->
-                                                                    <form action="oafile/list.do" method="post"
-                                                                          name="Form" id="Form2">
 
-
-                                                                        <table id="simple-table"
-                                                                               class="table table-striped table-bordered table-hover"
-                                                                               style="margin-top:5px;">
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th class="center" style="width:35px;">
-                                                                                    <label class="pos-rel"><input
-                                                                                            type="checkbox" class="ace"
-                                                                                            id="zcheckbox"/><span
-                                                                                            class="lbl"></span></label>
-                                                                                </th>
-                                                                                <th class="center" style="width:50px;">
-                                                                                    序号
-                                                                                </th>
-                                                                                <th class="center">文件名</th>
-                                                                                <th class="center">上传者</th>
-                                                                                <th class="center">上传时间</th>
-                                                                                <th class="center">文件类型</th>
-                                                                                <th class="center">备注</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody id="append">
-
-
-                                                                            </tbody>
-
-                                                                        </table>
-                                                                        <div class="page-header position-relative">
-                                                                            <table style="width:100%;">
-                                                                                <tr>
-                                                                                    <td style="vertical-align:top;">
-                                                                                        <a class="btn btn-mini btn-success"
-                                                                                           onclick="add('${pd.PROJECT_MARKET_ID}');">上传</a>
-                                                                                        <a class="btn btn-mini btn-danger"
-                                                                                           onclick="makeAll('确定要删除选中的数据吗?');"
-                                                                                           title="批量删除"><i
-                                                                                                class='ace-icon fa fa-trash-o bigger-120'></i></a>
-                                                                                    </td>
-
-                                                                                </tr>
-                                                                            </table>
-                                                                        </div>
-                                                                    </form>
-
-                                                                </div>
-                                                                <!-- /.col -->
-                                                            </div>
-                                                            <!-- /.row -->
-                                                        </div>
-                                                        <!-- /.page-content -->
-                                                    </div>
-                                                </div>
-                                                <!-- /.main-content -->
-
-                                                <!-- 返回顶部 -->
-                                                <a href="#" id="btn-scroll-up"
-                                                   class="btn-scroll-up btn btn-sm btn-inverse">
-                                                    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-                                                </a>
-
-                                            </div>
-
-                                        </td>
-                                    </tr>--%>
                                     <tr>
                                         <td style="text-align: center;" colspan="10">
                                             <a class="btn btn-mini btn-primary" onclick="save();">保存</a>
@@ -311,10 +230,20 @@
 
     //保存
     function save() {
+        if ($("#xuanzeCompany").val() == "") {
+            $("#xuanzeCompany").tips({
+                side: 3,
+                msg: '请选择公司',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#xuanzeCompany").focus();
+            return false;
+        }
         if ($("#SYS_ID").val() == "") {
             $("#SYS_ID").tips({
                 side: 3,
-                msg: '请输入系统编序号',
+                msg: '请输入项目编号',
                 bg: '#AE81FF',
                 time: 2
             });
@@ -334,7 +263,7 @@
         if ($("#CLIENT_ID").val() == "") {
             $("#CLIENT_ID").tips({
                 side: 3,
-                msg: '请输入客户序号',
+                msg: '请输入下游名称',
                 bg: '#AE81FF',
                 time: 2
             });
@@ -352,17 +281,16 @@
             $("#CONTRACT_PRICE").focus();
             return false;
         }
-
         if ($("#EQUIPMENT_ADVANCE").val() == "") {
             $("#EQUIPMENT_ADVANCE").tips({
                 side: 3,
-                msg: '请输入大设备预支款金额',
+                msg: '请输入医院预付款',
                 bg: '#AE81FF',
                 time: 2
             });
             $("#EQUIPMENT_ADVANCE").focus();
             return false;
-        }/*
+        }
         if ($("#PREDICT_ACCOUNT_TIME").val() == "") {
             $("#PREDICT_ACCOUNT_TIME").tips({
                 side: 3,
@@ -372,47 +300,9 @@
             });
             $("#PREDICT_ACCOUNT_TIME").focus();
             return false;
-        }*/
-  /*    if($("#PRACTICAL_ACCOUT_TIME").val()==""){
-                $("#PRACTICAL_ACCOUT_TIME").tips({
-                    side:3,
-                    msg:'请输入实际到账时间',
-                    bg:'#AE81FF',
-                    time:2
-                });
-                $("#PRACTICAL_ACCOUT_TIME").focus();
-            return false;
-            }*/
-   /*     if ($("#CUMULATIVE_BILLING").val() == "") {
-            $("#CUMULATIVE_BILLING").tips({
-                side: 3,
-                msg: '请输入累计开票总额',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#CUMULATIVE_BILLING").focus();
-            return false;
-        }*//*
-        if ($("#ARRIVAL_TIME").val() == "") {
-            $("#ARRIVAL_TIME").tips({
-                side: 3,
-                msg: '请输入到货时间',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#ARRIVAL_TIME").focus();
-            return false;
-        }*//*
-        if ($("#RECEPTION_TIME").val() == "") {
-            $("#RECEPTION_TIME").tips({
-                side: 3,
-                msg: '请输入验收时间',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#RECEPTION_TIME").focus();
-            return false;
-        }*/
+        }
+
+
 
         $("#Form").submit();
         $("#zhongxin").hide();

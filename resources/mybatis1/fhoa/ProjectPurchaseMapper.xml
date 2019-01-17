@@ -179,6 +179,7 @@
 			SUPPLIER_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			SUPPLIERNAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			FUZEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			BZ LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			PROJECTNAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 				)
 		</if>

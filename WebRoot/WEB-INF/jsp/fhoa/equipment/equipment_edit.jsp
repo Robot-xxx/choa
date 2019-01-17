@@ -37,11 +37,11 @@
 								<td><input type="text" readonly name="SYS_ID" id="SYS_ID" value="${pd.SYS_ID}" maxlength="100" placeholder="这里输入系统编序号" title="系统编序号" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">产品名称:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>产品名称:</td>
 								<td><input type="text" name="PRODUCT_NAME" id="PRODUCT_NAME" value="${pd.PRODUCT_NAME}" maxlength="100" placeholder="这里输入产品名称" title="产品名称" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">型号丶规格:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>型号丶规格:</td>
 								<td><input type="text" name="MODEL" id="MODEL" value="${pd.MODEL}" maxlength="100" placeholder="这里输入型号丶规格" title="型号丶规格" style="width:98%;"/></td>
 							</tr>
 							<tr>
@@ -49,11 +49,11 @@
 								<td><input type="text" name="MANUFACTURERS" id="MANUFACTURERS" value="${pd.MANUFACTURERS}" maxlength="100" placeholder="这里输入生产厂家" title="生产厂家" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">注册证号:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>注册证号:</td>
 								<td><input type="text" name="REGISTRATION" id="REGISTRATION" value="${pd.REGISTRATION}" maxlength="100" placeholder="这里输入注册证号" title="注册证号" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">注册证类别:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>注册证类别:</td>
 								<td>
 									<select name="LICENCE" id="LICENCE" title="生产经营范围"
 											style="width:54%;"></select>
@@ -71,7 +71,7 @@
                             <tr>
                                 <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
                                 <td>
-                                    是<input type="radio" name="ISZILIAOQQ"  value="是" <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
+                                    是<input type="radio" checked name="ISZILIAOQQ"  value="是" <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
                                     否<input type="radio" name="ISZILIAOQQ"  value="否" <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>
                                 </td>
                             </tr>
@@ -116,7 +116,46 @@
 		$(top.hangge());
 		//保存
 		function save(){
-
+            if($("#PRODUCT_NAME").val()==""){
+                $("#PRODUCT_NAME").tips({
+                    side:3,
+                    msg:'请输入产品名称',
+                    bg:'#AE81FF',
+                    time:2
+                });
+                $("#PRODUCT_NAME").focus();
+                return false;
+            }
+            if($("#MODEL").val()==""){
+                $("#MODEL").tips({
+                    side:3,
+                    msg:'请输入型号规格',
+                    bg:'#AE81FF',
+                    time:2
+                });
+                $("#MODEL").focus();
+                return false;
+            }
+            if($("#REGISTRATION").val()==""){
+                $("#REGISTRATION").tips({
+                    side:3,
+                    msg:'请输入注册证号',
+                    bg:'#AE81FF',
+                    time:2
+                });
+                $("#REGISTRATION").focus();
+                return false;
+            }
+            if($("#BUSINESS").val()==""){
+                $("#BUSINESS").tips({
+                    side:3,
+                    msg:'请选择注册证类别',
+                    bg:'#AE81FF',
+                    time:2
+                });
+                $("#BUSINESS").focus();
+                return false;
+            }
 
             $("#BUSINESS").val($("#LICENCE").val()+"-"+$("#BUSINESS").val());
 

@@ -40,7 +40,7 @@
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>客户序号:</td>
                                         <td><input readonly="readonly" type="text" name="SYS_ID" id="SYS_ID" value="${pd.SYS_ID}"
-                                                   maxlength="30" placeholder="" title="系统编序号"
+                                                   maxlength="30" placeholder="" title="客户序号"
                                                    style="width:98%;"/></td>
                                     </tr>
                                        <%-- <tr>
@@ -124,89 +124,7 @@
                                                     style="width:98%;"></select>
                                         </td>
                                     </tr>
-                                    <%--<tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">附件:</td>
 
-
-                                        &lt;%&ndash;<td><input type="text" name="ACCESSORY" id="ACCESSORY" value="${pd.ACCESSORY}" maxlength="255" placeholder="这里输入附件" title="附件" style="width:98%;"/></td>&ndash;%&gt;
-                                        <td>
-                                            <div class="main-container" id="main-container">
-                                                <!-- /section:basics/sidebar -->
-                                                <div class="main-content">
-                                                    <div class="main-content-inner">
-                                                        <div class="page-content">
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-
-                                                                    <!-- 检索  -->
-                                                                    <form action="oafile/list.do" method="post"
-                                                                          name="Form" id="Form2">
-
-
-                                                                        <table id="simple-table"
-                                                                               class="table table-striped table-bordered table-hover"
-                                                                               style="margin-top:5px;">
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th class="center" style="width:35px;">
-                                                                                    <label class="pos-rel"><input
-                                                                                            type="checkbox" class="ace"
-                                                                                            id="zcheckbox"/><span
-                                                                                            class="lbl"></span></label>
-                                                                                </th>
-                                                                                <th class="center" style="width:50px;">
-                                                                                    序号
-                                                                                </th>
-                                                                                <th class="center">文件名</th>
-                                                                                <th class="center">上传者</th>
-                                                                                <th class="center">上传时间</th>
-                                                                                <th class="center">文件大小</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody id="append">
-
-
-                                                                            </tbody>
-
-                                                                        </table>
-                                                                        <div class="page-header position-relative">
-                                                                            <table style="width:100%;">
-                                                                                <tr>
-                                                                                    <td style="vertical-align:top;">
-                                                                                        <a class="btn btn-mini btn-success"
-                                                                                           onclick="add('${pd.CUSTOMER_ID}','cf29c9db335046c58071d5dfc84d3d21');">上传</a>
-                                                                                        <a class="btn btn-mini btn-danger"
-                                                                                           onclick="makeAll('确定要删除选中的数据吗?');"
-                                                                                           title="批量删除"><i
-                                                                                                class='ace-icon fa fa-trash-o bigger-120'></i></a>
-                                                                                    </td>
-
-                                                                                </tr>
-                                                                            </table>
-                                                                        </div>
-                                                                    </form>
-
-                                                                </div>
-                                                                <!-- /.col -->
-                                                            </div>
-                                                            <!-- /.row -->
-                                                        </div>
-                                                        <!-- /.page-content -->
-                                                    </div>
-                                                </div>
-                                                <!-- /.main-content -->
-
-                                                <!-- 返回顶部 -->
-                                                <a href="#" id="btn-scroll-up"
-                                                   class="btn-scroll-up btn btn-sm btn-inverse">
-                                                    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-                                                </a>
-
-                                            </div>
-
-                                        </td>
-
-                                    </tr>--%>
 
                                         <tr>
                                             <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
@@ -280,7 +198,7 @@
         if ($("#SYS_ID").val() == "") {
             $("#SYS_ID").tips({
                 side: 3,
-                msg: '请输入系统编序号',
+                msg: '请输入客户序号',
                 bg: '#AE81FF',
                 time: 2
             });
@@ -319,49 +237,18 @@
         }
 
 
-       /* if ($("#LICENCE").val() == "") {
-            $("#LICENCE").tips({
-                side: 3,
-                msg: '请选择医疗许可证',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#LICENCE").focus();
-            return false;
-        }*/
-        if ($("#ACCESSORY").val() == "") {
-            $("#ACCESSORY").tips({
-                side: 3,
-                msg: '请上传附件',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#ACCESSORY").focus();
-            return false;
-        }
-    /*    if ($("#BZ").val() == "") {
-            $("#BZ").tips({
-                side: 3,
-                msg: '请输入备注',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#BZ").focus();
-            return false;
-        }*/
+
         $("#Form1").submit();
 
 
         $("#zhongxin").hide();
         $("#zhongxin2").show();
-        //localStorage.setItem("Identification", "save");
 
     }
 
     $(function () {
 
         var kh="${pd.HOSPITAL_ID}";
-console.log(kh);
         $.ajax({
             type: "POST",
             url: '<%=basePath%>/project/k_ClienteleAll.do?tm=' + new Date().getTime(),
@@ -385,7 +272,6 @@ console.log(kh);
         //医院信息
         $("#k_selectCompany").change(function (){
             var str =$("#k_selectCompany").val();
-console.log(str);
             $("#COMPANY_NAME").val(str.substring(str.indexOf("@")+1,str.indexOf("#")));
             $("#LINKMAN").val(str.substring(str.indexOf("#")+1,str.indexOf("=")));
             $("#PHONE").val(str.substring(str.indexOf("=")+1,str.length));

@@ -136,6 +136,40 @@
 		$(top.hangge());
 		//保存
 		function save(){
+			if($("#xuanzeCompany").val()==""){
+				$("#xuanzeCompany").tips({
+					side:3,
+		            msg:'请选择公司',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#xuanzeCompany").focus();
+			return false;
+			}
+			if($("#jinxiang").val()==""){
+				$("#jinxiang").tips({
+					side:3,
+		            msg:'请选择产品',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#jinxiang").focus();
+			return false;
+			}
+			if($("#TICKET_PRICE").val()==""){
+				$("#TICKET_PRICE").tips({
+					side:3,
+		            msg:'请输入进项票总额',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#TICKET_PRICE").focus();
+			return false;
+			}
+
+
+
+
 			if($("#SYS_ID").val()==""){
 				$("#SYS_ID").tips({
 					side:3,
@@ -149,7 +183,7 @@
 			if($("#SALES_CONTRACT_ID").val()==""){
 				$("#SALES_CONTRACT_ID").tips({
 					side:3,
-		            msg:'请输入销售合同附件',
+		            msg:'请输入销售合同',
 		            bg:'#AE81FF',
 		            time:2
 		        });
@@ -157,46 +191,17 @@
 			return false;
 			}
 
-			if($("#TICKET_PRICE").val()==""){
-				$("#TICKET_PRICE").tips({
+			if($("#OPEN_TICKET_PRICE").val()==""){
+				$("#OPEN_TICKET_PRICE").tips({
 					side:3,
-		            msg:'请输入进项票金额(万元)',
+		            msg:'请输入合同总额',
 		            bg:'#AE81FF',
 		            time:2
 		        });
 				$("#TICKET_PRICE").focus();
 			return false;
 			}
-			if($("#OPEN_TICKET_PRICE").val()==""){
-				$("#OPEN_TICKET_PRICE").tips({
-					side:3,
-		            msg:'请输入开票金额',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#OPEN_TICKET_PRICE").focus();
-			return false;
-			}
-			if($("#INVOICE_NUMBER").val()==""){
-				$("#INVOICE_NUMBER").tips({
-					side:3,
-		            msg:'请输入发票号码',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#INVOICE_NUMBER").focus();
-			return false;
-			}
-			if($("#INVOICE").val()==""){
-				$("#INVOICE").tips({
-					side:3,
-		            msg:'请输入发票附件',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#INVOICE").focus();
-			return false;
-			}
+
 			$("#Form").submit();
 			$("#zhongxin").hide();
 			$("#zhongxin2").show();
