@@ -29,6 +29,7 @@
 		f.FUZEREN,
 		f.CREATETIME,
 		f.UPDATETIME,
+		f.BZ,
 		f.INSTRUMENT_ID
 	</sql>
 	
@@ -49,6 +50,7 @@
 		FUZEREN,
 		CREATETIME,
 		UPDATETIME,
+		BZ,
 		INSTRUMENT_ID
 	</sql>
 	
@@ -69,6 +71,7 @@
 		#{FUZEREN},
 		#{CREATETIME},
 		#{UPDATETIME},
+		#{BZ},
 		#{INSTRUMENT_ID}
 	</sql>
 	
@@ -111,6 +114,7 @@
 			FUZEREN = #{FUZEREN},
 			CREATETIME = #{CREATETIME},
 			UPDATETIME = #{UPDATETIME},
+			BZ = #{BZ},
 			INSTRUMENT_ID = INSTRUMENT_ID
 		where 
 			INSTRUMENT_ID = #{INSTRUMENT_ID}
@@ -141,6 +145,7 @@
 			MANUFACTURERS LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			REGISTRATION LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			FUZEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			BZ LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			PRODUCT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 
 				)

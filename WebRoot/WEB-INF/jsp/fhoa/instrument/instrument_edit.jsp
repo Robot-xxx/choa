@@ -54,7 +54,7 @@
 								<td><input type="text" name="REGISTRATION" id="REGISTRATION" value="${pd.REGISTRATION}" maxlength="100" placeholder="这里输入注册证号" title="注册证号" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>生产批次:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;">生产批次:</td>
 								<td><input type="text" name="BATCH" id="BATCH" value="${pd.BATCH}" maxlength="100" placeholder="这里输入生产批次" title="注册证号" style="width:98%;"/></td>
 							</tr>
 
@@ -78,88 +78,11 @@
                                     否<input type="radio" name="ISZILIAOQQ"  value="否" <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>
                                 </td>
                             </tr>
-                            <%--
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>生产批次:</td>
-								<td><input type="text" name="BATCH" id="BATCH" value="${pd.BATCH}" maxlength="100" placeholder="这里输入生产批次" title="生产批次" style="width:98%;"/></td>
+								<td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
+								<td><input type="text" name="BZ" id="BZ" value="${pd.BZ}" maxlength="255" placeholder="这里输入备注" title="备注" style="width:98%;"/></td>
 							</tr>
-							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>有效期:</td>
-								<td><input class="span10 date-picker" name="VALIDITY" id="VALIDITY" value="${pd.VALIDITY}" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="有效期" title="有效期" style="width:98%;"/></td>
-							</tr>--%>
-							<%--<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">附件:</td>
-								<td>
-									<div class="main-container" id="main-container">
-										<!-- /section:basics/sidebar -->
-										<div class="main-content">
-											<div class="main-content-inner">
-												<div class="page-content">
-													<div class="row">
-														<div class="col-xs-12">
 
-															<!-- 检索  -->
-															<form action="oafile/list.do" method="post"
-																  name="Form" id="Form2">
-
-
-																<table id="simple-table"
-																	   class="table table-striped table-bordered table-hover"
-																	   style="margin-top:5px;">
-																	<thead>
-																	<tr>
-																		<th class="center" style="width:35px;">
-																			<label class="pos-rel"><input
-																					type="checkbox" class="ace"
-																					id="zcheckbox"/><span
-																					class="lbl"></span></label>
-																		</th>
-																		<th class="center" style="width:50px;">
-																			序号
-																		</th>
-																		<th class="center">文件名</th>
-																		<th class="center">上传者</th>
-													 					<th class="center">上传时间</th>
-																		<th class="center">文件类型</th>
-																		<th class="center">备注</th>
-																	</tr>
-																	</thead>
-																	<tbody id="append">
-
-
-																	</tbody>
-
-																</table>
-																<div class="page-header position-relative">
-																	<table style="width:100%;">
-																		<tr>
-																			<td style="vertical-align:top;">
-																				<a class="btn btn-mini btn-success"
-																				   onclick="add('${pd.INSTRUMENT_ID}','2edba70525574ebfacda36e4e7607034');">上传</a>
-																				<a class="btn btn-mini btn-danger"
-																				   onclick="makeAll('确定要删除选中的数据吗?');"
-																				   title="批量删除"><i
-																						class='ace-icon fa fa-trash-o bigger-120'></i></a>
-																			</td>
-																		</tr>
-																	</table>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<!-- 返回顶部 -->
-										<a href="#" id="btn-scroll-up"
-										   class="btn-scroll-up btn btn-sm btn-inverse">
-											<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-										</a>
-
-									</div>
-								</td>
-							</tr>--%>
 							<tr>
 								<td style="text-align: center;" colspan="10">
 									<a class="btn btn-mini btn-primary" onclick="save();">保存</a>
@@ -204,7 +127,7 @@
 			if($("#SYS_ID").val()==""){
 				$("#SYS_ID").tips({
 					side:3,
-		            msg:'请输入系统编序号',
+		            msg:'请输入器械编号',
 		            bg:'#AE81FF',
 		            time:2
 		        });
@@ -214,7 +137,7 @@
 			if($("#PRODUCT_NAME").val()==""){
 				$("#PRODUCT_NAME").tips({
 					side:3,
-		            msg:'请输入产品名称',
+		            msg:'请输入器械名称',
 		            bg:'#AE81FF',
 		            time:2
 		        });
@@ -224,7 +147,7 @@
 			if($("#MODEL").val()==""){
 				$("#MODEL").tips({
 					side:3,
-		            msg:'请输入型号丶规格',
+		            msg:'请输入器械型号',
 		            bg:'#AE81FF',
 		            time:2
 		        });
@@ -271,16 +194,6 @@
 				$("#BUSINESS").focus();
 			return false;
 			}
-			/*if($("#BATCH").val()==""){
-				$("#BATCH").tips({
-					side:3,
-		            msg:'请输入生产批次',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#BATCH").focus();
-			return false;
-			}*//*
 			if($("#VALIDITY").val()==""){
 				$("#VALIDITY").tips({
 					side:3,
@@ -290,7 +203,7 @@
 		        });
 				$("#VALIDITY").focus();
 			return false;
-			}*/
+			}
 
 
             $("#BUSINESS").val($("#LICENCE").val()+"-"+$("#BUSINESS").val());

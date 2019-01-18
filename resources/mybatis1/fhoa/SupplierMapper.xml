@@ -181,8 +181,11 @@
 			FUZHEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 			or
 			BANKACCOUNT LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+			or
+			BZ LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 
-				)
+
+			)
 		</if>
 
 		<if test="pd.ISSHENPI!= null and pd.ISSHENPI != ''"><!-- 关键词检索 -->

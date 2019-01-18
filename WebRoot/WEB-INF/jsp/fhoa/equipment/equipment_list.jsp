@@ -72,10 +72,10 @@
 									<th class="center">注册证类别</th>
 									<th class="center">生产批次</th>
 								<%--	<th class="center">有效期</th>--%>
-									<th class="center">附件</th>
 									<th class="center">资料是否齐全</th>
 									<th class="center">备注</th>
 									<th class="center">上传者</th>
+									<th class="center">附件</th>
 
 									<th class="center">操作</th>
 								</tr>
@@ -99,10 +99,11 @@
 											<td class='center'>${var.REGISTRATION}</td>
 											<td class='center'>${var.BUSINESS}</td>
 											<td class='center'>${var.BATCH}</td>
-											<td class='center'><a onclick="allOaFile('${var.EQUIPMENT_ID}','85748aebf179486b9a699159a3616a9e')" style=" cursor:pointer;">查看附件</a></td>
 											<td class='center'>${var.ISZILIAOQQ}</td>
 											<td class='center'>${var.ACCESSORY}</td>
 											<td class='center'>${var.FUZEREN}</td>
+											<td class='center'><a onclick="allOaFile('${var.EQUIPMENT_ID}','85748aebf179486b9a699159a3616a9e')" style=" cursor:pointer;">查看附件</a></td>
+
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>

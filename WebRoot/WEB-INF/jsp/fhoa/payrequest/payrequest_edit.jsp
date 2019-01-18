@@ -85,14 +85,7 @@
                                                    value="${pd.PAY_METHOD}" maxlength="50" placeholder="这里输入支付方式"
                                                    title="支付方式" style="width:98%;"/></td>
                                     </tr>
-                                    <%--     <tr>
-                                             <td style="width:75px;text-align: right;padding-top: 13px;">账户类型:</td>
-                                             <td>
-                                                 <select name="paytype" id="paytype" title=""
-                                                         style="width:38%;"></select>
-                                                 <input hidden type="text" name="ACCOUNT_TYPE" id="ACCOUNT_TYPE"
-                                                        value="${pd.ACCOUNT_TYPE}" maxlength="50" style="width:98%;"/></td>
-                                         </tr>--%>
+
 
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">是否合作方</td>
@@ -139,12 +132,7 @@
                                                    maxlength="255" placeholder="这里输入收款单位" title="收款单位"
                                                    style="width:98%;"/></td>
                                     </tr>
-                                    <%--   <tr>
-                                           <td style="width:75px;text-align: right;padding-top: 13px;">收款单位地址:</td>
-                                           <td><input type="text" name="PAYEEADDRESS" id="PAYEEADDRESS"
-                                                      value="${pd.PAYEEADDRESS}" maxlength="255" placeholder="这里输入收款单位地址"
-                                                      title="收款单位地址" style="width:98%;"/></td>
-                                       </tr>--%>
+
 
 
                                     <tr>
@@ -248,6 +236,13 @@
                                             <a class="btn btn-mini btn-danger" onclick="top.Dialog.close();">取消</a>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">备注:
+                                        </td>
+                                        <td><input type="text" name="BZ" id="BZ"
+                                                   value="${pd.BZ}" maxlength="13" placeholder="这里输入备注"
+                                                   title="备注" style="width:98%;"/></td>
+                                    </tr>
                                 </table>
                             </div>
                             <div id="zhongxin2" class="center" style="display:none"><br/><br/><br/><br/><br/><img
@@ -283,7 +278,16 @@
 
     //保存
     function save() {
-        if ($("#REQUEST_NO").val() == "") {
+        if ($("#xuanzeCompany").val() == "") {
+            $("#xuanzeCompany").tips({
+                side: 3,
+                msg: '请输入公司',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#xuanzeCompany").focus();
+            return false;
+        } if ($("#REQUEST_NO").val() == "") {
             $("#REQUEST_NO").tips({
                 side: 3,
                 msg: '请输入付款申请编号',
@@ -334,6 +338,18 @@
             return false;
         }
 
+        if ($("#PAYEE").val() == "") {
+            $("#PAYEE").tips({
+                side: 3,
+                msg: '请输入收款单位',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#PAYEE").focus();
+            return false;
+        }
+
+
 
         if ($("#PROJECT_NAME").val() == "") {
             $("#PROJECT_NAME").tips({
@@ -345,6 +361,16 @@
             $("#PROJECT_NAME").focus();
             return false;
         }
+        if ($("#PROJIECT_ID").val() == "") {
+            $("#PROJIECT_ID").tips({
+                side: 3,
+                msg: '请输入项目编号',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#PROJIECT_ID").focus();
+            return false;
+        }
         if ($("#MONEY").val() == "") {
             $("#MONEY").tips({
                 side: 3,
@@ -353,6 +379,26 @@
                 time: 2
             });
             $("#MONEY").focus();
+            return false;
+        }
+        if ($("#PAY_ACCOUNT").val() == "") {
+            $("#PAY_ACCOUNT").tips({
+                side: 3,
+                msg: '请输入垫付金额',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#PAY_ACCOUNT").focus();
+            return false;
+        }
+        if ($("#PAY_UNIT").val() == "") {
+            $("#PAY_UNIT").tips({
+                side: 3,
+                msg: '请输入来款单位',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#PAY_UNIT").focus();
             return false;
         }
 

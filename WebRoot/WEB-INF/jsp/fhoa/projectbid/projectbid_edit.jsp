@@ -176,7 +176,7 @@
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
                                         <td>
-                                            是<input type="radio" name="ISZILIAOQQ" value="是"
+                                            是<input checked type="radio" name="ISZILIAOQQ" value="是"
                                                     <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
                                             否<input type="radio" name="ISZILIAOQQ" value="否"
                                                     <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>
@@ -184,177 +184,14 @@
                                     </tr>
 
 
-                                   <%-- <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font
-                                                color="red">*</font>产品数量:
-                                        </td>
-                                        <td>
-                                            <select class="chosen-select form-control" name="PRODUCT_NUMBER"
-                                                    id="PRODUCT_NUMBER" data-placeholder="器械编号"
-                                                    style="vertical-align:top;width: 68px;">
 
-                                            </select>
-                                        </td>
-
-                                    </tr>--%>
-
-
-                                   <%-- <tr id="tr1">
-                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font
-                                                color="red">*</font>产品名称:
-                                        </td>
-                                        <td>
-                                            <select class="chosen-select form-control" name="PRODUCT_ID"
-                                                    id="c_selectCompany" data-placeholder="器械编号"
-                                                    style="vertical-align:top;width: 68px;">
-
-                                            </select>
-
-                                            <input type="text" readonly name="PRODUCT" id="PRODUCT"
-                                                   value="${pd.PRODUCT}"
-                                                   maxlength="100" placeholder="器械名称" title="器械名称"
-                                                   style="width:48%;"/>
-                                            <input type="text" hidden name="PROJECT_ID" id="PROJECT_ID"
-                                                   value="${pd.PROJECT_ID}" maxlength="100" style="width:48%;"/>
-                                            <span style="color: red">注:需先在器械管理处填写资料并通过质控审批后才能选择</span>
-                                        </td>
-
-                                    </tr>--%>
-
-                                    <%--<tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">产品到期日:</td>
-                                        <td>
-                                            <input name="CHANPINDAOQIRI" id="CHANPINDAOQIRI"
-                                                   value="${pd.CHANPINDAOQIRI}" type="text" readonly="readonly"
-                                                   style="width:98%;"/>
-                                            <span style="color: red">注:注意核对到期日情况</span>
-                                        </td>
-                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
                                         <td><input type="text" name="BZ" value="${pd.BZ}"
                                                    maxlength="255" placeholder="这里输入备注" title="备注"
                                                    style="width:98%;"/></td>
                                     </tr>
-                                    <%--<tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">上游编号:</td>
-                                        <td>
-                                            <select class="chosen-select form-control" name="SUPPLIER_ID" id="g_selectCompany" data-placeholder="供应商编号" style="vertical-align:top;width: 68px;">
 
-                                            </select>
-                                            <input readonly type="text" name="SUPPLIER" id="SUPPLIER"
-                                                   value="${pd.SUPPLIER}"
-                                                   maxlength="100" placeholder="这里输入供应商资质" title="供应商资质"
-                                                   style="width:48%;"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">医院编号:</td>
-                                        <td>
-                                            <select class="chosen-select form-control" name="CLIENT_ID" id="k_selectCompany" data-placeholder="客户编号" style="vertical-align:top;width: 68px;">
-
-                                            </select>
-                                            <input readonly type="text" name="CLIENT" id="CLIENT"
-                                                   value="${pd.CLIENT}"
-                                                   maxlength="100" placeholder="这里输入医院" title="医院编号"
-                                                   style="width:48%;"/>
-                                        </td>
-                                    </tr>--%>
-                                    <%--<tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">附件:</td>
-        &lt;%&ndash;
-                                        <td><input type="text" name="ADVICE" id="ADVICE" value="${pd.ADVICE}" maxlength="255" placeholder="这里输入领取中标通知书时间及上传附件" title="领取中标通知书时间及上传附件" style="width:98%;"/></td>
-        &ndash;%&gt;
-                                        <td>
-                                            <div class="main-container" id="main-container">
-                                                <!-- /section:basics/sidebar -->
-                                                <div class="main-content">
-                                                    <div class="main-content-inner">
-                                                        <div class="page-content">
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-
-                                                                    <!-- 检索  -->
-                                                                    <form action="oafile/list.do" method="post"
-                                                                          name="Form" id="Form2">
-
-
-                                                                        <table id="simple-table"
-                                                                               class="table table-striped table-bordered table-hover"
-                                                                               style="margin-top:5px;">
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th class="center" style="width:35px;">
-                                                                                    <label class="pos-rel"><input
-                                                                                            type="checkbox" class="ace"
-                                                                                            id="zcheckbox"/><span
-                                                                                            class="lbl"></span></label>
-                                                                                </th>
-                                                                                <th class="center" style="width:50px;">
-                                                                                    序号
-                                                                                </th>
-                                                                                <th class="center">文件名</th>
-                                                                                <th class="center">上传者</th>
-                                                                                <th class="center">上传时间</th>
-                                                                                <th class="center">文件类型</th>
-                                                                                <th class="center">备注</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody id="append">
-
-
-                                                                            </tbody>
-
-                                                                        </table>
-                                                                        <div class="page-header position-relative">
-                                                                            <table style="width:100%;">
-                                                                                <tr>
-                                                                                    <td style="vertical-align:top;">
-                                                                                        <a class="btn btn-mini btn-success"
-                                                                                           onclick="add('${pd.PROJECT_BID_ID}','929f3699b3a14562afbc34ca20a07b07');">上传</a>
-                                                                                        <a class="btn btn-mini btn-danger"
-                                                                                           onclick="makeAll('确定要删除选中的数据吗?');"
-                                                                                           title="批量删除"><i
-                                                                                                class='ace-icon fa fa-trash-o bigger-120'></i></a>
-                                                                                    </td>
-
-                                                                                </tr>
-                                                                            </table>
-                                                                        </div>
-                                                                    </form>
-
-                                                                </div>
-                                                                <!-- /.col -->
-                                                            </div>
-                                                            <!-- /.row -->
-                                                        </div>
-                                                        <!-- /.page-content -->
-                                                    </div>
-                                                </div>
-                                                <!-- /.main-content -->
-
-                                                <!-- 返回顶部 -->
-                                                <a href="#" id="btn-scroll-up"
-                                                   class="btn-scroll-up btn btn-sm btn-inverse">
-                                                    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-                                                </a>
-
-                                            </div>
-
-                                        </td>
-                                    </tr>--%>
-                                    <%--	<tr>
-                                            <td style="width:75px;text-align: right;padding-top: 13px;">合同模板时间（1天):</td>
-                                            <td><input class="span10 date-picker" name="CONTRACT_MODEL_TIME" id="CONTRACT_MODEL_TIME" value="${pd.CONTRACT_MODEL_TIME}" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="合同模板时间（1天)" title="合同模板时间（1天)" style="width:98%;"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="width:75px;text-align: right;padding-top: 13px;">合同双签时间（一周）:</td>
-                                            <td><input class="span10 date-picker" name="COUNTER_SIGN_TIME" id="COUNTER_SIGN_TIME" value="${pd.COUNTER_SIGN_TIME}" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="合同双签时间（一周）" title="合同双签时间（一周）" style="width:98%;"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="width:75px;text-align: right;padding-top: 13px;">退投标保证金时间:</td>
-                                            <td><input class="span10 date-picker" name="WITHDRAWAL_SECURITY" id="WITHDRAWAL_SECURITY" value="${pd.WITHDRAWAL_SECURITY}" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="退投标保证金时间" title="退投标保证金时间" style="width:98%;"/></td>
-                                        </tr>--%>
                                     <tr>
                                         <td style="text-align: center;" colspan="10">
                                             <a class="btn btn-mini btn-primary" onclick="save();">保存</a>
@@ -404,6 +241,16 @@
     //保存
     function save() {
 
+        if ($("#xuanzeCompany").val() == "") {
+            $("#xuanzeCompany").tips({
+                side: 3,
+                msg: '请选择公司名称',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#xuanzeCompany").focus();
+            return false;
+        }
         if ($("#PROJECT_NAME").val() == "") {
             $("#PROJECT_NAME").tips({
                 side: 3,
@@ -434,56 +281,7 @@
             $("#HOSPITAL").focus();
             return false;
         }
-        if ($("#WINNING_UNIT").val() == "") {
-            $("#WINNING_UNIT").tips({
-                side: 3,
-                msg: '请输入中标单位',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#WINNING_UNIT").focus();
-            return false;
-        }
-        if ($("#WINNING_PRICE").val() == "") {
-            $("#WINNING_PRICE").tips({
-                side: 3,
-                msg: '请输入中标价格',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#WINNING_PRICE").focus();
-            return false;
-        }
-        if ($("#PRODUCT").val() == "") {
-            $("#PRODUCT").tips({
-                side: 3,
-                msg: '请选择器械编号',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#PRODUCT").focus();
-            return false;
-        }
-        if ($("#SERVICE_PRICE").val() == "") {
-            $("#SERVICE_PRICE").tips({
-                side: 3,
-                msg: '请输入中标服务费',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#SERVICE_PRICE").focus();
-            return false;
-        }
-        if ($("#GUARANTEE_MONEY").val() == "") {
-            $("#GUARANTEE_MONEY").tips({
-                side: 3,
-                msg: '请输入投标保证金',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#GUARANTEE_MONEY").focus();
-            return false;
-        }
+
 
         if ($("#BIAOSHUZHIZUOREN").val() == "") {
             $("#BIAOSHUZHIZUOREN").tips({

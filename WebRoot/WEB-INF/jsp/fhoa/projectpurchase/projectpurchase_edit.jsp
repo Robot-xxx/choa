@@ -64,8 +64,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font
-                                                color="red">*</font>销售合同编号:
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">销售合同编号:
                                         </td>
                                         <td>
                                             <select id="xiaoshouID" style="width:54%;">
@@ -97,9 +96,7 @@
 
                                             </select>
 
-                                            <%--
-                                                                                        供应商公司:<input readonly type="text" name="SUPPLIERCOMPANY" id="SUPPLIERCOMPANY" value="${pd.SUPPLIERCOMPANY}" style="width:44%;"/>
-                                                                                --%>
+
                                             <input hidden type="text" name="SUPPLIER_ID" id="SUPPLIER_ID"
                                                    value="${pd.SUPPLIER_ID}" maxlength="100" placeholder="这里输入供应商序号"
                                                    title="供应商序号" style="width:98%;"/>
@@ -138,12 +135,7 @@
                                             <span style="color:red;">注:请认真对证件是否过期</span>
                                         </td>
                                     </tr>
-                                    <%--   <tr>
-                                           <td style="width:75px;text-align: right;padding-top: 13px;">产品信息:</td>
-                                           <td><input type="text" readonly name="PRODUCT_INFO" id="PRODUCT_INFO"
-                                                      value="${pd.PRODUCT_INFO}" maxlength="255" placeholder="这里输入产品信息"
-                                                      title="产品信息" style="width:98%;"/></td>
-                                       </tr>--%>
+
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">合同签订时间:</td>
                                         <td><input class="span10 date-picker" name="CONTRACT_SIGN_TIME"
@@ -170,101 +162,7 @@
                                                    maxlength="255" placeholder="这里输入备注" title="备注"
                                                    style="width:98%;"/></td>
                                     </tr>
-                                    <%--   <tr>
-                                           <td style="width:75px;text-align: right;padding-top: 13px;">发票号码:</td>
-                                           <td><input type="text" name="INVOICE_NUMBER" id="INVOICE_NUMBER"
-                                                      value="${pd.INVOICE_NUMBER}" maxlength="100" placeholder="这里输入发票号码"
-                                                      title="发票号码" style="width:98%;"/></td>
-                                       </tr>--%>
-                                    <%--<tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">授权书丶随货同行单:</td>
-                                        &lt;%&ndash;<td><input type="text" name="INVOICE_ACCESSORY" id="INVOICE_ACCESSORY" value="${pd.INVOICE_ACCESSORY}" maxlength="255" placeholder="这里输入发票附件" title="发票附件" style="width:98%;"/></td>&ndash;%&gt;
-                                        <td>
-                                            <div class="main-container" id="main-container">
-                                                <!-- /section:basics/sidebar -->
-                                                <div class="main-content">
-                                                    <div class="main-content-inner">
-                                                        <div class="page-content">
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
 
-                                                                    <!-- 检索  -->
-                                                                    <form action="oafile/list.do" method="post"
-                                                                          name="Form" id="Form2">
-
-
-                                                                        <table id="simple-table"
-                                                                               class="table table-striped table-bordered table-hover"
-                                                                               style="margin-top:5px;">
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th class="center" style="width:35px;">
-                                                                                    <label class="pos-rel"><input
-                                                                                            type="checkbox" class="ace"
-                                                                                            id="zcheckbox"/><span
-                                                                                            class="lbl"></span></label>
-                                                                                </th>
-                                                                                <th class="center" style="width:50px;">
-                                                                                    序号
-                                                                                </th>
-                                                                                <th class="center">文件名</th>
-                                                                                <th class="center">上传者</th>
-                                                                                <th class="center">上传时间</th>
-                                                                                <th class="center">文件类型</th>
-                                                                                <th class="center">备注</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody id="append">
-
-
-                                                                            </tbody>
-
-                                                                        </table>
-                                                                        <div class="page-header position-relative">
-                                                                            <table style="width:100%;">
-                                                                                <tr>
-                                                                                    <td style="vertical-align:top;">
-                                                                                        <a class="btn btn-mini btn-success"
-                                                                                           onclick="add('${pd.PURCHASE_ID}');">上传</a>
-                                                                                        <a class="btn btn-mini btn-danger"
-                                                                                           onclick="makeAll('确定要删除选中的数据吗?');"
-                                                                                           title="批量删除"><i
-                                                                                                class='ace-icon fa fa-trash-o bigger-120'></i></a>
-                                                                                    </td>
-
-                                                                                </tr>
-                                                                            </table>
-                                                                        </div>
-                                                                    </form>
-
-                                                                </div>
-                                                                <!-- /.col -->
-                                                            </div>
-                                                            <!-- /.row -->
-                                                        </div>
-                                                        <!-- /.page-content -->
-                                                    </div>
-                                                </div>
-                                                <!-- /.main-content -->
-
-                                                <!-- 返回顶部 -->
-                                                <a href="#" id="btn-scroll-up"
-                                                   class="btn-scroll-up btn btn-sm btn-inverse">
-                                                    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-                                                </a>
-
-                                            </div>
-
-                                        </td>
-                                    </tr>--%>
-                                    <%-- <tr>
-                                         <td style="width:75px;text-align: right;padding-top: 13px;">授权书丶随货同行单:</td>
-                                         <td><input type="text" name="AUTHORIZATION" id="AUTHORIZATION"
-                                                    value="${pd.AUTHORIZATION}" maxlength="255"
-                                                    placeholder="这里输入授权书丶随货同行单" title="授权书丶随货同行单" style="width:98%;"/>
-                                         </td>
-
-                                     </tr>--%>
                                     <tr>
                                         <td style="text-align: center;" colspan="10">
                                             <a class="btn btn-mini btn-primary" onclick="save();">保存</a>
@@ -342,16 +240,7 @@
             $("#PROJECTNAME").focus();
             return false;
         }
-        if ($("#SALES_CONTRACT_ID").val() == "") {
-            $("#SALES_CONTRACT_ID").tips({
-                side: 3,
-                msg: '请选择销售合同',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#SALES_CONTRACT_ID").focus();
-            return false;
-        }
+
         if ($("#PURCHASE_CONTRACT_ID").val() == "") {
             $("#PURCHASE_CONTRACT_ID").tips({
                 side: 3,

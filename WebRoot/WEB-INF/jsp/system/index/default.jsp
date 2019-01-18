@@ -12,6 +12,7 @@
 <html lang="en">
 <head>
 	<link rel="stylesheet" href="tongji/bootstrap.min.css" />
+	<link rel="stylesheet" href="yetep/css/ystep.css">
 
 	<base href="<%=basePath%>">
 
@@ -52,6 +53,11 @@ setTimeout("top.hangge()",500);
 					<!-- /.row -->
 				</div>
 				<!-- /.page-content -->
+
+					<div class="ystep4"></div>
+
+
+
 			</div>
 		</div>
 		<!-- /.main-content -->
@@ -72,14 +78,46 @@ setTimeout("top.hangge()",500);
 	<script src="static/ace/js/ace/ace.js"></script>
 	<script src="tongji/bootstrap.min.js"></script>
 	<script src="tongji/jquery.min.js"></script>
+		<script src="yetep/js/ystep.js"></script>
 
 
 
 
-	<!-- inline scripts related to this page -->
+
+		<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 		$(top.hangge());
+        //根据jQuery选择器找到需要加载ystep的容器
+        //loadStep 方法可以初始化ystep
 
+        $(".ystep4").loadStep({
+            size: "small",
+            color: "blue",
+            steps: [{
+                title: "项目立项",
+                content: "123123"
+            },{
+                title: "器械管理",
+                content: ""
+            },{
+                title: "下游管理",
+                content: ""
+            },{
+                title: "项目投标",
+                content: ""
+            },{
+                title: "项目销售",
+                content: ""
+            },{
+                title: "项目采购",
+                content: ""
+            }]
+        });
+
+        $(".ystep4").click(function () {
+
+
+        })
 
 
 	</script>

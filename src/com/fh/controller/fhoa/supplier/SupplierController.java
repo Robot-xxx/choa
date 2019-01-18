@@ -73,13 +73,13 @@ public class SupplierController extends AcStartController {
             if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHENGCHANXUKEZHENG").toString().equals("")){
                 map1.put("生产许可证", pd.get("SHENGCHANXUKEZHENG").toString());
             }
-            if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("JINGYINGXUKEZHENG").toString().equals("")){
+            if (pd.get("JINGYINGXUKEZHENG")!=null&&!pd.get("JINGYINGXUKEZHENG").toString().equals("")){
                 map1.put("经营许可证", pd.get("JINGYINGXUKEZHENG").toString());
             }
-            if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("FARENSHOUQUAN").toString().equals("")){
+            if (pd.get("FARENSHOUQUAN")!=null&&!pd.get("FARENSHOUQUAN").toString().equals("")){
                 map1.put("法人授权书", pd.get("FARENSHOUQUAN").toString());
             }
-            if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHOUQUANWEITUO").toString().equals("")){
+            if (pd.get("SHOUQUANWEITUO")!=null&&!pd.get("SHOUQUANWEITUO").toString().equals("")){
                 map1.put("授权委托书", pd.get("SHOUQUANWEITUO").toString());
             }
 

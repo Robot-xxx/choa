@@ -305,7 +305,6 @@
 		     diag.ShowMinButton = true;		//最小化按钮
 			 diag.CancelEvent = function(){ //关闭事件
                  getPath("<%=basePath%>");
-                 clickCross();//清除不保存的图片
 				 if(diag.innerFrame.contentWindow.document.getElementById('zhongxin').style.display == 'none'){
 					 if('${page.currentPage}' == '0'){
 						 tosearch();

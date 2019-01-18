@@ -41,7 +41,7 @@
                                         </td>
                                         <%--<td><input type="text" name="IS_THEAGENT" id="IS_THEAGENT" value="${pd.IS_THEAGENT}" maxlength="50" placeholder="这里输入是否代理商付款" title="是否代理商付款" style="width:98%;"/></td>--%>
                                         <td align="left">
-                                            是<input type="radio" name="IS_THEAGENT"
+                                            是<input checked type="radio" name="IS_THEAGENT"
                                                     <c:if test="${pd.IS_THEAGENT==1}">checked</c:if> value="1"/>
                                             否<input type="radio" name="IS_THEAGENT"
                                                     <c:if test="${pd.IS_THEAGENT==0}">checked</c:if> value="0"/>
@@ -53,7 +53,7 @@
                                         </td>
                                         <%--<td><input type="text" name="IS_THEAGENT" id="IS_THEAGENT" value="${pd.IS_THEAGENT}" maxlength="50" placeholder="这里输入是否代理商付款" title="是否代理商付款" style="width:98%;"/></td>--%>
                                         <td align="left">
-                                            客户结算<input type="radio"  onchange="SelectChange('ISJIESUAN1')" id="ISJIESUAN1" class="ISJIESUAN" name="ISJIESUAN"
+                                            客户结算<input checked type="radio"  onchange="SelectChange('ISJIESUAN1')" id="ISJIESUAN1" class="ISJIESUAN" name="ISJIESUAN"
                                                        <c:if test="${pd.ISJIESUAN==1}">checked</c:if> value="1"/>
                                             日常<input onchange="SelectChange('ISJIESUAN2')" type="radio" id="ISJIESUAN2" class="ISJIESUAN" name="ISJIESUAN"
                                                      <c:if test="${pd.ISJIESUAN==0}">checked</c:if> value="0"/>
@@ -102,94 +102,13 @@
                                         </td>
                                     </tr>
 
-                                    <%--	<tr>
-                                            <td style="width:75px;text-align: right;padding-top: 13px;">总额:</td>
-                                            <td><input type="number" name="MONEY" id="MONEY" value="${pd.MONEY}" maxlength="32" placeholder="这里输入金额" title="金额" style="width:98%;"/></td>
-                                        </tr>--%>
+
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
                                         <td><input type="text" name="BZ" id="BZ" value="${pd.BZ}" maxlength="255"
                                                    placeholder="这里输入备注" title="备注" style="width:98%;"/></td>
                                     </tr>
-                                    <%--<tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">附件:</td>
-                                        <td>
-                                            <div class="main-container" id="main-container">
-                                                <!-- /section:basics/sidebar -->
-                                                <div class="main-content">
-                                                    <div class="main-content-inner">
-                                                        <div class="page-content">
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
 
-                                                                    <!-- 检索  -->
-                                                                    <form action="oafile/list.do" method="post"
-                                                                          name="Form" id="Form2">
-
-
-                                                                        <table id="simple-table"
-                                                                               class="table table-striped table-bordered table-hover"
-                                                                               style="margin-top:5px;">
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th class="center" style="width:35px;">
-                                                                                    <label class="pos-rel"><input
-                                                                                            type="checkbox" class="ace"
-                                                                                            id="zcheckbox"/><span
-                                                                                            class="lbl"></span></label>
-                                                                                </th>
-                                                                                <th class="center" style="width:50px;">
-                                                                                    序号
-                                                                                </th>
-                                                                                <th class="center">文件名</th>
-                                                                                <th class="center">上传者</th>
-                                                                                <th class="center">上传时间</th>
-                                                                                <th class="center">文件大小</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody id="append">
-
-
-                                                                            </tbody>
-
-                                                                        </table>
-                                                                        <div class="page-header position-relative">
-                                                                            <table style="width:100%;">
-                                                                                <tr>
-                                                                                    <td style="vertical-align:top;">
-                                                                                        <a class="btn btn-mini btn-success"
-                                                                                           onclick="add('${pd.COST_ID}');">上传</a>
-                                                                                        <a class="btn btn-mini btn-danger"
-                                                                                           onclick="makeAll('确定要删除选中的数据吗?');"
-                                                                                           title="批量删除"><i
-                                                                                                class='ace-icon fa fa-trash-o bigger-120'></i></a>
-                                                                                    </td>
-
-                                                                                </tr>
-                                                                            </table>
-                                                                        </div>
-                                                                    </form>
-
-                                                                </div>
-                                                                <!-- /.col -->
-                                                            </div>
-                                                            <!-- /.row -->
-                                                        </div>
-                                                        <!-- /.page-content -->
-                                                    </div>
-                                                </div>
-                                                <!-- /.main-content -->
-
-                                                <!-- 返回顶部 -->
-                                                <a href="#" id="btn-scroll-up"
-                                                   class="btn-scroll-up btn btn-sm btn-inverse">
-                                                    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-                                                </a>
-
-                                            </div>
-
-                                        </td>
-                                    </tr>--%>
                                     <tr>
                                         <td style="text-align: center;" colspan="10">
                                             <a class="btn btn-mini btn-primary" onclick="save();">保存</a>
@@ -234,26 +153,10 @@
 
     //保存
     function save() {
-        if ($("#IS_THEAGENT").val() == "") {
-            $("#IS_THEAGENT").tips({
-                side: 3,
-                msg: '请输入是否代理商付款',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#IS_THEAGENT").focus();
-            return false;
-        }
-        /*if($("#PROJECT_ID").val()==""){
-            $("#PROJECT_ID").tips({
-                side:3,
-                msg:'请输入项目编号',
-                bg:'#AE81FF',
-                time:2
-            });
-            $("#PROJECT_ID").focus();
-        return false;
-        }*/
+
+
+
+
         if ($("#CREATE_DATE").val() == "") {
             $("#CREATE_DATE").tips({
                 side: 3,
@@ -274,26 +177,7 @@
             $("#BXR").focus();
             return false;
         }
-        if ($("#COST_DETAIL").val() == "") {
-            $("#COST_DETAIL").tips({
-                side: 3,
-                msg: '请输入费用明细',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#COST_DETAIL").focus();
-            return false;
-        }
-        if ($("#MONEY").val() == "") {
-            $("#MONEY").tips({
-                side: 3,
-                msg: '请输入金额',
-                bg: '#AE81FF',
-                time: 2
-            });
-            $("#MONEY").focus();
-            return false;
-        }
+
 
         $("#Form").submit();
         $("#zhongxin").hide();

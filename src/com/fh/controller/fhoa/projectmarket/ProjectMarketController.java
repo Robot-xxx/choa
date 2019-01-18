@@ -79,12 +79,21 @@ public class ProjectMarketController extends AcStartController {
 			if (pd.get("SHOUQUANWEITUO")!=null&&!pd.get("SHOUQUANWEITUO").toString().equals("")){
 				map1.put("授权委托书", pd.get("SHOUQUANWEITUO").toString());
 			}
-			map1.put("合同总价(万元)", pd.getString("CONTRACT_PRICE"));
-			map1.put("医院预付款", pd.getString("EQUIPMENT_ADVANCE"));
-			map1.put("预计到账时间", pd.getString("PREDICT_ACCOUNT_TIME"));
-			map1.put("实际到账时间", pd.getString("PRACTICAL_ACCOUT_TIME"));
-			map1.put("预计到货时间", pd.getString("ARRIVAL_TIME"));
-			map1.put("预计验收时间", pd.getString("RECEPTION_TIME"));
+			if (pd.get("PREDICT_ACCOUNT_TIME")!=null&&!pd.get("PREDICT_ACCOUNT_TIME").toString().equals("")){
+				map1.put("预计到账时间", pd.get("PREDICT_ACCOUNT_TIME").toString());
+			}
+			if (pd.get("PRACTICAL_ACCOUT_TIME")!=null&&!pd.get("PRACTICAL_ACCOUT_TIME").toString().equals("")){
+				map1.put("实际到账时间", pd.get("PRACTICAL_ACCOUT_TIME").toString());
+			}
+			if (pd.get("ARRIVAL_TIME")!=null&&!pd.get("ARRIVAL_TIME").toString().equals("")){
+				map1.put("预计到货时间", pd.get("ARRIVAL_TIME").toString());
+			}
+			if (pd.get("RECEPTION_TIME")!=null&&!pd.get("RECEPTION_TIME").toString().equals("")){
+				map1.put("预计验收时间", pd.get("RECEPTION_TIME").toString());
+			}
+			map1.put("合同总价(万元)", pd.get("CONTRACT_PRICE").toString());
+			map1.put("医院预付款", pd.get("EQUIPMENT_ADVANCE").toString());
+
 			map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
 
 			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("PROJECT_MARKET_ID")+"','14b2e7231a604b9f9edfc230fea227d8')\" style=' cursor:pointer;'>查看附件</a>");

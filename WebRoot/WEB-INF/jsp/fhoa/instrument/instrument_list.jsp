@@ -76,6 +76,7 @@
 									<th class="center">有效期</th>
 									<th class="center">资料是否齐全</th>
 									<th class="center">上传者</th>
+									<th class="center">备注</th>
 									<th class="center">附件</th>
 									<th class="center">操作</th>
 								</tr>
@@ -102,6 +103,8 @@
 											<td class='center'>${var.VALIDITY}</td>
 											<td class='center'>${var.ISZILIAOQQ}</td>
 											<td class='center'>${var.FUZEREN}</td>
+											<td class='center'>${var.BZ}</td>
+
 											<td class='center'><a onclick="allOaFile('${var.INSTRUMENT_ID}','2edba70525574ebfacda36e4e7607034')" style=" cursor:pointer;">查看附件</a></td>
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">

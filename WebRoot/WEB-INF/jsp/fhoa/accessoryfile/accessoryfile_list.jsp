@@ -97,7 +97,7 @@
                                                         <img style="margin-top: -3px;" alt="${var.NAME}" src="static/images/extension/${var.fileType}.png">
                                                             ${var.NAME}${fn:substring(var.FILEPATH ,19,fn:length(var.FILEPATH))}
                                                         &nbsp;
-                                                        <c:if test="${var.fileType == 'tupian' }"><a style="cursor:pointer;" onmouseover="showTU('uploadFiles/uploadFile/${var.FILEPATH}','yulantu${vs.index+1}');" onmouseout="hideTU('yulantu${vs.index+1}');">[预览]</a></c:if>
+                                                        <c:if test="${var.fileType == 'tupian' }"><a style="cursor:pointer;" onclick="showTU('uploadFiles/uploadFile/${var.FILEPATH}','yulantu${vs.index+1}');">[预览]</a></c:if>
                                                         <c:if test="${var.fileType == 'pdf' }"><a style="cursor:pointer;" onclick="goViewPdf('${var.NAME}${fn:substring(var.FILEPATH ,19,fn:length(var.FILEPATH))}','${var.OAFILE_ID}');">[预览]</a></c:if>
                                                         <c:if test="${var.fileType == 'wenben' }"><a style="cursor:pointer;" onclick="goViewTxt('${var.NAME}${fn:substring(var.FILEPATH ,19,fn:length(var.FILEPATH))}','${var.OAFILE_ID}','gbk');">[预览]</a></c:if>
                                                         <div class="yulantu" id="yulantu${vs.index+1}"></div>
@@ -252,17 +252,33 @@
         };
         diag.show();
     }
-
-    //显示图片
+    //现实图片
     function showTU(path,TPID){
+        console.log(path)
+        var diag = new top.Dialog();
+        diag.Drag=true;
+        diag.Title ='预览';
+        diag.URL = '<%=basePath%>'+path;
+        diag.Width = 1000;
+        diag.Height = 608;
+        diag.Modal = false;				//有无遮罩窗口
+        diag.ShowMinButton = true;		//最小化按钮
+        diag.ShowMaxButton = true;	//最大化按钮
+        diag.CancelEvent = function(){ 	//关闭事件
+            diag.close();
+        };
+        diag.show();
+    }
+    //显示图片
+    /*function showTU(path,TPID){
         $("#"+TPID).html('<img width="300" src="'+path+'">');
         $("#"+TPID).show();
-    }
+    }*/
 
     //隐藏图片
-    function hideTU(TPID){
+   /* function hideTU(TPID){
         $("#"+TPID).hide();
-    }
+    }*/
 
 
     //检索
