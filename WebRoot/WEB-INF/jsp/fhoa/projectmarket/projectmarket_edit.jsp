@@ -170,8 +170,8 @@
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
                                         <td>
-                                            是<input type="radio" name="ISZILIAOQQ" checked  value="是" <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
-                                            否<input type="radio" name="ISZILIAOQQ"  value="否" <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>
+                                            是<input type="radio" name="ISZILIAOQQ"    value="是" <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
+                                            否<input type="radio" name="ISZILIAOQQ" checked value="否" <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>
                                         </td>
                                     </tr>
                                     <tr>

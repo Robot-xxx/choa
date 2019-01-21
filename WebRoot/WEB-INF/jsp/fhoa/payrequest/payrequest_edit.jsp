@@ -194,7 +194,7 @@
                                                    maxlength="13" placeholder="这里输入金额" title="金额" style="width:98%;"/>
                                         </td>
                                     </tr>
-                                    <tr>
+                                   <%-- <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
                                                 color="red">*</font>垫付金额(元):
                                         </td>
@@ -209,7 +209,7 @@
                                         <td><input type="text" name="PAY_UNIT" id="PAY_UNIT" value="${pd.PAY_UNIT}"
                                                    maxlength="255" placeholder="这里输入来款单位" title="来款单位"
                                                    style="width:98%;"/></td>
-                                    </tr>
+                                    </tr>--%>
                                    <%-- <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
                                                 color="red">*</font>付款剩余余额:
@@ -236,13 +236,7 @@
                                             <a class="btn btn-mini btn-danger" onclick="top.Dialog.close();">取消</a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">备注:
-                                        </td>
-                                        <td><input type="text" name="BZ" id="BZ"
-                                                   value="${pd.BZ}" maxlength="13" placeholder="这里输入备注"
-                                                   title="备注" style="width:98%;"/></td>
-                                    </tr>
+
                                 </table>
                             </div>
                             <div id="zhongxin2" class="center" style="display:none"><br/><br/><br/><br/><br/><img
@@ -643,6 +637,8 @@
             $("#MONEY").val(MONEY);
 
 
+
+
         })
 
 
@@ -661,9 +657,9 @@
                     $("#hetongbianhao").append("<option value=''>请选择合同编号</option>");
                     for (var i = 0; i < data.list.length; i++) {
                         if (data.list[i].PURCHASE_CONTRACT_ID == weituo) {
-                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_CONTRACT_ID + "-" + data.list[i].SYS_ID + "+" + data.list[i].PROJECTNAME + "@" + data.list[i].CONTRACT_PRICE + " selected='selected'>" + data.list[i].PURCHASE_CONTRACT_ID + "</option>");
+                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_CONTRACT_ID + "-" + data.list[i].SYS_ID + "+" + data.list[i].PROJECTNAME + "@" + data.list[i].CONTRACT_PRICE + " selected='selected'>" + data.list[i].PURCHASE_CONTRACT_ID +"-"+ data.list[i].PROJECTNAME+ "</option>");
                         } else {
-                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_CONTRACT_ID + "-" + data.list[i].SYS_ID + "+" + data.list[i].PROJECTNAME + "@" + data.list[i].CONTRACT_PRICE + ">" + data.list[i].PURCHASE_CONTRACT_ID + "</option>");
+                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_CONTRACT_ID + "-" + data.list[i].SYS_ID + "+" + data.list[i].PROJECTNAME + "@" + data.list[i].CONTRACT_PRICE + ">" + data.list[i].PURCHASE_CONTRACT_ID +"-"+ data.list[i].PROJECTNAME+ "</option>");
                         }
                     }
                     downList('hetongbianhao');

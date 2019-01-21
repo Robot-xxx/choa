@@ -97,8 +97,8 @@
                                     <th class="center">项目名称</th>
                                     <th class="center">合同编号</th>
                                     <th class="center">金额(元)</th>
-                                    <th class="center">垫付金额(元)</th>
-                                    <th class="center">来款单位</th>
+                      <%--              <th class="center">垫付金额(元)</th>
+                                    <th class="center">来款单位</th>--%>
                                     <th class="center">附件</th>
                                     <th class="center">付款约定</th>
                                     <th class="center">备注</th>
@@ -146,8 +146,8 @@
                                                     <td class='center'>${var.PROJECT_NAME}</td>
                                                     <td class='center'>${var.CONTRACT_NO}</td>
                                                     <td class='center'>${var.MONEY}</td>
-                                                    <td class='center'>${var.PAY_ACCOUNT}</td>
-                                                    <td class='center'>${var.PAY_UNIT}</td>
+                                   <%--                 <td class='center'>${var.PAY_ACCOUNT}</td>
+                                                    <td class='center'>${var.PAY_UNIT}</td>--%>
                                                     <td class='center'><a onclick="allOaFile('${var.REQUEST_ID}','27be24c2087b4de88741b831a6b3686c')" style=" cursor:pointer;">查看附件</a></td>
                                                     <td class='center'>${var.FUKUANYUEDING}</td>
                                                     <td class='center'>${var.BZ}</td>
