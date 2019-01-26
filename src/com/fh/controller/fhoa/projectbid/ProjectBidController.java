@@ -111,14 +111,34 @@ public class ProjectBidController extends AcStartController {
             map1.put("招标公司", pd.getString("TEBDERING"));
             map1.put("招标代表", pd.getString("REPRESENTATIVE"));
             map1.put("中标单位", pd.getString("WINNING_UNIT"));
-            map1.put("中标价格（万元）", pd.get("WINNING_PRICE").toString());
-            map1.put("中标服务费垫资金额（万元）", pd.get("SERVICE_PRICE").toString());
-            map1.put("投标保证金垫资金额（万元）", pd.get("GUARANTEE_MONEY").toString());
-            map1.put("投标保证金预计缴纳时间", pd.get("SCHEDULED_TIME").toString());
-            map1.put("投标保证金实际缴纳时间", pd.get("PRACTICAL_TIME").toString());
-            map1.put("开标日期", pd.get("BID_OPEN_TIME").toString());
-            map1.put("中标服务费预计缴纳时间", pd.get("SCHEDULED_SERVICE_PRICE_TIME").toString());
-            map1.put("中标服务费实际缴纳时间", pd.get("PRACTICAL_SERVICE_PRICE_TIME").toString());
+
+            if (pd.get("WINNING_PRICE")!=null&&!pd.get("WINNING_PRICE").toString().equals("")){
+                map1.put("中标价格（万元）", pd.get("WINNING_PRICE").toString());
+            }
+            if (pd.get("SERVICE_PRICE")!=null&&!pd.get("SERVICE_PRICE").toString().equals("")){
+                map1.put("中标服务费垫资金额（万元）", pd.get("SERVICE_PRICE").toString());
+            }
+            if (pd.get("GUARANTEE_MONEY")!=null&&!pd.get("GUARANTEE_MONEY").toString().equals("")){
+                map1.put("投标保证金垫资金额（万元）", pd.get("GUARANTEE_MONEY").toString());
+            }
+
+
+            if (pd.get("SCHEDULED_TIME")!=null&&!pd.get("SCHEDULED_TIME").toString().equals("")){
+                map1.put("投标保证金预计缴纳时间", pd.get("SCHEDULED_TIME").toString());
+            }
+            if (pd.get("PRACTICAL_TIME")!=null&&!pd.get("PRACTICAL_TIME").toString().equals("")){
+                map1.put("投标保证金实际缴纳时间", pd.get("PRACTICAL_TIME").toString());
+            }
+            if (pd.get("BID_OPEN_TIME")!=null&&!pd.get("BID_OPEN_TIME").toString().equals("")){
+                map1.put("开标日期", pd.get("BID_OPEN_TIME").toString());
+            }
+            if (pd.get("SCHEDULED_SERVICE_PRICE_TIME")!=null&&!pd.get("SCHEDULED_SERVICE_PRICE_TIME").toString().equals("")){
+                map1.put("中标服务费预计缴纳时间", pd.get("SCHEDULED_SERVICE_PRICE_TIME").toString());
+            }
+            if (pd.get("PRACTICAL_SERVICE_PRICE_TIME")!=null&&!pd.get("PRACTICAL_SERVICE_PRICE_TIME").toString().equals("")){
+                map1.put("中标服务费实际缴纳时间", pd.get("PRACTICAL_SERVICE_PRICE_TIME").toString());
+            }
+
             map1.put("标书制作人", pd.get("BIAOSHUZHIZUOREN").toString());
             map1.put("是否资料齐全", pd.get("ISZILIAOQQ").toString());
             map1.put("备注", pd.getString("BZ"));
@@ -127,6 +147,7 @@ public class ProjectBidController extends AcStartController {
             }
 
             map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("PROJECT_BID_ID")+"','929f3699b3a14562afbc34ca20a07b07')\" style=' cursor:pointer;'>查看附件</a>");
+            map1.put("查看产品", "<a onclick=\"selectProject2('"+pd.getString("PROJECT_BID_ID")+"')\" style=' cursor:pointer;'>查看产品</a>");
 
             map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
             String act_id=startProcessInstanceByKeyHasVariables("oa_xiangmutoubiaoliucheng",map1);	//启动流程实例(请假单流程)通过KEY
@@ -443,18 +464,81 @@ public class ProjectBidController extends AcStartController {
            vpd.put("var2", varOList.get(i).getString("PROJECT_NAME"));        //2
             vpd.put("var3", varOList.get(i).getString("HOSPITAL"));        //3
             vpd.put("var4", varOList.get(i).getString("WINNING_UNIT"));        //4
-            vpd.put("var5", varOList.get(i).get("WINNING_PRICE"));        //5
-            vpd.put("var6", varOList.get(i).get("GUARANTEE_MONEY"));        //6
-            vpd.put("var7",  varOList.get(i).get("SCHEDULED_TIME"));        //7
-            vpd.put("var8",  varOList.get(i).get("PRACTICAL_TIME"));        //8
-            vpd.put("var9",  varOList.get(i).get("BID_OPEN_TIME"));        //9
-            vpd.put("var10", varOList.get(i).get("SERVICE_PRICE"));        //10
-            vpd.put("var11", varOList.get(i).get("SCHEDULED_SERVICE_PRICE_TIME"));        //11
-            vpd.put("var12", varOList.get(i).get("PRACTICAL_SERVICE_PRICE_TIME"));        //12
-           /* vpd.put("var13", varOList.get(i).getString("ADVICE"));        //13*/
-       /*     vpd.put("var14",  sd.format(varOList.get(i).get("CONTRACT_MODEL_TIME")));        //14
-            vpd.put("var15",  sd.format(varOList.get(i).get("COUNTER_SIGN_TIME")));        //15
-            vpd.put("var16", sd.format(varOList.get(i).get("WITHDRAWAL_SECURITY")));        //16*/
+            if (varOList.get(i).get("WINNING_PRICE")!=null&&!varOList.get(i).get("WINNING_PRICE").toString().equals("")) {
+                vpd.put("var5", varOList.get(i).get("WINNING_PRICE"));	    //8
+            }else {
+                vpd.put("var5","");	    //8
+
+            }
+            if (varOList.get(i).get("GUARANTEE_MONEY")!=null&&!varOList.get(i).get("GUARANTEE_MONEY").toString().equals("")) {
+                vpd.put("var6", varOList.get(i).get("GUARANTEE_MONEY"));	    //8
+            }else {
+                vpd.put("var6","");	    //8
+
+            }
+
+            if (varOList.get(i).get("SCHEDULED_TIME")!=null&&!varOList.get(i).get("SCHEDULED_TIME").toString().equals("")) {
+                vpd.put("var7", sd.format(varOList.get(i).get("SCHEDULED_TIME")));	    //8
+            }else {
+                vpd.put("var7","");	    //8
+
+            }
+            if (varOList.get(i).get("PRACTICAL_TIME")!=null&&!varOList.get(i).get("PRACTICAL_TIME").toString().equals("")) {
+                vpd.put("var8", sd.format(varOList.get(i).get("PRACTICAL_TIME")));	    //8
+            }else {
+                vpd.put("var8","");	    //8
+
+            }
+            if (varOList.get(i).get("BID_OPEN_TIME")!=null&&!varOList.get(i).get("BID_OPEN_TIME").toString().equals("")) {
+                vpd.put("var9", sd.format(varOList.get(i).get("BID_OPEN_TIME")));	    //8
+            }else {
+                vpd.put("var9","");	    //8
+
+            }
+            if (varOList.get(i).get("SERVICE_PRICE")!=null&&!varOList.get(i).get("SERVICE_PRICE").toString().equals("")) {
+                vpd.put("var10", varOList.get(i).get("SERVICE_PRICE"));	    //8
+            }else {
+                vpd.put("var10","");	    //8
+
+            }
+            if (varOList.get(i).get("SCHEDULED_SERVICE_PRICE_TIME")!=null&&!varOList.get(i).get("SCHEDULED_SERVICE_PRICE_TIME").toString().equals("")) {
+                vpd.put("var11", sd.format(varOList.get(i).get("SCHEDULED_SERVICE_PRICE_TIME")));	    //8
+            }else {
+                vpd.put("var11","");	    //8
+
+            }
+            if (varOList.get(i).get("PRACTICAL_SERVICE_PRICE_TIME")!=null&&!varOList.get(i).get("PRACTICAL_SERVICE_PRICE_TIME").toString().equals("")) {
+                vpd.put("var12", sd.format(varOList.get(i).get("PRACTICAL_SERVICE_PRICE_TIME")));	    //8
+            }else {
+                vpd.put("var12","");	    //8
+
+            }
+
+            if (varOList.get(i).get("ADVICE")!=null&&!varOList.get(i).get("ADVICE").toString().equals("")) {
+                vpd.put("var13", varOList.get(i).get("ADVICE"));	    //8
+            }else {
+                vpd.put("var13","");	    //8
+
+            }
+
+            if (varOList.get(i).get("CONTRACT_MODEL_TIME")!=null&&!varOList.get(i).get("CONTRACT_MODEL_TIME").toString().equals("")) {
+                vpd.put("var14", sd.format(varOList.get(i).get("CONTRACT_MODEL_TIME")));	    //8
+            }else {
+                vpd.put("var14","");	    //8
+
+            }
+            if (varOList.get(i).get("COUNTER_SIGN_TIME")!=null&&!varOList.get(i).get("COUNTER_SIGN_TIME").toString().equals("")) {
+                vpd.put("var15", sd.format(varOList.get(i).get("COUNTER_SIGN_TIME")));	    //8
+            }else {
+                vpd.put("var15","");	    //8
+
+            }
+            if (varOList.get(i).get("WITHDRAWAL_SECURITY")!=null&&!varOList.get(i).get("WITHDRAWAL_SECURITY").toString().equals("")) {
+                vpd.put("var16", varOList.get(i).get("WITHDRAWAL_SECURITY"));	    //8
+            }else {
+                vpd.put("var16","");	    //8
+
+            }
             varList.add(vpd);
         }
         dataMap.put("varList", varList);

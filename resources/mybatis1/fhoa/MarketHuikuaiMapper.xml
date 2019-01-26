@@ -19,6 +19,7 @@
 		f.JINE,	
 		f.PROJECT_MARKET_ID,
 		f.NEWDATE,
+		f.FUKUANID,
 		f.SYS_ID
 	</sql>
 	
@@ -29,6 +30,7 @@
 		JINE,	
 		PROJECT_MARKET_ID,
 		NEWDATE,
+		FUKUANID,
 		SYS_ID
 	</sql>
 	
@@ -39,6 +41,7 @@
 		#{JINE},	
 		#{PROJECT_MARKET_ID},
 		#{NEWDATE},
+		#{FUKUANID},
 		#{SYS_ID}
 	</sql>
 	
@@ -70,6 +73,7 @@
 			BZ = #{BZ},
 			JINE = #{JINE},
 		NEWDATE = #{NEWDATE},
+		FUKUANID = #{FUKUANID},
 		SYS_ID = SYS_ID
 		where
 		SYS_ID = #{SYS_ID}
@@ -96,12 +100,22 @@
 			and
 				(
 			PROJECT_MARKET_ID LIKE CONCAT(CONCAT('%', #{pd.PROJECT_MARKET_ID}),'%')
-				<!--	根据需求自己加检索条件
-					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-					 or 
-					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
-				-->
+
 				)
+		</if>
+		<if test="pd.PURCHASE_ID!= null and pd.PURCHASE_ID != ''"><!-- 关键词检索 -->
+			and
+			(
+			PROJECT_MARKET_ID LIKE CONCAT(CONCAT('%', #{pd.PURCHASE_ID}),'%')
+
+			)
+		</if>
+		<if test="pd.FUKUANID!= null and pd.FUKUANID != ''"><!-- 关键词检索 -->
+			and
+			(
+			FUKUANID LIKE CONCAT(CONCAT('%', #{pd.FUKUANID}),'%')
+
+			)
 		</if>
 	</select>
 	

@@ -29,26 +29,28 @@
 					
 					<form action="markethuikuai/${msg }.do" name="Form" id="Form" method="post">
 						<input type="hidden" name="PROJECT_MARKET_ID" id="PROJECT_MARKET_ID" value="${pd.PROJECT_MARKET_ID}"/>
+						<input type="hidden" name="PURCHASE_ID" id="PURCHASE_ID" value="${pd.PURCHASE_ID}"/>
+						<input type="hidden" name="FUKUANID" id="FUKUANID" value="${pd.FUKUANID}"/>
 						<input type="hidden" name="SYS_ID" id="SYS_ID" value="${pd.SYS_ID}"/>
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">回款期数:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><c:choose><c:when test="${pd.FUKUANID!=''&&pd.FUKUANID!=null}">付款期数:</c:when><c:otherwise>回款期数:</c:otherwise></c:choose></td>
 
 								<td>
 
-									<input type="text" name="HUIKUAN" id="HUIKUAN" value="${pd.HUIKUAN}" maxlength="100" placeholder="这里输入回款记录" title="回款记录" style="width:98%;"/></td>
+									<input type="text" name="HUIKUAN" id="HUIKUAN" value="${pd.HUIKUAN}" maxlength="100" placeholder="这里输入记录" title="记录" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>回款金额:</td>
-								<td><input type="number" name="JINE" id="JINE" value="${pd.JINE}" maxlength="32" placeholder="这里输入回款金额" title="回款金额" style="width:98%;"/></td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font><c:choose><c:when test="${pd.FUKUANID!=''&&pd.FUKUANID!=null}">付款金额:</c:when><c:otherwise>回款金额:</c:otherwise></c:choose></td>
+								<td><input type="number" name="JINE" id="JINE" value="${pd.JINE}" maxlength="32" placeholder="这里输入金额" title="金额" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">回款时间:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><c:choose><c:when test="${pd.FUKUANID!=''&&pd.FUKUANID!=null}">付款时间:</c:when><c:otherwise>回款时间:</c:otherwise></c:choose></td>
 								<td><input class="span10 date-picker" name="NEWDATE"
 										   id="NEWDATE" value="${pd.NEWDATE}"
 										   type="text" data-date-format="yyyy-mm-dd" readonly="readonly"
-										   placeholder="回款时间" title="回款时间" style="width:98%;"/></td>
+										   placeholder="时间" title="时间" style="width:98%;"/></td>
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>

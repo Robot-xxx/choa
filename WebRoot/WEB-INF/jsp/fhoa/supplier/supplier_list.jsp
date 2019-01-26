@@ -65,22 +65,25 @@
 									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
 									</th>
 									<th class="center" style="width:50px;">序号</th>
-									<th class="center">供应商编号</th>
+									<%--<th class="center">供应商编号</th>--%>
 									<th class="center">公司名称</th>
 									<th class="center">联系人</th>
-									<th class="center">联系电话</th>
+									<%--<th class="center">联系电话</th>
 									<th class="center">税号</th>
 									<th class="center">开户银行</th>
-									<th class="center">开户银行账号</th>
+									<th class="center">开户银行账号</th>--%>
 									<th class="center">医疗许可证类型</th>
 									<th class="center">资料是否齐全</th>
 									<th class="center">生产许可证</th>
 									<th class="center">经营许可证</th>
 									<th class="center">法人授权书</th>
 									<th class="center">授权委托书</th>
+									<th class="center">经营范围</th>
+									<th class="center">统一社会信用代码</th>
 									<th class="center">上传者</th>
-									<th class="center">附件</th>
+
 									<th class="center">备注</th>
+                                    <th class="center">附件</th>
 									<th class="center">操作</th>
 								</tr>
 							</thead>
@@ -96,31 +99,33 @@
 												<label class="pos-rel"><input type='checkbox' name='ids' value="${var.SUPPLIER_ID}" class="ace" /><span class="lbl"></span></label>
 											</td>
 											<td class='center' style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
-											<td class='center'>${var.SYS_ID}</td>
+										<%--	<td class='center'>${var.SYS_ID}</td>--%>
 											<td class='center'>${var.COMPANY_NAME}</td>
 											<td class='center'>${var.LINKMAN}</td>
-											<td class='center'>${var.PHONE}</td>
-											<td class='center'>${var.DUTY_PARAGRAPH}</td>
-											<td class='center'>${var.OPENING_BANK}</td>
-											<td class='center'>${var.BANKACCOUNT}</td>
+											<%--<td class='center'>${var.PHONE}</td>
+											<td class='center'>${var.DUTY_PARAGRAPH}</td>--%>
+											<%--<td class='center'>${var.OPENING_BANK}</td>
+											<td class='center'>${var.BANKACCOUNT}</td>--%>
 											<td class='center'>${var.DNAME7}</td>
 											<td class='center'>${var.ISZILIAOQQ}</td>
 											<td class='center'>${var.SHENGCHANXUKEZHENG}</td>
 											<td class='center'>${var.JINGYINGXUKEZHENG}</td>
                                             <td class='center'>${var.FARENSHOUQUAN}</td>
                                             <td class='center'>${var.SHOUQUANWEITUO}</td>
+                                            <td class='center'>${var.JINGYINGFANWEI}</td>
+                                            <td class='center'>${var.TONGYISHEHUIDAIMA}</td>
 
 											<td class='center'>${var.FUZHEREN}</td>
-
+                                            <td class='center'>${var.BZ}</td>
 											<td class='center'><a onclick="allOaFile('${var.SUPPLIER_ID}','b07c4686c5a84ee59f3ecffcb37a50f5')" style=" cursor:pointer;">查看附件</a></td>
-											<td class='center'>${var.BZ}</td>
+
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
 												</c:if>
 												<div class="hidden-sm hidden-xs btn-group">
-                                                    <a  <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="btn btn-xs btn-success" title="提交" onclick="tijiao('${var.SUPPLIER_ID}',this)">
-														<i class="ace-icon fa fa-check-circle-o bigger-120" title="提交"></i>
+                                                    <a   <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="<c:if test="${var.STATUS==1}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==2}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==3}">btn btn-xs btn-yellow</c:if>" title="提交" onclick="tijiao('${var.SUPPLIER_ID}',this)">
+														<i class="ace-icon  fa fa-check-circle-o bigger-120" title="提交"></i>
 													</a>
 
 													<c:if test="${QX.edit == 1 }">

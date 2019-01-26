@@ -110,7 +110,7 @@ public class RuTaskController extends AcBusinessController {
 		return AppUtil.returnObject(pd, map);
 	}
 	
-	/**去办理任务页面
+	/**办理任务页面
 	 * @param
 	 * @throws Exception
 	 */

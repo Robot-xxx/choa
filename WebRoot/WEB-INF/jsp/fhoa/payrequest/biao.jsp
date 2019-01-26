@@ -135,12 +135,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div style="text-align: right;float: left;width: 130px;">
 						金额：
 					</div>
-					<div style="text-align: right;float: left;width: 130px;">
+					<%--<div style="text-align: right;float: left;width: 130px;">
 						垫付金额：
 					</div>
 					<div style="text-align: right;float: left;width: 130px;">
 						 来款单位：
-					</div>
+					</div>--%>
 					<div style="text-align: right;float: left;width: 130px;">
 						预付款剩余金额：
 					</div>
@@ -165,14 +165,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input value="${pd.MONEY}"  style="margin-left:5px;width:700px;border-bottom:1px solid #558db5;border-right: 0px;border-left: 0px;border-top: 0px;"/>
 									
 					</div>
-					<div style="text-align: right;float: left;width: 700px;">
+					<%--<div style="text-align: right;float: left;width: 700px;">
 						<input value="${pd.PAY_ACCOUNT}"  style="margin-left:5px;width:700px;border-bottom:1px solid #558db5;border-right: 0px;border-left: 0px;border-top: 0px;"/>
 									
 					</div>
 					<div style="text-align: right;float: left;width: 700px;">
 						<input value="${pd.PAY_UNIT}"  style="margin-left:5px;width:700px;border-bottom:1px solid #558db5;border-right: 0px;border-left: 0px;border-top: 0px;"/>
 									
-					</div>
+					</div>--%>
 					<div style="text-align: right;float: left;width: 700px;">
 						<input value="${pd.YUYUEFUKUAN}"  style="margin-left:5px;width:700px;border-bottom:1px solid #558db5;border-right: 0px;border-left: 0px;border-top: 0px;"/>
 

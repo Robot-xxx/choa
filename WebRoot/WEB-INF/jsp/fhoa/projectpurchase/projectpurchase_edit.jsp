@@ -33,6 +33,7 @@
                                    value="${pd.PURCHASE_ID}"/>
                             <input type="hidden" name="msg" id="msg" value="${msg }"/>
                             <input type="hidden" name="oafileList" id="oafileList">
+                            <input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
                                     <tr>
@@ -144,18 +145,31 @@
                                                    placeholder="合同签订时间" title="合同签订时间" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">到货期时间:</td>
+                                        <td>
+                                            <input class="span10 date-picker" placeholder="到货期时间" data-date-format="yyyy-mm-dd" readonly  type="text" name="DAOHUOQI" id="DAOHUOQI" value="${pd.DAOHUOQI}" maxlength="100" style="width:98%;"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">验收时间:</td>
+                                        <td>
+                                            <input class="span10 date-picker" placeholder="验收时间" data-date-format="yyyy-mm-dd" readonly  type="text" name="YANSHOUSHIJIAN" id="YANSHOUSHIJIAN" value="${pd.YANSHOUSHIJIAN}" maxlength="100" style="width:98%;"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">合同金额(万元):</td>
                                         <td><input type="text" name="CONTRACT_PRICE" id="CONTRACT_PRICE"
                                                    value="${pd.CONTRACT_PRICE}" maxlength="12"
                                                    placeholder="这里输入合同金额(万元)" title="合同金额(万元)" style="width:98%;"/></td>
                                     </tr>
-                                    <tr>
+
+                                   <%-- <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
                                         <td>
                                             是<input type="radio" name="ISZILIAOQQ"  value="是" <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
                                             否<input type="radio" name="ISZILIAOQQ"  value="否" <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>
                                         </td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
                                         <td><input type="text" name="BZ" value="${pd.BZ}"

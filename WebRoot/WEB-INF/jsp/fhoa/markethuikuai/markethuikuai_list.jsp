@@ -33,18 +33,11 @@
 						<form action="markethuikuai/list.do" method="post" name="Form" id="Form">
 						<table style="margin-top:5px;">
 							<input type="hidden" id="PROJECT_MARKET_ID" name="PROJECT_MARKET_ID" value="${pd.PROJECT_MARKET_ID }" />
+							<input type="hidden" id="PURCHASE_ID" name="PURCHASE_ID" value="${pd.PURCHASE_ID }" />
+							<input type="hidden" id="FUKUANID" name="FUKUANID" value="${pd.FUKUANID }" />
 							<tr>
 								<td>
-									<%--<div class="nav-search">
-										<span class="input-icon">
-											<input type="text" placeholder="这里输入关键词" class="nav-search-input" id="nav-search-input" autocomplete="off" name="keywords" value="${pd.keywords }" placeholder="这里输入关键词"/>
-											<i class="ace-icon fa fa-search nav-search-icon"></i>
-										</span>
-									</div>
-								</td>
-								<c:if test="${QX.cha == 1 }">
-								<td style="vertical-align:top;padding-left:2px"><a class="btn btn-light btn-xs" onclick="tosearch();"  title="检索"><i id="nav-search-icon" class="ace-icon fa fa-search bigger-110 nav-search-icon blue"></i></a></td>
-								</c:if>--%>
+
 								<c:if test="${QX.toExcel == 1 }"><td style="vertical-align:top;padding-left:2px;"><a class="btn btn-light btn-xs" onclick="toExcel();" title="导出到EXCEL"><i id="nav-search-icon" class="ace-icon fa fa-download bigger-110 nav-search-icon blue"></i></a></td></c:if>
 							</tr>
 						</table>
@@ -57,10 +50,10 @@
 									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
 									</th>
 									<th class="center" style="width:50px;">序号</th>
-									<th class="center">回款期数</th>
+									<th class="center">期数</th>
 
-									<th class="center">回款金额</th>
-									<th class="center">回款时间</th>
+									<th class="center">金额</th>
+									<th class="center">时间</th>
 
 									<th class="center">备注</th>
 								<%--	<th class="center">附件</th>--%>
@@ -284,7 +277,7 @@
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="新增";
-			 diag.URL = '<%=basePath%>markethuikuai/goAdd.do?PROJECT_MARKET_ID=${pd.PROJECT_MARKET_ID}';
+			 diag.URL = '<%=basePath%>markethuikuai/goAdd.do?FUKUANID=${pd.FUKUANID}&PURCHASE_ID=${pd.PURCHASE_ID}&PROJECT_MARKET_ID=${pd.PROJECT_MARKET_ID}';
 			 diag.Width = 450;
 			 diag.Height = 355;
 			 diag.Modal = true;				//有无遮罩窗口

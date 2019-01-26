@@ -77,17 +77,17 @@
 									<th class="center">选择公司</th>
 									<th class="center">项目编号</th>
 									<th class="center">项目名称</th>
-									<th class="center">销售合同编号</th>
-									<th class="center">下游序号</th>
+								<%--	<th class="center">销售合同编号</th>
+									<th class="center">下游序号</th>--%>
 									<th class="center">下游名称</th>
 									<th class="center">合同总价(万元)</th>
-									<th class="center">大设备预支款金额</th>
+									<th class="center">医院预付款（万元）</th>
 									<th class="center">预计到账时间</th>
 									<th class="center">实际到账时间</th>
 								<%--	<th class="center">累计开票总额</th>--%>
 									<th class="center">到货时间</th>
 									<th class="center">验收时间</th>
-									<th class="center">是否资料齐全</th>
+								<%--	<th class="center">是否资料齐全</th>--%>
 									<th class="center">产品信息</th>
 									<th class="center">回款条款</th>
 									<th class="center">附件</th>
@@ -111,8 +111,8 @@
 											<td class='center'>${var.SELECTCOMPANY}</td>
 											<td class='center'>${var.SYS_ID}</td>
 											<td class='center'>${var.PROJECT_NAME}</td>
-											<td class='center'>${var.SALES_CONTRACT_ID}</td>
-											<td class='center'>${var.CLIENT_ID}</td>
+                                                <%--<td class='center'>${var.SALES_CONTRACT_ID}</td>
+                                                <td class='center'>${var.CLIENT_ID}</td>--%>
 											<td class='center'>${var.CLIENT_NAME}</td>
 
 											<td class='center'>${var.CONTRACT_PRICE}</td>
@@ -125,7 +125,9 @@
 
 											<td class='center'>${var.ARRIVAL_TIME}</td>
 											<td class='center'>${var.RECEPTION_TIME}</td>
+<%--
 											<td class='center'>${var.ISZILIAOQQ}</td>
+--%>
 											<td class='center'><a onclick="selectProject('${var.PROJECT_MARKET_ID}')" style=" cursor:pointer;">查看产品</a></td>
 											<td class='center'><a onclick="selectHuiKuai('${var.PROJECT_MARKET_ID}')" style=" cursor:pointer;">查看回款信息</a></td>
 
@@ -137,7 +139,7 @@
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
 												</c:if>
 												<div class="hidden-sm hidden-xs btn-group">
-													<a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="btn btn-xs btn-success" title="提交" onclick="tijiao('${var.PROJECT_MARKET_ID}',this)">
+													<a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="<c:if test="${var.STATUS==1}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==2}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==3}">btn btn-xs btn-yellow</c:if>" title="提交" onclick="tijiao('${var.PROJECT_MARKET_ID}',this)">
 														<i class="ace-icon fa fa-check-circle-o bigger-120" title="提交"></i>
 													</a>
 													<c:if test="${QX.edit == 1 }">

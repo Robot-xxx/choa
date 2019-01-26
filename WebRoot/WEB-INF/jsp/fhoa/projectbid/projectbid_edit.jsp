@@ -33,6 +33,7 @@
                                    value="${pd.PROJECT_BID_ID}"/>
                             <input type="hidden" name="msg" id="msg" value="${msg }"/>
                             <input type="hidden" name="oafileList" id="oafileList">
+                            <input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
                                     <tr>
@@ -61,7 +62,7 @@
                                             <input type="text" hidden name="SYS_ID" id="SYS_ID" value="${pd.SYS_ID}"
                                                    maxlength="100" placeholder="这里输入系统编序号" title="系统编序号"
                                                    style="width:98%;"/>
-                                            <span style="color:red;">注:需要完成项目流程并通过审批后才能选择</span>
+                                            <span style="color:red;">注:需要完成项目立项流程并通过审批后才能选择</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -172,7 +173,13 @@
                                                    value="${pd.BIAOSHUZHIZUOREN}" type="text" placeholder="标书制作人"
                                                    title="标书制作人" style="width:98%;"/></td>
                                     </tr>
-
+                                    <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>风险条款:</td>
+                                        <td><input name="FENGXIANTIAOKUAN" id="FENGXIANTIAOKUAN"
+                                                   value="${pd.FENGXIANTIAOKUAN}" type="text" placeholder="风险条款"
+                                                   title="风险条款" style="width:98%;"/></td>
+                                    </tr>
+<%--
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
                                         <td>
@@ -181,7 +188,7 @@
                                             否<input type="radio" name="ISZILIAOQQ" value="否"
                                                     <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>
                                         </td>
-                                    </tr>
+                                    </tr>--%>
 
 
 

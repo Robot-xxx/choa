@@ -85,11 +85,14 @@ public class ProjectPurchaseController extends AcStartController {
             if (pd.get("SHOUQUANWEITUO")!=null&&!pd.get("SHOUQUANWEITUO").toString().equals("")){
                 map1.put("授权委托书", pd.get("SHOUQUANWEITUO").toString());
             }
+            if (pd.get("CONTRACT_SIGN_TIME")!=null&&!pd.get("CONTRACT_SIGN_TIME").toString().equals("")){
+                map1.put("合同签订时间", pd.get("CONTRACT_SIGN_TIME").toString());
+            }
 
-            map1.put("合同签订时间", pd.getString("CONTRACT_SIGN_TIME"));
-            map1.put("合同金额(万元)", pd.getString("CONTRACT_PRICE"));
+            map1.put("合同金额(万元)", pd.get("CONTRACT_PRICE").toString());
             map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
             map1.put("附件", "<a onclick=\"allOaFile('" + pd.getString("PURCHASE_ID") + "','514b510ca4f0414492b2942fba27ee97')\" style=' cursor:pointer;'>查看附件</a>");
+            map1.put("查看产品", "<a onclick=\"selectProduct('"+pd.getString("PURCHASE_ID")+"')\" style=' cursor:pointer;'>查看产品</a>");
             map1.put("备注", pd.getString("BZ"));
             map1.put("USERNAME", Jurisdiction.getUsername());        //指派代理人为当前用户
             String act_id = startProcessInstanceByKeyHasVariables("caigouhetongliucheng", map1);    //启动流程实例(请假单流程)通过KEY

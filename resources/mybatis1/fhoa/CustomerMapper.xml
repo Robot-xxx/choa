@@ -174,13 +174,13 @@
 		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
 			and
 				(
-			SYS_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
-			COMPANY_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
-			PHONE LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
-			OPENING_BANK LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
-			FUZHEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
-			BZ LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
-			LINKMAN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+			f.SYS_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			f.COMPANY_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			f.PHONE LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			f.OPENING_BANK LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			f.FUZHEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			f.BZ LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			f.LINKMAN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 				)
 		</if>
 		<if test="pd.CUSTOMER_ID!= null and pd.CUSTOMER_ID != ''"><!-- 关键词检索 -->
@@ -196,7 +196,7 @@
 	</select>
 	
 	<!-- 列表(全部) -->
-	<select id="listAll" parameterType="pd" resultType="pd">
+	<select id="listAll" parameterType="page" resultType="pd">
 		select
 		d8.BIANMA BIANMA8,
 		d8.NAME DNAME8,
@@ -207,7 +207,8 @@
 		<include refid="dicTableName"></include> d8
 		on f.LICENCE = d8.BIANMA
 		where 1=1
-		<if test="pd.CUSTOMER_ID!= null and pd.CUSTOMER_ID != ''"><!-- 关键词检索 -->
+
+		<if test="pd.CUSTOMER_ID!=null and pd.CUSTOMER_ID != ''">
 			and CUSTOMER_ID=#{pd.CUSTOMER_ID}
 		</if>
 	</select>

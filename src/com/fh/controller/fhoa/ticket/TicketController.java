@@ -109,6 +109,8 @@ public class TicketController extends AcStartController {
 		map.put("ids", oafileList);
 		accessoryFileManager.oaFileEdit(map);
 
+		pd.put("STATUS",2);
+
 		pd.put("TICKET_ID", ticketid);	//主键
 		pd.put("UPDATETIME", sd.format(new Date()));
 
