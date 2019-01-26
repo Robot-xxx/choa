@@ -67,20 +67,23 @@
 									<th class="center">选择公司</th>
 									<th class="center">项目编号</th>
 									<th class="center">项目名称</th>
-									<th class="center">销售合同编号</th>
-									<th class="center">采购合同编号</th>
-									<th class="center">供应商序号</th>
+
 									<th class="center">供应商名称</th>
 
 									<th class="center">合同签订时间</th>
+									<th class="center">到货期时间</th>
+									<th class="center">验收时间</th>
 									<th class="center">合同金额(万元)</th>
-									<th class="center">是否资料齐全</th>
+									<%--<th class="center">是否资料齐全</th>--%>
 
-									<th class="center">产品信息</th>
-									<th class="center">进项票信息</th>
-									<th class="center">附件</th>
+
 									<th class="center">负责人</th>
 									<th class="center">备注</th>
+                                    <th class="center">产品信息</th>
+                                    <th class="center">进项票信息</th>
+                                    <th class="center">查看回款信息</th>
+                                    <th class="center">查看付款信息</th>
+                                    <th class="center">附件</th>
 									<th class="center">操作</th>
 								</tr>
 							</thead>
@@ -99,25 +102,29 @@
 											<td class='center'>${var.SELECTCOMPANY}</td>
 											<td class='center'>${var.SYS_ID}</td>
 											<td class='center'>${var.PROJECTNAME}</td>
-											<td class='center'>${var.SALES_CONTRACT_ID}</td>
-											<td class='center'>${var.PURCHASE_CONTRACT_ID}</td>
-											<td class='center'>${var.SUPPLIER_ID}</td>
+
 											<td class='center'>${var.SUPPLIERNAME}</td>
 											<td class='center'>${var.CONTRACT_SIGN_TIME}</td>
+											<td class='center'>${var.DAOHUOQI}</td>
+											<td class='center'>${var.YANSHOUSHIJIAN}</td>
 											<td class='center'>${var.CONTRACT_PRICE}</td>
-											<td class='center'>${var.ISZILIAOQQ}</td>
-											<td class='center'><a onclick="selectProduct('${var.PURCHASE_ID}')" style=" cursor:pointer;">产看产品信息</a></td>
-											<td class='center'><a onclick="allInvoice('${var.PURCHASE_ID}')" style=" cursor:pointer;">查看进项票信息</a></td>
-											<td class='center'><a onclick="allOaFile('${var.PURCHASE_ID}','514b510ca4f0414492b2942fba27ee97')" style=" cursor:pointer;">查看附件</a></td>
+										<%--	<td class='center'>${var.ISZILIAOQQ}</td>--%>
+
                                             <td class='center'>${var.FUZEREN}</td>
                                             <td class='center'>${var.BZ}</td>
+                                            <td class='center'><a onclick="selectProduct('${var.PURCHASE_ID}')" style=" cursor:pointer;">查看产品</a></td>
+                                            <td class='center'><a onclick="allInvoice('${var.PURCHASE_ID}')" style=" cursor:pointer;">查看进项票信息</a></td>
+                                            <td class='center'><a onclick="selectHuiKuai('${var.PURCHASE_ID}')" style=" cursor:pointer;">查看回款信息</a></td>
+                                            <td class='center'><a onclick="fukuan('${var.PURCHASE_ID}')" style=" cursor:pointer;">查看付款信息</a></td>
+
+                                            <td class='center'><a onclick="allOaFile('${var.PURCHASE_ID}','514b510ca4f0414492b2942fba27ee97')" style=" cursor:pointer;">查看附件</a></td>
 
                                             <td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
 												</c:if>
 												<div class="hidden-sm hidden-xs btn-group">
-                                                    <a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if>  class="btn btn-xs btn-success" title="提交" onclick="tijiao('${var.PURCHASE_ID}',this)">
+                                                    <a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if>  class="<c:if test="${var.STATUS==1}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==2}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==3}">btn btn-xs btn-yellow</c:if>" title="提交" onclick="tijiao('${var.PURCHASE_ID}',this)">
                                                         <i class="ace-icon fa fa-check-circle-o bigger-120" title="提交"></i>
                                                     </a>
                                                     <c:if test="${QX.edit == 1 }">
@@ -250,24 +257,7 @@
                 }
             });
         }
-        //查看开票信息列表
-        function selectProduct(PARENT_ID){
-            top.jzts();
-            var diag = new top.Dialog();
-            diag.Drag=true;
-            diag.Title ="产看产品信息";
-            diag.URL = '<%=basePath%>projectinfo/list.do?PARENT_ID='+PARENT_ID;
-            diag.Width = 1100;
-            diag.Height = 600;
-            diag.Modal = true;				//有无遮罩窗口
-            diag. ShowMaxButton = true;	//最大化按钮
-            diag.ShowMinButton = true;		//最小化按钮
-            diag.CancelEvent = function(){ //关闭事件
 
-                diag.close();
-            };
-            diag.show();
-        }
 
 
         //查看开票信息列表
@@ -348,7 +338,25 @@
 				});
 			});
 		});
-		
+
+        //查看产品
+        function selectProduct(PARENT_ID){
+            top.jzts();
+            var diag = new top.Dialog();
+            diag.Drag=true;
+            diag.Title ="查看产品";
+            diag.URL = '<%=basePath%>projectinfo/list.do?PARENT_ID='+PARENT_ID;
+            diag.Width = 1100;
+            diag.Height = 600;
+            diag.Modal = true;				//有无遮罩窗口
+            diag. ShowMaxButton = true;	//最大化按钮
+            diag.ShowMinButton = true;		//最小化按钮
+            diag.CancelEvent = function(){ //关闭事件
+
+                diag.close();
+            };
+            diag.show();
+        }
 		//新增
 		function add(){
 			 top.jzts();
@@ -460,7 +468,49 @@
 		function toExcel(){
 			window.location.href='<%=basePath%>projectpurchase/excel.do';
 		}
-	</script>
+
+        //新增
+        function selectHuiKuai(PURCHASE_ID){
+
+            top.jzts();
+            var diag = new top.Dialog();
+            diag.Drag=true;
+            diag.Title ="新增";
+            diag.URL = '<%=basePath%>markethuikuai/list.do?PURCHASE_ID='+PURCHASE_ID;
+            diag.Width = 800;
+            diag.Height = 600;
+            diag.Modal = true;				//有无遮罩窗口
+            diag. ShowMaxButton = true;	//最大化按钮
+            diag.ShowMinButton = true;		//最小化按钮
+            diag.CancelEvent = function(){ //关闭事件
+
+
+                diag.close();
+            };
+            diag.show();
+        }
+
+        function fukuan(PURCHASE_ID){
+
+            top.jzts();
+            var diag = new top.Dialog();
+            diag.Drag=true;
+            diag.Title ="新增";
+            diag.URL = '<%=basePath%>markethuikuai/list.do?FUKUANID='+PURCHASE_ID;
+            diag.Width = 800;
+            diag.Height = 600;
+            diag.Modal = true;				//有无遮罩窗口
+            diag. ShowMaxButton = true;	//最大化按钮
+            diag.ShowMinButton = true;		//最小化按钮
+            diag.CancelEvent = function(){ //关闭事件
+
+
+                diag.close();
+            };
+            diag.show();
+        }
+
+    </script>
 
 
 </body>

@@ -30,6 +30,7 @@
                         <form action="cost/${msg }.do" name="Form" id="Form" method="post">
                             <input type="hidden" name="COST_ID" id="COST_ID" value="${pd.COST_ID}"/>
                             <input type="hidden" name="msg" id="msg" value="${msg }"/>
+                            <input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
 
 
                             <input type="hidden" name="oafileList" id="oafileList">

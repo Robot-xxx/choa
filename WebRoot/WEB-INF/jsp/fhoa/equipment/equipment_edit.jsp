@@ -30,6 +30,7 @@
 					<form action="equipment/${msg }.do" name="Form" id="Form" method="post">
 						<input type="hidden" name="EQUIPMENT_ID" id="EQUIPMENT_ID" value="${pd.EQUIPMENT_ID}"/>
 						<input type="hidden" name="msg" id="msg" value="${msg }"/>
+						<input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
 							<tr>

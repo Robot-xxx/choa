@@ -54,6 +54,12 @@ public interface ProjectManager{
 	 * @param pd
 	 * @throws Exception
 	 */
+	public  PageData findByProject(PageData pd)throws Exception;
+
+	/**通过id获取数据
+	 * @param pd
+	 * @throws Exception
+	 */
 	public  PageData CompanyById(PageData pd)throws Exception;
 
 	/**通过id获取数据

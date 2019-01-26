@@ -97,6 +97,7 @@ public class ProjectMarketController extends AcStartController {
 			map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
 
 			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("PROJECT_MARKET_ID")+"','14b2e7231a604b9f9edfc230fea227d8')\" style=' cursor:pointer;'>查看附件</a>");
+			map1.put("查看产品", "<a onclick=\"selectProject('"+pd.getString("PROJECT_MARKET_ID")+"')\" style=' cursor:pointer;'>查看产品</a>");
 			map1.put("备注", pd.getString("BZ"));
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
 			String act_id=startProcessInstanceByKeyHasVariables("oa_xiaoshouhetong",map1);	//启动流程实例(请假单流程)通过KEY
@@ -373,20 +374,74 @@ public class ProjectMarketController extends AcStartController {
 			vpd.put("var1", varOList.get(i).getString("SYS_ID"));	    //1
 			vpd.put("var2", varOList.get(i).getString("SALES_CONTRACT_ID"));	    //2
 			vpd.put("var3", varOList.get(i).getString("CLIENT_ID"));	    //3
-			vpd.put("var4", varOList.get(i).getString("SHENGCHANXUKEZHENG"));
-			vpd.put("var5", varOList.get(i).getString("JINGYINGXUKEZHENG"));
-			vpd.put("var6", varOList.get(i).getString("FARENSHOUQUAN"));
-			vpd.put("var7", varOList.get(i).getString("SHOUQUANWEITUO"));
+
+			if (varOList.get(i).get("SHENGCHANXUKEZHENG")!=null&&!varOList.get(i).get("SHENGCHANXUKEZHENG").toString().equals("")) {
+				vpd.put("var4",varOList.get(i).get("SHENGCHANXUKEZHENG").toString());	    //8
+			}else {
+				vpd.put("var4","");	    //8
+
+			}
+			if (varOList.get(i).get("JINGYINGXUKEZHENG")!=null&&!varOList.get(i).get("JINGYINGXUKEZHENG").toString().equals("")) {
+				vpd.put("var5", varOList.get(i).get("JINGYINGXUKEZHENG").toString());	    //8
+			}else {
+				vpd.put("var5","");	    //8
+
+			}
+			if (varOList.get(i).get("FARENSHOUQUAN")!=null&&!varOList.get(i).get("FARENSHOUQUAN").toString().equals("")) {
+				vpd.put("var6", varOList.get(i).get("FARENSHOUQUAN").toString());	    //8
+			}else {
+				vpd.put("var6","");	    //8
+
+			}
+			if (varOList.get(i).get("SHOUQUANWEITUO")!=null&&!varOList.get(i).get("SHOUQUANWEITUO").toString().equals("")) {
+				vpd.put("var7", varOList.get(i).get("SHOUQUANWEITUO").toString());	    //8
+			}else {
+				vpd.put("var7","");	    //8
+
+			}
+
 
 			vpd.put("var8", varOList.get(i).getString("PRODUCT_INFO"));	    //4
-			vpd.put("var9", varOList.get(i).get("CONTRACT_PRICE").toString());	    //5
+			if (varOList.get(i).get("CONTRACT_PRICE")!=null&&!varOList.get(i).get("CONTRACT_PRICE").toString().equals("")) {
+				vpd.put("var9", varOList.get(i).get("CONTRACT_PRICE").toString());	    //8
+			}else {
+				vpd.put("var9","");	    //8
+
+			}
+
 			vpd.put("var10", varOList.get(i).getString("CLAUSE"));	    //6
 			vpd.put("var11", varOList.get(i).get("EQUIPMENT_ADVANCE").toString());	    //7
-			vpd.put("var12", sd.format(varOList.get(i).get("PREDICT_ACCOUNT_TIME")));	    //8
-			vpd.put("var13", sd.format(varOList.get(i).get("PRACTICAL_ACCOUT_TIME")));	    //9
+
+
+			if (varOList.get(i).get("PREDICT_ACCOUNT_TIME")!=null&&!varOList.get(i).get("PREDICT_ACCOUNT_TIME").toString().equals("")) {
+				vpd.put("var12", varOList.get(i).get("PREDICT_ACCOUNT_TIME").toString());	    //8
+			}else {
+				vpd.put("var12","");	    //8
+
+			}
+
+			if (varOList.get(i).get("PRACTICAL_ACCOUT_TIME")!=null&&!varOList.get(i).get("PRACTICAL_ACCOUT_TIME").toString().equals("")) {
+				vpd.put("var13", varOList.get(i).get("PRACTICAL_ACCOUT_TIME").toString());	    //8
+			}else {
+				vpd.put("var13","");	    //8
+
+			}
+
 			vpd.put("var14", varOList.get(i).getString("CUMULATIVE_BILLING"));	//10
-			vpd.put("var15", sd.format(varOList.get(i).get("ARRIVAL_TIME")));	    //11
-			vpd.put("var116", sd.format(varOList.get(i).get("RECEPTION_TIME")));	    //12
+
+			if (varOList.get(i).get("ARRIVAL_TIME")!=null&&!varOList.get(i).get("ARRIVAL_TIME").toString().equals("")) {
+				vpd.put("var15", varOList.get(i).get("ARRIVAL_TIME").toString());	    //8
+			}else {
+				vpd.put("var15","");	    //8
+
+			}
+			if (varOList.get(i).get("RECEPTION_TIME")!=null&&!varOList.get(i).get("RECEPTION_TIME").toString().equals("")) {
+				vpd.put("var16", varOList.get(i).get("RECEPTION_TIME").toString());	    //8
+			}else {
+				vpd.put("var16","");	    //8
+
+			}
+
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

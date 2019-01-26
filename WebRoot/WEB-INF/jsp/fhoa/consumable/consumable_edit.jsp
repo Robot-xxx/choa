@@ -30,6 +30,7 @@
                         <form action="consumable/${msg }.do" name="Form" id="Form" method="post">
                             <input type="hidden" name="CONSUMABLE_ID" id="CONSUMABLE_ID" value="${pd.CONSUMABLE_ID}"/>
                             <input type="hidden" name="msg" id="msg" value="${msg }"/>
+                            <input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
                             <input type="hidden" name="oafileList" id="oafileList">
 
                             <div id="zhongxin" style="padding-top: 13px;">

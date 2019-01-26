@@ -31,6 +31,7 @@
                             <input type="hidden" name="CUSTOMER_ID" id="CUSTOMER_ID" value="${pd.CUSTOMER_ID}"/>
                             <input type="hidden" name="msg" id="msg" value="${msg }"/>
                             <input type="hidden" name="oafileList" id="oafileList">
+                            <input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
                                     <%--	<tr>

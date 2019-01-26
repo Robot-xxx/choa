@@ -91,7 +91,7 @@
 											<td class='center'>${var.BXR}</td>
 											<td class='center'>${var.DEPARTMENT}</td>
 
-											<td class='center'>${var.MONEY}</td>
+											<%--<td class='center'>${var.MONEY}</td>--%>
 											<td class='center'>${var.BZ}</td>
 											<td class='center'><a onclick="allClaimexpense('${var.COST_ID}')" style=" cursor:pointer;">查看费用明细</a></td>
 											<td class='center'><a onclick="allOaxFile('${var.COST_ID}','e710e36af2124f4b8e61765297d4ae66')" style=" cursor:pointer;">查看附件</a></td>
@@ -104,7 +104,7 @@
 													<a  class="btn btn-xs btn-success" title="打印" onclick="dayin('${var.COST_ID}');">
 														<i class="ace-icon fa fa-print bigger-120" title="打印"></i>
 													</a>
-                                                    <a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="btn btn-xs btn-success" title="提交" onclick="tijiao('${var.COST_ID}',this)">
+                                                    <a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="<c:if test="${var.STATUS==1}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==2}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==3}">btn btn-xs btn-yellow</c:if>" title="提交" onclick="tijiao('${var.COST_ID}',this)">
                                                         <i class="ace-icon fa fa-check-circle-o bigger-120" title="提交"></i>
                                                     </a>
 

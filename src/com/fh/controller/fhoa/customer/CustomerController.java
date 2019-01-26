@@ -354,10 +354,8 @@ public class CustomerController extends AcStartController {
         pd = this.getPageData();
         Map<String, Object> dataMap = new HashMap<String, Object>();
         List<String> titles = new ArrayList<String>();
-
         //主键ID
-        //titles.add("主键ID");	//1
-        titles.add("系统编序号");    //2
+        titles.add("客户序号");    //2
         titles.add("公司全称");    //3
         titles.add("联系人");    //4
         titles.add("联系电话");    //5
@@ -372,7 +370,6 @@ public class CustomerController extends AcStartController {
         for (int i = 0; i < varOList.size(); i++) {
             PageData vpd = new PageData();
             //主键ID
-            //vpd.put("var1", varOList.get(i).getString("CUSTOMER_ID"));	    //1
             vpd.put("var1", varOList.get(i).getString("SYS_ID"));        //2
             vpd.put("var2", varOList.get(i).getString("COMPANY_NAME"));        //3
             vpd.put("var3", varOList.get(i).getString("LINKMAN"));        //4

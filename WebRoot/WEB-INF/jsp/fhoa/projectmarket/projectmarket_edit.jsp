@@ -31,6 +31,7 @@
                             <input type="hidden" name="PROJECT_MARKET_ID" id="PROJECT_MARKET_ID"
                                    value="${pd.PROJECT_MARKET_ID}"/>
                             <input type="hidden" name="msg" id="msg" value="${msg }"/>
+                            <input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
                             <input type="hidden" name="oafileList" id="oafileList">
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
@@ -128,10 +129,10 @@
                                     </tr>
 
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>医院预付款:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>医院预付款（万元）:</td>
                                         <td><input type="text" name="EQUIPMENT_ADVANCE" id="EQUIPMENT_ADVANCE"
                                                    value="${pd.EQUIPMENT_ADVANCE}" maxlength="12"
-                                                   placeholder="这里输入大设备预支款金额" title="大设备预支款金额" style="width:98%;"/></td>
+                                                   placeholder="这里输入医院预付款" title="医院预付款" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>预计到账时间:</td>
@@ -167,13 +168,13 @@
                                                    data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="验收时间"
                                                    title="验收时间" style="width:98%;"/></td>
                                     </tr>
-                                    <tr>
+                                  <%--  <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
                                         <td>
                                             是<input type="radio" name="ISZILIAOQQ"    value="是" <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
                                             否<input type="radio" name="ISZILIAOQQ" checked value="否" <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>
                                         </td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
                                         <td><input type="text" name="BZ" value="${pd.BZ}"

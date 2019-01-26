@@ -62,6 +62,7 @@
 						<table id="simple-table" class="table table-striped table-bordered table-hover" style="margin-top:5px;">	
 							<thead>
 								<tr>
+
 									<th class="center" style="width:35px;">
 									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
 									</th>
@@ -72,7 +73,7 @@
 									<th class="center">生产厂家</th>
 									<th class="center">注册证号</th>
 									<th class="center">注册证类别</th>
-									<th class="center">生产批次</th>
+								<%--	<th class="center">生产批次</th>--%>
 									<th class="center">有效期</th>
 									<th class="center">资料是否齐全</th>
 									<th class="center">上传者</th>
@@ -99,7 +100,7 @@
 											<td class='center'>${var.MANUFACTURERS}</td>
 											<td class='center'>${var.REGISTRATION}</td>
 											<td class='center'>${var.BUSINESS}</td>
-											<td class='center'>${var.BATCH}</td>
+											<%--<td class='center'>${var.BATCH}</td>--%>
 											<td class='center'>${var.VALIDITY}</td>
 											<td class='center'>${var.ISZILIAOQQ}</td>
 											<td class='center'>${var.FUZEREN}</td>
@@ -111,7 +112,7 @@
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
 												</c:if>
 												<div class="hidden-sm hidden-xs btn-group">
-                                                    <a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="btn btn-xs btn-success" title="提交" onclick="tijiao('${var.INSTRUMENT_ID}',this)">
+                                                    <a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="<c:if test="${var.STATUS==1}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==2}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==3}">btn btn-xs btn-yellow</c:if>" title="提交" onclick="tijiao('${var.INSTRUMENT_ID}',this)">
                                                         <i class="ace-icon fa fa-check-circle-o bigger-120" title="提交"></i>
                                                     </a>
 

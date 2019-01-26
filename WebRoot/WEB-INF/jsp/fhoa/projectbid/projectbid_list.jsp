@@ -85,7 +85,7 @@
 									<th class="center">中标服务费预计缴纳时间</th>
 									<th class="center">中标服务费实际缴纳时间</th>
 									<th class="center">负责人</th>
-									<th class="center">是否资料齐全</th>
+								<%--	<th class="center">是否资料齐全</th>--%>
 									<th class="center">标书制作人</th>
 
 									<th class="center">备注</th>
@@ -131,10 +131,10 @@
 											<td class='center'>${var.SCHEDULED_SERVICE_PRICE_TIME}</td>
 											<td class='center'>${var.PRACTICAL_SERVICE_PRICE_TIME}</td>
 											<td class='center'>${var.FUZEREN}</td>
-											<td class='center'>${var.ISZILIAOQQ}</td>
+										<%--	<td class='center'>${var.ISZILIAOQQ}</td>--%>
 											<td class='center'>${var.BIAOSHUZHIZUOREN}</td>
 											<td class='center'>${var.BZ}</td>
-											<td class='center'><a onclick="selectProject('${var.PROJECT_BID_ID}')" style=" cursor:pointer;">查看产品</a></td>
+											<td class='center'><a onclick="selectProject2('${var.PROJECT_BID_ID}')" style=" cursor:pointer;">查看产品</a></td>
 
 											<td class='center'><a onclick="allOaFile('${var.PROJECT_BID_ID}','929f3699b3a14562afbc34ca20a07b07')" style=" cursor:pointer;">查看附件</a></td>
 											<%--<td class='center'>${var.CONTRACT_MODEL_TIME}</td>
@@ -145,7 +145,7 @@
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
 												</c:if>
 												<div class="hidden-sm hidden-xs btn-group">
-													<a  <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="btn btn-xs btn-success" title="提交" onclick="tijiao('${var.PROJECT_BID_ID}',this)">
+													<a  <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="<c:if test="${var.STATUS==1}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==2}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==3}">btn btn-xs btn-yellow</c:if>" title="提交" onclick="tijiao('${var.PROJECT_BID_ID}',this)">
 														<i class="ace-icon fa fa-check-circle-o bigger-120" title="提交"></i>
 													</a>
 
@@ -267,7 +267,7 @@
 
 
         //查看产品信息
-        function selectProject(PARENT_ID){
+        function selectProject2(PARENT_ID){
             top.jzts();
             var diag = new top.Dialog();
             diag.Drag=true;

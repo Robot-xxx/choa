@@ -31,6 +31,7 @@
 						<input type="hidden" name="INSTRUMENT_ID" id="INSTRUMENT_ID" value="${pd.INSTRUMENT_ID}"/>
 						<input type="hidden" name="msg" id="msg" value="${msg }"/>
 						<input type="hidden" name="oafileList" id="oafileList">
+						<input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
 							<tr>
@@ -53,10 +54,10 @@
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>注册证号:</td>
 								<td><input type="text" name="REGISTRATION" id="REGISTRATION" value="${pd.REGISTRATION}" maxlength="100" placeholder="这里输入注册证号" title="注册证号" style="width:98%;"/></td>
 							</tr>
-							<tr>
+							<%--<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">生产批次:</td>
 								<td><input type="text" name="BATCH" id="BATCH" value="${pd.BATCH}" maxlength="100" placeholder="这里输入生产批次" title="注册证号" style="width:98%;"/></td>
-							</tr>
+							</tr>--%>
 
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>有效期:</td>
@@ -80,7 +81,10 @@
                             </tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
-								<td><input type="text" name="BZ" id="BZ" value="${pd.BZ}" maxlength="255" placeholder="这里输入备注" title="备注" style="width:98%;"/></td>
+								<td>
+									<input type="text" name="BZ" id="BZ" value="${pd.BZ}" maxlength="255" placeholder="这里输入备注" title="备注" style="width:98%;"/>
+									<span style="color: red">注：如为非医疗器械，请在备注注明</span>
+								</td>
 							</tr>
 
 							<tr>

@@ -49,6 +49,15 @@ public class MarketHuikuaiController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
+		if(!pd.getString("PROJECT_MARKET_ID").equals("")){
+			pd.put("PROJECT_MARKET_ID",pd.getString("PROJECT_MARKET_ID"));
+		}
+		if(!pd.getString("PURCHASE_ID").equals("")){
+			pd.put("PROJECT_MARKET_ID",pd.getString("PURCHASE_ID"));
+		}
+		if(!pd.getString("FUKUANID").equals("")){
+			pd.put("FUKUANID",pd.getString("FUKUANID"));
+		}
 		pd.put("SYS_ID", this.get32UUID());	//主键
 		markethuikuaiService.save(pd);
 		mv.addObject("msg","success");
@@ -102,6 +111,14 @@ public class MarketHuikuaiController extends BaseController {
 		String keywords = pd.getString("PROJECT_MARKET_ID");				//关键词检索条件
 		if(null != keywords && !"".equals(keywords)){
 			pd.put("PROJECT_MARKET_ID", keywords.trim());
+		}
+		String keywords1 = pd.getString("PURCHASE_ID");				//关键词检索条件
+		if(null != keywords1 && !"".equals(keywords1)){
+			pd.put("PURCHASE_ID", keywords1.trim());
+		}
+		String keywords2 = pd.getString("FUKUANID");				//关键词检索条件
+		if(null != keywords2 && !"".equals(keywords2)){
+			pd.put("FUKUANID", keywords2.trim());
 		}
 		page.setPd(pd);
 		List<PageData>	varList = markethuikuaiService.list(page);	//列出MarketHuikuai列表

@@ -120,7 +120,7 @@
 			
 														<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
                                                             <li>
-                                                                <a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="btn btn-xs btn-success" title="提交" onclick="tijiao('${var.TICKET_ID}',this)">
+                                                                <a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="<c:if test="${var.STATUS==1}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==2}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==3}">btn btn-xs btn-yellow</c:if>" title="提交" onclick="tijiao('${var.TICKET_ID}',this)">
                                                                     <i class="ace-icon fa fa-check-circle-o bigger-120" title="提交"></i>
                                                                 </a>
                                                             </li>

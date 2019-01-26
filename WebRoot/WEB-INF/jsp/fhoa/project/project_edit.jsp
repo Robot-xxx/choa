@@ -30,6 +30,7 @@
                         <form action="project/${msg }.do" name="Form" id="Form" method="post">
                             <input type="hidden" name="PROJECT_ID" id="PROJECT_ID" value="${pd.PROJECT_ID}"/>
                             <input type="hidden" name="msg" id="msg" value="${msg }"/>
+                            <input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
                                     <tr>
@@ -68,7 +69,7 @@
                                     </tr>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>投标限价(万元):</td>
-                                        <td><input type="text" name="LIMITED_PRICE" id="LIMITED_PRICE"
+                                        <td><input onkeydown="change(this.value)"  type="text" name="LIMITED_PRICE" id="LIMITED_PRICE"
                                                    value="${pd.LIMITED_PRICE}" maxlength="11" placeholder="这里输入投标限价(万元)"
                                                    title="投标限价(万元)" style="width:98%;"/></td>
                                     </tr>
@@ -124,7 +125,16 @@
                                                    style="width:98%;"/>
                                         </td>
                                     </tr>
-
+                                    <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">招标预计时间:</td>
+                                        <td>
+                                            <input class="span10 date-picker" name="ZHAOBIAOYUJI"
+                                                   id="ZHAOBIAOYUJI"
+                                                   value="${pd.ZHAOBIAOYUJI}" type="text"
+                                                   data-date-format="yyyy-mm-dd" readonly="readonly"
+                                                   placeholder="招标预计时间" title="招标预计时间" style="width:98%;"/>
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">付款约定:</td>
                                         <td><input type="text" name="ACCESSORY" id="ACCESSORY" value="${pd.ACCESSORY}"
@@ -179,6 +189,13 @@
 
 
 
+    function change(val){
+        $("#LIMITED_PRICE").val(formatNum2(val))
+    }
+
+    function formatNum2(num) {
+        return (num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
 
 

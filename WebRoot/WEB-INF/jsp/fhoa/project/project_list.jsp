@@ -71,16 +71,18 @@
 									<th class="center">投标限价(万元)</th>
 									<th class="center">委托公司</th>
 									<th class="center">委托公司老板</th>
-									<th class="center">委托公司老板电话</th>
+									<%--<th class="center">委托公司老板电话</th>
 									<th class="center">联系人</th>
-									<th class="center">联系人电话</th>
+									<th class="center">联系人电话</th>--%>
 									<th class="center">客户分析</th>
+									<th class="center">招标预计时间</th>
 									<%--<th class="center">产品名称</th>
 									<th class="center">供应商名称</th>
 									<th class="center">客户名称</th>--%>
 									<th class="center">付款约定</th>
 									<th class="center">负责人</th>
 									<th class="center">备注</th>
+									<th class="center">更新时间</th>
 									<th class="center">操作</th>
 								</tr>
 							</thead>
@@ -103,22 +105,24 @@
 											<td class='center'>${var.LIMITED_PRICE}</td>
 											<td class='center'>${var.CORPORATE_COMPANY}</td>
 											<td class='center'>${var.CORPORATE_BOSS}</td>
-											<td class='center'>${var.BOSS_PHONE}</td>
+											<%--<td class='center'>${var.BOSS_PHONE}</td>
 											<td class='center'>${var.LINKMAN}</td>
-											<td class='center'>${var.BUSINESS_PEOPLE}</td>
+											<td class='center'>${var.BUSINESS_PEOPLE}</td>--%>
 											<td class='center'>${var.CUSTOMER}</td>
+											<td class='center'>${var.ZHAOBIAOYUJI}</td>
 											<%--<td class='center'>${var.PRODUCT}</td>
 											<td class='center'>${var.SUPPLIER}</td>
 											<td class='center'>${var.CLIENT}</td>--%>
 											<td class='center'>${var.ACCESSORY}</td>
 											<td class='center'>${var.FUZEREN}</td>
 											<td class='center'>${var.BZ}</td>
+											<td class='center'>${var.UPDATETIME}</td>
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
 												</c:if>
 												<div class="hidden-sm hidden-xs btn-group">
-													<a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if>  class="btn btn-xs btn-success" title="提交" onclick="tijiao('${var.PROJECT_ID}',this)">
+													<a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if>  class="<c:if test="${var.STATUS==1}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==2}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==3}">btn btn-xs btn-yellow</c:if>" title="提交" onclick="tijiao('${var.PROJECT_ID}',this)">
 														<i class="ace-icon fa fa-check-circle-o bigger-120" title="提交"></i>
 													</a>
 													<c:if test="${QX.edit == 1 }">

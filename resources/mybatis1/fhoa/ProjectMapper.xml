@@ -40,6 +40,7 @@
 		f.BZ,
 		f.CREATETIME,
 		f.UPDATETIME,
+		f.ZHAOBIAOYUJI,
 
 		f.PROJECT_ID
 	</sql>
@@ -72,6 +73,7 @@
 		BZ,
 		CREATETIME,
 		UPDATETIME,
+		ZHAOBIAOYUJI,
 		PROJECT_ID
 	</sql>
 	
@@ -103,6 +105,7 @@
 		#{BZ},
 		#{CREATETIME},
 		#{UPDATETIME},
+		#{ZHAOBIAOYUJI},
 		#{PROJECT_ID}
 	</sql>
 	
@@ -156,6 +159,7 @@
 			BZ = #{BZ},
 			CREATETIME = #{CREATETIME},
 			UPDATETIME = #{UPDATETIME},
+			ZHAOBIAOYUJI = #{ZHAOBIAOYUJI},
 			PROJECT_ID = PROJECT_ID
 		where 
 			PROJECT_ID = #{PROJECT_ID}
@@ -169,6 +173,17 @@
 		<include refid="tableName"></include> f
 		where 
 			f.PROJECT_ID = #{PROJECT_ID}
+	</select>
+
+
+	<!-- 通过ID获取数据 -->
+	<select id="findByProject" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from
+		<include refid="tableName"></include> f
+		where
+		f.SYS_ID = #{PROJIECT_ID}
 	</select>
 	
 	<!-- 列表 -->

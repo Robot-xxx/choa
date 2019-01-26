@@ -68,12 +68,12 @@
                                     </th>
                                     <th class="center" style="width:50px;">序号</th>
                                     <th class="center">文件名字</th>
-                                    <th class="center">文件路径</th>
+                                    <%--<th class="center">文件路径</th>--%>
                                     <th class="center">创建时间</th>
                                     <th class="center">备注</th>
                                     <th class="center">文件类型</th>
                                     <th class="center">上传者</th>
-                                    <th class="center">文件大小</th>
+                                  <%--  <th class="center">文件大小</th>--%>
                                     <th class="center">是否有纸质资料</th>
                                     <th class="center">操作</th>
                                 </tr>
@@ -102,12 +102,12 @@
                                                         <c:if test="${var.fileType == 'wenben' }"><a style="cursor:pointer;" onclick="goViewTxt('${var.NAME}${fn:substring(var.FILEPATH ,19,fn:length(var.FILEPATH))}','${var.OAFILE_ID}','gbk');">[预览]</a></c:if>
                                                         <div class="yulantu" id="yulantu${vs.index+1}"></div>
                                                     </td>
-                                                    <td class='center'>${var.FILEPATH}</td>
+                                                 <%--   <td class='center'>${var.FILEPATH}</td>--%>
                                                     <td class='center'>${var.CTIME}</td>
                                                     <td class='center'>${var.BZ}</td>
                                                     <td class='center'>${var.FILETYPE}</td>
                                                     <td class='center'>${var.USERNAME}</td>
-                                                    <td class='center'>${var.FILESIZE}</td>
+                                                   <%-- <td class='center'>${var.FILESIZE}</td>--%>
                                                     <td class='center'>${var.ISZILIAO}</td>
                                                     <td class="center">
 

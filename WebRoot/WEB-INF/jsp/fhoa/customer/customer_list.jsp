@@ -74,7 +74,6 @@
 									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
 									</th>
 									<th class="center" style="width:50px;">序号</th>
-									<%--<th class="center">主键ID</th>--%>
 									<th class="center">客户序号</th>
 									<th class="center">公司全称</th>
 									<th class="center">联系人</th>
@@ -130,7 +129,7 @@
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
 												</c:if>
 												<div class="hidden-sm hidden-xs btn-group">
-													<a   <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="btn btn-xs btn-success" title="提交" onclick="tijiao('${var.CUSTOMER_ID}',this)">
+													<a   <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="<c:if test="${var.STATUS==1}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==2}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==3}">btn btn-xs btn-yellow</c:if>" title="提交" onclick="tijiao('${var.CUSTOMER_ID}',this)">
 														<i class="ace-icon fa fa-check-circle-o bigger-120" title="提交"></i>
 													</a>
 													<c:if test="${QX.edit == 1 }">
@@ -442,7 +441,7 @@
 		
 		//导出excel
 		function toExcel(){
-			window.location.href='<%=basePath%>customer/excel.do';
+			window.location.href='<%=basePath%>customer/excel.do?CUSTOMER_ID=';
 		}
 	</script>
 

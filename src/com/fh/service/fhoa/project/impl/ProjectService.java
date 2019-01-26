@@ -62,13 +62,21 @@ public class ProjectService implements ProjectManager{
 	public List<PageData> listAll(PageData pd)throws Exception{
 		return (List<PageData>)dao.findForList("ProjectMapper.listAll", pd);
 	}
-	
+
 	/**通过id获取数据
 	 * @param pd
 	 * @throws Exception
 	 */
 	public PageData findById(PageData pd)throws Exception{
 		return (PageData)dao.findForObject("ProjectMapper.findById", pd);
+	}
+
+	/**通过id获取数据
+	 * @param pd
+	 * @throws Exception
+	 */
+	public PageData findByProject(PageData pd)throws Exception{
+		return (PageData)dao.findForObject("ProjectMapper.findByProject", pd);
 	}
 
 

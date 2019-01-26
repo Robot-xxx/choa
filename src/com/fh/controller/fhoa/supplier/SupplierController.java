@@ -379,10 +379,34 @@ public class SupplierController extends AcStartController {
             vpd.put("var8", varOList.get(i).getString("DNAME7"));	    //7
 			vpd.put("var9", varOList.get(i).getString("ISZILIAOQQ"));	    //6
 
-			vpd.put("var10", varOList.get(i).getString("SHENGCHANXUKEZHENG"));	    //6
-			vpd.put("var11", varOList.get(i).getString("JINGYINGXUKEZHENG"));	    //6
-			vpd.put("var12", varOList.get(i).getString("FARENSHOUQUAN"));	    //6
-			vpd.put("var13", varOList.get(i).getString("SHOUQUANWEITUO"));	    //6
+
+
+			if (varOList.get(i).get("SHENGCHANXUKEZHENG")!=null&&!varOList.get(i).get("SHENGCHANXUKEZHENG").toString().equals("")) {
+				vpd.put("var10", sd.format(varOList.get(i).get("SHENGCHANXUKEZHENG")));	    //8
+			}else {
+				vpd.put("var10","");	    //8
+
+			}
+			if (varOList.get(i).get("JINGYINGXUKEZHENG")!=null&&!varOList.get(i).get("JINGYINGXUKEZHENG").toString().equals("")) {
+				vpd.put("var11", sd.format(varOList.get(i).get("JINGYINGXUKEZHENG")));	    //8
+			}else {
+				vpd.put("var11","");	    //8
+
+			}
+			if (varOList.get(i).get("FARENSHOUQUAN")!=null&&!varOList.get(i).get("FARENSHOUQUAN").toString().equals("")) {
+				vpd.put("var12", sd.format(varOList.get(i).get("FARENSHOUQUAN")));	    //8
+			}else {
+				vpd.put("var12","");	    //8
+
+			}
+			if (varOList.get(i).get("SHOUQUANWEITUO")!=null&&!varOList.get(i).get("SHOUQUANWEITUO").toString().equals("")) {
+				vpd.put("var13", sd.format(varOList.get(i).get("SHOUQUANWEITUO")));	    //8
+			}else {
+				vpd.put("var13","");	    //8
+
+			}
+
+
 			vpd.put("var14", varOList.get(i).getString("FUZHEREN"));	    //6
 
 			vpd.put("var15", varOList.get(i).getString("BZ"));	    //9

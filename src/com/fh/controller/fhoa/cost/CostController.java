@@ -173,7 +173,7 @@ public class CostController extends AcStartController {
 		map.put("ids", oafileList);
 		accessoryFileManager.oaFileEdit(map);
 		pd.put("UPDATETIME", sd1.format(new Date()));
-
+		pd.put("STATUS",2);
 		pd.put("COST_ID", costId);	//主键
 		costService.save(pd);
 		mv.addObject("msg","success");

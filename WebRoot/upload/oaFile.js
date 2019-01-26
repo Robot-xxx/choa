@@ -7,6 +7,8 @@ var parentid;//图片父类
 
 
 
+
+
 //查看文件列表
 function allOaFile(oafileid,FILETYPE){
     top.jzts();

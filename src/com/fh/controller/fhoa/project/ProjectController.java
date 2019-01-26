@@ -134,6 +134,20 @@ public class ProjectController extends AcStartController {
 		return map;
 	}
 
+	@RequestMapping(value="/findByProject")
+	@ResponseBody
+	public Map<String, Object> findByProject()throws Exception{
+		Map<String, Object> map = new HashMap<>();
+		List<PageData> list = new ArrayList<>();
+		PageData pd = new PageData();
+		String errInfo = "success";
+
+		pd = this.getPageData();
+		pd = projectService.findByProject(pd);	//根据ID读取
+
+		map.put("list", pd);
+		return map;
+	}
 
 
 
@@ -440,7 +454,7 @@ public class ProjectController extends AcStartController {
 		mv.addObject("msg", "edit");
 		mv.addObject("pd", pd);
 		return mv;
-	}	
+	}
 	
 	 /**批量删除
 	 * @param
