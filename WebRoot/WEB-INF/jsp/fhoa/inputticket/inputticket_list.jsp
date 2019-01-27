@@ -55,6 +55,8 @@
 								<td style="vertical-align:top;padding-left:2px"><a class="btn btn-light btn-xs" onclick="tosearch();"  title="检索"><i id="nav-search-icon" class="ace-icon fa fa-search bigger-110 nav-search-icon blue"></i></a></td>
 								</c:if>
 								<c:if test="${QX.toExcel == 1 }"><td style="vertical-align:top;padding-left:2px;"><a class="btn btn-light btn-xs" onclick="toExcel();" title="导出到EXCEL"><i id="nav-search-icon" class="ace-icon fa fa-download bigger-110 nav-search-icon blue"></i></a></td></c:if>
+								<c:if test="${QX.toExcel == 1 }"><td style="vertical-align:top;padding-left:2px;"><a class="btn btn-light btn-xs" onclick="xiazai();" title="下载模版"><i id="nav-search-icon" class="ace-icon fa fa-download bigger-110 nav-search-icon blue"></i>下载模版</a></td></c:if>
+
 							</tr>
 						</table>
 						<!-- 检索  -->
@@ -73,6 +75,7 @@
 									<th class="center">进项票总额(万元)</th>
 									<th class="center">发票号</th>
 									<th class="center">金额(万元)</th>
+									<th class="center">已回票金额(万元)</th>
 									<th class="center">备注</th>
 									<th class="center">附件</th>
 									<th class="center">操作</th>
@@ -97,6 +100,7 @@
 											<td class='center'>${var.JINPRICE}</td>
 											<td class='center'>${var.TICKET_NO}</td>
 											<td class='center'>${var.MONEY}</td>
+											<td class='center'>${var.YIHUIPIAOJINE}</td>
 											<td class='center'>${var.JINBZ}</td>
 											<td class='center'><a onclick="allOaFile('${var.SYS_ID}','ca5306c094aa4bd8b1dbf642c9ace871')" style=" cursor:pointer;">查看附件</a></td>
 											<td class="center">
@@ -213,6 +217,11 @@
 	<!-- 文件上传-->
 	<script src="upload/oaFile.js"></script>
 	<script type="text/javascript">
+        //下载模版
+        function xiazai(){
+            window.location.href='<%=basePath%>inputticket/downExcel.do';
+        }
+
 		$(top.hangge());//关闭加载状态
 		//检索
 		function tosearch(){

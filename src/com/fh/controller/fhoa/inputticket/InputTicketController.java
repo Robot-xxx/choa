@@ -9,8 +9,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import com.fh.service.fhoa.accessoryfile.AccessoryFileManager;
+import com.fh.util.*;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -20,11 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.fh.controller.base.BaseController;
 import com.fh.entity.Page;
-import com.fh.util.AppUtil;
-import com.fh.util.ObjectExcelView;
-import com.fh.util.PageData;
-import com.fh.util.Jurisdiction;
-import com.fh.util.Tools;
 import com.fh.service.fhoa.inputticket.InputTicketManager;
 
 /** 
@@ -81,6 +78,7 @@ public class InputTicketController extends BaseController {
 		try{
 			pd = this.getPageData();
 			page.setPd(pd);
+			page.setShowCount(999999);
 			list = inputticketService.list(page);
 		} catch(Exception e){
 			errInfo = "error";
@@ -90,7 +88,14 @@ public class InputTicketController extends BaseController {
 		map.put("list",list);
 		return map;
 	}
-
+	/**下载模版
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/downExcel")
+	public void downExcel(HttpServletResponse response)throws Exception{
+		FileDownload.fileDownload(response, PathUtil.getClasspath() + Const.FILEPATHFILE + "收发票联络单（模板）.xls", "收发票联络单（模板）.xls");
+	}
 
 	/**保存
 	 * @param

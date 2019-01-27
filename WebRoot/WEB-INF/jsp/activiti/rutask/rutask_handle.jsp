@@ -57,8 +57,8 @@
 											<tr>
 												<td style="width:75px;text-align: right;padding-top: 13px;">审批意见:</td>
 												<td colspan="10" id="omsg">
-													<textarea  name="OPINION" id="OPINION" maxlength="4000" style="display:none" ></textarea>
-													<script id="editor" type="text/plain" style="width:100%;height:130px;">${pd.DESCRIPTION}</script>
+													<textarea  name="OPINION" id="OPINION" maxlength="4000" style="height: 100px; width: 100%"  ></textarea>
+												<%--	<script id="editor" type="text/plain" style="width:100%;height:130px;">${pd.DESCRIPTION}</script>--%>
 												</td>
 											</tr>
 										</table>
@@ -126,13 +126,13 @@
 											</td>
 											<td class='center'>${var.ZTIME}</td>
 											<td style="padding-top: 10px;" class="center">
-												<c:forEach items="${fn:split(var.TEXT_,',fh,')}"   var="val" varStatus="dvs"  >
+										<%--		<c:forEach items="${fn:split(var.TEXT_,',fh,')}"   var="val" varStatus="dvs"  >
 							                            <c:if test="${dvs.index == 0 }">${val}</c:if>
 							                            <c:if test="${dvs.index == 1 }">
 							                            	<a onclick="details('d${vs.index+1}')" style="cursor:pointer;" title="详情"><i id="nav-search-icon" class="ace-icon fa fa-search bigger-110 nav-search-icon blue"></i>
 							                            </c:if>
-							                    </c:forEach>
-							                    <textarea id="d${vs.index+1}" style="display: none;">${var.TEXT_}</textarea>
+							                    </c:forEach>--%>
+							                    <textarea id="d${vs.index+1}" readonly>${var.TEXT_}</textarea>
 											</td>
 										</tr>
 									</c:forEach>

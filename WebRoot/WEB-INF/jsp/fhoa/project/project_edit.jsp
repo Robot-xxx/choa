@@ -126,13 +126,13 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">招标预计时间:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">预计开标时间:</td>
                                         <td>
                                             <input class="span10 date-picker" name="ZHAOBIAOYUJI"
                                                    id="ZHAOBIAOYUJI"
                                                    value="${pd.ZHAOBIAOYUJI}" type="text"
                                                    data-date-format="yyyy-mm-dd" readonly="readonly"
-                                                   placeholder="招标预计时间" title="招标预计时间" style="width:98%;"/>
+                                                   placeholder="预计开标时间" title="预计开标时间" style="width:98%;"/>
                                         </td>
                                     </tr>
                                     <tr>

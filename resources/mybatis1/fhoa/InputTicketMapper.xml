@@ -26,6 +26,7 @@
 		f.USERID,
 		f.CREATETIME,
 		f.UPDATETIME,
+		f.YIHUIPIAOJINE,
 		f.SYS_ID
 	</sql>
 	
@@ -43,6 +44,7 @@
 		USERID,
 		CREATETIME,
 		UPDATETIME,
+		YIHUIPIAOJINE,
 		SYS_ID
 	</sql>
 	
@@ -60,6 +62,7 @@
 		#{USERID},
 		#{CREATETIME},
 		#{UPDATETIME},
+		#{YIHUIPIAOJINE},
 		#{SYS_ID}
 	</sql>
 	
@@ -99,7 +102,8 @@
 			USERID = #{USERID},
 			CREATETIME = #{CREATETIME},
 			UPDATETIME = #{UPDATETIME},
-		SYS_ID = SYS_ID
+			YIHUIPIAOJINE = #{YIHUIPIAOJINE},
+			SYS_ID = SYS_ID
 		where
 		SYS_ID = #{SYS_ID}
 	</update>

@@ -136,6 +136,7 @@ public class ProjectMarketController extends AcStartController {
 			pd = this.getPageData();
 			pd.put("STATUS",1);
 			page.setPd(pd);
+			page.setShowCount(99999);
 			list = projectmarketService.list(page);
 		} catch (Exception e) {
 			errInfo = "error";

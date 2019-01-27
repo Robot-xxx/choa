@@ -44,6 +44,7 @@
 		f.CREATETIME,
 		f.UPDATETIME,
 		f.BZ,
+		f.LAIKUAN,
 		f.REQUEST_ID
 	</sql>
 
@@ -79,6 +80,7 @@
         CREATETIME,
         UPDATETIME,
         BZ,
+        LAIKUAN,
 		REQUEST_ID
 	</sql>
 
@@ -114,6 +116,7 @@
 		#{CREATETIME},
 		#{UPDATETIME},
 		#{BZ},
+		#{LAIKUAN},
 		#{REQUEST_ID}
 	</sql>
 
@@ -171,6 +174,7 @@
         CREATETIME = #{CREATETIME},
         UPDATETIME = #{UPDATETIME},
         BZ = #{BZ},
+        LAIKUAN = #{LAIKUAN},
         REQUEST_ID = REQUEST_ID
         where
         REQUEST_ID = #{REQUEST_ID}

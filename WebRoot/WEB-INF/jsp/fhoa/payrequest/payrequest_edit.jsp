@@ -159,7 +159,7 @@
                                                    title="附言" style="width:98%;"/></td>
                                     </tr>
                                     <tr id="hidden2">
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">合同编号:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">采购合同编号:</td>
                                         <td>
                                             <select class="chosen-select form-control" name="hetongbianhao"
                                                     id="hetongbianhao" data-placeholder="请选择"
@@ -168,7 +168,7 @@
                                             </select>
                                             <input hidden type="text" name="CONTRACT_NO" id="CONTRACT_NO"
                                                    value="${pd.CONTRACT_NO}" maxlength="100" placeholder="这里输入合同编号"
-                                                   title="合同编号" style="width:98%;"/></td>
+                                                   title="采购合同编号" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
@@ -211,6 +211,14 @@
                                                    maxlength="255" placeholder="这里输入来款单位" title="来款单位"
                                                    style="width:98%;"/></td>
                                     </tr>
+                                    <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font
+                                                color="red">*</font>来款情况:
+                                        </td>
+                                        <td><input type="text" name="LAIKUAN" id="LAIKUAN" value="${pd.LAIKUAN}"
+                                                   maxlength="255" placeholder="这里输入来款情况" title="来款情况"
+                                                   style="width:98%;"/></td>
+                                    </tr>
                                    <%-- <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
                                                 color="red">*</font>付款剩余余额:
@@ -236,7 +244,9 @@
                                         </td>
                                         <td><input type="text" name="BZ" id="BZ"
                                                    value="${pd.BZ}" maxlength="13" placeholder="这里输入备注"
-                                                   title="备注" style="width:98%;"/></td>
+                                                   title="备注" style="width:98%;"/>
+                                        <span style="color: red">请备注来款情况，包括垫资等</span>
+                                        </td>
                                     </tr>
                                 </table>
                             </div>

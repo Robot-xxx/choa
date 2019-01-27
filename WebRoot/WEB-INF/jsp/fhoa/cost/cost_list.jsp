@@ -62,7 +62,7 @@
 									<th class="center">报销人</th>
 									<th class="center">部门</th>
 
-									<%--<th class="center">总额</th>--%>
+									<th class="center">总额</th>
 									<th class="center">备注</th>
 									<th class="center">费用明细</th>
 									<th class="center">附件</th>
@@ -91,7 +91,7 @@
 											<td class='center'>${var.BXR}</td>
 											<td class='center'>${var.DEPARTMENT}</td>
 
-											<%--<td class='center'>${var.MONEY}</td>--%>
+											<td class='center'>${var.MONEY}</td>
 											<td class='center'>${var.BZ}</td>
 											<td class='center'><a onclick="allClaimexpense('${var.COST_ID}')" style=" cursor:pointer;">查看费用明细</a></td>
 											<td class='center'><a onclick="allOaxFile('${var.COST_ID}','e710e36af2124f4b8e61765297d4ae66')" style=" cursor:pointer;">查看附件</a></td>

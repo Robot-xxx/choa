@@ -75,10 +75,13 @@
 							</tr>
 
 							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>已回票金额(万元):</td>
+								<td><input  type="number" name="YIHUIPIAOJINE" id="YIHUIPIAOJINE" value="${pd.YIHUIPIAOJINE}" maxlength="12" placeholder="这里输入已回票金额" title="已回票金额" style="width:98%;"/></td>
+							</tr>
+							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>金额(万元):</td>
 								<td><input  type="number" name="MONEY" id="MONEY" value="${pd.MONEY}" maxlength="12" placeholder="这里输入金额" title="金额" style="width:98%;"/></td>
 							</tr>
-
 
 
 
@@ -147,6 +150,16 @@
 		            time:2
 		        });
 				$("#PROJECT_ID").focus();
+			return false;
+			}
+			if($("#YIHUIPIAOJINE").val()==""){
+				$("#YIHUIPIAOJINE").tips({
+					side:3,
+		            msg:'请输入已回票金额',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YIHUIPIAOJINE").focus();
 			return false;
 			}
 			if($("#PURCHASENUMBER").val()==""){

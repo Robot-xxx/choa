@@ -62,6 +62,7 @@ public class StaffController extends BaseController {
 		pd = this.getPageData();
 		pd.put("STAFF_ID", this.get32UUID());	//主键
 		pd.put("USER_ID", "");					//绑定账号ID
+
 		staffService.save(pd);					//保存员工信息到员工表
 		String DEPARTMENT_IDS = departmentService.getDEPARTMENT_IDS(pd.getString("DEPARTMENT_ID"));//获取某个部门所有下级部门ID
 		pd.put("DATAJUR_ID", pd.getString("STAFF_ID")); //主键

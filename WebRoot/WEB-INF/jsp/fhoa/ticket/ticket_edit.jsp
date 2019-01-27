@@ -51,15 +51,14 @@
 							</tr>
 
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>进项票产品名称:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>采购合同:</td>
 								<td>
 									<select class="chosen-select form-control"  id="jinxiang" style="vertical-align:top;width: 68px; width: 98%">
 
 									</select>
-									<font style="color: red">	注：仅填写金额最大的一个产品即可</font>
-									<input type="text" hidden name="ENTRYTICKETNAME" id="ENTRYTICKETNAME" value="${pd.ENTRYTICKETNAME}" maxlength="255"  style="width:98%;"/></td>
+									<input type="text" hidden name="ENTRYTICKETNAME" id="ENTRYTICKETNAME" value="${pd.ENTRYTICKETNAME}" maxlength="255"  style="width:98%;"/>
 									<input type="text" hidden name="JINXIANGID" id="JINXIANGID" value="${pd.JINXIANGID}" maxlength="255"  style="width:98%;"/>
-
+									<span style="color:red">注：项目采购情况流程完成后才能选择</span>
 								</td>
 
 
@@ -83,14 +82,24 @@
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>合同总额(万元):</td>
 								<td><input type="text" name="OPEN_TICKET_PRICE" id="OPEN_TICKET_PRICE" value="${pd.OPEN_TICKET_PRICE}" maxlength="11" placeholder="这里输入合同总额" title="合同总额" style="width:98%;"/></td>
 							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>开票金额:</td>
+								<td><input type="text" name="KAIPIAOJINE" id="KAIPIAOJINE" value="${pd.KAIPIAOJINE}" maxlength="255" placeholder="这里输入开票金额" title="开票金额" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>已开票金额:</td>
+								<td><input type="text" name="YIKAIPIAOJINE" id="YIKAIPIAOJINE" value="${pd.YIKAIPIAOJINE}" maxlength="255" placeholder="这里输入已开票金额" title="已开票金额" style="width:98%;"/></td>
+							</tr>
                             <tr>
                                 <td style="width:75px;text-align: right;padding-top: 13px;">进项票备注:</td>
-                                <td><input type="text" name="TICKET_INFO" id="TICKET_INFO" value="${pd.TICKET_INFO}" maxlength="255" placeholder="这里输入进项票信息附件" title="进项票信息附件" style="width:98%;"/></td>
+                                <td><input type="text" name="TICKET_INFO" id="TICKET_INFO" value="${pd.TICKET_INFO}" maxlength="255" placeholder="这里输入进项票备注" title="进项票备注" style="width:98%;"/></td>
                             </tr>
 
                             <tr>
                             <td style="width:75px;text-align: right;padding-top: 13px;">开票原因:</td>
-                            <td><input type="text" name="OPEN_TICKET_YUANYIN" id="OPEN_TICKET_YUANYIN" value="${pd.OPEN_TICKET_YUANYIN}" maxlength="255" placeholder="开票原因" title="开票原因" style="width:98%;"/></td>
+                            <td><input type="text" name="OPEN_TICKET_YUANYIN" id="OPEN_TICKET_YUANYIN" value="${pd.OPEN_TICKET_YUANYIN}" maxlength="255" placeholder="开票原因" title="开票原因" style="width:98%;"/>
+								<span style="color: red">注：请注明回款时间</span>
+							</td>
                         </tr>
 							<tr>
 								<td style="text-align: center;" colspan="10">
@@ -168,7 +177,27 @@
 			return false;
 			}
 
+            if($("#KAIPIAOJINE").val()==""){
+                $("#KAIPIAOJINE").tips({
+                    side:3,
+                    msg:'请输入开票金额',
+                    bg:'#AE81FF',
+                    time:2
+                });
+                $("#KAIPIAOJINE").focus();
+                return false;
+            }
 
+            if($("#YIKAIPIAOJINE").val()==""){
+                $("#YIKAIPIAOJINE").tips({
+                    side:3,
+                    msg:'请输入已开票金额',
+                    bg:'#AE81FF',
+                    time:2
+                });
+                $("#YIKAIPIAOJINE").focus();
+                return false;
+            }
 
 
 			if($("#SYS_ID").val()==""){
@@ -222,10 +251,9 @@
                         $("#jinxiang").append("<option value=''>请选择产品名称</option>");
                         for (var i = 0; i < data.list.length; i++) {
                             if (data.list[i].SYS_ID  == project) {
-                                console.log(data.list[i].SYS_ID)
-                                $("#jinxiang").append("<option value=" +  data.list[i].SYS_ID  + " selected='selected'>" +data.list[i].PROJECT_NAME + "</option>");
+                                $("#jinxiang").append("<option value=" +  data.list[i].SYS_ID  + " selected='selected'>" +data.list[i].PROJECT_NAME +"-"+data.list[i].PROJECT_ID +"</option>");
                             } else {
-                                $("#jinxiang").append("<option value=" + data.list[i].SYS_ID  + ">" +data.list[i].PROJECT_NAME + "</option>");
+                                $("#jinxiang").append("<option value=" + data.list[i].SYS_ID  + ">" +data.list[i].PROJECT_NAME +"-"+data.list[i].PROJECT_ID+ "</option>");
                             }
                         }
                         downList('jinxiang');
@@ -247,9 +275,9 @@
                         $("#xiaoshou").append("<option value=''>请选择销售合同</option>");
                         for (var i = 0; i < data.list.length; i++) {
                             if (data.list[i].SALES_CONTRACT_ID  == SALES_CONTRACT_ID) {
-                                $("#xiaoshou").append("<option value=" +  data.list[i].CONTRACT_PRICE  + " selected='selected'>" +data.list[i].SALES_CONTRACT_ID + "</option>");
+                                $("#xiaoshou").append("<option value=" +  data.list[i].CONTRACT_PRICE  + " selected='selected'>" +data.list[i].SALES_CONTRACT_ID+"-"+data.list[i].PROJECT_NAME+ "</option>");
                             } else {
-                                $("#xiaoshou").append("<option value=" + data.list[i].CONTRACT_PRICE  + ">" +data.list[i].SALES_CONTRACT_ID + "</option>");
+                                $("#xiaoshou").append("<option value=" + data.list[i].CONTRACT_PRICE  + ">" +data.list[i].SALES_CONTRACT_ID+"-"+data.list[i].PROJECT_NAME+  "</option>");
                             }
                         }
                         downList('xiaoshou');

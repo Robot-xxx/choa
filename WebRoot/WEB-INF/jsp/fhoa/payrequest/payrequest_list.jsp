@@ -95,7 +95,7 @@
                                     <th class="center">附言</th>
                                    <%-- <th class="center">项目编号</th>--%>
                                     <th class="center">项目名称</th>
-                                    <th class="center">合同编号</th>
+                                    <th class="center">采购合同编号</th>
                                     <th class="center">金额(元)</th>
                                     <%--<th class="center">垫付金额(元)</th>
                                     <th class="center">来款单位</th>--%>
@@ -123,13 +123,15 @@
                                                     <td class='center'
                                                         style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
                                                     <td class='center'>${var.SELECTCOMPANY}</td>
+<%--
                                                     <td class='center'>${var.REQUEST_NO}</td>
+--%>
                                                     <td class='center'>${var.REQUEST_DATE}</td>
                                                     <td class='center'>${var.RESPONSIBLEPERSON}</td>
                                                     <td class='center'>${var.REQUEST_TYPE}</td>
                                                     <td class='center'>${var.PAY_METHOD}</td>
-                                                    <td class='center'>${var.ISHEZUO}</td>
-
+                                                <%--    <td class='center'>${var.ISHEZUO}</td>
+--%>
                                                         <%--	<td class='center'>${var.ACCOUNT_TYPE}</td>--%>
 
                                                     <c:if test="${var.ISHEZUO=='是'}">
@@ -143,15 +145,16 @@
                                                     <td class='center'>${var.PAYEEBANK}</td>
                                                     <td class='center'>${var.BANKACCOUNT}</td>
                                                     <td class='center'>${var.POSTSCRIPT}</td>
-                                                    <td class='center'>${var.PROJIECT_ID}</td>
+                                                  <%--  <td class='center'>${var.PROJIECT_ID}</td>--%>
                                                     <td class='center'>${var.PROJECT_NAME}</td>
                                                     <td class='center'>${var.CONTRACT_NO}</td>
                                                     <td class='center'>${var.MONEY}</td>
-                                                    <td class='center'>${var.PAY_ACCOUNT}</td>
-                                                    <td class='center'>${var.PAY_UNIT}</td>
-                                                    <td class='center'><a onclick="allOaFile('${var.REQUEST_ID}','27be24c2087b4de88741b831a6b3686c')" style=" cursor:pointer;">查看附件</a></td>
+                                            <%--        <td class='center'>${var.PAY_ACCOUNT}</td>
+                                                    <td class='center'>${var.PAY_UNIT}</td>--%>
                                                     <td class='center'>${var.FUKUANYUEDING}</td>
                                                     <td class='center'>${var.BZ}</td>
+                                                    <td class='center'><a onclick="allOaFile('${var.REQUEST_ID}','27be24c2087b4de88741b831a6b3686c')" style=" cursor:pointer;">查看附件</a></td>
+
                                                     <td class="center">
                                                         <c:if test="${QX.edit != 1 && QX.del != 1 }">
                                                             <span class="label label-large label-grey arrowed-in-right arrowed-in"><i

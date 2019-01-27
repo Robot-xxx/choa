@@ -96,6 +96,8 @@
 	<script src="static/ace/js/date-time/bootstrap-datepicker.js"></script>
 	<!--提示框-->
 	<script type="text/javascript" src="static/js/jquery.tips.js"></script>
+<!-- 下拉列表框 -->
+<script src="common/downList.js"></script>
 		<script type="text/javascript">
 		$(top.hangge());
 		//保存
