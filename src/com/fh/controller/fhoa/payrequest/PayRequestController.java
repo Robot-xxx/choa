@@ -302,10 +302,13 @@ public class PayRequestController extends AcStartController {
 		List<PageData> list= payrequestService.taskAll(pd);
 
 		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i).getString("NAME_").toString().equals("部门经理（运营部）")){
-				map.put("tag","1");
-				return map;
+			if(list.get(i).get("ASSIGNEE_")!=null&&!list.get(i).toString().equals("")){
+				if(list.get(i).getString("ASSIGNEE_").toString().equals("R20181028660767")){
+					map.put("tag","1");
+					return map;
+				}
 			}
+
 		}
 		map.put("tag","0");
 		return map;
@@ -368,6 +371,7 @@ public class PayRequestController extends AcStartController {
 		pd = this.getPageData();
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
+		titles.add("选择公司");	//1
 		titles.add("付款申请编号");	//1
 		titles.add("申请日期");	//2
 		titles.add("经办人");	//3
@@ -391,24 +395,25 @@ public class PayRequestController extends AcStartController {
 		List<PageData> varList = new ArrayList<PageData>();
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
-			vpd.put("var1", varOList.get(i).getString("REQUEST_NO"));	    //1
-			vpd.put("var2", varOList.get(i).get("REQUEST_DATE").toString());	    //2
-			vpd.put("var3", varOList.get(i).getString("RESPONSIBLEPERSON"));	    //3
-			vpd.put("var4", varOList.get(i).getString("REQUEST_TYPE"));	    //4
-			vpd.put("var5", varOList.get(i).getString("PAY_METHOD"));	    //5
-			vpd.put("var6", varOList.get(i).getString("PAYEE"));	    //6
-			vpd.put("var7", varOList.get(i).getString("PAYEEADDRESS"));	    //7
-			vpd.put("var8", varOList.get(i).getString("PAYEEBANK"));	    //8
-			vpd.put("var9", varOList.get(i).getString("BANKACCOUNT"));	    //9
-			vpd.put("var10", varOList.get(i).getString("POSTSCRIPT"));	    //10
-			vpd.put("var11", varOList.get(i).getString("PROJIECT_ID"));	    //11
-			vpd.put("var12", varOList.get(i).getString("PROJECT_NAME"));	    //12
-			vpd.put("var13", varOList.get(i).getString("CONTRACT_NO"));	    //13
-			vpd.put("var14", varOList.get(i).getString("MONEY"));	    //14
-			vpd.put("var15", varOList.get(i).getString("PAY_ACCOUNT"));	    //15
-			vpd.put("var16", varOList.get(i).getString("PAY_UNIT"));	    //16
-			vpd.put("var17", varOList.get(i).getString("YUYUEFUKUAN"));	    //17
-			vpd.put("var18", varOList.get(i).getString("FUKUANYUEDING"));	    //18
+			vpd.put("var1", varOList.get(i).getString("SELECTCOMPANY"));	    //1
+			vpd.put("var2", varOList.get(i).getString("REQUEST_NO"));	    //1
+			vpd.put("var3", varOList.get(i).get("REQUEST_DATE").toString());	    //2
+			vpd.put("var4", varOList.get(i).getString("RESPONSIBLEPERSON"));	    //3
+			vpd.put("var5", varOList.get(i).getString("REQUEST_TYPE"));	    //4
+			vpd.put("var6", varOList.get(i).getString("PAY_METHOD"));	    //5
+			vpd.put("var7", varOList.get(i).getString("PAYEE"));	    //6
+			vpd.put("var8", varOList.get(i).getString("PAYEEADDRESS"));	    //7
+			vpd.put("var9", varOList.get(i).getString("PAYEEBANK"));	    //8
+			vpd.put("var10", varOList.get(i).getString("BANKACCOUNT"));	    //9
+			vpd.put("var11", varOList.get(i).getString("POSTSCRIPT"));	    //10
+			vpd.put("var12", varOList.get(i).getString("PROJIECT_ID"));	    //11
+			vpd.put("var13", varOList.get(i).getString("PROJECT_NAME"));	    //12
+			vpd.put("var14", varOList.get(i).getString("CONTRACT_NO"));	    //13
+			vpd.put("var15", varOList.get(i).getString("MONEY"));	    //14
+			vpd.put("var16", varOList.get(i).getString("PAY_ACCOUNT"));	    //15
+			vpd.put("var17", varOList.get(i).getString("PAY_UNIT"));	    //16
+			vpd.put("var18", varOList.get(i).getString("YUYUEFUKUAN"));	    //17
+			vpd.put("var19", varOList.get(i).getString("FUKUANYUEDING"));	    //18
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

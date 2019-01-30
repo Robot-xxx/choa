@@ -98,11 +98,19 @@
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
                                                 color="red">*</font>报销人:
                                         </td>
-                                        <td><input type="text" name="BXR" readonly id="BXR" value="${pd.BXR}"
+                                        <td><input type="text" name="BXR" readonly id="BXR" value="${pd.BXR}"`
                                                    maxlength="50" placeholder="这里输入报销人" title="报销人" style="width:98%;"/>
                                         </td>
                                     </tr>
-
+                                    <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font
+                                                color="red">*</font>报销截止日期:
+                                        </td>
+                                        <td><input class="span10 date-picker" name="JIEZHIRIQI" id="JIEZHIRIQI"
+                                                   value="${pd.JIEZHIRIQI}" type="text" data-date-format="yyyy-mm-dd"
+                                                   readonly="readonly" placeholder="报销截止日期" title="报销截止日期" style="width:98%;"/>
+                                        </td>
+                                    </tr>
 
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>

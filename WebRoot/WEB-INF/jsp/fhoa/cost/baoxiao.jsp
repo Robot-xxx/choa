@@ -31,7 +31,7 @@ table td{
             </tr>
             <tr>
                 <td>报销时间:</td>
-                <td class="val">${pd.CREATE_DATE}</td>
+                <td class="val">${pd.KAISHIRIQI}</td>
                 <td>项目编号:</td>
                 <td class="val">${pd.PROJECT_ID}</td>
                 <td>项目名称:</td>
@@ -45,7 +45,7 @@ table td{
                 <td class="val" colspan="3">${pd.BXR}</td>
 
                 <td>报销费用起止时间:</td>
-                <td class="val">${pd.CREATE_DATE}</td>
+                <td class="val">${pd.JIEZHIRIQI}</td>
             </tr>
             <tr style="text-align: center">
                 <td style="text-align: center">报销类型</td>

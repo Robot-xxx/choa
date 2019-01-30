@@ -60,6 +60,7 @@
 									<th class="center">项目编号</th>
 									<th class="center">日期</th>
 									<th class="center">报销人</th>
+									<th class="center">截止日期</th>
 									<th class="center">部门</th>
 
 									<th class="center">总额</th>
@@ -89,12 +90,13 @@
 											<td class='center'>${var.PROJECT_ID}</td>
 											<td class='center'>${var.CREATE_DATE}</td>
 											<td class='center'>${var.BXR}</td>
+											<td class='center'>${var.JIEZHIRIQI}</td>
 											<td class='center'>${var.DEPARTMENT}</td>
 
 											<td class='center'>${var.MONEY}</td>
 											<td class='center'>${var.BZ}</td>
 											<td class='center'><a onclick="allClaimexpense('${var.COST_ID}')" style=" cursor:pointer;">查看费用明细</a></td>
-											<td class='center'><a onclick="allOaxFile('${var.COST_ID}','e710e36af2124f4b8e61765297d4ae66')" style=" cursor:pointer;">查看附件</a></td>
+											<td class='center'><a onclick="allOaFile('${var.COST_ID}','e710e36af2124f4b8e61765297d4ae66')" style=" cursor:pointer;">查看附件</a></td>
 
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
@@ -266,7 +268,24 @@
             diag.show();
 
         }
+        //查看文件列表
+        function allOaFile(oafileid,FILETYPE){
+            top.jzts();
+            var diag = new top.Dialog();
+            diag.Drag=true;
+            diag.Title ="查看文件";
+            diag.URL = '<%=basePath%>/oafile/allList.do?keywords='+oafileid+"&FILETYPE="+FILETYPE;
+            diag.Width = 1100;
+            diag.Height = 600;
+            diag.Modal = true;				//有无遮罩窗口
+            diag. ShowMaxButton = true;	//最大化按钮
+            diag.ShowMinButton = true;		//最小化按钮
+            diag.CancelEvent = function(){ //关闭事件
 
+                diag.close();
+            };
+            diag.show();
+        }
 
         function allClaimexpense(COST_ID){
             top.jzts();

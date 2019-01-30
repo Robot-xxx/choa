@@ -234,20 +234,21 @@
                                                    title="付款约定" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="text-align: center;" colspan="10">
-                                            <a class="btn btn-mini btn-primary" onclick="save();">保存</a>
-                                            <a class="btn btn-mini btn-danger" onclick="top.Dialog.close();">取消</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">备注:
                                         </td>
                                         <td><input type="text" name="BZ" id="BZ"
                                                    value="${pd.BZ}" maxlength="13" placeholder="这里输入备注"
                                                    title="备注" style="width:98%;"/>
-                                        <span style="color: red">请备注来款情况，包括垫资等</span>
+                                            <span style="color: red">请备注来款情况，包括垫资等</span>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td style="text-align: center;" colspan="10">
+                                            <a class="btn btn-mini btn-primary" onclick="save();">保存</a>
+                                            <a class="btn btn-mini btn-danger" onclick="top.Dialog.close();">取消</a>
+                                        </td>
+                                    </tr>
+
                                 </table>
                             </div>
                             <div id="zhongxin2" class="center" style="display:none"><br/><br/><br/><br/><br/><img

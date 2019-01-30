@@ -178,7 +178,7 @@
 			f.COMPANY_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			f.PHONE LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			f.OPENING_BANK LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
-			f.FUZHEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			f.FUZEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			f.BZ LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			f.LINKMAN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 				)

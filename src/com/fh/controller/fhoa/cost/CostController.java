@@ -164,7 +164,7 @@ public class CostController extends AcStartController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 
-			pd.put("USERID", Jurisdiction.getUSERID());
+		pd.put("USERID", Jurisdiction.getUSERID());
 
 		String costId = this.get32UUID();
 		Map<String, Object> map = new HashMap<>();
@@ -173,6 +173,7 @@ public class CostController extends AcStartController {
 		map.put("ids", oafileList);
 		accessoryFileManager.oaFileEdit(map);
 		pd.put("UPDATETIME", sd1.format(new Date()));
+		pd.put("KAISHIRIQI", sd.format(new Date()));
 		pd.put("STATUS",2);
 		pd.put("COST_ID", costId);	//主键
 		costService.save(pd);
@@ -208,6 +209,7 @@ public class CostController extends AcStartController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		pd.put("UPDATETIME", sd1.format(new Date()));
+		pd.put("KAISHIRIQI", sd.format(new Date()));
 
 		costService.edit(pd);
 		mv.addObject("msg","success");

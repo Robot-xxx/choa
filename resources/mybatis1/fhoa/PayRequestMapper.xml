@@ -250,9 +250,9 @@
         select
           *
         from
-          act_hi_taskinst
+            act_hi_actinst
         where
-          PROC_INST_ID_ =#{id}
+            EXECUTION_ID_ =#{id}
     </select>
 
 </mapper>
