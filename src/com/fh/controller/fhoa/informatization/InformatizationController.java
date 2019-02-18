@@ -44,7 +44,26 @@ public class InformatizationController extends AcStartController {
 	SimpleDateFormat sd1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 
-
+	@RequestMapping(value="/getAllInstrument")
+	@ResponseBody
+	public Map<String,Object> getAllInstrument(Page page){
+		List<PageData> list = new ArrayList<>();
+		Map<String,Object> map  = new HashMap<>();
+		String errInfo = "success";
+		PageData pd = new PageData();
+		try{
+			pd = this.getPageData();
+			page.setPd(pd);
+			page.setShowCount(99999);
+			list = informatizationService.list(page);
+		} catch(Exception e){
+			errInfo = "error";
+			logger.error(e.toString(), e);
+		}
+		map.put("errInfo",errInfo);
+		map.put("list",list);
+		return map;
+	}
 
 	/**提交流程
 	 * @param
@@ -65,10 +84,12 @@ public class InformatizationController extends AcStartController {
 			map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
 			map1.put("产品编号", pd.getString("SYS_ID"));
 			map1.put("产品名称", pd.getString("PRODUCT_NAME"));
-			map1.put("型号、规格", pd.getString("MODEL"));
+			map1.put("型号丶规格", pd.getString("MODEL"));
 			map1.put("生产厂家", pd.getString("MANUFACTURERS"));
 			map1.put("注册证号", pd.getString("REGISTRATION"));
 			map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
+			map1.put("上传者", pd.getString("FUZEREN"));
+
 			map1.put("备注", pd.getString("BUSINESS"));
 			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("INFORMATIZATION_ID")+"','55c792a602814c4ebecb1cc118cf6351')\" style=' cursor:pointer;'>查看附件</a>");
 
@@ -150,7 +171,7 @@ public class InformatizationController extends AcStartController {
 		pd = this.getPageData();
 		pd.put("FUZEREN",  Jurisdiction.getUsername());	//主键
 		pd.put("UPDATETIME", sd1.format(new Date()));
-
+		pd.put("STATUS",2);
 		informatizationService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
@@ -258,7 +279,9 @@ public class InformatizationController extends AcStartController {
 		titles.add("型号丶规格");	//3
 		titles.add("生产厂家");	//4
 		titles.add("注册证号");	//5
-		titles.add("生产经营范围");	//6
+		titles.add("资料是否齐全");	//5
+		titles.add("上传者");	//5
+		titles.add("备注");	//6
 		dataMap.put("titles", titles);
 		List<PageData> varOList = informatizationService.listAll(pd);
 		List<PageData> varList = new ArrayList<PageData>();
@@ -269,7 +292,9 @@ public class InformatizationController extends AcStartController {
 			vpd.put("var3", varOList.get(i).getString("MODEL"));	    //3
 			vpd.put("var4", varOList.get(i).getString("MANUFACTURERS"));	    //4
 			vpd.put("var5", varOList.get(i).getString("REGISTRATION"));	    //5
-			vpd.put("var6", varOList.get(i).getString("BUSINESS"));	    //6
+			vpd.put("var6", varOList.get(i).getString("ISZILIAOQQ"));	    //5
+			vpd.put("var7", varOList.get(i).getString("FUZEREN"));	    //5
+			vpd.put("var8", varOList.get(i).getString("BUSINESS"));	    //6
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

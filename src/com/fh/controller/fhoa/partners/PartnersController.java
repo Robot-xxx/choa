@@ -222,6 +222,7 @@ public class PartnersController extends BaseController {
 		titles.add("开户账号");	//3
 		titles.add("联系人");	//4
 		titles.add("联系人电话");	//5
+		titles.add("上传人");	//5
 		titles.add("备注");	//6
 		dataMap.put("titles", titles);
 		List<PageData> varOList = partnersService.listAll(pd);
@@ -233,7 +234,8 @@ public class PartnersController extends BaseController {
 			vpd.put("var3", varOList.get(i).getString("OPEN_ACCOUNT"));	    //3
 			vpd.put("var4", varOList.get(i).getString("LINKMAN"));	    //4
 			vpd.put("var5", varOList.get(i).getString("LINKMAN_PHONE"));	    //5
-			vpd.put("var6", varOList.get(i).getString("BZ"));	    //6
+			vpd.put("var6", varOList.get(i).getString("FUZEREN"));	    //5
+			vpd.put("var7", varOList.get(i).getString("BZ"));	    //6
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

@@ -88,11 +88,12 @@
 									<th class="center">到货时间</th>
 									<th class="center">验收时间</th>
 								<%--	<th class="center">是否资料齐全</th>--%>
+
+                                    <th class="center">负责人</th>
+                                    <th class="center">备注</th>
 									<th class="center">产品信息</th>
 									<th class="center">回款条款</th>
 									<th class="center">附件</th>
-                                    <th class="center">负责人</th>
-                                    <th class="center">备注</th>
                                     <th class="center">操作</th>
 								</tr>
 							</thead>
@@ -128,12 +129,14 @@
 <%--
 											<td class='center'>${var.ISZILIAOQQ}</td>
 --%>
+
+                                            <td class='center'>${var.FUZEREN}</td>
+
+                                            <td class='center'>${var.BZ}</td>
 											<td class='center'><a onclick="selectProject('${var.PROJECT_MARKET_ID}')" style=" cursor:pointer;">查看产品</a></td>
 											<td class='center'><a onclick="selectHuiKuai('${var.PROJECT_MARKET_ID}')" style=" cursor:pointer;">查看回款信息</a></td>
 
-                                            <td class='center'><a onclick="allOaFile('${var.PROJECT_MARKET_ID}','14b2e7231a604b9f9edfc230fea227d8')" style=" cursor:pointer;">查看附件</a></td>
-                                            <td class='center'>${var.FUZEREN}</td>
-                                            <td class='center'>${var.BZ}</td>
+											<td class='center'><a onclick="allOaFile('${var.PROJECT_MARKET_ID}','14b2e7231a604b9f9edfc230fea227d8')" style=" cursor:pointer;">查看附件</a></td>
                                             <td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>

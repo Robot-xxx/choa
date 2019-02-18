@@ -290,25 +290,31 @@ public class TicketController extends AcStartController {
 		pd = this.getPageData();
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
+		titles.add("选择公司");	//1
 		titles.add("系统编序号");	//1
-		titles.add("销售合同附件");	//2
-		titles.add("进项票信息附件");	//3
-		titles.add("进项票金额(万元)");	//4
+		titles.add("进项票产品名称");	//1
+		titles.add("进项票总额(万元)");	//2
+		titles.add("销售合同");	//3
+		titles.add("合同总额(万元)");	//4
 		titles.add("开票金额");	//5
-		titles.add("发票号码");	//6
-		titles.add("发票附件");	//7
+		titles.add("已开票金额");	//6
+		titles.add("进项票备注");	//7
+		titles.add("开票原因");	//7
 		dataMap.put("titles", titles);
 		List<PageData> varOList = ticketService.listAll(pd);
 		List<PageData> varList = new ArrayList<PageData>();
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
-			vpd.put("var1", varOList.get(i).getString("SYS_ID"));	    //1
-			vpd.put("var2", varOList.get(i).getString("SALES_CONTRACT_ID"));	    //2
-			vpd.put("var3", varOList.get(i).getString("TICKET_INFO"));	    //3
-			vpd.put("var4", varOList.get(i).get("TICKET_PRICE").toString());	    //4
-			vpd.put("var5", varOList.get(i).get("OPEN_TICKET_PRICE").toString());	    //5
-			vpd.put("var6", varOList.get(i).getString("INVOICE_NUMBER"));	    //6
-			vpd.put("var7", varOList.get(i).getString("INVOICE"));	    //7
+			vpd.put("var1", varOList.get(i).getString("SELECTCOMPANY"));	    //1
+			vpd.put("var2", varOList.get(i).getString("SYS_ID"));	    //1
+			vpd.put("var3", varOList.get(i).getString("ENTRYTICKETNAME"));	    //2
+			vpd.put("var4", varOList.get(i).getString("TICKET_PRICE"));	    //3
+			vpd.put("var5", varOList.get(i).get("SALES_CONTRACT_ID").toString());	    //4
+			vpd.put("var6", varOList.get(i).get("OPEN_TICKET_PRICE").toString());	    //5
+			vpd.put("var7", varOList.get(i).getString("KAIPIAOJINE"));	    //6
+			vpd.put("var8", varOList.get(i).getString("YIKAIPIAOJINE"));	    //7
+			vpd.put("var9", varOList.get(i).getString("TICKET_INFO"));	    //7
+			vpd.put("var10", varOList.get(i).getString("OPEN_TICKET_YUANYIN"));	    //7
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

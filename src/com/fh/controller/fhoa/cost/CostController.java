@@ -72,7 +72,6 @@ public class CostController extends AcStartController {
 		pd = costService.findById(pd);	//根据ID读取
         page.setPd(pd);
 
-		pd.put("CREATE_DATE",sd.format( pd.get("CREATE_DATE")));
         List<PageData> list = claimexpenseService.list(page);
 
 
@@ -278,9 +277,7 @@ public class CostController extends AcStartController {
 
 		page.setPd(pd);
 		List<PageData>	varList = costService.list(page);	//列出Cost列表
-		for (int i = 0; i <varList.size() ; i++) {
-			varList.get(i).put("CREATE_DATE",sd.format(varList.get(i).get("CREATE_DATE")));
-		}
+
 		mv.setViewName("fhoa/cost/cost_list");
 		mv.addObject("varList", varList);
 		mv.addObject("pd", pd);
@@ -364,10 +361,11 @@ public class CostController extends AcStartController {
 		List<String> titles = new ArrayList<String>();
 		titles.add("是否代理商付款");	//1
 		titles.add("项目编号");	//2
-		titles.add("日期");	//3
-		titles.add("报销人");	//4
-		titles.add("费用明细");	//5
-		titles.add("金额");	//6
+		titles.add("项目名称");	//2
+		titles.add("部门");	//3
+		titles.add("日期");	//4
+		titles.add("报销人");	//5
+		titles.add("报销截止日期");	//6
 		titles.add("备注");	//7
 		dataMap.put("titles", titles);
 		List<PageData> varOList = costService.listAll(pd);
@@ -376,11 +374,12 @@ public class CostController extends AcStartController {
 			PageData vpd = new PageData();
 			vpd.put("var1", varOList.get(i).getString("IS_THEAGENT"));	    //1
 			vpd.put("var2", varOList.get(i).getString("PROJECT_ID"));	    //2
-			vpd.put("var3", sd.format(varOList.get(i).get("CREATE_DATE")));	    //3
-			vpd.put("var4", varOList.get(i).getString("BXR"));	    //4
-			vpd.put("var5", varOList.get(i).getString("COST_DETAIL"));	    //5
-			vpd.put("var6", varOList.get(i).get("MONEY").toString());	//6
-			vpd.put("var7", varOList.get(i).getString("BZ"));	    //7
+			vpd.put("var3", varOList.get(i).get("PROJECT_NAME"));	    //3
+			vpd.put("var4", varOList.get(i).getString("DEPARTMENT"));	    //4
+			vpd.put("var5", varOList.get(i).getString("CREATE_DATE"));	    //5
+			vpd.put("var6", varOList.get(i).get("BXR").toString());	//6
+			vpd.put("var7", varOList.get(i).get("JIEZHIRIQI"));	//6
+			vpd.put("var8", varOList.get(i).getString("BZ"));	    //7
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

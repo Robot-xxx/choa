@@ -39,7 +39,26 @@ public class ClaimantController extends BaseController {
 	@Resource(name="claimantService")
 	private ClaimantManager claimantService;
 	SimpleDateFormat sd =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	
+	@RequestMapping(value="/getAllInstrument")
+	@ResponseBody
+	public Map<String,Object> getAllInstrument(Page page){
+		List<PageData> list = new ArrayList<>();
+		Map<String,Object> map  = new HashMap<>();
+		String errInfo = "success";
+		PageData pd = new PageData();
+		try{
+			pd = this.getPageData();
+			page.setPd(pd);
+			page.setShowCount(99999);
+			list = claimantService.list(page);
+		} catch(Exception e){
+			errInfo = "error";
+			logger.error(e.toString(), e);
+		}
+		map.put("errInfo",errInfo);
+		map.put("list",list);
+		return map;
+	}
 	/**保存
 	 * @param
 	 * @throws Exception
@@ -92,7 +111,7 @@ public class ClaimantController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		pd.put("UPDATETIME", sd.format(new Date()));
-
+		pd.put("STATUS",2);
 		claimantService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

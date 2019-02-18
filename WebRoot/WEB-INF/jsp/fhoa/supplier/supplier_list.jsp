@@ -78,7 +78,7 @@
 									<th class="center">经营许可证</th>
 									<th class="center">法人授权书</th>
 									<th class="center">授权委托书</th>
-									<th class="center">经营范围</th>
+
 									<th class="center">统一社会信用代码</th>
 									<th class="center">上传者</th>
 
@@ -112,7 +112,7 @@
 											<td class='center'>${var.JINGYINGXUKEZHENG}</td>
                                             <td class='center'>${var.FARENSHOUQUAN}</td>
                                             <td class='center'>${var.SHOUQUANWEITUO}</td>
-                                            <td class='center'>${var.JINGYINGFANWEI}</td>
+
                                             <td class='center'>${var.TONGYISHEHUIDAIMA}</td>
 
 											<td class='center'>${var.FUZHEREN}</td>

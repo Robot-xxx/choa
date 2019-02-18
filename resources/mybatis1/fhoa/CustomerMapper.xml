@@ -207,9 +207,12 @@
 		<include refid="dicTableName"></include> d8
 		on f.LICENCE = d8.BIANMA
 		where 1=1
+		<if test="pd != null and pd != ''">
 
-		<if test="pd.CUSTOMER_ID!=null and pd.CUSTOMER_ID != ''">
+
+		<if test="pd.CUSTOMER_ID != null and pd.CUSTOMER_ID != ''">
 			and CUSTOMER_ID=#{pd.CUSTOMER_ID}
+		</if>
 		</if>
 	</select>
 	

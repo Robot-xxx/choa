@@ -84,8 +84,7 @@
 											</td>
 											<td class='center' style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
 											<td class='center'>
-												<c:if test="${var.IS_THEAGENT==1}">是</c:if>
-												<c:if test="${var.IS_THEAGENT==0}">否</c:if>
+													${var.IS_THEAGENT}
 											</td>
 											<td class='center'>${var.PROJECT_ID}</td>
 											<td class='center'>${var.CREATE_DATE}</td>

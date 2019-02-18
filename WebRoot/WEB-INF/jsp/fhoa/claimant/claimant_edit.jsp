@@ -173,9 +173,9 @@
                         $("#projectId").append("<option value=''>请选择项目编号</option>");
                         for (var i = 0; i < data.list.length; i++) {
                             if (data.list[i].PROJECT_ID  == project) {
-                                $("#projectId").append("<option value=" +  data.list[i].PROJECT_ID  + " selected='selected'>" + data.list[i].SYS_ID+"-"+data.list[i].PROJECT_NAME + "</option>");
+                                $("#projectId").append("<option value=" +  data.list[i].PROJECT_ID  + " selected='selected'>" + data.list[i].SYS_ID+"=>"+data.list[i].PROJECT_NAME + "</option>");
                             } else {
-                                $("#projectId").append("<option value=" + data.list[i].PROJECT_ID  + ">" + data.list[i].SYS_ID+"-"+data.list[i].PROJECT_NAME + "</option>");
+                                $("#projectId").append("<option value=" + data.list[i].PROJECT_ID  + ">" + data.list[i].SYS_ID+"=>"+data.list[i].PROJECT_NAME + "</option>");
                             }
                         }
                         downList('projectId');
@@ -199,7 +199,7 @@
                     success: function (data) {
                         if (data.errInfo == "success") {
                             $("#PROJECT_NAME").val(data.pd.PROJECT_NAME);
-                            $("#PROJECT_ID").val(str.substring(0,str.indexOf('-')));
+                            $("#PROJECT_ID").val(str.substring(0,str.indexOf('=>')));
                         }
                     }
                 });

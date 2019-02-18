@@ -193,8 +193,7 @@ public class IdentifyManagementController extends BaseController {
 		pd = this.getPageData();
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
-		titles.add("项目编号");	//1
-		titles.add("项目名称");	//2
+
 		titles.add("进款金额");	//3
 		titles.add("回款单位");	//4
 		titles.add("日期");	//5
@@ -204,12 +203,11 @@ public class IdentifyManagementController extends BaseController {
 		List<PageData> varList = new ArrayList<PageData>();
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
-			vpd.put("var1", varOList.get(i).getString("PROJECT_ID"));	    //1
-			vpd.put("var2", varOList.get(i).getString("PROJECT_NAME"));	    //2
-			vpd.put("var3", varOList.get(i).get("INCOME_MONEY").toString());	//3
-			vpd.put("var4", varOList.get(i).getString("RETURN_MONEY"));	    //4
-			vpd.put("var5", sd.format(varOList.get(i).get("CREATE_DATE")));	    //5
-			vpd.put("var6", varOList.get(i).getString("BZ"));	    //6
+
+			vpd.put("var1", varOList.get(i).get("INCOME_MONEY").toString());	//3
+			vpd.put("var2", varOList.get(i).getString("RETURN_MONEY"));	    //4
+			vpd.put("var3", sd.format(varOList.get(i).get("CREATE_DATE")));	    //5
+			vpd.put("var4", varOList.get(i).getString("BZ"));	    //6
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

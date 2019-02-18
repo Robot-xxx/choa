@@ -43,9 +43,9 @@
                                         <%--<td><input type="text" name="IS_THEAGENT" id="IS_THEAGENT" value="${pd.IS_THEAGENT}" maxlength="50" placeholder="这里输入是否代理商付款" title="是否代理商付款" style="width:98%;"/></td>--%>
                                         <td align="left">
                                             是<input checked type="radio" name="IS_THEAGENT"
-                                                    <c:if test="${pd.IS_THEAGENT==1}">checked</c:if> value="1"/>
+                                                    <c:if test="${pd.IS_THEAGENT==是}">checked</c:if> value="是"/>
                                             否<input type="radio" name="IS_THEAGENT"
-                                                    <c:if test="${pd.IS_THEAGENT==0}">checked</c:if> value="0"/>
+                                                    <c:if test="${pd.IS_THEAGENT==否}">checked</c:if> value="否"/>
                                         </td>
                                     </tr>
                                     <tr>

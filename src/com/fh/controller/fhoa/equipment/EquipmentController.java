@@ -43,7 +43,26 @@ public class EquipmentController extends AcStartController {
 	@Resource(name="supplierService")
 	private SupplierManager supplierService;
 
-
+	@RequestMapping(value="/getAllInstrument")
+	@ResponseBody
+	public Map<String,Object> getAllInstrument(Page page){
+		List<PageData> list = new ArrayList<>();
+		Map<String,Object> map  = new HashMap<>();
+		String errInfo = "success";
+		PageData pd = new PageData();
+		try{
+			pd = this.getPageData();
+			page.setPd(pd);
+			page.setShowCount(99999);
+			list = equipmentService.list(page);
+		} catch(Exception e){
+			errInfo = "error";
+			logger.error(e.toString(), e);
+		}
+		map.put("errInfo",errInfo);
+		map.put("list",list);
+		return map;
+	}
 	/**提交流程
 	 * @param
 	 * @throws Exception
@@ -151,7 +170,7 @@ public class EquipmentController extends AcStartController {
 		pd = this.getPageData();
 		pd.put("FUZEREN",Jurisdiction.getUsername());	//主键
 		pd.put("UPDATETIME", sd1.format(new Date()));
-
+		pd.put("STATUS",2);
 		equipmentService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
@@ -259,8 +278,10 @@ public class EquipmentController extends AcStartController {
 		titles.add("型号丶规格");	//3
 		titles.add("生产厂家");	//4
 		titles.add("注册证号");	//5
-		titles.add("生产经营范围");	//6
+		titles.add("注册证类别");	//6
 		titles.add("生产批次");	//7
+		titles.add("资料是否齐全");	//7
+		titles.add("上传者");	//7
 		titles.add("备注");	//9
 		dataMap.put("titles", titles);
 		List<PageData> varOList = equipmentService.listAll(pd);
@@ -274,7 +295,9 @@ public class EquipmentController extends AcStartController {
 			vpd.put("var5", varOList.get(i).getString("REGISTRATION"));	    //5
 			vpd.put("var6", varOList.get(i).getString("BUSINESS"));	    //6
 			vpd.put("var7", varOList.get(i).getString("BATCH"));	    //7
-			vpd.put("var8", varOList.get(i).getString("ACCESSORY"));	    //9
+			vpd.put("var8", varOList.get(i).getString("ISZILIAOQQ"));	    //7
+			vpd.put("var9", varOList.get(i).getString("FUZEREN"));	    //7
+			vpd.put("var10", varOList.get(i).getString("ACCESSORY"));	    //9
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

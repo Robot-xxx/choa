@@ -106,21 +106,21 @@
                                     </tr>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">中标价格(万元):</td>
-                                        <td><input type="number" name="WINNING_PRICE" id="WINNING_PRICE"
-                                                   value="${pd.WINNING_PRICE}" maxlength="12" placeholder="这里输入中标价格(万元)"
+                                        <td><input onchange="change(this.value)" type="text" name="WINNING_PRICE" id="WINNING_PRICE"
+                                                   value="${pd.WINNING_PRICE}" maxlength="50" placeholder="这里输入中标价格(万元)"
                                                    title="中标价格(万元)" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">中标服务费垫资金额（万元）:</td>
-                                        <td><input type="number" name="SERVICE_PRICE" id="SERVICE_PRICE"
-                                                   value="${pd.SERVICE_PRICE}" maxlength="11"
+                                        <td><input onchange="change1(this.value)" type="text" name="SERVICE_PRICE" id="SERVICE_PRICE"
+                                                   value="${pd.SERVICE_PRICE}" maxlength="50"
                                                    placeholder="这里输入中标服务费垫资金额（万元）" title="中标服务费垫资金额（万元）"
                                                    style="width:98%;"/></td>
                                     </tr>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">投标保证金垫资金额(万元):</td>
-                                        <td><input type="number" name="GUARANTEE_MONEY" id="GUARANTEE_MONEY"
-                                                   value="${pd.GUARANTEE_MONEY}" maxlength="12"
+                                        <td><input onchange="change2(this.value)" type="text" name="GUARANTEE_MONEY" id="GUARANTEE_MONEY"
+                                                   value="${pd.GUARANTEE_MONEY}" maxlength="50"
                                                    placeholder="这里输入投标保证金垫资金额(万元)" title="投标保证金垫资金额(万元)"
                                                    style="width:98%;"/></td>
                                     </tr>
@@ -244,7 +244,19 @@
 <script type="text/javascript">
     var str = "<option value=''>请选择类型</option>";
     $(top.hangge());
+    function change1(val){
+        $("#SERVICE_PRICE").val(formatNum2(val))
+    }
+    function change2(val){
+        $("#GUARANTEE_MONEY").val(formatNum2(val))
+    }
+    function change(val){
+        $("#WINNING_PRICE").val(formatNum2(val))
+    }
 
+    function formatNum2(num) {
+        return (num).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
+    }
     //保存
     function save() {
 
@@ -298,6 +310,16 @@
                 time: 2
             });
             $("#BIAOSHUZHIZUOREN").focus();
+            return false;
+        }
+        if ($("#FENGXIANTIAOKUAN").val() == "") {
+            $("#FENGXIANTIAOKUAN").tips({
+                side: 3,
+                msg: '请输入风险条款',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#FENGXIANTIAOKUAN").focus();
             return false;
         }
         $("#Form").submit();

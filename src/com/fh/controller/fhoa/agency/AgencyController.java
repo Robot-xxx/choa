@@ -195,9 +195,11 @@ public class AgencyController extends AcStartController {
 		List<String> titles = new ArrayList<String>();
 		titles.add("委托公司");	//1
 		titles.add("委托公司老板");	//2
-		titles.add("业务联系人电话");	//3
+		titles.add("委托公司老板电话");	//2
+		titles.add("业务联系人");	//3
 		titles.add("业务联系人电话");	//4
 		titles.add("客户分析");	//5
+		titles.add("上传者");	//5
 		dataMap.put("titles", titles);
 		List<PageData> varOList = agencyService.listAll(pd);
 		List<PageData> varList = new ArrayList<PageData>();
@@ -205,9 +207,11 @@ public class AgencyController extends AcStartController {
 			PageData vpd = new PageData();
 			vpd.put("var1", varOList.get(i).getString("COMPANY_NAME"));	    //1
 			vpd.put("var2", varOList.get(i).getString("COMPANY_BOSS"));	    //2
-			vpd.put("var3", varOList.get(i).getString("BUSINESS_PEOPLE"));	    //3
+			vpd.put("var3", varOList.get(i).getString("BOSS_PHONE"));	    //2
 			vpd.put("var4", varOList.get(i).getString("LINKMAN"));	    //4
-			vpd.put("var5", varOList.get(i).getString("KHANALYZE"));	    //5
+			vpd.put("var5", varOList.get(i).getString("BUSINESS_PEOPLE"));	    //3
+			vpd.put("var6", varOList.get(i).getString("KHANALYZE"));	    //3
+			vpd.put("var7", varOList.get(i).getString("FUZEREN"));	    //5
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

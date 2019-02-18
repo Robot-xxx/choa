@@ -162,7 +162,12 @@
                                                    value="${pd.CONTRACT_PRICE}" maxlength="12"
                                                    placeholder="这里输入合同总价(万元)" title="合同总价(万元)" style="width:98%;"/></td>
                                     </tr>
-
+                                    <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>风险条款:</td>
+                                        <td><input name="FENGXIANTIAOKUAN" id="FENGXIANTIAOKUAN"
+                                                   value="${pd.FENGXIANTIAOKUAN}" type="text" placeholder="风险条款"
+                                                   title="风险条款" style="width:98%;"/></td>
+                                    </tr>
                                    <%-- <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
                                         <td>
@@ -224,6 +229,9 @@
     var str1 = "<option value=''>请选择类型</option>";
     var str2 = "<option value=''>请选择类型</option>";
     $(top.hangge());
+
+
+
     function fmtDate(obj){
         console.log(obj)
         var date =  new Date(obj);

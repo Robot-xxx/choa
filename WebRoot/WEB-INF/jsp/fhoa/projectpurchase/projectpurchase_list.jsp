@@ -81,7 +81,7 @@
 									<th class="center">备注</th>
                                     <th class="center">产品信息</th>
                                     <th class="center">进项票信息</th>
-                                    <th class="center">查看回款信息</th>
+                                    <%--<th class="center">查看回款信息</th>--%>
                                     <th class="center">查看付款信息</th>
                                     <th class="center">附件</th>
 									<th class="center">操作</th>
@@ -114,7 +114,9 @@
                                             <td class='center'>${var.BZ}</td>
                                             <td class='center'><a onclick="selectProduct('${var.PURCHASE_ID}')" style=" cursor:pointer;">查看产品</a></td>
                                             <td class='center'><a onclick="allInvoice('${var.PURCHASE_ID}')" style=" cursor:pointer;">查看进项票信息</a></td>
+<%--
                                             <td class='center'><a onclick="selectHuiKuai('${var.PURCHASE_ID}')" style=" cursor:pointer;">查看回款信息</a></td>
+--%>
                                             <td class='center'><a onclick="fukuan('${var.PURCHASE_ID}')" style=" cursor:pointer;">查看付款信息</a></td>
 
                                             <td class='center'><a onclick="allOaFile('${var.PURCHASE_ID}','514b510ca4f0414492b2942fba27ee97')" style=" cursor:pointer;">查看附件</a></td>

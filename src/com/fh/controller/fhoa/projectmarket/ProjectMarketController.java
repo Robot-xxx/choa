@@ -351,58 +351,57 @@ public class ProjectMarketController extends AcStartController {
 		pd = this.getPageData();
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
-		titles.add("系统编序号");	//1
+		titles.add("选择公司");	//1
+		titles.add("项目编号");	//1
 		titles.add("销售合同编号");	//2
 		titles.add("下游");	//3
 		titles.add("生产许可证到期日");	//3
 		titles.add("经营许可证到期日");	//3
 		titles.add("法人授权书到期日");	//3
 		titles.add("授权委托书到期日");	//3
-		titles.add("产品信息");	//4
-		titles.add("合同总价");	//5
-		titles.add("回款条款");	//6
-		titles.add("大设备预支款金额");	//7
-		titles.add("预计到账时间");	//8
+		titles.add("合同总价(万元)");	//4
+		titles.add("医院预付款(万元)");	//5
+		titles.add("预计到账时间");	//6
+
 		titles.add("实际到账时间");	//9
-		titles.add("累计开票总额");	//10
 		titles.add("到货时间");	//11
 		titles.add("验收时间");	//12
+		titles.add("负责人");	//12
+		titles.add("备注");	//12
 		dataMap.put("titles", titles);
 		List<PageData> varOList = projectmarketService.listAll(pd);
 		List<PageData> varList = new ArrayList<PageData>();
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
-			vpd.put("var1", varOList.get(i).getString("SYS_ID"));	    //1
-			vpd.put("var2", varOList.get(i).getString("SALES_CONTRACT_ID"));	    //2
-			vpd.put("var3", varOList.get(i).getString("CLIENT_ID"));	    //3
+			vpd.put("var1", varOList.get(i).getString("SELECTCOMPANY"));	    //1
+			vpd.put("var2", varOList.get(i).getString("SYS_ID"));	    //1
+			vpd.put("var3", varOList.get(i).getString("SALES_CONTRACT_ID"));	    //2
+			vpd.put("var4", varOList.get(i).getString("CLIENT_NAME"));	    //3
 
 			if (varOList.get(i).get("SHENGCHANXUKEZHENG")!=null&&!varOList.get(i).get("SHENGCHANXUKEZHENG").toString().equals("")) {
-				vpd.put("var4",varOList.get(i).get("SHENGCHANXUKEZHENG").toString());	    //8
-			}else {
-				vpd.put("var4","");	    //8
-
-			}
-			if (varOList.get(i).get("JINGYINGXUKEZHENG")!=null&&!varOList.get(i).get("JINGYINGXUKEZHENG").toString().equals("")) {
-				vpd.put("var5", varOList.get(i).get("JINGYINGXUKEZHENG").toString());	    //8
+				vpd.put("var5",varOList.get(i).get("SHENGCHANXUKEZHENG").toString());	    //8
 			}else {
 				vpd.put("var5","");	    //8
 
 			}
-			if (varOList.get(i).get("FARENSHOUQUAN")!=null&&!varOList.get(i).get("FARENSHOUQUAN").toString().equals("")) {
-				vpd.put("var6", varOList.get(i).get("FARENSHOUQUAN").toString());	    //8
+			if (varOList.get(i).get("JINGYINGXUKEZHENG")!=null&&!varOList.get(i).get("JINGYINGXUKEZHENG").toString().equals("")) {
+				vpd.put("var6", varOList.get(i).get("JINGYINGXUKEZHENG").toString());	    //8
 			}else {
 				vpd.put("var6","");	    //8
 
 			}
-			if (varOList.get(i).get("SHOUQUANWEITUO")!=null&&!varOList.get(i).get("SHOUQUANWEITUO").toString().equals("")) {
-				vpd.put("var7", varOList.get(i).get("SHOUQUANWEITUO").toString());	    //8
+			if (varOList.get(i).get("FARENSHOUQUAN")!=null&&!varOList.get(i).get("FARENSHOUQUAN").toString().equals("")) {
+				vpd.put("var7", varOList.get(i).get("FARENSHOUQUAN").toString());	    //8
 			}else {
 				vpd.put("var7","");	    //8
 
 			}
+			if (varOList.get(i).get("SHOUQUANWEITUO")!=null&&!varOList.get(i).get("SHOUQUANWEITUO").toString().equals("")) {
+				vpd.put("var8", varOList.get(i).get("SHOUQUANWEITUO").toString());	    //8
+			}else {
+				vpd.put("var8","");	    //8
 
-
-			vpd.put("var8", varOList.get(i).getString("PRODUCT_INFO"));	    //4
+			}
 			if (varOList.get(i).get("CONTRACT_PRICE")!=null&&!varOList.get(i).get("CONTRACT_PRICE").toString().equals("")) {
 				vpd.put("var9", varOList.get(i).get("CONTRACT_PRICE").toString());	    //8
 			}else {
@@ -410,39 +409,44 @@ public class ProjectMarketController extends AcStartController {
 
 			}
 
-			vpd.put("var10", varOList.get(i).getString("CLAUSE"));	    //6
-			vpd.put("var11", varOList.get(i).get("EQUIPMENT_ADVANCE").toString());	    //7
+			if (varOList.get(i).get("EQUIPMENT_ADVANCE")!=null&&!varOList.get(i).get("EQUIPMENT_ADVANCE").toString().equals("")) {
+				vpd.put("var10", varOList.get(i).get("EQUIPMENT_ADVANCE").toString());	    //8
+			}else {
+				vpd.put("var10","");	    //8
+
+			}
+
 
 
 			if (varOList.get(i).get("PREDICT_ACCOUNT_TIME")!=null&&!varOList.get(i).get("PREDICT_ACCOUNT_TIME").toString().equals("")) {
-				vpd.put("var12", varOList.get(i).get("PREDICT_ACCOUNT_TIME").toString());	    //8
+				vpd.put("var11", varOList.get(i).get("PREDICT_ACCOUNT_TIME").toString());	    //8
+			}else {
+				vpd.put("var11","");	    //8
+
+			}
+
+			if (varOList.get(i).get("PRACTICAL_ACCOUT_TIME")!=null&&!varOList.get(i).get("PRACTICAL_ACCOUT_TIME").toString().equals("")) {
+				vpd.put("var12", varOList.get(i).get("PRACTICAL_ACCOUT_TIME").toString());	    //8
 			}else {
 				vpd.put("var12","");	    //8
 
 			}
 
-			if (varOList.get(i).get("PRACTICAL_ACCOUT_TIME")!=null&&!varOList.get(i).get("PRACTICAL_ACCOUT_TIME").toString().equals("")) {
-				vpd.put("var13", varOList.get(i).get("PRACTICAL_ACCOUT_TIME").toString());	    //8
+
+			if (varOList.get(i).get("ARRIVAL_TIME")!=null&&!varOList.get(i).get("ARRIVAL_TIME").toString().equals("")) {
+				vpd.put("var13", varOList.get(i).get("ARRIVAL_TIME").toString());	    //8
 			}else {
 				vpd.put("var13","");	    //8
 
 			}
-
-			vpd.put("var14", varOList.get(i).getString("CUMULATIVE_BILLING"));	//10
-
-			if (varOList.get(i).get("ARRIVAL_TIME")!=null&&!varOList.get(i).get("ARRIVAL_TIME").toString().equals("")) {
-				vpd.put("var15", varOList.get(i).get("ARRIVAL_TIME").toString());	    //8
-			}else {
-				vpd.put("var15","");	    //8
-
-			}
 			if (varOList.get(i).get("RECEPTION_TIME")!=null&&!varOList.get(i).get("RECEPTION_TIME").toString().equals("")) {
-				vpd.put("var16", varOList.get(i).get("RECEPTION_TIME").toString());	    //8
+				vpd.put("var14", varOList.get(i).get("RECEPTION_TIME").toString());	    //8
 			}else {
-				vpd.put("var16","");	    //8
+				vpd.put("var14","");	    //8
 
 			}
-
+			vpd.put("var15",varOList.get(i).getString("FUZEREN").toString());
+			vpd.put("var16",varOList.get(i).getString("BZ").toString());
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

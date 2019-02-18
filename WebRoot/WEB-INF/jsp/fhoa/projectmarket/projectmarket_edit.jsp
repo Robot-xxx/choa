@@ -123,15 +123,15 @@
 
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>合同总价(万元):</td>
-                                        <td><input type="number" name="CONTRACT_PRICE" id="CONTRACT_PRICE"
-                                                   value="${pd.CONTRACT_PRICE}" maxlength="12" placeholder="这里输入合同总价"
+                                        <td><input onchange="change1(this.value)" type="text" name="CONTRACT_PRICE" id="CONTRACT_PRICE"
+                                                   value="${pd.CONTRACT_PRICE}" maxlength="50" placeholder="这里输入合同总价"
                                                    title="合同总价" style="width:98%;"/></td>
                                     </tr>
 
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>医院预付款（万元）:</td>
-                                        <td><input type="text" name="EQUIPMENT_ADVANCE" id="EQUIPMENT_ADVANCE"
-                                                   value="${pd.EQUIPMENT_ADVANCE}" maxlength="12"
+                                        <td><input onchange="change(this.value)" type="text" name="EQUIPMENT_ADVANCE" id="EQUIPMENT_ADVANCE"
+                                                   value="${pd.EQUIPMENT_ADVANCE}" maxlength="50"
                                                    placeholder="这里输入医院预付款" title="医院预付款" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
@@ -167,6 +167,12 @@
                                                    value="${pd.RECEPTION_TIME}" type="text"
                                                    data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="验收时间"
                                                    title="验收时间" style="width:98%;"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>风险条款:</td>
+                                        <td><input name="FENGXIANTIAOKUAN" id="FENGXIANTIAOKUAN"
+                                                   value="${pd.FENGXIANTIAOKUAN}" type="text" placeholder="风险条款"
+                                                   title="风险条款" style="width:98%;"/></td>
                                     </tr>
                                   <%--  <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
@@ -228,7 +234,15 @@
 <script type="text/javascript">
     var str = "<option value=''>请选择类型</option>";
     $(top.hangge());
-
+    function change(val){
+        $("#EQUIPMENT_ADVANCE").val(formatNum2(val))
+    }
+    function change1(val){
+        $("#CONTRACT_PRICE").val(formatNum2(val))
+    }
+    function formatNum2(num) {
+        return (num).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
+    }
     //保存
     function save() {
         if ($("#xuanzeCompany").val() == "") {

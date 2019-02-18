@@ -31,6 +31,21 @@
 						<input type="hidden" name="PROJECTPRODUCT_ID" id="PROJECTPRODUCT_ID" value="${pd.PROJECTPRODUCT_ID}"/>
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font
+										color="red">*</font>产品类型:
+								</td>
+								<td>
+									<select class="chosen-select form-control" name="PRODUCTTYPE"
+											id="productType" data-placeholder="产品类型"
+											style="vertical-align:top;width: 68px;">
+
+									</select>
+
+
+								</td>
+
+							</tr>
 							<tr id="tr1">
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font
 										color="red">*</font>器械名称:
@@ -100,6 +115,128 @@
 	<!-- 下拉列表框 -->
 	<script src="common/downList.js"></script>
 		<script type="text/javascript">
+
+			$("#productType").change(function(){
+
+                $("#c_selectCompany").trigger("chosen:updated");
+                $("#c_selectCompany").empty();
+
+
+
+			    if(	$("#productType").val()=="instrument"){
+                    var cp = "${pd.PRODUCT_NAME}";
+                    //产品管理
+                    $.ajax({
+                        type: "POST",
+                        url: '<%=basePath%>/project/c_ProductAll.do?tm=' + new Date().getTime(),
+                        dataType: 'json',
+                        cache: false,
+                        success: function (data) {
+                            if (data.errInfo == "success") {
+                                $("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
+                                for (var i = 0; i < data.list.length; i++) {
+
+                                    $("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+
+                                }
+
+                                downList('c_selectCompany');
+                            }
+                        }
+                    });
+				}
+
+                if(	$("#productType").val()=="informatization"){
+                    var cp = "${pd.PRODUCT_NAME}";
+                    //产品管理
+                    $.ajax({
+                        type: "POST",
+                        url: '<%=basePath%>/informatization/getAllInstrument.do?tm=' + new Date().getTime(),
+                        dataType: 'json',
+                        cache: false,
+                        success: function (data) {
+                            if (data.errInfo == "success") {
+                                $("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
+                                for (var i = 0; i < data.list.length; i++) {
+
+                                    $("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+
+                                }
+
+                                downList('c_selectCompany');
+                            }
+                        }
+                    });
+                }
+                if(	$("#productType").val()=="equipment"){
+                    var cp = "${pd.PRODUCT_NAME}";
+                    //产品管理
+                    $.ajax({
+                        type: "POST",
+                        url: '<%=basePath%>/equipment/getAllInstrument.do?tm=' + new Date().getTime(),
+                        dataType: 'json',
+                        cache: false,
+                        success: function (data) {
+                            if (data.errInfo == "success") {
+                                $("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
+                                for (var i = 0; i < data.list.length; i++) {
+
+                                    $("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+
+                                }
+
+                                downList('c_selectCompany');
+                            }
+                        }
+                    });
+                }
+                if(	$("#productType").val()=="otherequipment"){
+                    var cp = "${pd.PRODUCT_NAME}";
+                    //产品管理
+                    $.ajax({
+                        type: "POST",
+                        url: '<%=basePath%>/otherequipment/getAllInstrument.do?tm=' + new Date().getTime(),
+                        dataType: 'json',
+                        cache: false,
+                        success: function (data) {
+                            if (data.errInfo == "success") {
+                                $("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
+                                for (var i = 0; i < data.list.length; i++) {
+
+                                    $("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+
+                                }
+
+                                downList('c_selectCompany');
+                            }
+                        }
+                    });
+                }
+                if(	$("#productType").val()=="claimant"){
+                    var cp = "${pd.PRODUCT_NAME}";
+                    //产品管理
+                    $.ajax({
+                        type: "POST",
+                        url: '<%=basePath%>/claimant/getAllInstrument.do?tm=' + new Date().getTime(),
+                        dataType: 'json',
+                        cache: false,
+                        success: function (data) {
+                            if (data.errInfo == "success") {
+                                $("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
+                                for (var i = 0; i < data.list.length; i++) {
+
+                                    $("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+
+                                }
+
+                                downList('c_selectCompany');
+                            }
+                        }
+                    });
+                }
+			});
+
+
 		$(top.hangge());
 		//保存
 		function save(){
@@ -140,28 +277,8 @@
 		
 		$(function() {
 
-            var cp = "${pd.PRODUCT_NAME}";
-            //产品管理
-            $.ajax({
-                type: "POST",
-                url: '<%=basePath%>/project/c_ProductAll.do?tm=' + new Date().getTime(),
-                dataType: 'json',
-                cache: false,
-                success: function (data) {
-                    if (data.errInfo == "success") {
-                        $("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
-                        for (var i = 0; i < data.list.length; i++) {
-                            if (data.list[i].SYS_ID == cp) {
-                                $("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + " selected='selected'>" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
-                            } else {
-                                $("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
-                            }
-                        }
 
-                        downList('c_selectCompany');
-                    }
-                }
-            });
+
 
 
             //产品信息
@@ -192,8 +309,22 @@
             }
 			//日期框
 			$('.date-picker').datepicker({autoclose: true,todayHighlight: true});
-			
 
+            $.ajax({
+                type: "POST",
+                url: '<%=basePath%>dictionaries/getLevels.do?tm=' + new Date().getTime(),
+                data: {DICTIONARIES_ID: 'fd8cdef8abc048c392920efbda667841'},
+                dataType: 'json',
+                cache: false,
+                success: function (data) {
+
+                    $("#productType").append("<option value=''>请选择类型</option>");
+                    $.each(data.list, function (i, dvar) {
+						$("#productType").append("<option value=" + dvar.NAME_EN + " >" + dvar.NAME + "</option>");
+                    });
+                    downList('productType');
+                }
+            });
 		});
 		</script>
 </body>

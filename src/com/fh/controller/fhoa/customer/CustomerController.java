@@ -43,6 +43,7 @@ public class CustomerController extends AcStartController {
     @Resource(name="supplierService")
     private SupplierManager supplierService;
     SimpleDateFormat sd =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat sd1 =new SimpleDateFormat("yyyy-MM-dd");
 
     /**提交流程
      * @param
@@ -60,6 +61,7 @@ public class CustomerController extends AcStartController {
 
             /** 工作流的操作 **/
             Map<String,Object> map1 = new LinkedHashMap<String, Object>();
+
             map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
             map1.put("客户编号", pd.getString("SYS_ID"));
             map1.put("公司全称", pd.getString("COMPANY_NAME"));
@@ -83,7 +85,7 @@ public class CustomerController extends AcStartController {
             if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHOUQUANWEITUO").toString().equals("")){
                 map1.put("授权委托书", pd.get("SHOUQUANWEITUO").toString());
             }
-
+            map1.put("上传者", pd.getString("FUZEREN"));
             map1.put("备注", pd.getString("BZ"));
             map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("CUSTOMER_ID")+"','cf29c9db335046c58071d5dfc84d3d21')\" style=' cursor:pointer;'>查看附件</a>");
 
@@ -239,7 +241,7 @@ public class CustomerController extends AcStartController {
             pd.put("SHOUQUANWEITUO",null);
         }
         pd.put("UPDATETIME", sd.format(new Date()));
-
+        pd.put("STATUS",2);
         customerService.edit(pd);
         mv.addObject("msg", "success");
         mv.setViewName("save_result");
@@ -363,6 +365,12 @@ public class CustomerController extends AcStartController {
         titles.add("开户行");    //7
         titles.add("开户行账号");    //7
         titles.add("医疗许可证");    //8
+        titles.add("生产许可证期日");	//6
+        titles.add("经营许可证期日");	//6
+        titles.add("法人授权书期日");	//6
+        titles.add("授权委托书期日");	//6
+        titles.add("是否资料齐全");	//7
+        titles.add("上传者");	//6
         titles.add("备注");    //10
         dataMap.put("titles", titles);
         List<PageData> varOList = customerService.listAll(pd);
@@ -378,7 +386,34 @@ public class CustomerController extends AcStartController {
             vpd.put("var6", varOList.get(i).getString("OPENING_BANK"));        //7
             vpd.put("var7", varOList.get(i).getString("BANKACCOUNT"));        //7
             vpd.put("var8", varOList.get(i).getString("DNAME8"));        //8
-            vpd.put("var9", varOList.get(i).getString("BZ"));        //10
+            if (varOList.get(i).get("SHENGCHANXUKEZHENG")!=null&&!varOList.get(i).get("SHENGCHANXUKEZHENG").toString().equals("")) {
+                vpd.put("var9", sd1.format(varOList.get(i).get("SHENGCHANXUKEZHENG")));	    //8
+            }else {
+                vpd.put("var9","");	    //8
+
+            }
+            if (varOList.get(i).get("JINGYINGXUKEZHENG")!=null&&!varOList.get(i).get("JINGYINGXUKEZHENG").toString().equals("")) {
+                vpd.put("var10", sd1.format(varOList.get(i).get("JINGYINGXUKEZHENG")));	    //8
+            }else {
+                vpd.put("var10","");	    //8
+
+            }
+            if (varOList.get(i).get("FARENSHOUQUAN")!=null&&!varOList.get(i).get("FARENSHOUQUAN").toString().equals("")) {
+                vpd.put("var11", sd1.format(varOList.get(i).get("FARENSHOUQUAN")));	    //8
+            }else {
+                vpd.put("var11","");	    //8
+
+            }
+            if (varOList.get(i).get("SHOUQUANWEITUO")!=null&&!varOList.get(i).get("SHOUQUANWEITUO").toString().equals("")) {
+                vpd.put("var12", sd1.format(varOList.get(i).get("SHOUQUANWEITUO")));	    //8
+            }else {
+                vpd.put("var12","");	    //8
+
+            }
+
+            vpd.put("var13", varOList.get(i).getString("ISZILIAOQQ"));	    //6
+            vpd.put("var14", varOList.get(i).getString("FUZHEREN"));	    //6
+            vpd.put("var5", varOList.get(i).getString("BZ"));        //10
             varList.add(vpd);
         }
         dataMap.put("varList", varList);

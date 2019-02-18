@@ -495,7 +495,8 @@ public class ProjectController extends AcStartController {
 		pd = this.getPageData();
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
-		titles.add("系统编序号");	//1
+		titles.add("选择公司");	//1
+		titles.add("项目编号");	//1
 		titles.add("项目名称");	//2
 		titles.add("医院");	//3
 		titles.add("投标限价(万元)");	//4
@@ -503,31 +504,34 @@ public class ProjectController extends AcStartController {
 		titles.add("委托公司老板");	//6
 		titles.add("委托公司老板电话");	//6
 		titles.add("联系人");	//7
-		titles.add("联系人电环");	//7
+		titles.add("联系人电话");	//7
 		titles.add("客户分析");	//8
-		titles.add("产品编号");	//9
-		titles.add("供应商编号");	//10
-		titles.add("客户编号");	//11
+		titles.add("预计开标时间");	//9
+
 		titles.add("付款约定");	//12
+		titles.add("负责人");	//12
+		titles.add("备注");	//12
 		dataMap.put("titles", titles);
 		List<PageData> varOList = projectService.listAll(pd);
 		List<PageData> varList = new ArrayList<PageData>();
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
-			vpd.put("var1", varOList.get(i).getString("SYS_ID"));	    //1
-			vpd.put("var2", varOList.get(i).getString("PROJECT_NAME"));	    //2
-			vpd.put("var3", varOList.get(i).getString("HOSPITAL"));	    //3
-			vpd.put("var4", varOList.get(i).get("LIMITED_PRICE").toString());	    //4
-			vpd.put("var5", varOList.get(i).getString("CORPORATE_COMPANY"));	    //5
-			vpd.put("var6", varOList.get(i).getString("CORPORATE_BOSS"));	    //6
-			vpd.put("var7", varOList.get(i).getString("BOSS_PHONE"));	    //6
-			vpd.put("var8", varOList.get(i).getString("LINKMAN"));	    //7
-			vpd.put("var9", varOList.get(i).getString("BUSINESS_PEOPLE"));	    //7
-			vpd.put("var10", varOList.get(i).getString("CUSTOMER"));	    //8
-			vpd.put("var11", varOList.get(i).getString("PRODUCT"));	    //9
-			vpd.put("var12", varOList.get(i).getString("SUPPLIER"));	    //10
-			vpd.put("var13", varOList.get(i).getString("VALIDITY"));	    //11
-			vpd.put("var14", varOList.get(i).getString("ACCESSORY"));	    //12
+			vpd.put("var1", varOList.get(i).getString("SELECTCOMPANY"));	    //1
+			vpd.put("var2", varOList.get(i).getString("SYS_ID"));	    //1
+			vpd.put("var3", varOList.get(i).getString("PROJECT_NAME"));	    //2
+			vpd.put("var4", varOList.get(i).getString("HOSPITAL"));	    //3
+			vpd.put("var5", varOList.get(i).get("LIMITED_PRICE").toString());	    //4
+			vpd.put("var6", varOList.get(i).getString("CORPORATE_COMPANY"));	    //5
+			vpd.put("var7", varOList.get(i).getString("CORPORATE_BOSS"));	    //6
+			vpd.put("var8", varOList.get(i).getString("BOSS_PHONE"));	    //6
+			vpd.put("var9", varOList.get(i).getString("LINKMAN"));	    //7
+			vpd.put("var10", varOList.get(i).getString("BUSINESS_PEOPLE"));	    //7
+			vpd.put("var11", varOList.get(i).getString("CUSTOMER"));	    //8
+			vpd.put("var12", varOList.get(i).getString("ZHAOBIAOYUJI"));	    //9
+
+			vpd.put("var13", varOList.get(i).getString("ACCESSORY"));	    //12
+			vpd.put("var13", varOList.get(i).getString("FUZEREN"));	    //12
+			vpd.put("var14", varOList.get(i).getString("BZ"));	    //12
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

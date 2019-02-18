@@ -667,9 +667,9 @@
                     $("#hetongbianhao").append("<option value=''>请选择合同编号</option>");
                     for (var i = 0; i < data.list.length; i++) {
                         if (data.list[i].PURCHASE_CONTRACT_ID == weituo) {
-                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_CONTRACT_ID + "-" + data.list[i].SYS_ID + "+" + data.list[i].PROJECTNAME + "@" + data.list[i].CONTRACT_PRICE + " selected='selected'>" + data.list[i].PURCHASE_CONTRACT_ID + "</option>");
+                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_CONTRACT_ID + "-" + data.list[i].SYS_ID + "+" + data.list[i].PROJECTNAME + "@" + data.list[i].CONTRACT_PRICE + " selected='selected'>" + data.list[i].PURCHASE_CONTRACT_ID +"=>"+data.list[i].PROJECTNAME + "</option>");
                         } else {
-                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_CONTRACT_ID + "-" + data.list[i].SYS_ID + "+" + data.list[i].PROJECTNAME + "@" + data.list[i].CONTRACT_PRICE + ">" + data.list[i].PURCHASE_CONTRACT_ID + "</option>");
+                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_CONTRACT_ID + "-" + data.list[i].SYS_ID + "+" + data.list[i].PROJECTNAME + "@" + data.list[i].CONTRACT_PRICE + ">" + data.list[i].PURCHASE_CONTRACT_ID+"=>"+data.list[i].PROJECTNAME  + "</option>");
                         }
                     }
                     downList('hetongbianhao');

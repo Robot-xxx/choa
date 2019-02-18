@@ -61,7 +61,7 @@
 									<c:forEach items="${varList}" var="var" varStatus="vs">
 										<tr>
 											<td class='center'>
-												<label class="pos-rel"><input type='checkbox' name='ids' value="${var.PROJECTPRODUCT_ID}" class="ace" /><span class="lbl"></span></label>
+												<label class="pos-rel"><input type='checkbox' name='ids' value="${var.PRODUCT_ID}" class="ace" /><span class="lbl"></span></label>
 											</td>
 											<td class='center' style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
 											<td class='center'>${var.PRODUCT_NAME}</td>
@@ -73,7 +73,7 @@
 												</c:if>
 
 													<c:if test="${QX.del == 1 }">
-													<a class="btn btn-xs btn-danger" onclick="del('${var.PROJECTPRODUCT_ID}');">
+													<a class="btn btn-xs btn-danger" onclick="del('${var.PRODUCT_ID}');">
 														<i class="ace-icon fa fa-trash-o bigger-120" title="删除"></i>
 													</a>
 													</c:if>
@@ -228,7 +228,7 @@
 			bootbox.confirm("确定要删除吗?", function(result) {
 				if(result) {
 					top.jzts();
-					var url = "<%=basePath%>projectproduct/delete.do?PROJECTPRODUCT_ID="+Id+"&tm="+new Date().getTime();
+					var url = "<%=basePath%>projectproduct/delete.do?PRODUCT_ID="+Id+"&tm="+new Date().getTime();
 					$.get(url,function(data){
 						tosearch();
 					});

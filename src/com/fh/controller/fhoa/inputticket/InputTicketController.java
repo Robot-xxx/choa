@@ -298,24 +298,30 @@ public class InputTicketController extends BaseController {
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
 		titles.add("选择公司");	//1
-		titles.add("项目编号");	//2
-		titles.add("采购合同编号");	//3
-		titles.add("项目名称");	//4
-		titles.add("进项票金额(万元)");	//5
-		titles.add("进项票备注");	//6
-		titles.add("附件");	//7
+		titles.add("项目编号");	//1
+		titles.add("项目名称");	//1
+		titles.add("采购合同编号");	//1
+		titles.add("进项票总额(万元)");	//1
+		titles.add("发票号");	//1
+		titles.add("已回票金额(万元)");	//1
+		titles.add("金额(万元)");	//1
+		titles.add("备注");	//1
+
 		dataMap.put("titles", titles);
 		List<PageData> varOList = inputticketService.listAll(pd);
 		List<PageData> varList = new ArrayList<PageData>();
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
 			vpd.put("var1", varOList.get(i).getString("SELECTCOMPANY"));	    //1
-			vpd.put("var2", varOList.get(i).getString("PROJECT_ID"));	    //2
-			vpd.put("var3", varOList.get(i).getString("PURCHASENUMBER"));	    //3
-			vpd.put("var4", varOList.get(i).getString("PROJECT_NAME"));	    //4
-			vpd.put("var5", varOList.get(i).get("JINPRICE"));	    //5
-			vpd.put("var6", varOList.get(i).getString("JINBZ"));	    //6
-			vpd.put("var7", varOList.get(i).getString("FJ"));	    //7
+			vpd.put("var2", varOList.get(i).getString("PROJECT_ID"));	    //1
+			vpd.put("var3", varOList.get(i).getString("PROJECT_NAME"));	    //1
+			vpd.put("var4", varOList.get(i).getString("PURCHASENUMBER"));	    //1
+			vpd.put("var5", varOList.get(i).getString("JINPRICE"));	    //1
+			vpd.put("var6", varOList.get(i).getString("TICKET_NO"));	    //1
+			vpd.put("var7", varOList.get(i).getString("YIHUIPIAOJINE"));	    //1
+			vpd.put("var8", varOList.get(i).getString("MONEY"));	    //1
+			vpd.put("var9", varOList.get(i).getString("BZ"));	    //1
+
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

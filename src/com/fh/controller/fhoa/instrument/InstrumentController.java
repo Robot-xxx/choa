@@ -70,6 +70,7 @@ public class InstrumentController extends AcStartController {
 			map1.put("生产批次", pd.getString("BATCH"));
 			map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
 			map1.put("有效期", pd.get("VALIDITY").toString());
+			map1.put("上传者", pd.get("FUZEREN").toString());
 			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("INSTRUMENT_ID")+"','2edba70525574ebfacda36e4e7607034')\" style=' cursor:pointer;'>查看附件</a>");
 
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
@@ -110,6 +111,7 @@ public class InstrumentController extends AcStartController {
 		try{
 			pd = this.getPageData();
 			page.setPd(pd);
+			page.setShowCount(99999);
 			list = instrumentService.list(page);
 		} catch(Exception e){
 			errInfo = "error";
@@ -177,7 +179,7 @@ public class InstrumentController extends AcStartController {
 		pd = this.getPageData();
 		pd.put("FUZEREN", Jurisdiction.getUsername());	//主键
 		pd.put("UPDATETIME", sd1.format(new Date()));
-
+		pd.put("STATUS",2);
 		instrumentService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
@@ -280,13 +282,14 @@ public class InstrumentController extends AcStartController {
 		pd = this.getPageData();
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
-		titles.add("系统编序号");	//1
-		titles.add("产品名称");	//2
-		titles.add("型号丶规格");	//3
+		titles.add("器械编号");	//1
+		titles.add("器械名称");	//2
+		titles.add("器械型号");	//3
 		titles.add("生产厂家");	//4
 		titles.add("注册证号");	//5
-		titles.add("生产经营范围");	//6
-		titles.add("生产批次");	//7
+		titles.add("注册证类别");	//6
+		titles.add("资料是否齐全");	//7
+		titles.add("上传者");	//7
 		titles.add("有效期");	//8
 		dataMap.put("titles", titles);
 		List<PageData> varOList = instrumentService.listAll(pd);
@@ -299,8 +302,9 @@ public class InstrumentController extends AcStartController {
 			vpd.put("var4", varOList.get(i).getString("MANUFACTURERS"));	    //4
 			vpd.put("var5", varOList.get(i).getString("REGISTRATION"));	    //5
 			vpd.put("var6", varOList.get(i).getString("BUSINESS"));	    //6
-			vpd.put("var7", varOList.get(i).getString("BATCH"));	    //7
-			vpd.put("var8", sd.format(varOList.get(i).get("VALIDITY")));	    //8
+			vpd.put("var7", varOList.get(i).getString("ISZILIAOQQ"));	    //7
+			vpd.put("var8", varOList.get(i).getString("FUZEREN"));	    //7
+			vpd.put("var9", sd.format(varOList.get(i).get("VALIDITY")));	    //8
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

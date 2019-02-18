@@ -422,31 +422,84 @@ public class ProjectPurchaseController extends AcStartController {
         pd = this.getPageData();
         Map<String, Object> dataMap = new HashMap<String, Object>();
         List<String> titles = new ArrayList<String>();
-        titles.add("系统编序号");    //1
+        titles.add("选择公司");    //1
+        titles.add("项目编号");    //1
         titles.add("销售合同编号");    //2
         titles.add("采购合同编号");    //3
-        titles.add("供应商序号");    //4
-        titles.add("产品信息");    //5
-        titles.add("合同签订时间");    //6
-        titles.add("合同金额(万元)");    //7
-        titles.add("发票号码");    //8
-        titles.add("发票附件");    //9
-        titles.add("授权书丶随货同行单");    //10
+        titles.add("供应商");    //4
+        titles.add("生产许可证到期日");    //5
+        titles.add("经营许可证到期日");    //6
+        titles.add("法人授权书到期日");    //7
+        titles.add("授权委托书到期日");    //8
+        titles.add("合同签订时间");    //9
+        titles.add("到货期时间");    //10
+        titles.add("验收时间");    //10
+        titles.add("合同总价(万元)");    //10
+        titles.add("负责人");    //10
+        titles.add("备注");    //10
         dataMap.put("titles", titles);
         List<PageData> varOList = projectpurchaseService.listAll(pd);
         List<PageData> varList = new ArrayList<PageData>();
         for (int i = 0; i < varOList.size(); i++) {
             PageData vpd = new PageData();
-            vpd.put("var1", varOList.get(i).getString("SYS_ID"));        //1
-            vpd.put("var2", varOList.get(i).getString("SALES_CONTRACT_ID"));        //2
-            vpd.put("var3", varOList.get(i).getString("PURCHASE_CONTRACT_ID"));        //3
-            vpd.put("var4", varOList.get(i).getString("SUPPLIER_ID"));        //4
-            vpd.put("var5", varOList.get(i).getString("PRODUCT_INFO"));        //5
-            vpd.put("var6", sd.format(varOList.get(i).get("CONTRACT_SIGN_TIME")));        //6
-            vpd.put("var7", varOList.get(i).get("CONTRACT_PRICE").toString());        //7
-            vpd.put("var8", varOList.get(i).getString("INVOICE_NUMBER"));        //8
-            vpd.put("var9", varOList.get(i).getString("INVOICE_ACCESSORY"));        //9
-            vpd.put("var10", varOList.get(i).getString("AUTHORIZATION"));        //10
+            vpd.put("var1", varOList.get(i).getString("SELECTCOMPANY"));        //1
+            vpd.put("var2", varOList.get(i).getString("SYS_ID"));        //1
+            vpd.put("var3", varOList.get(i).getString("SALES_CONTRACT_ID"));        //2
+            vpd.put("var4", varOList.get(i).getString("PURCHASE_CONTRACT_ID"));        //3
+            vpd.put("var5", varOList.get(i).getString("SUPPLIERNAME"));
+
+            if (varOList.get(i).get("SHENGCHANXUKEZHENG")!=null&&!varOList.get(i).get("SHENGCHANXUKEZHENG").toString().equals("")) {
+                vpd.put("var6", varOList.get(i).get("SHENGCHANXUKEZHENG").toString());	    //8
+            }else {
+                vpd.put("var6","");	    //8
+
+            }
+            if (varOList.get(i).get("JINGYINGXUKEZHENG")!=null&&!varOList.get(i).get("JINGYINGXUKEZHENG").toString().equals("")) {
+                vpd.put("var7", varOList.get(i).get("JINGYINGXUKEZHENG").toString());	    //8
+            }else {
+                vpd.put("var7","");	    //8
+
+            }
+             if (varOList.get(i).get("FARENSHOUQUAN")!=null&&!varOList.get(i).get("FARENSHOUQUAN").toString().equals("")) {
+                vpd.put("var8", varOList.get(i).get("FARENSHOUQUAN").toString());	    //8
+            }else {
+                vpd.put("var8","");	    //8
+
+            }
+             if (varOList.get(i).get("SHOUQUANWEITUO")!=null&&!varOList.get(i).get("SHOUQUANWEITUO").toString().equals("")) {
+                vpd.put("var9", varOList.get(i).get("SHOUQUANWEITUO").toString());	    //8
+            }else {
+                vpd.put("var9","");	    //8
+
+            }
+             if (varOList.get(i).get("CONTRACT_SIGN_TIME")!=null&&!varOList.get(i).get("CONTRACT_SIGN_TIME").toString().equals("")) {
+                vpd.put("var10", varOList.get(i).get("CONTRACT_SIGN_TIME").toString());	    //8
+            }else {
+                vpd.put("var10","");	    //8
+
+            }
+             if (varOList.get(i).get("DAOHUOQI")!=null&&!varOList.get(i).get("DAOHUOQI").toString().equals("")) {
+                vpd.put("var11", varOList.get(i).get("DAOHUOQI").toString());	    //8
+            }else {
+                vpd.put("var11","");	    //8
+
+            }
+             if (varOList.get(i).get("YANSHOUSHIJIAN")!=null&&!varOList.get(i).get("YANSHOUSHIJIAN").toString().equals("")) {
+                vpd.put("var12", varOList.get(i).get("YANSHOUSHIJIAN").toString());	    //8
+            }else {
+                vpd.put("var12","");	    //8
+
+            }
+             if (varOList.get(i).get("CONTRACT_PRICE")!=null&&!varOList.get(i).get("CONTRACT_PRICE").toString().equals("")) {
+                vpd.put("var13", varOList.get(i).get("CONTRACT_PRICE").toString());	    //8
+            }else {
+                vpd.put("var13","");	    //8
+
+            }
+
+            //4
+            vpd.put("var14", varOList.get(i).getString("FUZEREN"));        //5
+            vpd.put("var15", varOList.get(i).getString("BZ"));        //5
             varList.add(vpd);
         }
         dataMap.put("varList", varList);

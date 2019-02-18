@@ -290,9 +290,9 @@ public class ConsumableController extends AcStartController {
         titles.add("型号丶规格");    //4
         titles.add("生产厂家");    //5
         titles.add("注册证号");    //6
-        titles.add("生产经营范围");    //7
-        titles.add("生产批次");    //8
-        titles.add("有效期");    //9
+        titles.add("注册证类别");    //7
+        titles.add("上传者");    //8
+
         dataMap.put("titles", titles);
         List<PageData> varOList = consumableService.listAll(pd);
         List<PageData> varList = new ArrayList<PageData>();
@@ -305,8 +305,8 @@ public class ConsumableController extends AcStartController {
             vpd.put("var5", varOList.get(i).getString("MANUFACTURERS"));        //5
             vpd.put("var6", varOList.get(i).getString("REGISTRATION"));        //6
             vpd.put("var7", varOList.get(i).getString("BUSINESS"));        //7
-            vpd.put("var8", varOList.get(i).getString("BATCH"));        //8
-            vpd.put("var9",sd.format(varOList.get(i).get("VALIDITY")));        //9
+            vpd.put("var8", varOList.get(i).getString("FUZEREN"));        //8
+
             varList.add(vpd);
         }
         dataMap.put("varList", varList);

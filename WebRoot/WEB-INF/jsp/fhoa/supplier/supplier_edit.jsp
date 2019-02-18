@@ -111,12 +111,7 @@
                                                     style="width:98%;"></select>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">经营范围:</td>
-                                        <td><input type="text" name="JINGYINGFANWEI" id="JINGYINGFANWEI"
-                                                   value="${pd.JINGYINGFANWEI}" maxlength="100" placeholder="这里输入经营范围"
-                                                   title="经营范围" style="width:98%;"/></td>
-                                    </tr>
+
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">统一社会信用代码:</td>
                                         <td><input type="text" name="TONGYISHEHUIDAIMA" id="TONGYISHEHUIDAIMA"

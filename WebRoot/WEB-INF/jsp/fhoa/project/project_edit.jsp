@@ -69,7 +69,7 @@
                                     </tr>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>投标限价(万元):</td>
-                                        <td><input onkeydown="change(this.value)"  type="text" name="LIMITED_PRICE" id="LIMITED_PRICE"
+                                        <td><input onchange="change(this.value)"  type="text" name="LIMITED_PRICE" id="LIMITED_PRICE"
                                                    value="${pd.LIMITED_PRICE}" maxlength="11" placeholder="这里输入投标限价(万元)"
                                                    title="投标限价(万元)" style="width:98%;"/></td>
                                     </tr>
@@ -194,7 +194,7 @@
     }
 
     function formatNum2(num) {
-        return (num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return (num).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
     }
 
 
