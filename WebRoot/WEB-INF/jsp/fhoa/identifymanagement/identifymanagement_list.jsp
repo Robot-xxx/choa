@@ -45,18 +45,12 @@
                                     </td>
 
                                     <c:if test="${QX.cha == 1 }">
-                                        <td style="vertical-align:top;padding-left:2px"><a class="btn btn-light btn-xs"
-                                                                                           onclick="tosearch();"
-                                                                                           title="检索"><i
-                                                id="nav-search-icon"
+                                        <td style="vertical-align:top;padding-left:2px"><a class="btn btn-light btn-xs" onclick="tosearch();" title="检索"><i id="nav-search-icon"
                                                 class="ace-icon fa fa-search bigger-110 nav-search-icon blue"></i></a>
                                         </td>
                                     </c:if>
                                     <c:if test="${QX.toExcel == 1 }">
-                                        <td style="vertical-align:top;padding-left:2px;"><a class="btn btn-light btn-xs"
-                                                                                            onclick="toExcel();"
-                                                                                            title="导出到EXCEL"><i
-                                                id="nav-search-icon"
+                                        <td style="vertical-align:top;padding-left:2px;"><a class="btn btn-light btn-xs" onclick="toExcel();" title="导出到EXCEL"><i id="nav-search-icon"
                                                 class="ace-icon fa fa-download bigger-110 nav-search-icon blue"></i></a>
                                         </td>
                                     </c:if>
@@ -73,6 +67,7 @@
                                                 class="lbl"></span></label>
                                     </th>
                                     <th class="center" style="width:50px;">序号</th>
+                                    <th class="center" style="width:50px;">认款类型</th>
                           <%--          <th class="center">项目编号</th>
                                     <th class="center">项目名称</th>--%>
                                    <%-- <th class="center">回款期数</th>--%>
@@ -105,6 +100,7 @@
                                                   <%--  <td class='center'>${var.PROJECT_ID}</td>
                                                     <td class='center'>${var.PROJECT_NAME}</td>--%>
                                                  <%--   <td class='center'>${var.HUIKUAN}</td>--%>
+                                                    <td class='center'>${var.RENKUAILEIXING}</td>
                                                     <td class='center'>${var.INCOME_MONEY}</td>
                                                     <td class='center'>${var.RETURN_MONEY}</td>
                                                     <td class='center'>${var.CREATE_DATE}</td>

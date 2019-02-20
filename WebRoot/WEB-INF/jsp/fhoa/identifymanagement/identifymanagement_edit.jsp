@@ -26,12 +26,18 @@
 			<div class="page-content">
 				<div class="row">
 					<div class="col-xs-12">
-					
+
 					<form action="identifymanagement/${msg }.do" name="Form" id="Form" method="post">
 						<input type="hidden" name="IDENTIFYMANAGEMENT_ID" id="IDENTIFYMANAGEMENT_ID" value="${pd.IDENTIFYMANAGEMENT_ID}"/>
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
-
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">认款类型:</td>
+								<td>
+									<select name="RENKUAILEIXING" id="RENKUAILEIXING" title=""
+										style="width:38%;"></select>
+								</td>
+							</tr>
                             <tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>进款金额(万元):</td>
 								<td><input type="number" name="INCOME_MONEY" id="INCOME_MONEY" value="${pd.INCOME_MONEY}" maxlength="32" placeholder="这里输入进款金额" title="进款金额" style="width:98%;"/></td>
@@ -172,8 +178,26 @@
 		    getInfo();
 			//日期框
 			$('.date-picker').datepicker({autoclose: true,todayHighlight: true});
-			
 
+            var BUSINESS = "${pd.RENKUAILEIXING}";
+            $.ajax({
+                type: "POST",
+                url: '<%=basePath%>dictionaries/getLevels.do?tm=' + new Date().getTime(),
+                data: {DICTIONARIES_ID: '02f895c7cf44412bb8ed79df27d019de'},
+                dataType: 'json',
+                cache: false,
+                success: function (data) {
+                    $("#RENKUAILEIXING").append("<option value=''>请选择类型</option>");
+                    $.each(data.list, function (i, dvar) {
+                        if (BUSINESS == dvar.NAME) {
+                            $("#RENKUAILEIXING").append("<option value=" + dvar.NAME + " selected='selected'>" + dvar.NAME + "</option>");
+                        } else {
+                            $("#RENKUAILEIXING").append("<option value=" + dvar.NAME + ">" + dvar.NAME + "</option>");
+                        }
+                    });
+
+                }
+            });
 		});
 		</script>
 </body>

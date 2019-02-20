@@ -404,7 +404,6 @@ public class PayRequestController extends AcStartController {
 			vpd.put("var5", varOList.get(i).getString("REQUEST_TYPE"));	    //4
 			vpd.put("var6", varOList.get(i).getString("PAY_METHOD"));	    //5
 			vpd.put("var7", varOList.get(i).getString("PAYEE"));	    //6
-
 			vpd.put("var8", varOList.get(i).getString("PAYEEBANK"));	    //8
 			vpd.put("var9", varOList.get(i).getString("BANKACCOUNT"));	    //9
 			vpd.put("var10", varOList.get(i).getString("POSTSCRIPT"));	    //10
