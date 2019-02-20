@@ -68,6 +68,7 @@
                                     </th>
                                     <th class="center" style="width:50px;">序号</th>
                                     <th class="center" style="width:50px;">认款类型</th>
+                                    <th class="center" style="width:50px;">是否完成认款</th>
                           <%--          <th class="center">项目编号</th>
                                     <th class="center">项目名称</th>--%>
                                    <%-- <th class="center">回款期数</th>--%>
@@ -75,7 +76,7 @@
                                     <th class="center">回款单位</th>
                                     <th class="center">日期</th>
 
-                                    <th class="center">汇款备注</th>
+                                    <th class="center">备注</th>
                                     <th class="center">附件</th>
                                     <th class="center">认款</th>
                                     <th class="center">操作</th>
@@ -101,12 +102,13 @@
                                                     <td class='center'>${var.PROJECT_NAME}</td>--%>
                                                  <%--   <td class='center'>${var.HUIKUAN}</td>--%>
                                                     <td class='center'>${var.RENKUAILEIXING}</td>
+                                                    <td class='center'><c:if test="${var.INCOME_MONEY<=0}">是</c:if><c:if test="${var.INCOME_MONEY>0}">否</c:if></td>
                                                     <td class='center'>${var.INCOME_MONEY}</td>
                                                     <td class='center'>${var.RETURN_MONEY}</td>
                                                     <td class='center'>${var.CREATE_DATE}</td>
                                                     <td class='center'>${var.BZ}</td>
                                                     <td class='center'><a onclick="allOaFile('${var.REQUEST_ID}','5e90f10240ad487bbbf12eaea0831258')" style=" cursor:pointer;">查看附件</a></td>
-                                                    <td class='center'><a class="btn btn-mini btn-purple" onclick="addRenKuan('${var.INCOME_MONEY}','${var.IDENTIFYMANAGEMENT_ID}','${var.PROJECT_ID}','${var.PROJECT_NAME}')">
+                                                    <td class='center'><a class="btn btn-mini btn-purple" onclick="addRenKuan('${var.RENKUAILEIXING}','${var.INCOME_MONEY}','${var.IDENTIFYMANAGEMENT_ID}','${var.PROJECT_ID}','${var.PROJECT_NAME}')">
                                                         <i class="icon-pencil"></i>认款</a>
                                                     </td>
 
@@ -297,12 +299,12 @@
 
 
     //认款管理添加
-    function addRenKuan(money,moneyId,projectId,projectName) {
+    function addRenKuan(renkuanleixing,money,moneyId,projectId,projectName) {
         top.jzts();
         var diag = new top.Dialog();
         diag.Drag = true;
         diag.Title = "新增";
-        diag.URL = '<%=basePath%>claimant/goAdd.do?money='+money+"&projectId="+projectId+"&projectName="+projectName+"&moneyId="+moneyId;
+        diag.URL = '<%=basePath%>claimant/goAdd.do?renkuanleixing='+renkuanleixing+'&money='+money+"&projectId="+projectId+"&projectName="+projectName+"&moneyId="+moneyId;
         diag.Width = 450;
         diag.Height = 355;
         diag.Modal = true;				//有无遮罩窗口

@@ -57,11 +57,14 @@
 									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
 									</th>
 									<th class="center" style="width:50px;">序号</th>
+									<th class="center">认款类型</th>
 									<th class="center">项目编号</th>
 									<th class="center">项目名称</th>
+									<th class="center">合同总价</th>
 									<th class="center">认领时间</th>
 									<th class="center">认领人名称</th>
 									<th class="center">认领金额(万元)</th>
+									<th class="center">未认领金额</th>
 									<th class="center">备注</th>
 									<th class="center">操作</th>
 								</tr>
@@ -78,11 +81,14 @@
 												<label class="pos-rel"><input type='checkbox' name='ids' value="${var.SYS_ID}" class="ace" /><span class="lbl"></span></label>
 											</td>
 											<td class='center' style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
+											<td class='center'>${var.RENKUAILEIXING}</td>
 											<td class='center'>${var.PROJECT_ID}</td>
 											<td class='center'>${var.PROJECT_NAME}</td>
+											<td class='center'>${var.CONTRACT_PRICE}</td>
 											<td class='center'>${var.CREATE_TIME}</td>
 											<td class='center'>${var.CLAIMANT_NAME}</td>
 											<td class='center'>${var.CLAIMANT_MONEY}</td>
+											<td class='center'>${var.WEIRENLINGJINE}</td>
 											<td class='center'>${var.BZ}</td>
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
@@ -147,7 +153,25 @@
 							</c:choose>
 							</tbody>
 						</table>
-
+							<div class="page-header position-relative">
+								<table style="width:100%;">
+									<tr>
+										<td style="vertical-align:top;">
+											<c:if test="${QX.add == 1 }">
+												<a class="btn btn-mini btn-success" onclick="add();">新增</a>
+											</c:if>
+											<c:if test="${QX.del == 1 }">
+												<a class="btn btn-mini btn-danger" onclick="makeAll('确定要删除选中的数据吗?');"
+												   title="批量删除"><i class='ace-icon fa fa-trash-o bigger-120'></i></a>
+											</c:if>
+										</td>
+										<td style="vertical-align:top;">
+											<div class="pagination"
+												 style="float: right;padding-top: 0px;margin-top: 0px;">${page.pageStr}</div>
+										</td>
+									</tr>
+								</table>
+							</div>
 						</form>
 					
 						</div>

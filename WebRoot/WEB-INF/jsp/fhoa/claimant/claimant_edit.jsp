@@ -30,7 +30,9 @@
 					<form action="claimant/${msg }.do" name="Form" id="Form" method="post">
 						<input type="hidden" name="SYS_ID" id="SYS_ID" value="${pd.SYS_ID}"/>
 						<input type="hidden" name="money" id="money" value="${pd.money}"/>
+						<input type="hidden" name="RENKUAILEIXING" id="renkuanleixing" value="${pd.renkuanleixing}"/>
 						<input type="hidden" name="moneyId" id="moneyId" value="${pd.moneyId}"/>
+						<input type="hidden" name="PROJECT_MARKET_ID" id="PROJECT_MARKET_ID" value="${pd.PROJECT_MARKET_ID}"/>
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
                             <tr>	<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>项目编号:</td>
@@ -153,30 +155,31 @@
 			return false;
 			}
 
-			$("#Form").submit();
-			$("#zhongxin").hide();
-			$("#zhongxin2").show();
+
+			if(parseFloat($("#CLAIMANT_MONEY").val())>parseFloat($("#money").val())){
+			    alert("认款金额过大，认款失败！");
+			    return false;
+			}
+            $("#Form").submit();
+            $("#zhongxin").hide();
+            $("#zhongxin2").show();
 		}
 
 
         function getInfo(){
-            var project="${pd.PROJECT_ID}";
 
             //项目编号
             $.ajax({
                 type: "POST",
-                url: '<%=basePath%>/projectbid/getProjectAll.do?tm=' + new Date().getTime(),
+                url: '<%=basePath%>/projectmarket/getMarketAll.do?tm=' + new Date().getTime(),
                 dataType: 'json',
                 cache: false,
                 success: function (data) {
                     if (data.errInfo == "success") {
                         $("#projectId").append("<option value=''>请选择项目编号</option>");
                         for (var i = 0; i < data.list.length; i++) {
-                            if (data.list[i].PROJECT_ID  == project) {
-                                $("#projectId").append("<option value=" +  data.list[i].PROJECT_ID  + " selected='selected'>" + data.list[i].SYS_ID+"=>"+data.list[i].PROJECT_NAME + "</option>");
-                            } else {
-                                $("#projectId").append("<option value=" + data.list[i].PROJECT_ID  + ">" + data.list[i].SYS_ID+"=>"+data.list[i].PROJECT_NAME + "</option>");
-                            }
+                                $("#projectId").append("<option value=" +  data.list[i].PROJECT_MARKET_ID  + ">" + data.list[i].SYS_ID+"=>"+data.list[i].PROJECT_NAME + "</option>");
+
                         }
                         downList('projectId');
                     }
@@ -191,18 +194,12 @@
                 var str= $("#projectId option:selected").text();
                 $("#PROJECT_NAME").val('');
                 $("#PROJECT_ID").val('');
-                $.ajax({
-                    type: "POST",
-                    url: '<%=basePath%>/projectbid/projectById.do?PROJECT_ID=' + $("#projectId").val(),
-                    dataType: 'json',
-                    cache: false,
-                    success: function (data) {
-                        if (data.errInfo == "success") {
-                            $("#PROJECT_NAME").val(data.pd.PROJECT_NAME);
-                            $("#PROJECT_ID").val(str.substring(0,str.indexOf('=>')));
-                        }
-                    }
-                });
+                $("#PROJECT_MARKET_ID").val('');
+
+                $("#PROJECT_NAME").val(str.substring(str.indexOf('=>')+2,str.length));
+                $("#PROJECT_ID").val(str.substring(0,str.indexOf('=>')));
+                $("#PROJECT_MARKET_ID").val($("#projectId").val());
+
             })
             getInfo();
 

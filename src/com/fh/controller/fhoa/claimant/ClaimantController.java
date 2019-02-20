@@ -49,7 +49,7 @@ public class ClaimantController extends BaseController {
 		try{
 			pd = this.getPageData();
 			page.setPd(pd);
-			page.setShowCount(99999);
+			page.setShowCount(999999);
 			list = claimantService.list(page);
 		} catch(Exception e){
 			errInfo = "error";
@@ -69,11 +69,23 @@ public class ClaimantController extends BaseController {
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "add")){return null;} //校验权限
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
+		PageData pd1 = new PageData();
 		pd = this.getPageData();
 		pd.put("SYS_ID", this.get32UUID());	//主键
 
 		Double money = Double.valueOf(pd.getString("money"))- Double.valueOf(pd.getString("CLAIMANT_MONEY"));
+
+		//认领金额
 		pd.put("INCOME_MONEY",money);
+
+		pd1=claimantService.findProjectMarket(pd.getString("PROJECT_MARKET_ID"));
+		//合同总价
+		pd.put("CONTRACT_PRICE",pd1.get("CONTRACT_PRICE").toString());
+
+		//认款类型
+		pd.put("RENKUAILEIXING",pd.getString("RENKUAILEIXING"));
+		//未认领金额
+		pd.put("WEIRENLINGJINE",Double.valueOf(pd1.get("CONTRACT_PRICE").toString())-Double.valueOf(pd.getString("CLAIMANT_MONEY")));
 
 		claimantService.updateMoney(pd);
 		pd.put("UPDATETIME", sd.format(new Date()));

@@ -20,8 +20,11 @@
 		f.CLAIMANT_NAME,	
 		f.CLAIMANT_MONEY,	
 		f.BZ,	
+		f.RENKUAILEIXING,
 		f.CREATETIME,
 		f.UPDATETIME,
+		f.CONTRACT_PRICE,
+		f.WEIRENLINGJINE,
 
 		f.SYS_ID
 	</sql>
@@ -34,8 +37,11 @@
 		CLAIMANT_NAME,	
 		CLAIMANT_MONEY,	
 		BZ,	
+		RENKUAILEIXING,
 		CREATETIME,
 		UPDATETIME,
+		CONTRACT_PRICE,
+		WEIRENLINGJINE,
 
 		SYS_ID
 	</sql>
@@ -48,8 +54,11 @@
 		#{CLAIMANT_NAME},	
 		#{CLAIMANT_MONEY},	
 		#{BZ},	
+		#{RENKUAILEIXING},
 		#{CREATETIME},
 		#{UPDATETIME},
+		#{CONTRACT_PRICE},
+		#{WEIRENLINGJINE},
 
 		#{SYS_ID}
 	</sql>
@@ -84,8 +93,11 @@
 			CLAIMANT_NAME = #{CLAIMANT_NAME},
 			CLAIMANT_MONEY = #{CLAIMANT_MONEY},
 			BZ = #{BZ},
+			RENKUAILEIXING = #{RENKUAILEIXING},
 			CREATETIME = #{CREATETIME},
 			UPDATETIME = #{UPDATETIME},
+			CONTRACT_PRICE = #{CONTRACT_PRICE},
+			WEIRENLINGJINE = #{WEIRENLINGJINE},
 
 		SYS_ID = SYS_ID
 		where
@@ -153,5 +165,13 @@
 		IDENTIFYMANAGEMENT_ID = #{moneyId}
 	</update>
 
+	<select id="findProjectMarket" parameterType="String" resultType="pd">
+		select
+			*
+		from
+			oa_project_market
+		where
+		PROJECT_MARKET_ID = #{PROJECT_MARKET_ID}
+	</select>
 
 </mapper>

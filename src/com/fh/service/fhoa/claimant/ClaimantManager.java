@@ -60,5 +60,8 @@ public interface ClaimantManager{
 	 */
 	public void updateMoney(PageData pd)throws Exception;
 
+	public PageData findProjectMarket(String projecr_id)throws Exception;
+
+
 }
 

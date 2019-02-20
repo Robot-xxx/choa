@@ -85,6 +85,11 @@ public class ClaimantService implements ClaimantManager{
 	public void updateMoney(PageData pd)throws Exception{
 		dao.update("ClaimantMapper.updateMoney", pd);
 	}
-	
+
+	@Override
+	public PageData findProjectMarket(String projecr_id) throws Exception {
+		return (PageData)dao.findForObject("ClaimantMapper.findProjectMarket", projecr_id);
+	}
+
 }
 
