@@ -65,6 +65,7 @@
 									<th class="center">认领人名称</th>
 									<th class="center">认领金额(万元)</th>
 									<th class="center">未认领金额</th>
+									<th class="center">是否完成认款</th>
 									<th class="center">备注</th>
 									<th class="center">操作</th>
 								</tr>
@@ -89,17 +90,18 @@
 											<td class='center'>${var.CLAIMANT_NAME}</td>
 											<td class='center'>${var.CLAIMANT_MONEY}</td>
 											<td class='center'>${var.WEIRENLINGJINE}</td>
+											<td class='center'>${var.SHIFOURENKUAN}</td>
 											<td class='center'>${var.BZ}</td>
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
 												</c:if>
 												<div class="hidden-sm hidden-xs btn-group">
-													<c:if test="${QX.edit == 1 }">
+													<%--<c:if test="${QX.edit == 1 }">
 													<a class="btn btn-xs btn-success" title="编辑" onclick="edit('${var.SYS_ID}');">
 														<i class="ace-icon fa fa-pencil-square-o bigger-120" title="编辑"></i>
 													</a>
-													</c:if>
+													</c:if>--%>
 													<c:if test="${QX.del == 1 }">
 													<a class="btn btn-xs btn-danger" onclick="del('${var.SYS_ID}');">
 														<i class="ace-icon fa fa-trash-o bigger-120" title="删除"></i>
@@ -113,7 +115,7 @@
 														</button>
 			
 														<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-															<c:if test="${QX.edit == 1 }">
+														<%--	<c:if test="${QX.edit == 1 }">
 															<li>
 																<a style="cursor:pointer;" onclick="edit('${var.SYS_ID}');" class="tooltip-success" data-rel="tooltip" title="修改">
 																	<span class="green">
@@ -121,7 +123,7 @@
 																	</span>
 																</a>
 															</li>
-															</c:if>
+															</c:if>--%>
 															<c:if test="${QX.del == 1 }">
 															<li>
 																<a style="cursor:pointer;" onclick="del('${var.SYS_ID}');" class="tooltip-error" data-rel="tooltip" title="删除">
@@ -157,9 +159,7 @@
 								<table style="width:100%;">
 									<tr>
 										<td style="vertical-align:top;">
-											<c:if test="${QX.add == 1 }">
-												<a class="btn btn-mini btn-success" onclick="add();">新增</a>
-											</c:if>
+
 											<c:if test="${QX.del == 1 }">
 												<a class="btn btn-mini btn-danger" onclick="makeAll('确定要删除选中的数据吗?');"
 												   title="批量删除"><i class='ace-icon fa fa-trash-o bigger-120'></i></a>
