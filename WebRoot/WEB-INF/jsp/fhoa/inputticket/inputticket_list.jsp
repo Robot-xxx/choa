@@ -72,10 +72,10 @@
 									<th class="center">项目编号</th>
 									<th class="center">采购合同编号</th>
 									<th class="center">项目名称</th>
-									<th class="center">进项票总额(万元)</th>
+									<th class="center">进项票总额(元)</th>
 									<th class="center">发票号</th>
-									<th class="center">金额(万元)</th>
-									<th class="center">已回票金额(万元)</th>
+									<th class="center">金额(元)</th>
+									<th class="center">已回票金额(元)</th>
 									<th class="center">备注</th>
 									<th class="center">附件</th>
 									<th class="center">操作</th>

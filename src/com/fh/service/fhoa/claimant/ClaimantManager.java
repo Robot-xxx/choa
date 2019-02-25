@@ -62,6 +62,8 @@ public interface ClaimantManager{
 
 	public PageData findProjectMarket(String projecr_id)throws Exception;
 
+	public PageData findOneClaimant(String projecr_id)throws Exception;
+
 
 }
 

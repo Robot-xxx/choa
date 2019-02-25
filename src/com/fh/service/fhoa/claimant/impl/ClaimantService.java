@@ -91,5 +91,10 @@ public class ClaimantService implements ClaimantManager{
 		return (PageData)dao.findForObject("ClaimantMapper.findProjectMarket", projecr_id);
 	}
 
+	@Override
+	public PageData findOneClaimant(String project_id) throws Exception {
+		return (PageData)dao.findForObject("ClaimantMapper.findOneClaimant",project_id);
+	}
+
 }
 

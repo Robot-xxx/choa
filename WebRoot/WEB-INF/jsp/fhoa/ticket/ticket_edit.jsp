@@ -65,8 +65,8 @@
 
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>进项票总额(万元):</td>
-								<td><input type="text" name="TICKET_PRICE" id="TICKET_PRICE" value="${pd.TICKET_PRICE}" maxlength="12" placeholder="这里输入进项票金额(万元)" title="进项票金额(万元)" style="width:98%;"/></td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>进项票总额(元):</td>
+								<td><input type="text" name="TICKET_PRICE" id="TICKET_PRICE" value="${pd.TICKET_PRICE}" maxlength="12" placeholder="这里输入进项票金额(元)" title="进项票金额(元)" style="width:98%;"/></td>
 							</tr>
 
 
@@ -79,7 +79,7 @@
 									<input type="text" hidden name="SALES_CONTRACT_ID" id="SALES_CONTRACT_ID" value="${pd.SALES_CONTRACT_ID}" maxlength="255"  style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>合同总额(万元):</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>合同总额(元):</td>
 								<td><input type="text" name="OPEN_TICKET_PRICE" id="OPEN_TICKET_PRICE" value="${pd.OPEN_TICKET_PRICE}" maxlength="11" placeholder="这里输入合同总额" title="合同总额" style="width:98%;"/></td>
 							</tr>
 							<tr>

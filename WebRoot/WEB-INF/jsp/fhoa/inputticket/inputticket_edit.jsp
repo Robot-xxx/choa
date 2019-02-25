@@ -66,8 +66,8 @@
 									<input hidden type="text" name="PURCHASENUMBER" id="PURCHASENUMBER" value="${pd.PURCHASENUMBER}" maxlength="100" placeholder="这里输入采购合同编号" title="采购合同编号" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>进项票总额(万元):</td>
-								<td><input readonly type="text" name="JINPRICE" id="JINPRICE" value="${pd.JINPRICE}" maxlength="12" placeholder="这里输入进项票金额(万元)" title="进项票金额(万元)" style="width:98%;"/></td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>进项票总额(元):</td>
+								<td><input readonly type="text" name="JINPRICE" id="JINPRICE" value="${pd.JINPRICE}" maxlength="12" placeholder="这里输入进项票金额(元)" title="进项票金额(元)" style="width:98%;"/></td>
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>发票号:</td>
@@ -75,11 +75,11 @@
 							</tr>
 
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>已回票金额(万元):</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>已回票金额(元):</td>
 								<td><input  type="number" name="YIHUIPIAOJINE" id="YIHUIPIAOJINE" value="${pd.YIHUIPIAOJINE}" maxlength="12" placeholder="这里输入已回票金额" title="已回票金额" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>金额(万元):</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>金额(元):</td>
 								<td><input  type="number" name="MONEY" id="MONEY" value="${pd.MONEY}" maxlength="12" placeholder="这里输入金额" title="金额" style="width:98%;"/></td>
 							</tr>
 
@@ -185,7 +185,7 @@
 			if($("#JINPRICE").val()==""){
 				$("#JINPRICE").tips({
 					side:3,
-		            msg:'请输入进项票金额(万元)',
+		            msg:'请输入进项票金额(元)',
 		            bg:'#AE81FF',
 		            time:2
 		        });

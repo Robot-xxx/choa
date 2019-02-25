@@ -73,7 +73,7 @@
 									<th class="center">合同签订时间</th>
 									<th class="center">到货期时间</th>
 									<th class="center">验收时间</th>
-									<th class="center">合同金额(万元)</th>
+									<th class="center">合同金额(元)</th>
 									<%--<th class="center">是否资料齐全</th>--%>
 
 

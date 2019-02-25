@@ -68,7 +68,7 @@
 									<th class="center">项目编号</th>
 									<th class="center">项目名称</th>
 									<th class="center">医院</th>
-									<th class="center">投标限价(万元)</th>
+									<th class="center">投标限价(元)</th>
 									<th class="center">委托公司</th>
 									<th class="center">委托公司老板</th>
 									<%--<th class="center">委托公司老板电话</th>

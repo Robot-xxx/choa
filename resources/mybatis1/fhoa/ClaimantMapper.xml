@@ -26,6 +26,7 @@
 		f.CONTRACT_PRICE,
 		f.WEIRENLINGJINE,
 		f.SHIFOURENKUAN,
+		f.WEIRENLINGZONGE,
 
 		f.SYS_ID
 	</sql>
@@ -44,6 +45,7 @@
 		CONTRACT_PRICE,
 		WEIRENLINGJINE,
 		SHIFOURENKUAN,
+		WEIRENLINGZONGE,
 
 		SYS_ID
 	</sql>
@@ -62,6 +64,7 @@
 		#{CONTRACT_PRICE},
 		#{WEIRENLINGJINE},
 		#{SHIFOURENKUAN},
+		#{WEIRENLINGZONGE},
 
 		#{SYS_ID}
 	</sql>
@@ -102,6 +105,7 @@
 			CONTRACT_PRICE = #{CONTRACT_PRICE},
 			WEIRENLINGJINE = #{WEIRENLINGJINE},
 			SHIFOURENKUAN = #{SHIFOURENKUAN},
+			WEIRENLINGZONGE = #{WEIRENLINGZONGE},
 
 		SYS_ID = SYS_ID
 		where
@@ -175,7 +179,10 @@
 		from
 			oa_project_market
 		where
-		PROJECT_MARKET_ID = #{PROJECT_MARKET_ID}
+			PROJECT_MARKET_ID = #{PROJECT_MARKET_ID}
 	</select>
 
+	<select id="findOneClaimant" parameterType="String" resultType="pd">
+			select * from oa_claimant where PROJECT_ID =#{PROJECT_ID} ORDER BY UPDATETIME DESC LIMIT 0,1
+	</select>
 </mapper>

@@ -61,7 +61,7 @@ public class TicketController extends AcStartController {
 			map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
 			map1.put("项目编号", pd.getString("SYS_ID"));
 			map1.put("销售合同", pd.getString("SALES_CONTRACT_ID"));
-			map1.put("进项票总额（万元）", pd.get("TICKET_PRICE").toString());
+			map1.put("进项票总额（元）", pd.get("TICKET_PRICE").toString());
 			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("TICKET_ID")+"','9c3468e93719466ca4693babf2fa3908')\" style=' cursor:pointer;'>查看附件</a>");
 
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
@@ -293,9 +293,9 @@ public class TicketController extends AcStartController {
 		titles.add("选择公司");	//1
 		titles.add("系统编序号");	//1
 		titles.add("进项票产品名称");	//1
-		titles.add("进项票总额(万元)");	//2
+		titles.add("进项票总额(元)");	//2
 		titles.add("销售合同");	//3
-		titles.add("合同总额(万元)");	//4
+		titles.add("合同总额(元)");	//4
 		titles.add("开票金额");	//5
 		titles.add("已开票金额");	//6
 		titles.add("进项票备注");	//7

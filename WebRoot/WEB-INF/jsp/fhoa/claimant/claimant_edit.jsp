@@ -30,12 +30,19 @@
 					<form action="claimant/${msg }.do" name="Form" id="Form" method="post">
 						<input type="hidden" name="SYS_ID" id="SYS_ID" value="${pd.SYS_ID}"/>
 						<input type="hidden" name="money" id="money" value="${pd.money}"/>
-						<input type="hidden" name="RENKUAILEIXING" id="renkuanleixing" value="${pd.renkuanleixing}"/>
 						<input type="hidden" name="moneyId" id="moneyId" value="${pd.moneyId}"/>
+						<input type="hidden" name="CONTRACT_PRICE" id="hetongMoney" value=""/>
 						<input type="hidden" name="PROJECT_MARKET_ID" id="PROJECT_MARKET_ID" value="${pd.PROJECT_MARKET_ID}"/>
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
-                            <tr>	<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>项目编号:</td>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">认款类型:</td>
+								<td>
+									<select name="RENKUAILEIXING" id="RENKUAILEIXING" title=""
+											style="width:38%;"></select>
+								</td>
+							</tr>
+							<tr>	<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>项目编号:</td>
                                 <td>
                                     <select class="chosen-select form-control"  id="projectId" style="vertical-align:top;width: 68px; width: 98%">
 
@@ -60,7 +67,7 @@
 								<td><input type="text" name="CLAIMANT_NAME" id="CLAIMANT_NAME" value="${pd.CLAIMANT_NAME}" maxlength="100" placeholder="这里输入认领人名称" title="认领人名称" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>认领金额(万元):</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>认领金额(元):</td>
 								<td><input type="number" name="CLAIMANT_MONEY" id="CLAIMANT_MONEY" value="${pd.CLAIMANT_MONEY}" maxlength="32" placeholder="这里输入认领金额" title="认领金额" style="width:98%;"/></td>
 							</tr>
 							<tr>
@@ -160,6 +167,10 @@
 			    alert("认款金额过大，认款失败！");
 			    return false;
 			}
+            if(parseFloat($("#CLAIMANT_MONEY").val())>parseFloat($("#hetongMoney").val())){
+                alert("认款金额超过合同金额，认款失败！");
+                return false;
+            }
             $("#Form").submit();
             $("#zhongxin").hide();
             $("#zhongxin2").show();
@@ -200,12 +211,42 @@
                 $("#PROJECT_ID").val(str.substring(0,str.indexOf('=>')));
                 $("#PROJECT_MARKET_ID").val($("#projectId").val());
 
+
+				//获取合同总价
+                $.ajax({
+                    type: "POST",
+                    url: '<%=basePath%>claimant/yanZhengIsRenKuan.do?tm=' + new Date().getTime(),
+                    data: {PROJECT_MARKET_ID: $("#projectId").val()},
+                    dataType: 'json',
+                    cache: false,
+                    success: function (data) {
+                        $("#hetongMoney").val(data.pd.CONTRACT_PRICE);
+                    }
+                });
             })
             getInfo();
 
 			//日期框
 			$('.date-picker').datepicker({autoclose: true,todayHighlight: true});
-			
+            var BUSINESS = "${pd.RENKUAILEIXING}";
+            $.ajax({
+                type: "POST",
+                url: '<%=basePath%>dictionaries/getLevels.do?tm=' + new Date().getTime(),
+                data: {DICTIONARIES_ID: '02f895c7cf44412bb8ed79df27d019de'},
+                dataType: 'json',
+                cache: false,
+                success: function (data) {
+                    $("#RENKUAILEIXING").append("<option value=''>请选择类型</option>");
+                    $.each(data.list, function (i, dvar) {
+                        if (BUSINESS == dvar.NAME) {
+                            $("#RENKUAILEIXING").append("<option value=" + dvar.NAME + " selected='selected'>" + dvar.NAME + "</option>");
+                        } else {
+                            $("#RENKUAILEIXING").append("<option value=" + dvar.NAME + ">" + dvar.NAME + "</option>");
+                        }
+                    });
+
+                }
+            });
 
 		});
 		</script>

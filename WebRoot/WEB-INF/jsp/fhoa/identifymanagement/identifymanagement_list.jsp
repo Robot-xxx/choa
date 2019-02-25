@@ -67,12 +67,11 @@
                                                 class="lbl"></span></label>
                                     </th>
                                     <th class="center" style="width:50px;">序号</th>
-                                    <th class="center" style="width:50px;">认款类型</th>
                                     <th class="center" style="width:50px;">是否完成认款</th>
                           <%--          <th class="center">项目编号</th>
                                     <th class="center">项目名称</th>--%>
                                    <%-- <th class="center">回款期数</th>--%>
-                                    <th class="center">进款金额(万元)</th>
+                                    <th class="center">进款金额(元)</th>
                                     <th class="center">回款单位</th>
                                     <th class="center">日期</th>
 
@@ -101,7 +100,6 @@
                                                   <%--  <td class='center'>${var.PROJECT_ID}</td>
                                                     <td class='center'>${var.PROJECT_NAME}</td>--%>
                                                  <%--   <td class='center'>${var.HUIKUAN}</td>--%>
-                                                    <td class='center'>${var.RENKUAILEIXING}</td>
                                                     <td class='center'><c:if test="${var.INCOME_MONEY<=0}">是</c:if><c:if test="${var.INCOME_MONEY>0}">否</c:if></td>
                                                     <td class='center'>${var.INCOME_MONEY}</td>
                                                     <td class='center'>${var.RETURN_MONEY}</td>

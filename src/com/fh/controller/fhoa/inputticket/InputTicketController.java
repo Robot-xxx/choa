@@ -301,10 +301,10 @@ public class InputTicketController extends BaseController {
 		titles.add("项目编号");	//1
 		titles.add("项目名称");	//1
 		titles.add("采购合同编号");	//1
-		titles.add("进项票总额(万元)");	//1
+		titles.add("进项票总额(元)");	//1
 		titles.add("发票号");	//1
-		titles.add("已回票金额(万元)");	//1
-		titles.add("金额(万元)");	//1
+		titles.add("已回票金额(元)");	//1
+		titles.add("金额(元)");	//1
 		titles.add("备注");	//1
 
 		dataMap.put("titles", titles);

@@ -59,6 +59,31 @@ public class ClaimantController extends BaseController {
 		map.put("list",list);
 		return map;
 	}
+
+	/**获取客户信息
+	 * @return
+	 */
+	@RequestMapping(value="/yanZhengIsRenKuan")
+	@ResponseBody
+	public Map<String,Object> getAllCustomer(Page page){
+		List<PageData> list = new ArrayList<>();
+		Map<String,Object> map  = new HashMap<>();
+		String errInfo = "success";
+		PageData pd = new PageData();
+		try{
+			pd = this.getPageData();
+
+			pd=claimantService.findProjectMarket(pd.getString("PROJECT_MARKET_ID"));
+		} catch(Exception e){
+			errInfo = "error";
+			logger.error(e.toString(), e);
+		}
+		map.put("errInfo",errInfo);
+		map.put("pd",pd);
+		return map;
+	}
+
+
 	/**保存
 	 * @param
 	 * @throws Exception
@@ -69,24 +94,35 @@ public class ClaimantController extends BaseController {
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "add")){return null;} //校验权限
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
-		PageData pd1 = new PageData();
+		PageData pd2 = new PageData();
 		pd = this.getPageData();
 		pd.put("SYS_ID", this.get32UUID());	//主键
 
+
+		//认款金额
 		Double money = Double.valueOf(pd.getString("money"))- Double.valueOf(pd.getString("CLAIMANT_MONEY"));
 
 		//认领金额
 		pd.put("INCOME_MONEY",money);
 
-		pd1=claimantService.findProjectMarket(pd.getString("PROJECT_MARKET_ID"));
-		//合同总价
-		pd.put("CONTRACT_PRICE",pd1.get("CONTRACT_PRICE").toString());
 
 		//认款类型
 		pd.put("RENKUAILEIXING",pd.getString("RENKUAILEIXING"));
+
+
 		//未认领金额
-		Double money1 =Double.valueOf(pd1.get("CONTRACT_PRICE").toString())-Double.valueOf(pd.getString("CLAIMANT_MONEY"));
-		pd.put("WEIRENLINGJINE",money1);
+		pd2 = claimantService.findOneClaimant(pd.getString("PROJECT_ID"));
+		Double money1=0.0;
+		if(pd2==null){
+			money1 =Double.valueOf(pd.get("CONTRACT_PRICE").toString())-Double.valueOf(pd.getString("CLAIMANT_MONEY"));
+			pd.put("WEIRENLINGJINE",money1);
+		}else{
+			money1=Double.valueOf(pd2.get("WEIRENLINGJINE").toString())-Double.valueOf(pd.getString("CLAIMANT_MONEY"));
+			pd.put("WEIRENLINGJINE",money1);
+
+		}
+
+
 
 		//是否认款
 		if(money1<=0){

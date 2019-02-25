@@ -59,8 +59,8 @@
 									<th class="center">项目编号</th>
 									<th class="center">项目名称</th>
 									<th class="center">项目负责人</th>
-									<th class="center">中标金额(万元)</th>
-									<th class="center">项目回款金额(万元)</th>
+									<th class="center">中标金额(元)</th>
+									<th class="center">项目回款金额(元)</th>
 									<th class="center">尾款时间</th>
 									<th class="center">操作</th>
 								</tr>

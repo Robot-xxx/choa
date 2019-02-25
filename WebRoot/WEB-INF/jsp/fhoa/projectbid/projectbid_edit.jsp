@@ -105,23 +105,23 @@
                                                    title="中标单位" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">中标价格(万元):</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">中标价格(元):</td>
                                         <td><input onchange="change(this.value)" type="text" name="WINNING_PRICE" id="WINNING_PRICE"
-                                                   value="${pd.WINNING_PRICE}" maxlength="50" placeholder="这里输入中标价格(万元)"
-                                                   title="中标价格(万元)" style="width:98%;"/></td>
+                                                   value="${pd.WINNING_PRICE}" maxlength="50" placeholder="这里输入中标价格(元)"
+                                                   title="中标价格(元)" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">中标服务费垫资金额（万元）:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">中标服务费垫资金额（元）:</td>
                                         <td><input onchange="change1(this.value)" type="text" name="SERVICE_PRICE" id="SERVICE_PRICE"
                                                    value="${pd.SERVICE_PRICE}" maxlength="50"
-                                                   placeholder="这里输入中标服务费垫资金额（万元）" title="中标服务费垫资金额（万元）"
+                                                   placeholder="这里输入中标服务费垫资金额（元）" title="中标服务费垫资金额（元）"
                                                    style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">投标保证金垫资金额(万元):</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">投标保证金垫资金额(元):</td>
                                         <td><input onchange="change2(this.value)" type="text" name="GUARANTEE_MONEY" id="GUARANTEE_MONEY"
                                                    value="${pd.GUARANTEE_MONEY}" maxlength="50"
-                                                   placeholder="这里输入投标保证金垫资金额(万元)" title="投标保证金垫资金额(万元)"
+                                                   placeholder="这里输入投标保证金垫资金额(元)" title="投标保证金垫资金额(元)"
                                                    style="width:98%;"/></td>
                                     </tr>
                                     <tr>

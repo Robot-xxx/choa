@@ -80,8 +80,8 @@
 								<%--	<th class="center">销售合同编号</th>
 									<th class="center">下游序号</th>--%>
 									<th class="center">下游名称</th>
-									<th class="center">合同总价(万元)</th>
-									<th class="center">医院预付款（万元）</th>
+									<th class="center">合同总价(元)</th>
+									<th class="center">医院预付款（元）</th>
 									<th class="center">预计到账时间</th>
 									<th class="center">实际到账时间</th>
 								<%--	<th class="center">累计开票总额</th>--%>

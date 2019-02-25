@@ -113,13 +113,13 @@ public class ProjectBidController extends AcStartController {
             map1.put("中标单位", pd.getString("WINNING_UNIT"));
 
             if (pd.get("WINNING_PRICE")!=null&&!pd.get("WINNING_PRICE").toString().equals("")){
-                map1.put("中标价格（万元）", pd.get("WINNING_PRICE").toString());
+                map1.put("中标价格（元）", pd.get("WINNING_PRICE").toString());
             }
             if (pd.get("SERVICE_PRICE")!=null&&!pd.get("SERVICE_PRICE").toString().equals("")){
-                map1.put("中标服务费垫资金额（万元）", pd.get("SERVICE_PRICE").toString());
+                map1.put("中标服务费垫资金额（元）", pd.get("SERVICE_PRICE").toString());
             }
             if (pd.get("GUARANTEE_MONEY")!=null&&!pd.get("GUARANTEE_MONEY").toString().equals("")){
-                map1.put("投标保证金垫资金额（万元）", pd.get("GUARANTEE_MONEY").toString());
+                map1.put("投标保证金垫资金额（元）", pd.get("GUARANTEE_MONEY").toString());
             }
 
 
@@ -437,9 +437,9 @@ public class ProjectBidController extends AcStartController {
         titles.add("项目名称");    //2
         titles.add("医院");    //3
         titles.add("中标单位");    //4
-        titles.add("中标价格(万元)");    //5
-        titles.add("中标服务费垫资金额（万元）");    //6
-        titles.add("投标保证金垫资金额(万元)");    //7
+        titles.add("中标价格(元)");    //5
+        titles.add("中标服务费垫资金额（元）");    //6
+        titles.add("投标保证金垫资金额(元)");    //7
         titles.add("投标保证金预计缴纳时间");    //8
         titles.add("投标保证金实际缴纳时间");    //9
         titles.add("开标日期");    //10

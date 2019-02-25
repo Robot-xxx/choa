@@ -63,7 +63,7 @@
 									<th class="center">合同总价</th>
 									<th class="center">认领时间</th>
 									<th class="center">认领人名称</th>
-									<th class="center">认领金额(万元)</th>
+									<th class="center">认领金额(元)</th>
 									<th class="center">未认领金额</th>
 									<th class="center">是否完成认款</th>
 									<th class="center">备注</th>

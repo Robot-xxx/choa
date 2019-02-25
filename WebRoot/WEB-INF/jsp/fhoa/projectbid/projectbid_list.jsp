@@ -76,12 +76,12 @@
 									<th class="center">招标公司</th>
 									<th class="center">招标代表</th>
 									<th class="center">中标单位</th>
-									<th class="center">中标价格(万元)</th>
-									<th class="center">投标保证金垫资金额(万元)</th>
+									<th class="center">中标价格(元)</th>
+									<th class="center">投标保证金垫资金额(元)</th>
 									<th class="center">投标保证金预计缴纳时间</th>
 									<th class="center">投标保证金实际缴纳时间</th>
 									<th class="center">开标日期</th>
-									<th class="center">中标服务费 垫资金额（万元）</th>
+									<th class="center">中标服务费垫资金额（元）</th>
 									<th class="center">中标服务费预计缴纳时间</th>
 									<th class="center">中标服务费实际缴纳时间</th>
 									<th class="center">负责人</th>

@@ -69,7 +69,7 @@ public class ProjectController extends AcStartController {
 			map1.put("项目编号", pd.getString("SYS_ID"));
 			map1.put("项目名称", pd.getString("PROJECT_NAME"));
 			map1.put("医院", pd.getString("HOSPITAL"));
-			map1.put("投标限价（万元）", pd.get("LIMITED_PRICE").toString());
+			map1.put("投标限价（元）", pd.get("LIMITED_PRICE").toString());
 			map1.put("委托公司", pd.getString("CORPORATE_COMPANY"));
 			map1.put("委托公司老板", pd.getString("CORPORATE_BOSS"));
 			map1.put("委托公司老板电话", pd.getString("BOSS_PHONE"));
@@ -499,7 +499,7 @@ public class ProjectController extends AcStartController {
 		titles.add("项目编号");	//1
 		titles.add("项目名称");	//2
 		titles.add("医院");	//3
-		titles.add("投标限价(万元)");	//4
+		titles.add("投标限价(元)");	//4
 		titles.add("委托公司");	//5
 		titles.add("委托公司老板");	//6
 		titles.add("委托公司老板电话");	//6

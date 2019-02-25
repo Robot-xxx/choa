@@ -91,7 +91,7 @@ public class ProjectMarketController extends AcStartController {
 			if (pd.get("RECEPTION_TIME")!=null&&!pd.get("RECEPTION_TIME").toString().equals("")){
 				map1.put("预计验收时间", pd.get("RECEPTION_TIME").toString());
 			}
-			map1.put("合同总价(万元)", pd.get("CONTRACT_PRICE").toString());
+			map1.put("合同总价(元)", pd.get("CONTRACT_PRICE").toString());
 			map1.put("医院预付款", pd.get("EQUIPMENT_ADVANCE").toString());
 
 			map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
@@ -358,8 +358,8 @@ public class ProjectMarketController extends AcStartController {
 		titles.add("经营许可证到期日");	//3
 		titles.add("法人授权书到期日");	//3
 		titles.add("授权委托书到期日");	//3
-		titles.add("合同总价(万元)");	//4
-		titles.add("医院预付款(万元)");	//5
+		titles.add("合同总价(元)");	//4
+		titles.add("医院预付款(元)");	//5
 		titles.add("预计到账时间");	//6
 
 		titles.add("实际到账时间");	//9

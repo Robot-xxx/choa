@@ -89,7 +89,7 @@ public class ProjectPurchaseController extends AcStartController {
                 map1.put("合同签订时间", pd.get("CONTRACT_SIGN_TIME").toString());
             }
 
-            map1.put("合同金额(万元)", pd.get("CONTRACT_PRICE").toString());
+            map1.put("合同金额(元)", pd.get("CONTRACT_PRICE").toString());
             if (pd.get("CONTRACT_SIGN_TIME")!=null&&!pd.get("CONTRACT_SIGN_TIME").toString().equals("")){
                 map1.put("合同签订时间", pd.get("CONTRACT_SIGN_TIME").toString());
             }
@@ -434,7 +434,7 @@ public class ProjectPurchaseController extends AcStartController {
         titles.add("合同签订时间");    //9
         titles.add("到货期时间");    //10
         titles.add("验收时间");    //10
-        titles.add("合同总价(万元)");    //10
+        titles.add("合同总价(元)");    //10
         titles.add("负责人");    //10
         titles.add("备注");    //10
         dataMap.put("titles", titles);
