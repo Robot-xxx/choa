@@ -69,7 +69,7 @@
 									<th class="center">型号丶规格</th>
 									<th class="center">生产厂家</th>
 									<th class="center">注册证号</th>
-									<th class="center">资料是否齐全</th>
+									<th class="center">纸质资料是否齐全</th>
 									<th class="center">备注</th>
 									<th class="center">上传者</th>
 									<th class="center">附件</th>

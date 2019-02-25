@@ -72,7 +72,7 @@
 									<th class="center">注册证类别</th>
 									<th class="center">生产批次</th>
 								<%--	<th class="center">有效期</th>--%>
-									<th class="center">资料是否齐全</th>
+									<th class="center">纸质资料是否齐全</th>
 									<th class="center">备注</th>
 									<th class="center">上传者</th>
 									<th class="center">附件</th>

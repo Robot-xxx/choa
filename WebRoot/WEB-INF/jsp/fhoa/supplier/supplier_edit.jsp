@@ -119,7 +119,20 @@
                                                    title="统一社会信用代码" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">二类备案号:</td>
+                                        <td><input type="text" name="ERLEIBEIANHAO" id="ERLEIBEIANHAO"
+                                                   value="${pd.ERLEIBEIANHAO}" maxlength="100" placeholder="这里输入二类备案号"
+                                                   title="二类备案号" style="width:98%;"/></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">补交时间:</td>
+                                        <td>
+                                            <input  placeholder="这里输入补交时间" data-date-format="yyyy-mm-dd" readonly class="span10 date-picker" type="text" name="BUJIAOSHIJIAN" id="BUJIAOSHIJIAN" value="${pd.BUJIAOSHIJIAN}" maxlength="100" style="width:98%;"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>纸质资料是否齐全:</td>
                                         <td>
                                             是<input type="radio" name="ISZILIAOQQ" checked value="是" <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
                                             否<input type="radio" name="ISZILIAOQQ"  value="否" <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>

@@ -50,7 +50,7 @@
 								<td>
 									<input type="file"  name="File_name" id="uploadify1" keepDefaultStyle = "true"/>
 									<input type="hidden" name="FILEPATH" id="FILEPATH" value=""/>
-									<span style="color:red">注：请上传A4样式的文件</span>
+									<span style="color:red">注：首营资料请上传未盖章版本</span>
 								</td>
 							</tr>
 							<tr>

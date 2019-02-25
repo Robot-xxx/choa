@@ -71,6 +71,7 @@ public class InstrumentController extends AcStartController {
 			map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
 			map1.put("有效期", pd.get("VALIDITY").toString());
 			map1.put("上传者", pd.get("FUZEREN").toString());
+			map1.put("备注", pd.get("BZ").toString());
 			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("INSTRUMENT_ID")+"','2edba70525574ebfacda36e4e7607034')\" style=' cursor:pointer;'>查看附件</a>");
 
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户

@@ -63,6 +63,12 @@
 									<input type="text" name="BUSINESS" id="BUSINESS" value="${pd.BUSINESS}" maxlength="100" placeholder="这里输入生产经营范围" title="生产经营范围" style="width:44%;"/></td>
 							</tr>
 							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">补交时间:</td>
+								<td>
+									<input  placeholder="这里输入补交时间" data-date-format="yyyy-mm-dd" readonly class="span10 date-picker" type="text" name="BUJIAOSHIJIAN" id="BUJIAOSHIJIAN" value="${pd.BUJIAOSHIJIAN}" maxlength="100" style="width:98%;"/>
+								</td>
+							</tr>
+							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">生产批次:</td>
 								<td><input type="text" name="BATCH" id="BATCH" value="${pd.BATCH}" maxlength="100" placeholder="这里输入生产批次" title="生产批次" style="width:98%;"/></td>
 							</tr>
@@ -72,7 +78,7 @@
 							</tr>--%>
 
                             <tr>
-                                <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td><td>
+                                <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>纸质资料是否齐全:</td><td>
 								是<input checked type="radio" name="ISZILIAOQQ" value="是"
 										<c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
 								否<input type="radio" name="ISZILIAOQQ" value="否"

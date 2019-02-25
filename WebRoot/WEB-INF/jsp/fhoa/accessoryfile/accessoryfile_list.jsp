@@ -74,7 +74,6 @@
                                     <th class="center">文件类型</th>
                                     <th class="center">上传者</th>
                                   <%--  <th class="center">文件大小</th>--%>
-                                    <th class="center">是否有纸质资料</th>
                                     <th class="center">操作</th>
                                 </tr>
                                 </thead>
@@ -108,7 +107,6 @@
                                                     <td class='center'>${var.FILETYPE}</td>
                                                     <td class='center'>${var.USERNAME}</td>
                                                    <%-- <td class='center'>${var.FILESIZE}</td>--%>
-                                                    <td class='center'>${var.ISZILIAO}</td>
                                                     <td class="center">
 
                                                         <div class="hidden-sm hidden-xs btn-group">
