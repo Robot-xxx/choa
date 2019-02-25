@@ -184,7 +184,7 @@ public class ProjectPurchaseController extends AcStartController {
         try {
             pd = this.getPageData();
             pd.put("STATUS", 1);
-            page.setShowCount(999999);
+            page.setShowCount(9999999);
             page.setPd(pd);
             list = projectpurchaseService.list(page);
         } catch (Exception e) {
