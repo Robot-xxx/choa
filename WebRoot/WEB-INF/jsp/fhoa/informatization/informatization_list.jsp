@@ -70,6 +70,7 @@
 									<th class="center">生产厂家</th>
 									<th class="center">注册证号</th>
 									<th class="center">纸质资料是否齐全</th>
+									<th class="center">补交时间</th>
 									<th class="center">备注</th>
 									<th class="center">上传者</th>
 									<th class="center">附件</th>
@@ -94,6 +95,7 @@
 											<td class='center'>${var.MANUFACTURERS}</td>
 											<td class='center'>${var.REGISTRATION}</td>
 											<td class='center'>${var.ISZILIAOQQ}</td>
+											<td class='center'>${var.BUJIAOSHIJIAN}</td>
 											<td class='center'>${var.BUSINESS}</td>
 											<td class='center'>${var.FUZEREN}</td>
 											<td class='center'><a onclick="allOaFile('${var.INFORMATIZATION_ID}','55c792a602814c4ebecb1cc118cf6351')" style=" cursor:pointer;">查看附件</a></td>

@@ -74,6 +74,7 @@
 									<%--<th class="center">有效期</th>--%>
 									<th class="center">附件</th>
 									<th class="center">纸质资料是否齐全</th>
+									<th class="center">补交时间</th>
 									<th class="center">备注</th>
 									<th class="center">上传者</th>
 									<th class="center">操作</th>
@@ -103,6 +104,7 @@
 											<td class='center'><a onclick="allOaFile('${var.EQUIPMENT_ID}','d5dac6150a934e69a15e5231fe4af3a7')" style=" cursor:pointer;">查看附件</a></td>
 
 											<td class='center'>${var.ISZILIAOQQ}</td>
+											<td class='center'>${var.BUJIAOSHIJIAN}</td>
 											<td class='center'>${var.ACCESSORY}</td>
 											<td class='center'>${var.FUZEREN}</td>
 											<td class="center">

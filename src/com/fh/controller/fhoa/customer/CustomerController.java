@@ -73,9 +73,9 @@ public class CustomerController extends AcStartController {
             map1.put("医疗许可证", pd.getString("DNAME8"));
             map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
 
-            if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHENGCHANXUKEZHENG").toString().equals("")){
+          /*  if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHENGCHANXUKEZHENG").toString().equals("")){
                 map1.put("生产许可证", pd.get("SHENGCHANXUKEZHENG").toString());
-            }
+            }*/
             if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("JINGYINGXUKEZHENG").toString().equals("")){
                 map1.put("经营许可证", pd.get("JINGYINGXUKEZHENG").toString());
             }
@@ -160,9 +160,9 @@ public class CustomerController extends AcStartController {
         ModelAndView mv = this.getModelAndView();
         PageData pd = new PageData();
         pd = this.getPageData();
-        if(pd.getString("SHENGCHANXUKEZHENG").equals("")){
+     /*   if(pd.getString("SHENGCHANXUKEZHENG").equals("")){
             pd.put("SHENGCHANXUKEZHENG",null);
-        }
+        }*/
 
         if(pd.getString("JINGYINGXUKEZHENG").equals("")){
             pd.put("JINGYINGXUKEZHENG",null);

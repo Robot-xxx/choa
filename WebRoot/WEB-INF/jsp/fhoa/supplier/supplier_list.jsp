@@ -81,6 +81,8 @@
 									<th class="center">授权委托书</th>
 
 									<th class="center">统一社会信用代码</th>
+									<th class="center">补交时间</th>
+
 									<th class="center">上传者</th>
 
 									<th class="center">备注</th>
@@ -116,6 +118,7 @@
                                             <td class='center'>${var.SHOUQUANWEITUO}</td>
 
                                             <td class='center'>${var.TONGYISHEHUIDAIMA}</td>
+                                            <td class='center'>${var.BUJIAOSHIJIAN}</td>
 
 											<td class='center'>${var.FUZHEREN}</td>
                                             <td class='center'>${var.BZ}</td>

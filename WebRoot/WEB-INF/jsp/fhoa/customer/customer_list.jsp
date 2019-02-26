@@ -84,6 +84,7 @@
 									<th class="center">医疗许可证</th>
 									<th class="center">纸质资料是否齐全</th>
 									<th class="center">二类备案号</th>
+									<th class="center">补交时间</th>
 <%--
 									<th class="center">生产许可证到期日</th>
 --%>
@@ -120,6 +121,7 @@
 											<td class='center'>${var.DNAME8}</td>
 											<td class='center'>${var.ISZILIAOQQ}</td>
 											<td class='center'>${var.ERLEIBEIANHAO}</td>
+											<td class='center'>${var.BUJIAOSHIJIAN}</td>
 <%--
 											<td class='center'>${var.SHENGCHANXUKEZHENG}</td>
 --%>

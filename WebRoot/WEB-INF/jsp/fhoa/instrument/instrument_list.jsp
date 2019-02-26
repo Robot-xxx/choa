@@ -75,6 +75,7 @@
 									<th class="center">注册证类别</th>
 								<%--	<th class="center">生产批次</th>--%>
 									<th class="center">有效期</th>
+									<th class="center">补交时间</th>
 									<th class="center">纸质资料是否齐全</th>
 									<th class="center">上传者</th>
 									<th class="center">备注</th>
@@ -102,6 +103,7 @@
 											<td class='center'>${var.BUSINESS}</td>
 											<%--<td class='center'>${var.BATCH}</td>--%>
 											<td class='center'>${var.VALIDITY}</td>
+											<td class='center'>${var.BUJIAOSHIJIAN}</td>
 											<td class='center'>${var.ISZILIAOQQ}</td>
 											<td class='center'>${var.FUZEREN}</td>
 											<td class='center'>${var.BZ}</td>
