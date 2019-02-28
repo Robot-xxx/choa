@@ -177,27 +177,27 @@
 		}
 
 
-        function getInfo(){
 
-            //项目编号
-            $.ajax({
-                type: "POST",
-                url: '<%=basePath%>/projectmarket/getMarketAll.do?tm=' + new Date().getTime(),
-                dataType: 'json',
-                cache: false,
-                success: function (data) {
-                    if (data.errInfo == "success") {
-                        $("#projectId").append("<option value=''>请选择项目编号</option>");
-                        for (var i = 0; i < data.list.length; i++) {
-                                $("#projectId").append("<option value=" +  data.list[i].PROJECT_MARKET_ID  + ">" + data.list[i].SYS_ID+"=>"+data.list[i].PROJECT_NAME + "</option>");
-
-                        }
-                        downList('projectId');
-                    }
-                }
-            });
-        }
 		$(function() {
+
+			//项目编号
+			$.ajax({
+				type: "POST",
+				url: '<%=basePath%>/projectmarket/getMarketAll.do?tm=' + new Date().getTime(),
+				dataType: 'json',
+				cache: false,
+				success: function (data) {
+					if (data.errInfo == "success") {
+						$("#projectId").append("<option value=''>请选择项目编号</option>");
+						for (var i = 0; i < data.list.length; i++) {
+							$("#projectId").append("<option value=" +  data.list[i].PROJECT_MARKET_ID  + ">" + data.list[i].SYS_ID+"=>"+data.list[i].PROJECT_NAME + "</option>");
+
+						}
+						downList('projectId');
+					}
+				}
+			});
+
             var date = new Date();
 		    $("#CREATE_TIME").val(date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate());
 
@@ -224,7 +224,6 @@
                     }
                 });
             })
-            getInfo();
 
 			//日期框
 			$('.date-picker').datepicker({autoclose: true,todayHighlight: true});

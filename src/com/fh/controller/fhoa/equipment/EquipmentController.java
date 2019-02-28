@@ -87,8 +87,13 @@ public class EquipmentController extends AcStartController {
 			map1.put("注册证号", pd.getString("REGISTRATION"));
 			map1.put("注册证类型", pd.getString("BUSINESS"));
 			map1.put("生产批次", pd.getString("BATCH"));
-			map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
-			map1.put("有效期", pd.getString("VALIDITY"));
+			map1.put("纸质资料是否齐全", pd.getString("ISZILIAOQQ"));
+			if (pd.get("BUJIAOSHIJIAN")!=null&&!pd.get("BUJIAOSHIJIAN").toString().equals("")){
+				map1.put("补交时间", pd.get("BUJIAOSHIJIAN").toString());
+			}
+			if (pd.get("VALIDITY")!=null&&!pd.get("VALIDITY").toString().equals("")){
+				map1.put("有效期", pd.get("VALIDITY").toString());
+			}
 			map1.put("备注", pd.getString("ACCESSORY"));
 			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("EQUIPMENT_ID")+"','85748aebf179486b9a699159a3616a9e')\" style=' cursor:pointer;'>查看附件</a>");
 
@@ -280,8 +285,9 @@ public class EquipmentController extends AcStartController {
 		titles.add("注册证号");	//5
 		titles.add("注册证类别");	//6
 		titles.add("生产批次");	//7
-		titles.add("资料是否齐全");	//7
+		titles.add("纸质资料是否齐全");	//7
 		titles.add("上传者");	//7
+		titles.add("补交时间");	//7
 		titles.add("备注");	//9
 		dataMap.put("titles", titles);
 		List<PageData> varOList = equipmentService.listAll(pd);
@@ -297,7 +303,13 @@ public class EquipmentController extends AcStartController {
 			vpd.put("var7", varOList.get(i).getString("BATCH"));	    //7
 			vpd.put("var8", varOList.get(i).getString("ISZILIAOQQ"));	    //7
 			vpd.put("var9", varOList.get(i).getString("FUZEREN"));	    //7
-			vpd.put("var10", varOList.get(i).getString("ACCESSORY"));	    //9
+			if (varOList.get(i).get("BUJIAOSHIJIAN")!=null&&!varOList.get(i).get("BUJIAOSHIJIAN").toString().equals("")) {
+				vpd.put("var10", sd.format(varOList.get(i).get("BUJIAOSHIJIAN")));	    //8
+			}else {
+				vpd.put("var10","");	    //8
+
+			}
+			vpd.put("var11", varOList.get(i).getString("ACCESSORY"));	    //9
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

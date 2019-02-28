@@ -83,6 +83,7 @@ public class PayRequestController extends AcStartController {
 			map1.put("项目编号", pd.getString("PROJIECT_ID"));
 
 			map1.put("项目名称", pd.getString("PROJECT_NAME"));
+
 			map1.put("实付金额(元)", pd.getString("MONEY"));
 			map1.put("垫付金额(元)", pd.getString("PAY_ACCOUNT"));
 			map1.put("来款单位", pd.getString("PAY_UNIT"));

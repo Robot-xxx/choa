@@ -71,11 +71,14 @@ public class CustomerController extends AcStartController {
             map1.put("开户行", pd.getString("OPENING_BANK"));
             map1.put("开户账号", pd.getString("BANKACCOUNT"));
             map1.put("医疗许可证", pd.getString("DNAME8"));
-            map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
+            map1.put("纸质资料是否齐全", pd.getString("ISZILIAOQQ"));
 
           /*  if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHENGCHANXUKEZHENG").toString().equals("")){
                 map1.put("生产许可证", pd.get("SHENGCHANXUKEZHENG").toString());
             }*/
+            if (pd.get("BUJIAOSHIJIAN")!=null&&!pd.get("BUJIAOSHIJIAN").toString().equals("")){
+                map1.put("补交时间", pd.get("BUJIAOSHIJIAN").toString());
+            }
             if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("JINGYINGXUKEZHENG").toString().equals("")){
                 map1.put("经营许可证", pd.get("JINGYINGXUKEZHENG").toString());
             }
@@ -369,7 +372,9 @@ public class CustomerController extends AcStartController {
         titles.add("经营许可证期日");	//6
         titles.add("法人授权书期日");	//6
         titles.add("授权委托书期日");	//6
-        titles.add("是否资料齐全");	//7
+        titles.add("补交时间");	//6
+
+        titles.add("纸质是否资料齐全");	//7
         titles.add("上传者");	//6
         titles.add("备注");    //10
         dataMap.put("titles", titles);
@@ -410,10 +415,15 @@ public class CustomerController extends AcStartController {
                 vpd.put("var12","");	    //8
 
             }
+            if (varOList.get(i).get("BUJIAOSHIJIAN")!=null&&!varOList.get(i).get("BUJIAOSHIJIAN").toString().equals("")) {
+                vpd.put("var13", sd.format(varOList.get(i).get("BUJIAOSHIJIAN")));	    //8
+            }else {
+                vpd.put("var13","");	    //8
 
-            vpd.put("var13", varOList.get(i).getString("ISZILIAOQQ"));	    //6
-            vpd.put("var14", varOList.get(i).getString("FUZHEREN"));	    //6
-            vpd.put("var5", varOList.get(i).getString("BZ"));        //10
+            }
+            vpd.put("var14", varOList.get(i).getString("ISZILIAOQQ"));	    //6
+            vpd.put("var15", varOList.get(i).getString("FUZHEREN"));	    //6
+            vpd.put("var16", varOList.get(i).getString("BZ"));        //10
             varList.add(vpd);
         }
         dataMap.put("varList", varList);

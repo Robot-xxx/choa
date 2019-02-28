@@ -122,6 +122,7 @@ public class ProjectController extends AcStartController {
 		PageData pd = new PageData();
 		try {
 			pd = this.getPageData();
+			page.setShowCount(9999999);
 			pd.put("STATUS",1);
 			page.setPd(pd);
 			list = projectService.list(page);

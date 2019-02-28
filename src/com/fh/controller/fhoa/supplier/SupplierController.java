@@ -69,8 +69,12 @@ public class SupplierController extends AcStartController {
 
 			map1.put("医疗许可证", pd.getString("DNAME7"));
 			map1.put("经营范围", pd.getString("JINGYINGFANWEI"));
+			map1.put("纸质资料是否齐全", pd.getString("ISZILIAOQQ"));
 			map1.put("统一社会代码", pd.getString("TONGYISHEHUIDAIMA"));
 
+            if (pd.get("BUJIAOSHIJIAN")!=null&&!pd.get("BUJIAOSHIJIAN").toString().equals("")){
+                map1.put("补交时间", pd.get("BUJIAOSHIJIAN").toString());
+            }
             if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHENGCHANXUKEZHENG").toString().equals("")){
                 map1.put("生产许可证", pd.get("SHENGCHANXUKEZHENG").toString());
             }
@@ -362,11 +366,12 @@ public class SupplierController extends AcStartController {
 		titles.add("医疗许可证类型");	//7
 		titles.add("经营范围");	//7
 		titles.add("统一社会代码");	//7
-		titles.add("是否资料齐全");	//7
+		titles.add("纸质资料是否齐全");	//7
         titles.add("生产许可证期日");	//6
         titles.add("经营许可证期日");	//6
         titles.add("法人授权书期日");	//6
         titles.add("授权委托书期日");	//6
+        titles.add("补交时间");	//6
         titles.add("上传者");	//6
 		titles.add("备注");	//9
 		dataMap.put("titles", titles);
@@ -412,11 +417,16 @@ public class SupplierController extends AcStartController {
 				vpd.put("var15","");	    //8
 
 			}
+			if (varOList.get(i).get("BUJIAOSHIJIAN")!=null&&!varOList.get(i).get("BUJIAOSHIJIAN").toString().equals("")) {
+				vpd.put("var16", sd.format(varOList.get(i).get("BUJIAOSHIJIAN")));	    //8
+			}else {
+				vpd.put("var16","");	    //8
 
+			}
 
-			vpd.put("var16", varOList.get(i).getString("FUZHEREN"));	    //6
+			vpd.put("var17", varOList.get(i).getString("FUZHEREN"));	    //6
 
-			vpd.put("var17", varOList.get(i).getString("BZ"));	    //9
+			vpd.put("var18", varOList.get(i).getString("BZ"));	    //9
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);
