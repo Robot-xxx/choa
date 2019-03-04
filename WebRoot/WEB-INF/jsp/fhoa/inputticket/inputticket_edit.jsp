@@ -246,7 +246,7 @@
                 //采购合同编号
                 $.ajax({
                     type: "POST",
-                    url: '<%=basePath%>/projectpurchase/getCgAll.do?tm=' + new Date().getTime(),
+                    url: '<%=basePath%>/projectpurchase/getCgAll.do?tag=inputticket&tm=' + new Date().getTime(),
                     dataType: 'json',
                     cache: false,
                     success: function (data) {

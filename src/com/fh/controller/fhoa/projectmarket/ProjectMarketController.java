@@ -134,6 +134,10 @@ public class ProjectMarketController extends AcStartController {
 		try {
 			pd = this.getPageData();
 			pd.put("STATUS",1);
+			if(pd.getString("tag").equals("ticket")){
+				pd.remove("STATUS");
+			}
+
 			page.setPd(pd);
 			page.setShowCount(999999);
 			list = projectmarketService.list(page);

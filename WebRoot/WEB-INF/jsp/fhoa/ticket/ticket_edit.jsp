@@ -248,26 +248,26 @@
                 cache: false,
                 success: function (data) {
                     if (data.errInfo == "success") {
-                        $("#jinxiang").append("<option value=''>请选择产品名称</option>");
-                        for (var i = 0; i < data.list.length; i++) {
-                            if (data.list[i].SYS_ID  == project) {
-                                $("#jinxiang").append("<option value=" +  data.list[i].SYS_ID  + " selected='selected'>" +data.list[i].PROJECT_NAME +"-"+data.list[i].PROJECT_ID +"</option>");
-                            } else {
-                                $("#jinxiang").append("<option value=" + data.list[i].SYS_ID  + ">" +data.list[i].PROJECT_NAME +"-"+data.list[i].PROJECT_ID+ "</option>");
-                            }
-                        }
-                        downList('jinxiang');
-                    }
-                }
-            });
+				$("#jinxiang").append("<option value=''>请选择采购合同</option>");
+			for (var i = 0; i < data.list.length; i++) {
+				if (data.list[i].SYS_ID  == project) {
+					$("#jinxiang").append("<option value=" +  data.list[i].SYS_ID  + " selected='selected'>" +data.list[i].PROJECT_NAME +"-"+data.list[i].PROJECT_ID +"</option>");
+				} else {
+					$("#jinxiang").append("<option value=" + data.list[i].SYS_ID  + ">" +data.list[i].PROJECT_NAME +"-"+data.list[i].PROJECT_ID+ "</option>");
+				}
+			}
+			downList('jinxiang');
+		}
+		}
+		});
 
 
-            var SALES_CONTRACT_ID="${pd.SALES_CONTRACT_ID}";
+		var SALES_CONTRACT_ID="${pd.SALES_CONTRACT_ID}";
 
-            //获取销售合同
-            $.ajax({
+		//获取销售合同
+		$.ajax({
                 type: "POST",
-                url: '<%=basePath%>/projectmarket/getMarketAll.do?tm=' + new Date().getTime(),
+                url: '<%=basePath%>/projectmarket/getMarketAll.do?tag=ticket&tm=' + new Date().getTime(),
                 dataType: 'json',
                 cache: false,
                 success: function (data) {
