@@ -311,9 +311,9 @@ public class ProjectBidController extends AcStartController {
         if(pd.getString("PRACTICAL_SERVICE_PRICE_TIME").equals("")){
             pd.remove("PRACTICAL_SERVICE_PRICE_TIME");
         }
-        if(pd.getString("CHANPINDAOQIRI").equals("")){
+      /*  if(pd.getString("CHANPINDAOQIRI").equals("")){
             pd.remove("CHANPINDAOQIRI");
-        }
+        }*/
         pd.put("UPDATETIME", sd1.format(new Date()));
 
         projectbidService.edit(pd);

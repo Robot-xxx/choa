@@ -59,6 +59,12 @@
 							<tr>
 
 
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>合同总额:</td>
+								<td><input  name="CONTRACT_PRICE" id="CONTRACT_PRICE" value="${pd.CONTRACT_PRICE}" type="text"  placeholder="合同总额" title="合同总额" style="width:98%;"/></td>
+							</tr>
+							<tr>
+
+
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>认领时间:</td>
 								<td><input class="span10 date-picker" name="CREATE_TIME" id="CREATE_TIME" value="${pd.CREATE_TIME}" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="认领时间" title="认领时间" style="width:98%;"/></td>
 							</tr>
@@ -119,6 +125,16 @@
 		            time:2
 		        });
 				$("#PROJECT_ID").focus();
+			return false;
+			}
+			if($("#CONTRACT_PRICE").val()==""){
+				$("#CONTRACT_PRICE").tips({
+					side:3,
+		            msg:'请输入合同总额',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#CONTRACT_PRICE").focus();
 			return false;
 			}
 			if($("#PROJECT_NAME").val()==""){
@@ -183,7 +199,7 @@
 			//项目编号
 			$.ajax({
 				type: "POST",
-				url: '<%=basePath%>/projectmarket/getMarketAll.do?tm=' + new Date().getTime(),
+				url: '<%=basePath%>/project/getAllProject.do?tm=' + new Date().getTime(),
 				dataType: 'json',
 				cache: false,
 				success: function (data) {
@@ -212,17 +228,6 @@
                 $("#PROJECT_MARKET_ID").val($("#projectId").val());
 
 
-				//获取合同总价
-                $.ajax({
-                    type: "POST",
-                    url: '<%=basePath%>claimant/yanZhengIsRenKuan.do?tm=' + new Date().getTime(),
-                    data: {PROJECT_MARKET_ID: $("#projectId").val()},
-                    dataType: 'json',
-                    cache: false,
-                    success: function (data) {
-                        $("#hetongMoney").val(data.pd.CONTRACT_PRICE);
-                    }
-                });
             })
 
 			//日期框

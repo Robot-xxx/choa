@@ -100,6 +100,7 @@
         f.PROJECT_ID,
         f.UPDATETIME,
         f.CREATETIME,
+        f.FENGXIANTIAOKUAN,
         f.PROJECT_BID_ID
     </sql>
 
@@ -138,6 +139,7 @@
         PROJECT_ID,
         UPDATETIME,
         CREATETIME,
+        FENGXIANTIAOKUAN,
         PROJECT_BID_ID
     </sql>
 
@@ -177,6 +179,7 @@
         #{PROJECT_ID},
         #{UPDATETIME},
         #{CREATETIME},
+        #{FENGXIANTIAOKUAN},
         #{PROJECT_BID_ID}
     </sql>
 
@@ -237,6 +240,7 @@
         PROJECT_ID = #{PROJECT_ID},
         UPDATETIME = #{UPDATETIME},
         CREATETIME = #{CREATETIME},
+        FENGXIANTIAOKUAN = #{FENGXIANTIAOKUAN},
         PROJECT_BID_ID = PROJECT_BID_ID
         where
         PROJECT_BID_ID = #{PROJECT_BID_ID}
