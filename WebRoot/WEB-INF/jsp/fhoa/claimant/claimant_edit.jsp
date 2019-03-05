@@ -36,7 +36,7 @@
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">认款类型:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>认款类型:</td>
 								<td>
 									<select name="RENKUAILEIXING" id="RENKUAILEIXING" title=""
 											style="width:38%;"></select>
@@ -125,6 +125,16 @@
 		            time:2
 		        });
 				$("#PROJECT_ID").focus();
+			return false;
+			}
+			if($("#RENKUAILEIXING").val()==""){
+				$("#RENKUAILEIXING").tips({
+					side:3,
+		            msg:'请选择认款类型',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#RENKUAILEIXING").focus();
 			return false;
 			}
 			if($("#CONTRACT_PRICE").val()==""){

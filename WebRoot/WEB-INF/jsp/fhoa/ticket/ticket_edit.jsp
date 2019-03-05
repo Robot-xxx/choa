@@ -58,7 +58,6 @@
 									</select>
 									<input type="text" hidden name="ENTRYTICKETNAME" id="ENTRYTICKETNAME" value="${pd.ENTRYTICKETNAME}" maxlength="255"  style="width:98%;"/>
 									<input type="text" hidden name="JINXIANGID" id="JINXIANGID" value="${pd.JINXIANGID}" maxlength="255"  style="width:98%;"/>
-									<span style="color:red">注：项目采购情况流程完成后才能选择</span>
 								</td>
 
 
@@ -240,10 +239,10 @@
         function getInfo(){
             var project="${pd.JINXIANGID}";
 
-            //获取进项票全部信息
+            //获取采购合同
             $.ajax({
                 type: "POST",
-                url: '<%=basePath%>/inputticket/getAllJinXiang.do?tm=' + new Date().getTime(),
+                url: '<%=basePath%>/projectpurchase/getCgAll.do?tag=inputticket&tm=' + new Date().getTime(),
                 dataType: 'json',
                 cache: false,
                 success: function (data) {
@@ -251,9 +250,9 @@
 				$("#jinxiang").append("<option value=''>请选择采购合同</option>");
 			for (var i = 0; i < data.list.length; i++) {
 				if (data.list[i].SYS_ID  == project) {
-					$("#jinxiang").append("<option value=" +  data.list[i].SYS_ID  + " selected='selected'>" +data.list[i].PROJECT_NAME +"-"+data.list[i].PROJECT_ID +"</option>");
+					$("#jinxiang").append("<option value=" +  data.list[i].PURCHASE_ID  + " selected='selected'>" +data.list[i].PURCHASE_CONTRACT_ID +"-"+data.list[i].PROJECTNAME +"</option>");
 				} else {
-					$("#jinxiang").append("<option value=" + data.list[i].SYS_ID  + ">" +data.list[i].PROJECT_NAME +"-"+data.list[i].PROJECT_ID+ "</option>");
+					$("#jinxiang").append("<option value=" + data.list[i].PURCHASE_ID  + ">" +data.list[i].PURCHASE_CONTRACT_ID +"-"+data.list[i].PROJECTNAME+ "</option>");
 				}
 			}
 			downList('jinxiang');
