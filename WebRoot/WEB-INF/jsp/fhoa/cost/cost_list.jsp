@@ -255,13 +255,12 @@
             diag.Drag=true;
             diag.Title ="费用报销单";
             diag.URL = '<%=basePath%>cost/goPrint.do?COST_ID='+COST_ID;
-            diag.Width = 900;
-            diag.Height = 600;
+            diag.Width = 1200;
+            diag.Height = 700;
             diag.Modal = true;				//有无遮罩窗口
             diag. ShowMaxButton = true;	//最大化按钮
             diag.ShowMinButton = true;		//最小化按钮
             diag.CancelEvent = function(){ //关闭事件
-
                 diag.close();
             };
             diag.show();

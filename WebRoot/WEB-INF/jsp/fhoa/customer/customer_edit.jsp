@@ -73,10 +73,10 @@
                                                    style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">税号:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">统一社会信用代码:</td>
                                         <td><input type="text" name="DUTY_PARAGRAPH" id="DUTY_PARAGRAPH"
-                                                   value="${pd.DUTY_PARAGRAPH}" maxlength="150" placeholder="这里输入税号"
-                                                   title="税号" style="width:98%;"/></td>
+                                                   value="${pd.DUTY_PARAGRAPH}" maxlength="150" placeholder="这里输入统一社会信用代码"
+                                                   title="统一社会信用代码" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">开户行:</td>
@@ -103,13 +103,7 @@
                                                 <span style="color:red;">注:请认真对证件是否过期</span>
                                             </td>
                                         </tr>--%>
-                                        <tr>
-                                            <td style="width:75px;text-align: right;padding-top: 13px;">经营许可证到期日:</td>
-                                            <td>
-                                                <input  placeholder="这里输入到期日" data-date-format="yyyy-mm-dd" readonly class="span10 date-picker" type="text" name="JINGYINGXUKEZHENG" id="JINGYINGXUKEZHENG" value="${pd.JINGYINGXUKEZHENG}" maxlength="100" style="width:98%;"/>
-                                                <span style="color:red;">注:请认真对证件是否过期</span>
-                                            </td>
-                                        </tr>
+
                                         <tr>
                                             <td style="width:75px;text-align: right;padding-top: 13px;">法人授权书到期日:</td>
                                             <td>
@@ -132,20 +126,9 @@
                                                     style="width:98%;"></select>
                                         </td>
                                     </tr>
-                                        <tr>
-                                            <td style="width:75px;text-align: right;padding-top: 13px;">补交时间:</td>
-                                            <td>
-                                                <input  placeholder="这里输入补交时间" data-date-format="yyyy-mm-dd" readonly class="span10 date-picker" type="text" name="BUJIAOSHIJIAN" id="BUJIAOSHIJIAN" value="${pd.BUJIAOSHIJIAN}" maxlength="100" style="width:98%;"/>
-                                            </td>
-                                        </tr>
 
-                                        <tr>
-                                            <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>纸质资料是否齐全:</td>
-                                            <td>
-                                                是<input type="radio" name="ISZILIAOQQ" checked value="是" <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
-                                                否<input type="radio" name="ISZILIAOQQ"  value="否" <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>
-                                            </td>
-                                        </tr>
+
+
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
                                         <td><input type="text" name="BZ" id="BZ" value="${pd.BZ}" maxlength="255"

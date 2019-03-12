@@ -50,7 +50,6 @@
 								<td>
 									<input type="file"  name="File_name" id="uploadify1" keepDefaultStyle = "true"/>
 									<input type="hidden" name="FILEPATH" id="FILEPATH" value=""/>
-									<span style="color:red">注：首营资料请上传未盖章版本</span>
 								</td>
 							</tr>
 							<tr>
@@ -63,7 +62,7 @@
 								</td>
 
 							</tr>
-							<tr>
+							<%--<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">是否有纸质资料:</td>
 								<td>
 									<select name="ISZILIAO" id="ISZILIAO" title="文件类型"
@@ -76,7 +75,7 @@
 								</td>
 
 
-							</tr>
+							</tr>--%>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
 								<td><input type="text" name="BZ" id="BZ" value="" maxlength="100" placeholder="这里输入备注" title="备注" style="width:98%;"/></td>

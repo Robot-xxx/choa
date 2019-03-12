@@ -37,7 +37,7 @@
 								</td>
 								<td>
 									<select class="chosen-select form-control" name="PRODUCTTYPE"
-											id="productType" data-placeholder="产品类型"
+											id="productType"  data-placeholder="产品类型"
 											style="vertical-align:top;width: 68px;">
 
 									</select>
@@ -118,8 +118,11 @@
 
 			$("#productType").change(function(){
 
-                $("#c_selectCompany").trigger("chosen:updated");
-                $("#c_selectCompany").empty();
+                $('#c_selectCompany').empty();
+
+				if($('#productType').val()!=''){
+                    $('#c_selectCompany').chosen("destroy")
+                }
 
 
 
@@ -277,6 +280,7 @@
 		
 		$(function() {
 
+            downList('c_selectCompany');
 
 
 
@@ -290,9 +294,9 @@
 
                 $("#PRODUCT_NAME").val('');
 
-                $("#PRODUCT_NAME").val(str1.substring(str1.indexOf("-")+1,str1.length));
+                $("#PRODUCT_NAME").val(str1.substring(0,str1.indexOf("-")));
 
-                $("#PRODUCT_MODEL").val(str1.substring(0,str1.indexOf("-")));
+                $("#PRODUCT_MODEL").val(str1.substring(str1.indexOf("-")+1,str1.length));
 
             })
 

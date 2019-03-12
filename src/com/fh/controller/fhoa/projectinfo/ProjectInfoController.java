@@ -27,7 +27,6 @@ import com.fh.service.fhoa.projectinfo.ProjectInfoManager;
 
 /** 
  * 说明：产品信息模块
- * 创建人：FH Q313596790
  * 创建时间：2018-10-13
  */
 @Controller

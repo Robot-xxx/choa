@@ -13,7 +13,6 @@ import com.fh.service.activiti.hiprocdef.HiprocdefManager;
 
 /** 
  * 说明： 历史流程任务
- * 创建人：FH Q313596790
  * 创建时间：2018-01-28
  * @version
  */

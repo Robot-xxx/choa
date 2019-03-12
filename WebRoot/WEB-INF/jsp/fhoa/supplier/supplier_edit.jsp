@@ -76,34 +76,7 @@
                                                    value="${pd.BANKACCOUNT}" maxlength="100" placeholder="这里输入开户账号"
                                                    title="开户账号" style="width:98%;"/></td>
                                     </tr>
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">生产许可证到期日:</td>
-                                        <td>
-                                            <input placeholder="这里输入到期日" data-date-format="yyyy-mm-dd" readonly class="span10 date-picker" type="text" name="SHENGCHANXUKEZHENG" id="SHENGCHANXUKEZHENG" value="${pd.SHENGCHANXUKEZHENG}" maxlength="100" style="width:98%;"/>
-                                            <span style="color:red;">注:请认真对证件是否过期</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">经营许可证到期日:</td>
-                                        <td>
-                                            <input  placeholder="这里输入到期日" data-date-format="yyyy-mm-dd" readonly class="span10 date-picker" type="text" name="JINGYINGXUKEZHENG" id="JINGYINGXUKEZHENG" value="${pd.JINGYINGXUKEZHENG}" maxlength="100" style="width:98%;"/>
-                                            <span style="color:red;">注:请认真对证件是否过期</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">法人授权书到期日:</td>
-                                        <td>
-                                            <input  placeholder="这里输入到期日" data-date-format="yyyy-mm-dd" readonly class="span10 date-picker" type="text" name="FARENSHOUQUAN" id="FARENSHOUQUAN" value="${pd.FARENSHOUQUAN}" maxlength="100" style="width:98%;"/>
-                                            <span style="color:red;">注:请认真对证件是否过期</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">授权委托书到期日:</td>
-                                        <td>
-                                            <input  placeholder="这里输入到期日" data-date-format="yyyy-mm-dd" readonly class="span10 date-picker" type="text" name="SHOUQUANWEITUO" id="SHOUQUANWEITUO" value="${pd.SHOUQUANWEITUO}" maxlength="100" style="width:98%;"/>
-                                            <span style="color:red;">注:请认真对证件是否过期</span>
-                                        </td>
-                                    </tr>
+
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>医疗许可证类型:</td>
                                         <td>
@@ -125,19 +98,6 @@
                                                    title="二类备案号" style="width:98%;"/></td>
                                     </tr>
 
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">补交时间:</td>
-                                        <td>
-                                            <input  placeholder="这里输入补交时间" data-date-format="yyyy-mm-dd" readonly class="span10 date-picker" type="text" name="BUJIAOSHIJIAN" id="BUJIAOSHIJIAN" value="${pd.BUJIAOSHIJIAN}" maxlength="100" style="width:98%;"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>纸质资料是否齐全:</td>
-                                        <td>
-                                            是<input type="radio" name="ISZILIAOQQ" checked value="是" <c:if test="${pd.ISZILIAOQQ=='是'}">checked</c:if>/>
-                                            否<input type="radio" name="ISZILIAOQQ"  value="否" <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>
-                                        </td>
-                                    </tr>
 
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>

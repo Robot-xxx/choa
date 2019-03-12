@@ -10,7 +10,6 @@ import com.fh.service.fhoa.projectproduct.ProjectProductManager;
 
 /** 
  * 说明： 项目投标产品
- * 创建人：FH Q313596790
  * 创建时间：2019-01-07
  * @version
  */

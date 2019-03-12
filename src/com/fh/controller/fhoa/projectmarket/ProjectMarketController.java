@@ -25,7 +25,7 @@ import com.fh.service.fhoa.projectmarket.ProjectMarketManager;
 
 /** 
  * 说明：项目销售情况
- * 创建人：FH Q313596790
+ *
  * 创建时间：2018-08-30
  */
 @Controller
@@ -67,18 +67,7 @@ public class ProjectMarketController extends AcStartController {
 			map1.put("项目名称", pd.getString("PROJECT_NAME"));
 			map1.put("销售合同", pd.getString("SALES_CONTRACT_ID"));
 			map1.put("下游名称", pd.getString("CLIENT_NAME"));
-			if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHENGCHANXUKEZHENG").toString().equals("")){
-				map1.put("生产许可证", pd.get("SHENGCHANXUKEZHENG").toString());
-			}
-			if (pd.get("JINGYINGXUKEZHENG")!=null&&!pd.get("JINGYINGXUKEZHENG").toString().equals("")){
-				map1.put("经营许可证", pd.get("JINGYINGXUKEZHENG").toString());
-			}
-			if (pd.get("FARENSHOUQUAN")!=null&&!pd.get("FARENSHOUQUAN").toString().equals("")){
-				map1.put("法人授权书", pd.get("FARENSHOUQUAN").toString());
-			}
-			if (pd.get("SHOUQUANWEITUO")!=null&&!pd.get("SHOUQUANWEITUO").toString().equals("")){
-				map1.put("授权委托书", pd.get("SHOUQUANWEITUO").toString());
-			}
+
 			if (pd.get("PREDICT_ACCOUNT_TIME")!=null&&!pd.get("PREDICT_ACCOUNT_TIME").toString().equals("")){
 				map1.put("预计到账时间", pd.get("PREDICT_ACCOUNT_TIME").toString());
 			}
@@ -86,10 +75,13 @@ public class ProjectMarketController extends AcStartController {
 				map1.put("实际到账时间", pd.get("PRACTICAL_ACCOUT_TIME").toString());
 			}
 			if (pd.get("ARRIVAL_TIME")!=null&&!pd.get("ARRIVAL_TIME").toString().equals("")){
-				map1.put("预计到货时间", pd.get("ARRIVAL_TIME").toString());
+				map1.put("到货时间", pd.get("ARRIVAL_TIME").toString());
 			}
 			if (pd.get("RECEPTION_TIME")!=null&&!pd.get("RECEPTION_TIME").toString().equals("")){
-				map1.put("预计验收时间", pd.get("RECEPTION_TIME").toString());
+				map1.put("验收时间", pd.get("RECEPTION_TIME").toString());
+			}
+			if (pd.get("BAOZHENGJINTUIHUISHIJIAN")!=null&&!pd.get("BAOZHENGJINTUIHUISHIJIAN").toString().equals("")){
+				map1.put("保证金退回时间", pd.get("BAOZHENGJINTUIHUISHIJIAN").toString());
 			}
 			map1.put("合同总价(元)", pd.get("CONTRACT_PRICE").toString());
 			map1.put("医院预付款", pd.get("EQUIPMENT_ADVANCE").toString());
@@ -98,6 +90,8 @@ public class ProjectMarketController extends AcStartController {
 
 			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("PROJECT_MARKET_ID")+"','14b2e7231a604b9f9edfc230fea227d8')\" style=' cursor:pointer;'>查看附件</a>");
 			map1.put("查看产品", "<a onclick=\"selectProject('"+pd.getString("PROJECT_MARKET_ID")+"')\" style=' cursor:pointer;'>查看产品</a>");
+			map1.put("负责人", pd.getString("FUZEREN"));
+			map1.put("风险条款", pd.getString("FENGXIANTIAOKUAN"));
 			map1.put("备注", pd.getString("BZ"));
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
 			String act_id=startProcessInstanceByKeyHasVariables("oa_xiaoshouhetong",map1);	//启动流程实例(请假单流程)通过KEY
@@ -356,12 +350,9 @@ public class ProjectMarketController extends AcStartController {
 		List<String> titles = new ArrayList<String>();
 		titles.add("选择公司");	//1
 		titles.add("项目编号");	//1
+		titles.add("项目名称");	//1
 		titles.add("销售合同编号");	//2
 		titles.add("下游");	//3
-		titles.add("生产许可证到期日");	//3
-		titles.add("经营许可证到期日");	//3
-		titles.add("法人授权书到期日");	//3
-		titles.add("授权委托书到期日");	//3
 		titles.add("合同总价(元)");	//4
 		titles.add("医院预付款(元)");	//5
 		titles.add("预计到账时间");	//6
@@ -369,7 +360,9 @@ public class ProjectMarketController extends AcStartController {
 		titles.add("实际到账时间");	//9
 		titles.add("到货时间");	//11
 		titles.add("验收时间");	//12
+		titles.add("保证金退回时间");	//12
 		titles.add("负责人");	//12
+		titles.add("风险条款");	//12
 		titles.add("备注");	//12
 		dataMap.put("titles", titles);
 		List<PageData> varOList = projectmarketService.listAll(pd);
@@ -378,78 +371,59 @@ public class ProjectMarketController extends AcStartController {
 			PageData vpd = new PageData();
 			vpd.put("var1", varOList.get(i).getString("SELECTCOMPANY"));	    //1
 			vpd.put("var2", varOList.get(i).getString("SYS_ID"));	    //1
-			vpd.put("var3", varOList.get(i).getString("SALES_CONTRACT_ID"));	    //2
-			vpd.put("var4", varOList.get(i).getString("CLIENT_NAME"));	    //3
+			vpd.put("var3", varOList.get(i).getString("PROJECT_NAME"));	    //1
+			vpd.put("var4", varOList.get(i).getString("SALES_CONTRACT_ID"));	    //2
+			vpd.put("var5", varOList.get(i).getString("CLIENT_NAME"));	    //3
 
-			if (varOList.get(i).get("SHENGCHANXUKEZHENG")!=null&&!varOList.get(i).get("SHENGCHANXUKEZHENG").toString().equals("")) {
-				vpd.put("var5",varOList.get(i).get("SHENGCHANXUKEZHENG").toString());	    //8
-			}else {
-				vpd.put("var5","");	    //8
 
-			}
-			if (varOList.get(i).get("JINGYINGXUKEZHENG")!=null&&!varOList.get(i).get("JINGYINGXUKEZHENG").toString().equals("")) {
-				vpd.put("var6", varOList.get(i).get("JINGYINGXUKEZHENG").toString());	    //8
+			if (varOList.get(i).get("CONTRACT_PRICE")!=null&&!varOList.get(i).get("CONTRACT_PRICE").toString().equals("")) {
+				vpd.put("var6", varOList.get(i).get("CONTRACT_PRICE").toString());	    //8
 			}else {
 				vpd.put("var6","");	    //8
 
 			}
-			if (varOList.get(i).get("FARENSHOUQUAN")!=null&&!varOList.get(i).get("FARENSHOUQUAN").toString().equals("")) {
-				vpd.put("var7", varOList.get(i).get("FARENSHOUQUAN").toString());	    //8
-			}else {
-				vpd.put("var7","");	    //8
-
-			}
-			if (varOList.get(i).get("SHOUQUANWEITUO")!=null&&!varOList.get(i).get("SHOUQUANWEITUO").toString().equals("")) {
-				vpd.put("var8", varOList.get(i).get("SHOUQUANWEITUO").toString());	    //8
-			}else {
-				vpd.put("var8","");	    //8
-
-			}
-			if (varOList.get(i).get("CONTRACT_PRICE")!=null&&!varOList.get(i).get("CONTRACT_PRICE").toString().equals("")) {
-				vpd.put("var9", varOList.get(i).get("CONTRACT_PRICE").toString());	    //8
-			}else {
-				vpd.put("var9","");	    //8
-
-			}
 
 			if (varOList.get(i).get("EQUIPMENT_ADVANCE")!=null&&!varOList.get(i).get("EQUIPMENT_ADVANCE").toString().equals("")) {
-				vpd.put("var10", varOList.get(i).get("EQUIPMENT_ADVANCE").toString());	    //8
+				vpd.put("var7", varOList.get(i).get("EQUIPMENT_ADVANCE").toString());	    //8
 			}else {
-				vpd.put("var10","");	    //8
+				vpd.put("var7","");	    //8
 
 			}
 
 
 
 			if (varOList.get(i).get("PREDICT_ACCOUNT_TIME")!=null&&!varOList.get(i).get("PREDICT_ACCOUNT_TIME").toString().equals("")) {
-				vpd.put("var11", varOList.get(i).get("PREDICT_ACCOUNT_TIME").toString());	    //8
+				vpd.put("var8", varOList.get(i).get("PREDICT_ACCOUNT_TIME").toString());	    //8
 			}else {
-				vpd.put("var11","");	    //8
+				vpd.put("var8","");	    //8
 
 			}
 
 			if (varOList.get(i).get("PRACTICAL_ACCOUT_TIME")!=null&&!varOList.get(i).get("PRACTICAL_ACCOUT_TIME").toString().equals("")) {
-				vpd.put("var12", varOList.get(i).get("PRACTICAL_ACCOUT_TIME").toString());	    //8
+				vpd.put("var9", varOList.get(i).get("PRACTICAL_ACCOUT_TIME").toString());	    //8
 			}else {
-				vpd.put("var12","");	    //8
+				vpd.put("var9","");	    //8
 
 			}
 
 
 			if (varOList.get(i).get("ARRIVAL_TIME")!=null&&!varOList.get(i).get("ARRIVAL_TIME").toString().equals("")) {
-				vpd.put("var13", varOList.get(i).get("ARRIVAL_TIME").toString());	    //8
+				vpd.put("var10", varOList.get(i).get("ARRIVAL_TIME").toString());	    //8
 			}else {
-				vpd.put("var13","");	    //8
+				vpd.put("var10","");	    //8
 
 			}
 			if (varOList.get(i).get("RECEPTION_TIME")!=null&&!varOList.get(i).get("RECEPTION_TIME").toString().equals("")) {
-				vpd.put("var14", varOList.get(i).get("RECEPTION_TIME").toString());	    //8
+				vpd.put("var11", varOList.get(i).get("RECEPTION_TIME").toString());	    //8
 			}else {
-				vpd.put("var14","");	    //8
+				vpd.put("var11","");	    //8
 
 			}
-			vpd.put("var15",varOList.get(i).getString("FUZEREN").toString());
-			vpd.put("var16",varOList.get(i).getString("BZ").toString());
+
+			vpd.put("var12",varOList.get(i).getString("BAOZHENGJINTUIHUISHIJIAN"));
+			vpd.put("var13",varOList.get(i).getString("FUZEREN"));
+			vpd.put("var14",varOList.get(i).getString("FENGXIANTIAOKUAN"));
+			vpd.put("var15",varOList.get(i).getString("BZ"));
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

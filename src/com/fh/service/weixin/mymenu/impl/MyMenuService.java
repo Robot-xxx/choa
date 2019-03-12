@@ -10,7 +10,6 @@ import com.fh.service.weixin.mymenu.MyMenuManager;
 
 /** 
  * 说明： 微信自定义菜单
- * 创建人：FH Q313596790
  * 创建时间：2016-10-30
  * @version
  */

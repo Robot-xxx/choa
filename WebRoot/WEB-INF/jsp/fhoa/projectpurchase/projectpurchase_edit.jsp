@@ -64,7 +64,7 @@
                                                    style="width:98%;"/>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <%--<tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">销售合同编号:
                                         </td>
                                         <td>
@@ -76,7 +76,7 @@
                                                    placeholder="这里输入销售合同编号" title="销售合同编号"/>
                                             <span style="color:red;">注:完成立项丶销售流程后才能选择对应合同</span>
                                         </td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
                                                 color="red">*</font>采购合同编号:
@@ -108,7 +108,7 @@
                                             <span style="color: red">注:需提前在上游管理处填写并通过审批才能选择对应供应商</span>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <%--<tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">生产许可证到期日:</td>
                                         <td>
                                             <input placeholder="这里输入到期日" data-date-format="yyyy-mm-dd" readonly  type="text" name="SHENGCHANXUKEZHENG" id="SHENGCHANXUKEZHENG" value="${pd.SHENGCHANXUKEZHENG}" maxlength="100" style="width:98%;"/>
@@ -135,7 +135,7 @@
                                             <input  placeholder="这里输入到期日" data-date-format="yyyy-mm-dd" readonly  type="text" name="SHOUQUANWEITUO" id="SHOUQUANWEITUO" value="${pd.SHOUQUANWEITUO}" maxlength="100" style="width:98%;"/>
                                             <span style="color:red;">注:请认真对证件是否过期</span>
                                         </td>
-                                    </tr>
+                                    </tr>--%>
 
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">合同签订时间:</td>
@@ -159,7 +159,7 @@
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><span style="color: red">*</span>合同总价(元):</td>
                                         <td><input type="text" name="CONTRACT_PRICE" id="CONTRACT_PRICE"
-                                                   value="${pd.CONTRACT_PRICE}" maxlength="12"
+                                                   value="${pd.CONTRACT_PRICE}" maxlength="30"
                                                    placeholder="这里输入合同总价(元)" title="合同总价(元)" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
@@ -167,6 +167,12 @@
                                         <td><input name="FENGXIANTIAOKUAN" id="FENGXIANTIAOKUAN"
                                                    value="${pd.FENGXIANTIAOKUAN}" type="text" placeholder="风险条款"
                                                    title="风险条款" style="width:98%;"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">付款约定:</td>
+                                        <td><input name="FUKUANYUEDING" id="FUKUANYUEDING"
+                                                   value="${pd.FUKUANYUEDING}" type="text" placeholder="付款约定"
+                                                   title="付款约定" style="width:98%;"/></td>
                                     </tr>
                                    <%-- <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>是否资料齐全:</td>
@@ -406,15 +412,23 @@
                 success: function (data) {
                     if (data.errInfo == "success") {
                         $("#PROJECTNAME").val(data.pd.PROJECT_NAME);
+                        $("#FUKUANYUEDING").val(data.pd.ACCESSORY);
                         $("#SYS_ID").val(str.substring(0, str.indexOf("=》")));
                         $("#FUZEREN").val(str1.substring( str1.indexOf("=")+1,str1.length));
                     }
                 }
             });
+
+
+
+
+
         })
 
+        if($("#msg").val()=="save"){
+             $("#PURCHASE_CONTRACT_ID").val(getYmd("CC"));
 
-        $("#PURCHASE_CONTRACT_ID").val(getYmd("CC"));
+        }
 
         getInfo();
 

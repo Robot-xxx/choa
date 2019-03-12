@@ -27,7 +27,7 @@ import com.fh.service.fhoa.warehouse.WarehouseManager;
 
 /** 
  * 说明：仓库管理模块
- * 创建人：FH Q313596790
+ *
  * 创建时间：2018-09-14
  */
 @Controller

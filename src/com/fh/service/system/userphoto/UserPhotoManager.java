@@ -6,7 +6,7 @@ import com.fh.util.PageData;
 
 /** 
  * 说明： 用户头像接口
- * 创建人：FH Q313596790
+ *
  * 创建时间：2016-06-05
  * @version
  */

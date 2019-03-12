@@ -74,21 +74,20 @@
 									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
 									</th>
 									<th class="center" style="width:50px;">序号</th>
+<%--
 									<th class="center">客户序号</th>
+--%>
 									<th class="center">公司全称</th>
 									<th class="center">联系人</th>
 									<th class="center">联系电话</th>
-									<th class="center">税号</th>
+									<th class="center">统一社会信用代码</th>
 									<th class="center">开户行</th>
 									<th class="center">开户行账号</th>
 									<th class="center">医疗许可证</th>
-									<th class="center">纸质资料是否齐全</th>
 									<th class="center">二类备案号</th>
-									<th class="center">补交时间</th>
 <%--
 									<th class="center">生产许可证到期日</th>
 --%>
-									<th class="center">经营许可证到期日</th>
 									<th class="center">法人授权书到期日</th>
 									<th class="center">授权委托书到期日</th>
 									<th class="center">上传者</th>
@@ -111,7 +110,9 @@
 											</td>
 											<td class='center' style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
 											<%--<td class='center'>${var.CUSTOMER_ID}</td>--%>
+<%--
 											<td class='center'>${var.SYS_ID}</td>
+--%>
 											<td class='center'>${var.COMPANY_NAME}</td>
 											<td class='center'>${var.LINKMAN}</td>
 											<td class='center'>${var.PHONE}</td>
@@ -119,13 +120,10 @@
 											<td class='center'>${var.OPENING_BANK}</td>
 											<td class='center'>${var.BANKACCOUNT}</td>
 											<td class='center'>${var.DNAME8}</td>
-											<td class='center'>${var.ISZILIAOQQ}</td>
 											<td class='center'>${var.ERLEIBEIANHAO}</td>
-											<td class='center'>${var.BUJIAOSHIJIAN}</td>
 <%--
 											<td class='center'>${var.SHENGCHANXUKEZHENG}</td>
 --%>
-											<td class='center'>${var.JINGYINGXUKEZHENG}</td>
 											<td class='center'>${var.FARENSHOUQUAN}</td>
 											<td class='center'>${var.SHOUQUANWEITUO}</td>
 											<td class='center'>${var.FUZEREN}</td>

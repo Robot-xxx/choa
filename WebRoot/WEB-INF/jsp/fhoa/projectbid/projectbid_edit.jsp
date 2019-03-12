@@ -168,6 +168,15 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">保证金退回时间:</td>
+                                        <td><input class="span10 date-picker" name="BAOZHENGJINTUIHUISHIJIAN"
+                                                   id="BAOZHENGJINTUIHUISHIJIAN"
+                                                   value="${pd.BAOZHENGJINTUIHUISHIJIAN}" type="text"
+                                                   data-date-format="yyyy-mm-dd" readonly="readonly"
+                                                   placeholder="保证金退回时间" title="保证金退回时间" style="width:98%;"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>标书制作人:</td>
                                         <td><input name="BIAOSHUZHIZUOREN" id="BIAOSHUZHIZUOREN"
                                                    value="${pd.BIAOSHUZHIZUOREN}" type="text" placeholder="标书制作人"

@@ -41,7 +41,14 @@
 										</span>
 									</div>
 								</td>
-
+								<td>
+									<select class="chosen-select form-control"  id="ISSHENPI" name="ISSHENPI" data-placeholder="请选择" style="vertical-align:top;width: 80px;">
+										<option <c:if test="${pd.ISSHENPI==''}">selected</c:if> value="">请选择</option>
+										<option <c:if test="${pd.ISSHENPI==1}">selected</c:if> value="1">已审批</option>
+										<option <c:if test="${pd.ISSHENPI==2}">selected</c:if> value="2">未审批</option>
+										<option <c:if test="${pd.ISSHENPI==3}">selected</c:if> value="3">审批中</option>
+									</select>
+								</td>
 								<c:if test="${QX.cha == 1 }">
 								<td style="vertical-align:top;padding-left:2px"><a class="btn btn-light btn-xs" onclick="tosearch();"  title="检索"><i id="nav-search-icon" class="ace-icon fa fa-search bigger-110 nav-search-icon blue"></i></a></td>
 								</c:if>
@@ -98,7 +105,7 @@
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
 												</c:if>
 												<div class="hidden-sm hidden-xs btn-group">
-                                                    <a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="btn btn-xs btn-success" title="提交" onclick="tijiao('${var.TICKET_ID}',this)">
+                                                    <a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if> class="<c:if test="${var.STATUS==1}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==2}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==3}">btn btn-xs btn-yellow</c:if>" title="提交" onclick="tijiao('${var.TICKET_ID}',this)">
                                                         <i class="ace-icon fa fa-check-circle-o bigger-120" title="提交"></i>
                                                     </a>
                                                     <c:if test="${QX.edit == 1 }">

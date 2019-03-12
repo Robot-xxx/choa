@@ -24,7 +24,6 @@ import com.fh.util.Tools;
 
 /** 
  * 说明：代码编辑器
- * 创建人：FH Q313596790
  * 创建时间：2017-06-10
  */
 @Controller

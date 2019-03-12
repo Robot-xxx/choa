@@ -26,7 +26,6 @@ import com.fh.service.system.loginimg.LogInImgManager;
 
 /** 
  * 说明：登录页面背景图片
- * 创建人：FH Q313596790
  * 创建时间：2016-06-03
  */
 @Controller

@@ -10,7 +10,6 @@ import com.fh.service.system.codeeditor.CodeEditorManager;
 
 /** 
  * 说明： 代码编辑器
- * 创建人：FH Q313596790
  * 创建时间：2017-06-11
  * @version
  */

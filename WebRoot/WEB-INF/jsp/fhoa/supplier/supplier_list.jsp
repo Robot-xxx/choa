@@ -73,15 +73,10 @@
 									<th class="center">开户银行</th>
 									<th class="center">开户银行账号</th>--%>
 									<th class="center">医疗许可证类型</th>
-									<th class="center">纸质资料是否齐全</th>
 									<th class="center">二类备案号</th>
-									<th class="center">生产许可证</th>
-									<th class="center">经营许可证</th>
-									<th class="center">法人授权书</th>
-									<th class="center">授权委托书</th>
+
 
 									<th class="center">统一社会信用代码</th>
-									<th class="center">补交时间</th>
 
 									<th class="center">上传者</th>
 
@@ -110,15 +105,10 @@
 											<%--<td class='center'>${var.OPENING_BANK}</td>
 											<td class='center'>${var.BANKACCOUNT}</td>--%>
 											<td class='center'>${var.DNAME7}</td>
-											<td class='center'>${var.ISZILIAOQQ}</td>
 											<td class='center'>${var.ERLEIBEIANHAO}</td>
-											<td class='center'>${var.SHENGCHANXUKEZHENG}</td>
-											<td class='center'>${var.JINGYINGXUKEZHENG}</td>
-                                            <td class='center'>${var.FARENSHOUQUAN}</td>
-                                            <td class='center'>${var.SHOUQUANWEITUO}</td>
+
 
                                             <td class='center'>${var.TONGYISHEHUIDAIMA}</td>
-                                            <td class='center'>${var.BUJIAOSHIJIAN}</td>
 
 											<td class='center'>${var.FUZHEREN}</td>
                                             <td class='center'>${var.BZ}</td>

@@ -25,7 +25,7 @@ import com.fh.service.fhoa.invoice.InvoiceManager;
 
 /** 
  * 说明：发票管理
- * 创建人：FH Q313596790
+ *
  * 创建时间：2018-09-16
  */
 @Controller

@@ -27,7 +27,6 @@ import java.util.*;
 
 /** 
  * 说明：器械资料管理
- * 创建人：FH Q313596790
  * 创建时间：2018-08-30
  */
 @Controller
@@ -312,19 +311,19 @@ public class InstrumentController extends AcStartController {
 			vpd.put("var6", varOList.get(i).getString("BUSINESS"));	    //6
 			vpd.put("var7", varOList.get(i).getString("ISZILIAOQQ"));	    //7
 			if (varOList.get(i).get("BUJIAOSHIJIAN")!=null&&!varOList.get(i).get("BUJIAOSHIJIAN").toString().equals("")) {
-				vpd.put("var8", sd.format(varOList.get(i).get("BUJIAOSHIJIAN")));	    //8
+				vpd.put("var8", varOList.get(i).get("BUJIAOSHIJIAN").toString());	    //8
 			}else {
 				vpd.put("var8","");	    //8
 
 			}
 			vpd.put("var9", varOList.get(i).getString("FUZEREN"));
 			if (varOList.get(i).get("BUJIAOSHIJIAN")!=null&&!varOList.get(i).get("BUJIAOSHIJIAN").toString().equals("")) {
-				vpd.put("var10", sd.format(varOList.get(i).get("BUJIAOSHIJIAN")));	    //8
+				vpd.put("var10", varOList.get(i).get("BUJIAOSHIJIAN"));	    //8
 			}else {
 				vpd.put("var10","");	    //8
 
 			}//7
-			vpd.put("var11", sd.format(varOList.get(i).get("BZ")));	    //8
+			vpd.put("var11", varOList.get(i).get("BZ"));	    //8
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

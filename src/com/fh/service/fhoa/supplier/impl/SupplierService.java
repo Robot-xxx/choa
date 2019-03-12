@@ -10,7 +10,6 @@ import com.fh.service.fhoa.supplier.SupplierManager;
 
 /** 
  * 说明： 供应商管理
- * 创建人：FH Q313596790
  * 创建时间：2018-09-18
  * @version
  */

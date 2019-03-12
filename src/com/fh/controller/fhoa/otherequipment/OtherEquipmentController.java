@@ -26,7 +26,7 @@ import com.fh.service.fhoa.otherequipment.OtherEquipmentManager;
 
 /** 
  * 说明：其他设备管理
- * 创建人：FH Q313596790
+ *
  * 创建时间：2018-08-30
  */
 @Controller
@@ -304,8 +304,9 @@ public class OtherEquipmentController extends AcStartController {
 			}else {
 				vpd.put("var9","");	    //8
 
-			}			vpd.put("var9", varOList.get(i).getString("FUZEREN"));	    //7
-			vpd.put("var10", varOList.get(i).getString("ACCESSORY"));	    //9
+			}
+			vpd.put("var10", varOList.get(i).getString("FUZEREN"));	    //7
+			vpd.put("var11", varOList.get(i).getString("ACCESSORY"));	    //9
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

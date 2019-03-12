@@ -92,34 +92,7 @@
                                         </td>
 
                                     </tr>
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">生产许可证到期日:</td>
-                                        <td>
-                                            <input placeholder="这里输入到期日" data-date-format="yyyy-mm-dd" readonly  type="text" name="SHENGCHANXUKEZHENG" id="SHENGCHANXUKEZHENG" value="${pd.SHENGCHANXUKEZHENG}" maxlength="100" style="width:98%;"/>
-                                            <span style="color:red;">注:请认真对证件是否过期</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">经营许可证到期日:</td>
-                                        <td>
-                                            <input  placeholder="这里输入到期日" data-date-format="yyyy-mm-dd" readonly  type="text" name="JINGYINGXUKEZHENG" id="JINGYINGXUKEZHENG" value="${pd.JINGYINGXUKEZHENG}" maxlength="100" style="width:98%;"/>
-                                            <span style="color:red;">注:请认真对证件是否过期</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">法人授权书到期日:</td>
-                                        <td>
-                                            <input  placeholder="这里输入到期日" data-date-format="yyyy-mm-dd" readonly type="text" name="FARENSHOUQUAN" id="FARENSHOUQUAN" value="${pd.FARENSHOUQUAN}" maxlength="100" style="width:98%;"/>
-                                            <span style="color:red;">注:请认真对证件是否过期</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">授权委托书到期日:</td>
-                                        <td>
-                                            <input  placeholder="这里输入到期日" data-date-format="yyyy-mm-dd" readonly  type="text" name="SHOUQUANWEITUO" id="SHOUQUANWEITUO" value="${pd.SHOUQUANWEITUO}" maxlength="100" style="width:98%;"/>
-                                            <span style="color:red;">注:请认真对证件是否过期</span>
-                                        </td>
-                                    </tr>
+
 
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>合同总价(元):</td>

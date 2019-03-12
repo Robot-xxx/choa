@@ -10,7 +10,7 @@ import com.fh.service.fhoa.inputticket.InputTicketManager;
 
 /** 
  * 说明： 进项票管理
- * 创建人：FH Q313596790
+ *
  * 创建时间：2018-09-26
  * @version
  */

@@ -6,7 +6,6 @@ import com.fh.util.PageData;
 
 /** 
  * 说明： 付款申请接口
- * 创建人：FH Q313596790
  * 创建时间：2018-10-12
  * @version
  */

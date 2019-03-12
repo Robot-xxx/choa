@@ -27,7 +27,6 @@ import com.fh.service.fhoa.payrequest.PayRequestManager;
 
 /** 
  * 说明：付款申请
- * 创建人：FH Q313596790
  * 创建时间：2018-10-12
  */
 @Controller

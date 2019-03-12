@@ -25,7 +25,7 @@ import com.fh.service.fhoa.department.DepartmentManager;
 
 /** 
  * 说明：组织数据权限表
- * 创建人：FH Q313596790
+ *
  * 创建时间：2016-04-26
  */
 @Controller

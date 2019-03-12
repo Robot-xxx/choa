@@ -10,7 +10,7 @@ import com.fh.service.fhoa.informatization.InformatizationManager;
 
 /** 
  * 说明： 信息化资料管理
- * 创建人：FH Q313596790
+ *
  * 创建时间：2018-08-30
  * @version
  */

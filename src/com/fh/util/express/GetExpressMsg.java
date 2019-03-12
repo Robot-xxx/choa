@@ -12,7 +12,6 @@ import com.fh.util.express.constant.HttpSchema;
 import com.fh.util.express.enums.Method;
 
 /**	获取物流信息
-*  创建人：FH Q313596790
  * 创建时间：2016年10月11日
  */
 public class GetExpressMsg {

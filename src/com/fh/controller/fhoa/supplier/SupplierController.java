@@ -27,7 +27,6 @@ import com.fh.service.fhoa.supplier.SupplierManager;
 
 /** 
  * 说明：供应商管理
- * 创建人：FH Q313596790
  * 创建时间：2018-09-18
  */
 @Controller
@@ -40,7 +39,7 @@ public class SupplierController extends AcStartController {
 	@Resource
 	private AccessoryFileManager accessoryFileManager;
 
-	SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
 
 
 	/**提交流程
@@ -69,24 +68,9 @@ public class SupplierController extends AcStartController {
 
 			map1.put("医疗许可证", pd.getString("DNAME7"));
 			map1.put("经营范围", pd.getString("JINGYINGFANWEI"));
-			map1.put("纸质资料是否齐全", pd.getString("ISZILIAOQQ"));
 			map1.put("统一社会代码", pd.getString("TONGYISHEHUIDAIMA"));
 
-            if (pd.get("BUJIAOSHIJIAN")!=null&&!pd.get("BUJIAOSHIJIAN").toString().equals("")){
-                map1.put("补交时间", pd.get("BUJIAOSHIJIAN").toString());
-            }
-            if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHENGCHANXUKEZHENG").toString().equals("")){
-                map1.put("生产许可证", pd.get("SHENGCHANXUKEZHENG").toString());
-            }
-            if (pd.get("JINGYINGXUKEZHENG")!=null&&!pd.get("JINGYINGXUKEZHENG").toString().equals("")){
-                map1.put("经营许可证", pd.get("JINGYINGXUKEZHENG").toString());
-            }
-            if (pd.get("FARENSHOUQUAN")!=null&&!pd.get("FARENSHOUQUAN").toString().equals("")){
-                map1.put("法人授权书", pd.get("FARENSHOUQUAN").toString());
-            }
-            if (pd.get("SHOUQUANWEITUO")!=null&&!pd.get("SHOUQUANWEITUO").toString().equals("")){
-                map1.put("授权委托书", pd.get("SHOUQUANWEITUO").toString());
-            }
+
 			map1.put("上传者", pd.getString("FUZEREN"));
 
 
@@ -364,14 +348,8 @@ public class SupplierController extends AcStartController {
 		titles.add("开户银行");	//6
 		titles.add("开户银行账号");	//6
 		titles.add("医疗许可证类型");	//7
-		titles.add("经营范围");	//7
 		titles.add("统一社会代码");	//7
-		titles.add("纸质资料是否齐全");	//7
-        titles.add("生产许可证期日");	//6
-        titles.add("经营许可证期日");	//6
-        titles.add("法人授权书期日");	//6
-        titles.add("授权委托书期日");	//6
-        titles.add("补交时间");	//6
+
         titles.add("上传者");	//6
 		titles.add("备注");	//9
 		dataMap.put("titles", titles);
@@ -387,46 +365,15 @@ public class SupplierController extends AcStartController {
 			vpd.put("var6", varOList.get(i).getString("OPENING_BANK"));	    //6
 			vpd.put("var7", varOList.get(i).getString("BANKACCOUNT"));	    //6
             vpd.put("var8", varOList.get(i).getString("DNAME7"));	    //7
-			vpd.put("var9", varOList.get(i).getString("JINGYINGFANWEI"));	    //6
-			vpd.put("var10", varOList.get(i).getString("TONGYISHEHUIDAIMA"));	    //6
-			vpd.put("var11", varOList.get(i).getString("ISZILIAOQQ"));	    //6
+			vpd.put("var9", varOList.get(i).getString("TONGYISHEHUIDAIMA"));	    //6
 
 
 
-			if (varOList.get(i).get("SHENGCHANXUKEZHENG")!=null&&!varOList.get(i).get("SHENGCHANXUKEZHENG").toString().equals("")) {
-				vpd.put("var12", sd.format(varOList.get(i).get("SHENGCHANXUKEZHENG")));	    //8
-			}else {
-				vpd.put("var12","");	    //8
 
-			}
-			if (varOList.get(i).get("JINGYINGXUKEZHENG")!=null&&!varOList.get(i).get("JINGYINGXUKEZHENG").toString().equals("")) {
-				vpd.put("var13", sd.format(varOList.get(i).get("JINGYINGXUKEZHENG")));	    //8
-			}else {
-				vpd.put("var13","");	    //8
 
-			}
-			if (varOList.get(i).get("FARENSHOUQUAN")!=null&&!varOList.get(i).get("FARENSHOUQUAN").toString().equals("")) {
-				vpd.put("var14", sd.format(varOList.get(i).get("FARENSHOUQUAN")));	    //8
-			}else {
-				vpd.put("var14","");	    //8
+			vpd.put("var10", varOList.get(i).getString("FUZHEREN"));	    //6
 
-			}
-			if (varOList.get(i).get("SHOUQUANWEITUO")!=null&&!varOList.get(i).get("SHOUQUANWEITUO").toString().equals("")) {
-				vpd.put("var15", sd.format(varOList.get(i).get("SHOUQUANWEITUO")));	    //8
-			}else {
-				vpd.put("var15","");	    //8
-
-			}
-			if (varOList.get(i).get("BUJIAOSHIJIAN")!=null&&!varOList.get(i).get("BUJIAOSHIJIAN").toString().equals("")) {
-				vpd.put("var16", sd.format(varOList.get(i).get("BUJIAOSHIJIAN")));	    //8
-			}else {
-				vpd.put("var16","");	    //8
-
-			}
-
-			vpd.put("var17", varOList.get(i).getString("FUZHEREN"));	    //6
-
-			vpd.put("var18", varOList.get(i).getString("BZ"));	    //9
+			vpd.put("var11", varOList.get(i).getString("BZ"));	    //9
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

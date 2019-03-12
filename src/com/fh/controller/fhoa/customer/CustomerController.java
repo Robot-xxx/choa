@@ -28,7 +28,6 @@ import com.fh.service.fhoa.customer.CustomerManager;
 
 /**
  * 说明：客户管理模块
- * 创建人：FH Q313596790
  * 创建时间：2018-08-30
  */
 @Controller
@@ -71,17 +70,6 @@ public class CustomerController extends AcStartController {
             map1.put("开户行", pd.getString("OPENING_BANK"));
             map1.put("开户账号", pd.getString("BANKACCOUNT"));
             map1.put("医疗许可证", pd.getString("DNAME8"));
-            map1.put("纸质资料是否齐全", pd.getString("ISZILIAOQQ"));
-
-          /*  if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHENGCHANXUKEZHENG").toString().equals("")){
-                map1.put("生产许可证", pd.get("SHENGCHANXUKEZHENG").toString());
-            }*/
-            if (pd.get("BUJIAOSHIJIAN")!=null&&!pd.get("BUJIAOSHIJIAN").toString().equals("")){
-                map1.put("补交时间", pd.get("BUJIAOSHIJIAN").toString());
-            }
-            if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("JINGYINGXUKEZHENG").toString().equals("")){
-                map1.put("经营许可证", pd.get("JINGYINGXUKEZHENG").toString());
-            }
             if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("FARENSHOUQUAN").toString().equals("")){
                 map1.put("法人授权书", pd.get("FARENSHOUQUAN").toString());
             }
@@ -364,17 +352,13 @@ public class CustomerController extends AcStartController {
         titles.add("公司全称");    //3
         titles.add("联系人");    //4
         titles.add("联系电话");    //5
-        titles.add("税号");    //6
+        titles.add("统一社会信用代码");    //6
         titles.add("开户行");    //7
         titles.add("开户行账号");    //7
         titles.add("医疗许可证");    //8
-        titles.add("生产许可证期日");	//6
-        titles.add("经营许可证期日");	//6
         titles.add("法人授权书期日");	//6
         titles.add("授权委托书期日");	//6
-        titles.add("补交时间");	//6
 
-        titles.add("纸质是否资料齐全");	//7
         titles.add("上传者");	//6
         titles.add("备注");    //10
         dataMap.put("titles", titles);
@@ -391,39 +375,11 @@ public class CustomerController extends AcStartController {
             vpd.put("var6", varOList.get(i).getString("OPENING_BANK"));        //7
             vpd.put("var7", varOList.get(i).getString("BANKACCOUNT"));        //7
             vpd.put("var8", varOList.get(i).getString("DNAME8"));        //8
-            if (varOList.get(i).get("SHENGCHANXUKEZHENG")!=null&&!varOList.get(i).get("SHENGCHANXUKEZHENG").toString().equals("")) {
-                vpd.put("var9", sd1.format(varOList.get(i).get("SHENGCHANXUKEZHENG")));	    //8
-            }else {
-                vpd.put("var9","");	    //8
+                vpd.put("var9", varOList.get(i).getString("FARENSHOUQUAN"));	    //8
 
-            }
-            if (varOList.get(i).get("JINGYINGXUKEZHENG")!=null&&!varOList.get(i).get("JINGYINGXUKEZHENG").toString().equals("")) {
-                vpd.put("var10", sd1.format(varOList.get(i).get("JINGYINGXUKEZHENG")));	    //8
-            }else {
-                vpd.put("var10","");	    //8
-
-            }
-            if (varOList.get(i).get("FARENSHOUQUAN")!=null&&!varOList.get(i).get("FARENSHOUQUAN").toString().equals("")) {
-                vpd.put("var11", sd1.format(varOList.get(i).get("FARENSHOUQUAN")));	    //8
-            }else {
-                vpd.put("var11","");	    //8
-
-            }
-            if (varOList.get(i).get("SHOUQUANWEITUO")!=null&&!varOList.get(i).get("SHOUQUANWEITUO").toString().equals("")) {
-                vpd.put("var12", sd1.format(varOList.get(i).get("SHOUQUANWEITUO")));	    //8
-            }else {
-                vpd.put("var12","");	    //8
-
-            }
-            if (varOList.get(i).get("BUJIAOSHIJIAN")!=null&&!varOList.get(i).get("BUJIAOSHIJIAN").toString().equals("")) {
-                vpd.put("var13", sd.format(varOList.get(i).get("BUJIAOSHIJIAN")));	    //8
-            }else {
-                vpd.put("var13","");	    //8
-
-            }
-            vpd.put("var14", varOList.get(i).getString("ISZILIAOQQ"));	    //6
-            vpd.put("var15", varOList.get(i).getString("FUZHEREN"));	    //6
-            vpd.put("var16", varOList.get(i).getString("BZ"));        //10
+                vpd.put("var10", varOList.get(i).getString("SHOUQUANWEITUO"));	    //8
+            vpd.put("var11", varOList.get(i).getString("FUZEREN"));	    //6
+            vpd.put("var12", varOList.get(i).getString("BZ"));        //10
             varList.add(vpd);
         }
         dataMap.put("varList", varList);

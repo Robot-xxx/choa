@@ -25,7 +25,6 @@ import com.fh.service.fhoa.uploadfile.UploadFileManager;
 
 /** 
  * 说明：单文件上传
- * 创建人：FH Q313596790
  * 创建时间：2018-10-11
  */
 @Controller

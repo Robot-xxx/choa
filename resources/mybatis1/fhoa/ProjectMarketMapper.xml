@@ -249,7 +249,7 @@
 	<!-- 通过id获取项目数据 -->
 	<select id="projectBidById" parameterType="pd" resultType="pd" >
 		select
-			PROJECT_NAME,SYS_ID,PROJECT_ID
+			PROJECT_NAME,SYS_ID,PROJECT_ID,ACCESSORY
 		from
 			oa_project
 		where

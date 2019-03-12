@@ -71,12 +71,7 @@
 									<input type="text" name="BUSINESS" id="BUSINESS" value="${pd.BUSINESS}" maxlength="100" placeholder="这里输入生注册证类别" title="注册证类别" style="width:44%;"/>
 								</td>
 							</tr>
-							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">补交时间:</td>
-								<td>
-									<input  placeholder="这里输入补交时间" data-date-format="yyyy-mm-dd" readonly class="span10 date-picker" type="text" name="BUJIAOSHIJIAN" id="BUJIAOSHIJIAN" value="${pd.BUJIAOSHIJIAN}" maxlength="100" style="width:98%;"/>
-								</td>
-							</tr>
+
 
                             <tr>
                                 <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>纸质资料是否齐全:</td>
@@ -85,6 +80,13 @@
                                     否<input type="radio" name="ISZILIAOQQ"  value="否" <c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>
                                 </td>
                             </tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">补交时间:</td>
+								<td>
+									<input  placeholder="这里输入补交时间" data-date-format="yyyy-mm-dd" readonly class="span10 date-picker" type="text" name="BUJIAOSHIJIAN" id="BUJIAOSHIJIAN" value="${pd.BUJIAOSHIJIAN}" maxlength="100" style="width:98%;"/>
+									<span style="color: red">注：若资料不齐全，则此项必填</span>
+								</td>
+							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
 								<td>

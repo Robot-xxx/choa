@@ -13,7 +13,6 @@ import com.fh.service.activiti.ruprocdef.RuprocdefManager;
 
 /** 
  * 说明： 正在运行的流程
- * 创建人：FH Q313596790
  * 创建时间：2018-01-19
  * @version
  */

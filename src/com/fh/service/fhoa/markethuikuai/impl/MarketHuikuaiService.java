@@ -10,7 +10,6 @@ import com.fh.service.fhoa.markethuikuai.MarketHuikuaiManager;
 
 /** 
  * 说明： 销售合同回款记录
- * 创建人：FH Q313596790
  * 创建时间：2018-09-25
  * @version
  */

@@ -85,7 +85,7 @@
                                         <td><input name="DEPARTMENT" id="DEPARTMENT" value="${pd.DEPARTMENT}"
                                                    type="text" placeholder="部门" title="部门" style="width:98%;"/></td>
                                     </tr>
-                                    <tr>
+                                    <%--<tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
                                                 color="red">*</font>日期:
                                         </td>
@@ -93,7 +93,7 @@
                                                    value="${pd.CREATE_DATE}" type="text" data-date-format="yyyy-mm-dd"
                                                    readonly="readonly" placeholder="日期" title="日期" style="width:98%;"/>
                                         </td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
                                                 color="red">*</font>报销人:

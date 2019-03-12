@@ -237,7 +237,7 @@
                                         <td style="width:75px;text-align: right;padding-top: 13px;">备注:
                                         </td>
                                         <td><input type="text" name="BZ" id="BZ"
-                                                   value="${pd.BZ}" maxlength="13" placeholder="这里输入备注"
+                                                   value="${pd.BZ}" maxlength="200" placeholder="这里输入备注"
                                                    title="备注" style="width:98%;"/>
                                             <span style="color: red">请备注来款情况，包括垫资等</span>
                                         </td>
@@ -444,9 +444,6 @@
 
         $("#PARTNERS1").change(function () {
             var str = $("#PARTNERS1").val();
-            console.log(str);
-            console.log(str.substring(str.indexOf("-") + 1, str.indexOf("=")))
-            console.log(str.substring(str.indexOf("=") + 1, str.length));
             $("#PAYEEBANK").val(str.substring(str.indexOf("-") + 1, str.indexOf("=")));
             $("#BANKACCOUNT").val(str.substring(str.indexOf("=") + 1, str.length));
             $("#PAYEE").val(str.substring(str.indexOf("-") + 1, str.indexOf("=")));
@@ -637,16 +634,23 @@
 
         //选择合同改变
         $("#hetongbianhao").change(function () {
-            var str = $("#hetongbianhao").val();
-            var CONTRACT_NO = str.substring(0, str.indexOf("-"));
-            var PROJIECT_ID = str.substring(str.indexOf("-") + 1, str.indexOf("+"));
-            var PROJECT_NAME = str.substring(str.indexOf("+") + 1, str.indexOf("@"));
-            var MONEY = str.substring(str.indexOf("@") + 1, str.length);
 
-            $("#CONTRACT_NO").val(CONTRACT_NO);
-            $("#PROJIECT_ID").val(PROJIECT_ID);
-            $("#PROJECT_NAME").val(PROJECT_NAME);
-            $("#MONEY").val(MONEY);
+            $.ajax({
+                type: "POST",
+                url: '<%=basePath%>/projectpurchase/CgFindById.do?tm=' + new Date().getTime(),
+                data:{PURCHASE_ID:$("#hetongbianhao").val()},
+                dataType: 'json',
+                cache: false,
+                success: function (data) {
+                    $("#CONTRACT_NO").val( data.pd.PURCHASE_CONTRACT_ID);
+                    $("#PROJIECT_ID").val( data.pd.SYS_ID);
+                    $("#PROJECT_NAME").val( data.pd.PROJECTNAME);
+                    $("#MONEY").val( data.pd.CONTRACT_PRICE);
+                    $("#FUKUANYUEDING").val( data.pd.FUKUANYUEDING);
+                }
+            });
+
+
 
 
         })
@@ -667,9 +671,9 @@
                     $("#hetongbianhao").append("<option value=''>请选择合同编号</option>");
                     for (var i = 0; i < data.list.length; i++) {
                         if (data.list[i].PURCHASE_CONTRACT_ID == weituo) {
-                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_CONTRACT_ID + "-" + data.list[i].SYS_ID + "+" + data.list[i].PROJECTNAME + "@" + data.list[i].CONTRACT_PRICE + " selected='selected'>" + data.list[i].PURCHASE_CONTRACT_ID +"=>"+data.list[i].PROJECTNAME + "</option>");
+                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_ID + " selected='selected'>" + data.list[i].PURCHASE_CONTRACT_ID +"=>"+data.list[i].PROJECTNAME + "</option>");
                         } else {
-                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_CONTRACT_ID + "-" + data.list[i].SYS_ID + "+" + data.list[i].PROJECTNAME + "@" + data.list[i].CONTRACT_PRICE + ">" + data.list[i].PURCHASE_CONTRACT_ID+"=>"+data.list[i].PROJECTNAME  + "</option>");
+                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_ID + ">" + data.list[i].PURCHASE_CONTRACT_ID+"=>"+data.list[i].PROJECTNAME  + "</option>");
                         }
                     }
                     downList('hetongbianhao');

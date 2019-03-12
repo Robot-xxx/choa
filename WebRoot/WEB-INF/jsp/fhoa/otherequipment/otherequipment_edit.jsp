@@ -63,12 +63,6 @@
 									<input type="text" name="BUSINESS" id="BUSINESS" value="${pd.BUSINESS}" maxlength="100" placeholder="这里输入生产经营范围" title="生产经营范围" style="width:44%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">补交时间:</td>
-								<td>
-									<input  placeholder="这里输入补交时间" data-date-format="yyyy-mm-dd" readonly class="span10 date-picker" type="text" name="BUJIAOSHIJIAN" id="BUJIAOSHIJIAN" value="${pd.BUJIAOSHIJIAN}" maxlength="100" style="width:98%;"/>
-								</td>
-							</tr>
-							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">生产批次:</td>
 								<td><input type="text" name="BATCH" id="BATCH" value="${pd.BATCH}" maxlength="100" placeholder="这里输入生产批次" title="生产批次" style="width:98%;"/></td>
 							</tr>
@@ -85,6 +79,13 @@
 										<c:if test="${pd.ISZILIAOQQ=='否'}">checked</c:if>/>
 							</td>
                             </tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">补交时间:</td>
+								<td>
+									<input  placeholder="这里输入补交时间" data-date-format="yyyy-mm-dd" readonly class="span10 date-picker" type="text" name="BUJIAOSHIJIAN" id="BUJIAOSHIJIAN" value="${pd.BUJIAOSHIJIAN}" maxlength="100" style="width:98%;"/>
+									<span style="color: red">注：若资料不齐全，则此项必填</span>
+								</td>
+							</tr>
                             <tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
 								<td><input type="text" name="ACCESSORY" id="ACCESSORY" value="${pd.ACCESSORY}" maxlength="255" placeholder="这里输入备注" title="备注" style="width:98%;"/></td>

@@ -28,7 +28,7 @@ import com.fh.service.fhoa.projectpurchase.ProjectPurchaseManager;
 
 /**
  * 说明：项目采购情况
- * 创建人：FH Q313596790
+ *
  * 创建时间：2018-08-30
  */
 @Controller
@@ -69,22 +69,10 @@ public class ProjectPurchaseController extends AcStartController {
             map1.put("选择公司", pd.getString("SELECTCOMPANY"));
             map1.put("项目编号", pd.getString("SYS_ID"));
             map1.put("项目名称", pd.getString("PROJECTNAME"));
-            map1.put("销售合同编号", pd.getString("SALES_CONTRACT_ID"));
             map1.put("采购合同编号", pd.getString("PURCHASE_CONTRACT_ID"));
             map1.put("供应商序号", pd.getString("SUPPLIER_ID"));
             map1.put("供应商名称", pd.getString("SUPPLIERNAME"));
-            if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHENGCHANXUKEZHENG").toString().equals("")){
-                map1.put("生产许可证", pd.get("SHENGCHANXUKEZHENG").toString());
-            }
-            if (pd.get("JINGYINGXUKEZHENG")!=null&&!pd.get("JINGYINGXUKEZHENG").toString().equals("")){
-                map1.put("经营许可证", pd.get("JINGYINGXUKEZHENG").toString());
-            }
-            if (pd.get("FARENSHOUQUAN")!=null&&!pd.get("FARENSHOUQUAN").toString().equals("")){
-                map1.put("法人授权书", pd.get("FARENSHOUQUAN").toString());
-            }
-            if (pd.get("SHOUQUANWEITUO")!=null&&!pd.get("SHOUQUANWEITUO").toString().equals("")){
-                map1.put("授权委托书", pd.get("SHOUQUANWEITUO").toString());
-            }
+
             if (pd.get("CONTRACT_SIGN_TIME")!=null&&!pd.get("CONTRACT_SIGN_TIME").toString().equals("")){
                 map1.put("合同签订时间", pd.get("CONTRACT_SIGN_TIME").toString());
             }
@@ -96,6 +84,9 @@ public class ProjectPurchaseController extends AcStartController {
             map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
             map1.put("附件", "<a onclick=\"allOaFile('" + pd.getString("PURCHASE_ID") + "','514b510ca4f0414492b2942fba27ee97')\" style=' cursor:pointer;'>查看附件</a>");
             map1.put("查看产品", "<a onclick=\"selectProduct('"+pd.getString("PURCHASE_ID")+"')\" style=' cursor:pointer;'>查看产品</a>");
+            map1.put("风险条款", pd.getString("FENGXIANTIAOKUAN"));
+            map1.put("付款约定", pd.getString("FUKUANYUEDING"));
+            map1.put("负责人", pd.getString("FUZEREN"));
             map1.put("备注", pd.getString("BZ"));
             map1.put("USERNAME", Jurisdiction.getUsername());        //指派代理人为当前用户
             String act_id = startProcessInstanceByKeyHasVariables("caigouhetongliucheng", map1);    //启动流程实例(请假单流程)通过KEY
@@ -168,6 +159,17 @@ public class ProjectPurchaseController extends AcStartController {
         return map;
     }
 
+    @RequestMapping(value = "/CgFindById")
+    @ResponseBody
+    public Map<String, Object> CgFindById() throws Exception {
+        Map<String, Object> map = new HashMap<>();
+        PageData pd = new PageData();
+        pd = this.getPageData();
+        pd = projectpurchaseService.findById(pd);    //根据ID读取
+        map.put("pd",pd);
+        return map;
+    }
+
 
     /**
      * 获取采购合同数据
@@ -184,10 +186,12 @@ public class ProjectPurchaseController extends AcStartController {
         try {
             pd = this.getPageData();
             pd.put("STATUS", 1);
-            if(pd.getString("tag").equals("inputticket")){
-                pd.remove("STATUS");
-            }
+            if(pd.get("tag")!=null){
+                if(pd.get("tag").toString().equals("inputticket")){
+                    pd.remove("STATUS");
 
+                }
+            }
             page.setShowCount(9999999);
             page.setPd(pd);
             list = projectpurchaseService.list(page);
@@ -428,17 +432,16 @@ public class ProjectPurchaseController extends AcStartController {
         List<String> titles = new ArrayList<String>();
         titles.add("选择公司");    //1
         titles.add("项目编号");    //1
-        titles.add("销售合同编号");    //2
+        titles.add("项目名称");    //1
         titles.add("采购合同编号");    //3
         titles.add("供应商");    //4
-        titles.add("生产许可证到期日");    //5
-        titles.add("经营许可证到期日");    //6
-        titles.add("法人授权书到期日");    //7
-        titles.add("授权委托书到期日");    //8
+
         titles.add("合同签订时间");    //9
         titles.add("到货期时间");    //10
         titles.add("验收时间");    //10
         titles.add("合同总价(元)");    //10
+        titles.add("风险条款");    //10
+        titles.add("付款约定");    //10
         titles.add("负责人");    //10
         titles.add("备注");    //10
         dataMap.put("titles", titles);
@@ -448,34 +451,11 @@ public class ProjectPurchaseController extends AcStartController {
             PageData vpd = new PageData();
             vpd.put("var1", varOList.get(i).getString("SELECTCOMPANY"));        //1
             vpd.put("var2", varOList.get(i).getString("SYS_ID"));        //1
-            vpd.put("var3", varOList.get(i).getString("SALES_CONTRACT_ID"));        //2
+            vpd.put("var2", varOList.get(i).getString("PROJECTNAME"));        //1
             vpd.put("var4", varOList.get(i).getString("PURCHASE_CONTRACT_ID"));        //3
             vpd.put("var5", varOList.get(i).getString("SUPPLIERNAME"));
 
-            if (varOList.get(i).get("SHENGCHANXUKEZHENG")!=null&&!varOList.get(i).get("SHENGCHANXUKEZHENG").toString().equals("")) {
-                vpd.put("var6", varOList.get(i).get("SHENGCHANXUKEZHENG").toString());	    //8
-            }else {
-                vpd.put("var6","");	    //8
 
-            }
-            if (varOList.get(i).get("JINGYINGXUKEZHENG")!=null&&!varOList.get(i).get("JINGYINGXUKEZHENG").toString().equals("")) {
-                vpd.put("var7", varOList.get(i).get("JINGYINGXUKEZHENG").toString());	    //8
-            }else {
-                vpd.put("var7","");	    //8
-
-            }
-             if (varOList.get(i).get("FARENSHOUQUAN")!=null&&!varOList.get(i).get("FARENSHOUQUAN").toString().equals("")) {
-                vpd.put("var8", varOList.get(i).get("FARENSHOUQUAN").toString());	    //8
-            }else {
-                vpd.put("var8","");	    //8
-
-            }
-             if (varOList.get(i).get("SHOUQUANWEITUO")!=null&&!varOList.get(i).get("SHOUQUANWEITUO").toString().equals("")) {
-                vpd.put("var9", varOList.get(i).get("SHOUQUANWEITUO").toString());	    //8
-            }else {
-                vpd.put("var9","");	    //8
-
-            }
              if (varOList.get(i).get("CONTRACT_SIGN_TIME")!=null&&!varOList.get(i).get("CONTRACT_SIGN_TIME").toString().equals("")) {
                 vpd.put("var10", varOList.get(i).get("CONTRACT_SIGN_TIME").toString());	    //8
             }else {
@@ -502,6 +482,8 @@ public class ProjectPurchaseController extends AcStartController {
             }
 
             //4
+            vpd.put("var14", varOList.get(i).getString("FENGXIANTIAOKUAN"));        //5
+            vpd.put("var14", varOList.get(i).getString("FUKUANYUEDING"));        //5
             vpd.put("var14", varOList.get(i).getString("FUZEREN"));        //5
             vpd.put("var15", varOList.get(i).getString("BZ"));        //5
             varList.add(vpd);
