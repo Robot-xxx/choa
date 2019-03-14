@@ -49,6 +49,7 @@
 									<th class="center">器械名称</th>
 									<th class="center">器械到期日</th>
 									<th class="center">器械型号</th>
+									<th class="center">查看附件</th>
 									<th class="center">操作</th>
 								</tr>
 							</thead>
@@ -67,6 +68,7 @@
 											<td class='center'>${var.PRODUCT_NAME}</td>
 											<td class='center'>${var.PRODUCT_TIME}</td>
 											<td class='center'>${var.PRODUCT_MODEL}</td>
+											<td class='center'><a onclick="allOaFile('${var.PRODUCTID}','929f3699b3a14562afbc34ca20a07b07')" style=" cursor:pointer;">查看附件</a></td>
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
@@ -142,6 +144,8 @@
 	<script src="static/ace/js/chosen.jquery.js"></script>
 	<!-- 日期框 -->
 	<script src="static/ace/js/date-time/bootstrap-datepicker.js"></script>
+    <!-- 文件上传-->
+    <script src="upload/oaFile.js"></script>
 	<!--提示框-->
 	<script type="text/javascript" src="static/js/jquery.tips.js"></script>
 	<script type="text/javascript">
@@ -152,8 +156,9 @@
 			$("#Form").submit();
 		}
 		$(function() {
-		
-			//日期框
+            getPath('<%=basePath%>');
+
+            //日期框
 			$('.date-picker').datepicker({
 				autoclose: true,
 				todayHighlight: true

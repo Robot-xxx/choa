@@ -74,7 +74,6 @@
 									<%--<th class="center">委托公司老板电话</th>
 									<th class="center">联系人</th>
 									<th class="center">联系人电话</th>--%>
-									<th class="center">客户分析</th>
 									<th class="center">预计开标时间</th>
 									<%--<th class="center">产品名称</th>
 									<th class="center">供应商名称</th>
@@ -108,7 +107,6 @@
 											<%--<td class='center'>${var.BOSS_PHONE}</td>
 											<td class='center'>${var.LINKMAN}</td>
 											<td class='center'>${var.BUSINESS_PEOPLE}</td>--%>
-											<td class='center'>${var.CUSTOMER}</td>
 											<td class='center'>${var.ZHAOBIAOYUJI}</td>
 											<%--<td class='center'>${var.PRODUCT}</td>
 											<td class='center'>${var.SUPPLIER}</td>

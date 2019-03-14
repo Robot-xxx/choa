@@ -451,41 +451,22 @@ public class ProjectPurchaseController extends AcStartController {
             PageData vpd = new PageData();
             vpd.put("var1", varOList.get(i).getString("SELECTCOMPANY"));        //1
             vpd.put("var2", varOList.get(i).getString("SYS_ID"));        //1
-            vpd.put("var2", varOList.get(i).getString("PROJECTNAME"));        //1
+            vpd.put("var3", varOList.get(i).getString("PROJECTNAME"));        //1
             vpd.put("var4", varOList.get(i).getString("PURCHASE_CONTRACT_ID"));        //3
             vpd.put("var5", varOList.get(i).getString("SUPPLIERNAME"));
 
 
-             if (varOList.get(i).get("CONTRACT_SIGN_TIME")!=null&&!varOList.get(i).get("CONTRACT_SIGN_TIME").toString().equals("")) {
-                vpd.put("var10", varOList.get(i).get("CONTRACT_SIGN_TIME").toString());	    //8
-            }else {
-                vpd.put("var10","");	    //8
+                vpd.put("var6", varOList.get(i).getString("CONTRACT_SIGN_TIME"));	    //8
 
-            }
-             if (varOList.get(i).get("DAOHUOQI")!=null&&!varOList.get(i).get("DAOHUOQI").toString().equals("")) {
-                vpd.put("var11", varOList.get(i).get("DAOHUOQI").toString());	    //8
-            }else {
-                vpd.put("var11","");	    //8
-
-            }
-             if (varOList.get(i).get("YANSHOUSHIJIAN")!=null&&!varOList.get(i).get("YANSHOUSHIJIAN").toString().equals("")) {
-                vpd.put("var12", varOList.get(i).get("YANSHOUSHIJIAN").toString());	    //8
-            }else {
-                vpd.put("var12","");	    //8
-
-            }
-             if (varOList.get(i).get("CONTRACT_PRICE")!=null&&!varOList.get(i).get("CONTRACT_PRICE").toString().equals("")) {
-                vpd.put("var13", varOList.get(i).get("CONTRACT_PRICE").toString());	    //8
-            }else {
-                vpd.put("var13","");	    //8
-
-            }
+                vpd.put("var7", varOList.get(i).getString("DAOHUOQI"));	    //8
+                vpd.put("var8", varOList.get(i).getString("YANSHOUSHIJIAN"));	    //8
+                vpd.put("var9", varOList.get(i).getString("CONTRACT_PRICE"));	    //8
 
             //4
-            vpd.put("var14", varOList.get(i).getString("FENGXIANTIAOKUAN"));        //5
-            vpd.put("var14", varOList.get(i).getString("FUKUANYUEDING"));        //5
-            vpd.put("var14", varOList.get(i).getString("FUZEREN"));        //5
-            vpd.put("var15", varOList.get(i).getString("BZ"));        //5
+            vpd.put("var10", varOList.get(i).getString("FENGXIANTIAOKUAN"));        //5
+            vpd.put("var11", varOList.get(i).getString("FUKUANYUEDING"));        //5
+            vpd.put("var12", varOList.get(i).getString("FUZEREN"));        //5
+            vpd.put("var13", varOList.get(i).getString("BZ"));        //5
             varList.add(vpd);
         }
         dataMap.put("varList", varList);

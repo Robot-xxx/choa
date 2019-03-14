@@ -67,10 +67,7 @@ public class InstrumentController extends AcStartController {
 			map1.put("注册证号", pd.getString("REGISTRATION"));
 			map1.put("注册证类型", pd.getString("BUSINESS"));
 			map1.put("生产批次", pd.getString("BATCH"));
-			map1.put("纸质资料是否齐全", pd.getString("ISZILIAOQQ"));
-			if (pd.get("BUJIAOSHIJIAN")!=null&&!pd.get("BUJIAOSHIJIAN").toString().equals("")){
-				map1.put("补交时间", pd.get("BUJIAOSHIJIAN").toString());
-			}
+
 			if (pd.get("VALIDITY")!=null&&!pd.get("VALIDITY").toString().equals("")){
 				map1.put("有效期", pd.get("VALIDITY").toString());
 			}
@@ -293,8 +290,7 @@ public class InstrumentController extends AcStartController {
 		titles.add("生产厂家");	//4
 		titles.add("注册证号");	//5
 		titles.add("注册证类别");	//6
-		titles.add("纸质资料是否齐全");	//7
-		titles.add("补交时间");	//7
+
 		titles.add("上传者");	//7
 		titles.add("有效期");	//8
 		titles.add("备注");	//8
@@ -309,21 +305,11 @@ public class InstrumentController extends AcStartController {
 			vpd.put("var4", varOList.get(i).getString("MANUFACTURERS"));	    //4
 			vpd.put("var5", varOList.get(i).getString("REGISTRATION"));	    //5
 			vpd.put("var6", varOList.get(i).getString("BUSINESS"));	    //6
-			vpd.put("var7", varOList.get(i).getString("ISZILIAOQQ"));	    //7
-			if (varOList.get(i).get("BUJIAOSHIJIAN")!=null&&!varOList.get(i).get("BUJIAOSHIJIAN").toString().equals("")) {
-				vpd.put("var8", varOList.get(i).get("BUJIAOSHIJIAN").toString());	    //8
-			}else {
-				vpd.put("var8","");	    //8
 
-			}
-			vpd.put("var9", varOList.get(i).getString("FUZEREN"));
-			if (varOList.get(i).get("BUJIAOSHIJIAN")!=null&&!varOList.get(i).get("BUJIAOSHIJIAN").toString().equals("")) {
-				vpd.put("var10", varOList.get(i).get("BUJIAOSHIJIAN"));	    //8
-			}else {
-				vpd.put("var10","");	    //8
+			vpd.put("var7", varOList.get(i).getString("FUZEREN"));
+			vpd.put("var8", varOList.get(i).getString("BUJIAOSHIJIAN"));	    //8
 
-			}//7
-			vpd.put("var11", varOList.get(i).get("BZ"));	    //8
+			vpd.put("var9", varOList.get(i).getString("BZ"));	    //8
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

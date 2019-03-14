@@ -117,14 +117,7 @@
                                                    value="${pd.BUSINESS_PEOPLE}" maxlength="50" placeholder="这里输入联系人"
                                                    title="联系人" style="width:98%;"/></td>
                                     </tr>
-                                    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">客户分析:</td>
-                                        <td>
-                                            <input type="text" name="CUSTOMER" id="CUSTOMER" value="${pd.CUSTOMER}"
-                                                   maxlength="100" placeholder="这里输入客户分析" title="客户分析"
-                                                   style="width:98%;"/>
-                                        </td>
-                                    </tr>
+
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">预计开标时间:</td>
                                         <td>

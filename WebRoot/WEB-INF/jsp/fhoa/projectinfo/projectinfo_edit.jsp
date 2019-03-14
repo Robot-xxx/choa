@@ -49,11 +49,10 @@
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>产品ID:</td>
 								<td>
-									<select class="chosen-select form-control"  id="projectId" style="vertical-align:top;width: 68px; width: 98%">
+									<select class="chosen-select form-control"  name="PRODUCT_ID" data-placeholder="选择产品" id="c_selectCompany" style="vertical-align:top;width: 68px; width: 98%">
 
 									</select>
 									<input hidden type="text" name="PARENT_ID" id="PARENT_ID" value="${pd.PARENT_ID}" />
-									<input type="text" hidden name="PROJECT_ID" id="PROJECT_ID" value="${pd.PROJECT_ID}" maxlength="100" placeholder="这里输入项目ID" title="项目ID" style="width:98%;"/></td>
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>产品名称:</td>
@@ -104,16 +103,7 @@
 		$(top.hangge());
 		//保存
 		function save(){
-			if($("#PROJECT_ID").val()==""){
-				$("#PROJECT_ID").tips({
-					side:3,
-		            msg:'请输入项目ID',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#PROJECT_ID").focus();
-			return false;
-			}
+
 			if($("#PROJECTNUMBER").val()==""){
 				$("#PROJECTNUMBER").tips({
 					side:3,
@@ -143,128 +133,134 @@
 
 
 		$(function() {
-            $("#productType").change(function(){
+			downList('c_selectCompany');
 
-                $("#projectId").trigger("chosen:updated");
-                $("#projectId").empty();
+			$("#productType").change(function(){
+
+				$('#c_selectCompany').empty();
+
+				if($('#productType').val()!=''){
+					$('#c_selectCompany').chosen("destroy")
+				}
 
 
-                if(	$("#productType").val()=="instrument"){
-                    var cp = "${pd.PRODUCT_NAME}";
+				if(	$("#productType").val()=="instrument"){
+					var cp = "${pd.PRODUCT_NAME}";
+					//产品管理
+					$.ajax({
+						type: "POST",
+						url: '<%=basePath%>/project/c_ProductAll.do?tm=' + new Date().getTime(),
+						dataType: 'json',
+						cache: false,
+						success: function (data) {
+							if (data.errInfo == "success") {
+								$("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
+								for (var i = 0; i < data.list.length; i++) {
 
-                    $.ajax({
-                        type: "POST",
-                        url: '<%=basePath%>/instrument/getAllInstrument.do?tm=' + new Date().getTime(),
-                        dataType: 'json',
-                        cache: false,
-                        success: function (data) {
-                            if (data.errInfo == "success") {
-                                $("#projectId").append("<option value=''>请选择项目编号</option>");
-                                for (var i = 0; i < data.list.length; i++) {
+									$("#c_selectCompany").append("<option value=" + data.list[i].INSTRUMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
 
-                                    $("#projectId").append("<option value=" +  data.list[i].SYS_ID+"-"+data.list[i].PRODUCT_NAME  + " selected='selected'>" + data.list[i].MODEL+"-"+data.list[i].PRODUCT_NAME + "</option>");
+								}
 
-                                }
-                                downList('projectId');
-                            }
-                        }
-                    });
-                }
+								downList('c_selectCompany');
+							}
+						}
+					});
+				}
 
-                if(	$("#productType").val()=="informatization"){
-                    var cp = "${pd.PRODUCT_NAME}";
-                    //产品管理
-                    $.ajax({
-                        type: "POST",
-                        url: '<%=basePath%>/informatization/getAllInstrument.do?tm=' + new Date().getTime(),
-                        dataType: 'json',
-                        cache: false,
-                        success: function (data) {
-                            if (data.errInfo == "success") {
-                                $("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
-                                for (var i = 0; i < data.list.length; i++) {
+				if(	$("#productType").val()=="informatization"){
+					var cp = "${pd.PRODUCT_NAME}";
+					//产品管理
+					$.ajax({
+						type: "POST",
+						url: '<%=basePath%>/informatization/getAllInstrument.do?tm=' + new Date().getTime(),
+						dataType: 'json',
+						cache: false,
+						success: function (data) {
+							if (data.errInfo == "success") {
+								$("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
+								for (var i = 0; i < data.list.length; i++) {
 
-                                    $("#projectId").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+									$("#c_selectCompany").append("<option value=" + data.list[i].INFORMATIZATION_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
 
-                                }
+								}
 
-                                downList('projectId');
-                            }
-                        }
-                    });
-                }
-                if(	$("#productType").val()=="equipment"){
-                    var cp = "${pd.PRODUCT_NAME}";
-                    //产品管理
-                    $.ajax({
-                        type: "POST",
-                        url: '<%=basePath%>/equipment/getAllInstrument.do?tm=' + new Date().getTime(),
-                        dataType: 'json',
-                        cache: false,
-                        success: function (data) {
-                            if (data.errInfo == "success") {
-                                $("#projectId").append("<option value=''>请选择器械名称</option>");
-                                for (var i = 0; i < data.list.length; i++) {
+								downList('c_selectCompany');
+							}
+						}
+					});
+				}
+				if(	$("#productType").val()=="equipment"){
+					var cp = "${pd.PRODUCT_NAME}";
+					//产品管理
+					$.ajax({
+						type: "POST",
+						url: '<%=basePath%>/equipment/getAllInstrument.do?tm=' + new Date().getTime(),
+						dataType: 'json',
+						cache: false,
+						success: function (data) {
+							if (data.errInfo == "success") {
+								$("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
+								for (var i = 0; i < data.list.length; i++) {
 
-                                    $("#projectId").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+									$("#c_selectCompany").append("<option value=" + data.list[i].EQUIPMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
 
-                                }
+								}
 
-                                downList('projectId');
-                            }
-                        }
-                    });
-                }
-                if(	$("#productType").val()=="otherequipment"){
-                    var cp = "${pd.PRODUCT_NAME}";
-                    //产品管理
-                    $.ajax({
-                        type: "POST",
-                        url: '<%=basePath%>/otherequipment/getAllInstrument.do?tm=' + new Date().getTime(),
-                        dataType: 'json',
-                        cache: false,
-                        success: function (data) {
-                            if (data.errInfo == "success") {
-                                $("#projectId").append("<option value=''>请选择器械名称</option>");
-                                for (var i = 0; i < data.list.length; i++) {
+								downList('c_selectCompany');
+							}
+						}
+					});
+				}
+				if(	$("#productType").val()=="otherequipment"){
+					var cp = "${pd.PRODUCT_NAME}";
+					//产品管理
+					$.ajax({
+						type: "POST",
+						url: '<%=basePath%>/otherequipment/getAllInstrument.do?tm=' + new Date().getTime(),
+						dataType: 'json',
+						cache: false,
+						success: function (data) {
+							if (data.errInfo == "success") {
+								$("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
+								for (var i = 0; i < data.list.length; i++) {
 
-                                    $("#projectId").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+									$("#c_selectCompany").append("<option value=" + data.list[i].EQUIPMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
 
-                                }
+								}
 
-                                downList('projectId');
-                            }
-                        }
-                    });
-                }
-                if(	$("#productType").val()=="claimant"){
-                    var cp = "${pd.PRODUCT_NAME}";
-                    //产品管理
-                    $.ajax({
-                        type: "POST",
-                        url: '<%=basePath%>/claimant/getAllInstrument.do?tm=' + new Date().getTime(),
-                        dataType: 'json',
-                        cache: false,
-                        success: function (data) {
-                            if (data.errInfo == "success") {
-                                $("#projectId").append("<option value=''>请选择器械名称</option>");
-                                for (var i = 0; i < data.list.length; i++) {
+								downList('c_selectCompany');
+							}
+						}
+					});
+				}
+				if(	$("#productType").val()=="consumable"){
+					var cp = "${pd.PRODUCT_NAME}";
+					//产品管理
+					$.ajax({
+						type: "POST",
+						url: '<%=basePath%>/consumable/getAllInstrument.do?tm=' + new Date().getTime(),
+						dataType: 'json',
+						cache: false,
+						success: function (data) {
+							if (data.errInfo == "success") {
+								$("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
+								for (var i = 0; i < data.list.length; i++) {
 
-                                    $("#projectId").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+									$("#c_selectCompany").append("<option value=" + data.list[i].CONSUMABLE_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
 
-                                }
+								}
 
-                                downList('projectId');
-                            }
-                        }
-                    });
-                }
+								downList('c_selectCompany');
+							}
+						}
+					});
+				}
             });
             //项目编号
             $("#projectId").change(function () {
                 var str = $("#projectId").val();
-                var projectname = str.substring(str.indexOf("-") + 1, str.length);
-                var projectid = str.substring(0, str.indexOf("-"));
+                var projectname = str.substring(str.indexOf("=") + 1, str.length);
+                var projectid = str.substring(0, str.indexOf("="));
 
                 $("#PROJECT_ID").val(projectid);
                 $("#PROJECT_NAME").val(projectname);

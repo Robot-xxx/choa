@@ -93,7 +93,26 @@ public class ConsumableController extends AcStartController {
     }
 
 
-
+    @RequestMapping(value="/getAllInstrument")
+    @ResponseBody
+    public Map<String,Object> getAllInstrument(Page page){
+        List<PageData> list = new ArrayList<>();
+        Map<String,Object> map  = new HashMap<>();
+        String errInfo = "success";
+        PageData pd = new PageData();
+        try{
+            pd = this.getPageData();
+            page.setPd(pd);
+            page.setShowCount(999999);
+            list = consumableService.list(page);
+        } catch(Exception e){
+            errInfo = "error";
+            logger.error(e.toString(), e);
+        }
+        map.put("errInfo",errInfo);
+        map.put("list",list);
+        return map;
+    }
 
 
 

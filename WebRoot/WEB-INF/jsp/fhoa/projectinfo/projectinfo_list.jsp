@@ -42,10 +42,12 @@
 									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
 									</th>
 									<th class="center" style="width:50px;">序号</th>
-									<th class="center">产品ID</th>
+
 									<th class="center">产品名称</th>
 									<th class="center">产品数量</th>
 									<th class="center">单价</th>
+									<th class="center">查看附件</th>
+
 									<th class="center">操作</th>
 								</tr>
 							</thead>
@@ -61,15 +63,17 @@
 												<label class="pos-rel"><input type='checkbox' name='ids' value="${var.PROJECTINFO_ID}" class="ace" /><span class="lbl"></span></label>
 											</td>
 											<td class='center' style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
-											<td class='center'>${var.PROJECT_ID}</td>
+
 											<td class='center'>${var.PROJECT_NAME}</td>
 											<td class='center'>${var.PROJECTNUMBER}</td>
 											<td class='center'>${var.PROJECTPRICE}</td>
+											<td class='center'><a onclick="allOaFile('${var.PRODUCTID}','929f3699b3a14562afbc34ca20a07b07')" style=" cursor:pointer;">查看附件</a></td>
+
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
 												</c:if>
-												<div class="hidden-sm hidden-xs btn-group">
+												<div class="btn-group">
 												<%--	<c:if test="${QX.edit == 1 }">
 													<a class="btn btn-xs btn-success" title="编辑" onclick="edit('${var.PROJECTINFO_ID}');">
 														<i class="ace-icon fa fa-pencil-square-o bigger-120" title="编辑"></i>
@@ -81,34 +85,7 @@
 													</a>
 													</c:if>
 												</div>
-												<div class="hidden-md hidden-lg">
-													<div class="inline pos-rel">
-														<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
-															<i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-														</button>
-			
-														<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-														<%--	<c:if test="${QX.edit == 1 }">
-															<li>
-																<a style="cursor:pointer;" onclick="edit('${var.PROJECTINFO_ID}');" class="tooltip-success" data-rel="tooltip" title="修改">
-																	<span class="green">
-																		<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span>
-																</a>
-															</li>
-															</c:if>--%>
-															<c:if test="${QX.del == 1 }">
-															<li>
-																<a style="cursor:pointer;" onclick="del('${var.PROJECTINFO_ID}');" class="tooltip-error" data-rel="tooltip" title="删除">
-																	<span class="red">
-																		<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																	</span>
-																</a>
-															</li>
-															</c:if>
-														</ul>
-													</div>
-												</div>
+
 											</td>
 										</tr>
 									
@@ -176,6 +153,8 @@
 	<script src="static/ace/js/date-time/bootstrap-datepicker.js"></script>
 	<!--提示框-->
 	<script type="text/javascript" src="static/js/jquery.tips.js"></script>
+	<!-- 文件上传-->
+	<script src="upload/oaFile.js"></script>
 	<script type="text/javascript">
 		$(top.hangge());//关闭加载状态
 		//检索
@@ -184,7 +163,7 @@
 			$("#Form").submit();
 		}
 		$(function() {
-		
+			getPath('<%=basePath%>');
 			//日期框
 			$('.date-picker').datepicker({
 				autoclose: true,

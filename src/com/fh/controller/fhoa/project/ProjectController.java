@@ -74,7 +74,6 @@ public class ProjectController extends AcStartController {
 			map1.put("委托公司老板电话", pd.getString("BOSS_PHONE"));
 			map1.put("业务联系人", pd.getString("LINKMAN"));
 			map1.put("业务联系人电话", pd.getString("BUSINESS_PEOPLE"));
-			map1.put("客户分析", pd.getString("CUSTOMER"));
 			map1.put("付款约定", pd.getString("ACCESSORY"));
 			map1.put("备注", pd.getString("BZ"));
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
@@ -505,7 +504,6 @@ public class ProjectController extends AcStartController {
 		titles.add("委托公司老板电话");	//6
 		titles.add("联系人");	//7
 		titles.add("联系人电话");	//7
-		titles.add("客户分析");	//8
 		titles.add("预计开标时间");	//9
 
 		titles.add("付款约定");	//12
@@ -526,10 +524,9 @@ public class ProjectController extends AcStartController {
 			vpd.put("var8", varOList.get(i).getString("BOSS_PHONE"));	    //6
 			vpd.put("var9", varOList.get(i).getString("LINKMAN"));	    //7
 			vpd.put("var10", varOList.get(i).getString("BUSINESS_PEOPLE"));	    //7
-			vpd.put("var11", varOList.get(i).getString("CUSTOMER"));	    //8
-			vpd.put("var12", varOList.get(i).getString("ZHAOBIAOYUJI"));	    //9
+			vpd.put("var11", varOList.get(i).getString("ZHAOBIAOYUJI"));	    //9
 
-			vpd.put("var13", varOList.get(i).getString("ACCESSORY"));	    //12
+			vpd.put("var12", varOList.get(i).getString("ACCESSORY"));	    //12
 			vpd.put("var13", varOList.get(i).getString("FUZEREN"));	    //12
 			vpd.put("var14", varOList.get(i).getString("BZ"));	    //12
 			varList.add(vpd);

@@ -48,7 +48,12 @@ public class ProjectInfoController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
+		String pid= pd.getString("PRODUCT_ID");
+		pd.put("PRODUCTID",pid.substring(0,pid.indexOf("=")));	//主键
 		pd.put("PROJECTINFO_ID", this.get32UUID());	//主键
+
+
+
 		projectinfoService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

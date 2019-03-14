@@ -159,7 +159,8 @@
                                                    title="附言" style="width:98%;"/></td>
                                     </tr>
                                     <tr id="hidden2">
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">采购合同编号:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font
+                                                color="red">*</font>采购合同编号:</td>
                                         <td>
                                             <select class="chosen-select form-control" name="hetongbianhao"
                                                     id="hetongbianhao" data-placeholder="请选择"
@@ -663,7 +664,7 @@
         var weituo = "${pd.CONTRACT_NO}";
         $.ajax({
             type: "POST",
-            url: '<%=basePath%>/projectpurchase/getCgAll.do?tm=' + new Date().getTime(),
+            url: '<%=basePath%>/projectpurchase/getCgAll.do?tag=inputticket&tm=' + new Date().getTime(),
             dataType: 'json',
             cache: false,
             success: function (data) {

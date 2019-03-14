@@ -139,7 +139,7 @@
                                 $("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
                                 for (var i = 0; i < data.list.length; i++) {
 
-                                    $("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+                                    $("#c_selectCompany").append("<option value=" + data.list[i].INSTRUMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
 
                                 }
 
@@ -162,7 +162,7 @@
                                 $("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
                                 for (var i = 0; i < data.list.length; i++) {
 
-                                    $("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+                                    $("#c_selectCompany").append("<option value=" + data.list[i].INFORMATIZATION_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
 
                                 }
 
@@ -184,7 +184,7 @@
                                 $("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
                                 for (var i = 0; i < data.list.length; i++) {
 
-                                    $("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+                                    $("#c_selectCompany").append("<option value=" + data.list[i].EQUIPMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
 
                                 }
 
@@ -206,7 +206,7 @@
                                 $("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
                                 for (var i = 0; i < data.list.length; i++) {
 
-                                    $("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+                                    $("#c_selectCompany").append("<option value=" + data.list[i].EQUIPMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
 
                                 }
 
@@ -215,12 +215,12 @@
                         }
                     });
                 }
-                if(	$("#productType").val()=="claimant"){
+                if(	$("#productType").val()=="consumable"){
                     var cp = "${pd.PRODUCT_NAME}";
                     //产品管理
                     $.ajax({
                         type: "POST",
-                        url: '<%=basePath%>/claimant/getAllInstrument.do?tm=' + new Date().getTime(),
+                        url: '<%=basePath%>/consumable/getAllInstrument.do?tm=' + new Date().getTime(),
                         dataType: 'json',
                         cache: false,
                         success: function (data) {
@@ -228,7 +228,7 @@
                                 $("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
                                 for (var i = 0; i < data.list.length; i++) {
 
-                                    $("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+                                    $("#c_selectCompany").append("<option value=" + data.list[i].CONSUMABLE_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
 
                                 }
 

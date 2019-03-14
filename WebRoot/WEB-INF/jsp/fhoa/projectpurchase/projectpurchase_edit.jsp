@@ -385,7 +385,7 @@
             $.ajax({
                 type: "POST",
                 url: '<%=basePath%>/projectpurchase/getSupplierAll.do?tm=' + new Date().getTime(),
-                data: {SUPPLIER_ID:  $("#gongyingshangID").val()},
+                data: {SUPPLIER_ID:$("#gongyingshangID").val()},
                 dataType: 'json',
                 cache: false,
                 success: function (data) {
@@ -475,7 +475,6 @@
                         $("#xuanzeCompany").removeAttr("hidden");
                         $("#xuanzeCompany").val(BUSINESS);
                         $("#LICENCE").val("其他");
-
                     }
                 }
             }

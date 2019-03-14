@@ -110,39 +110,19 @@ public class ProjectBidController extends AcStartController {
             map1.put("招标公司", pd.getString("TEBDERING"));
             map1.put("招标代表", pd.getString("REPRESENTATIVE"));
             map1.put("中标单位", pd.getString("WINNING_UNIT"));
-
-            if (pd.get("WINNING_PRICE")!=null&&!pd.get("WINNING_PRICE").toString().equals("")){
-                map1.put("中标价格（元）", pd.get("WINNING_PRICE").toString());
-            }
-            if (pd.get("SERVICE_PRICE")!=null&&!pd.get("SERVICE_PRICE").toString().equals("")){
-                map1.put("中标服务费垫资金额（元）", pd.get("SERVICE_PRICE").toString());
-            }
-            if (pd.get("GUARANTEE_MONEY")!=null&&!pd.get("GUARANTEE_MONEY").toString().equals("")){
-                map1.put("投标保证金垫资金额（元）", pd.get("GUARANTEE_MONEY").toString());
-            }
-
-
-            if (pd.get("SCHEDULED_TIME")!=null&&!pd.get("SCHEDULED_TIME").toString().equals("")){
-                map1.put("投标保证金预计缴纳时间", pd.get("SCHEDULED_TIME").toString());
-            }
-            if (pd.get("PRACTICAL_TIME")!=null&&!pd.get("PRACTICAL_TIME").toString().equals("")){
-                map1.put("投标保证金实际缴纳时间", pd.get("PRACTICAL_TIME").toString());
-            }
-            if (pd.get("BID_OPEN_TIME")!=null&&!pd.get("BID_OPEN_TIME").toString().equals("")){
-                map1.put("开标日期", pd.get("BID_OPEN_TIME").toString());
-            }
-            if (pd.get("SCHEDULED_SERVICE_PRICE_TIME")!=null&&!pd.get("SCHEDULED_SERVICE_PRICE_TIME").toString().equals("")){
-                map1.put("中标服务费预计缴纳时间", pd.get("SCHEDULED_SERVICE_PRICE_TIME").toString());
-            }
-            if (pd.get("PRACTICAL_SERVICE_PRICE_TIME")!=null&&!pd.get("PRACTICAL_SERVICE_PRICE_TIME").toString().equals("")){
-                map1.put("中标服务费实际缴纳时间", pd.get("PRACTICAL_SERVICE_PRICE_TIME").toString());
-            }
+            map1.put("中标价格（元）", pd.get("WINNING_PRICE").toString());
+            map1.put("中标服务费垫资金额（元）", pd.get("SERVICE_PRICE").toString());
+            map1.put("投标保证金垫资金额（元）", pd.get("GUARANTEE_MONEY").toString());
+            map1.put("投标保证金预计缴纳时间", pd.get("SCHEDULED_TIME").toString());
+            map1.put("投标保证金实际缴纳时间", pd.get("PRACTICAL_TIME").toString());
+            map1.put("开标日期", pd.get("BID_OPEN_TIME").toString());
+            map1.put("中标服务费预计缴纳时间", pd.get("SCHEDULED_SERVICE_PRICE_TIME").toString());
+            map1.put("中标服务费实际缴纳时间", pd.get("PRACTICAL_SERVICE_PRICE_TIME").toString());
 
             map1.put("标书制作人", pd.get("BIAOSHUZHIZUOREN").toString());
+            map1.put("负责人", pd.get("FUZEREN").toString());
             map1.put("备注", pd.getString("BZ"));
-            if (pd.get("CHANPINDAOQIRI")!=null&&!pd.get("CHANPINDAOQIRI").toString().equals("")){
-                map1.put("到期日", pd.get("CHANPINDAOQIRI").toString());
-            }
+            map1.put("到期日", pd.get("CHANPINDAOQIRI").toString());
 
             map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("PROJECT_BID_ID")+"','929f3699b3a14562afbc34ca20a07b07')\" style=' cursor:pointer;'>查看附件</a>");
             map1.put("查看产品", "<a onclick=\"selectProject2('"+pd.getString("PROJECT_BID_ID")+"')\" style=' cursor:pointer;'>查看产品</a>");
@@ -446,6 +426,7 @@ public class ProjectBidController extends AcStartController {
         titles.add("中标服务费实际缴纳时间");    //12
         titles.add("标书制作人");    //12
         titles.add("风险条款");    //12
+        titles.add("负责人");    //12
         titles.add("备注");    //12
 
         dataMap.put("titles", titles);
@@ -523,10 +504,11 @@ public class ProjectBidController extends AcStartController {
                 vpd.put("var16","");	    //8
 
             }
+            vpd.put("var17", varOList.get(i).getString("FUZEREN"));	    //8
             if (varOList.get(i).get("BZ")!=null&&!varOList.get(i).get("BZ").toString().equals("")) {
-                vpd.put("var17", varOList.get(i).get("BZ"));	    //8
+                vpd.put("var18", varOList.get(i).get("BZ"));	    //8
             }else {
-                vpd.put("var17","");	    //8
+                vpd.put("var18","");	    //8
 
             }
 

@@ -70,7 +70,7 @@ public class PageData extends HashMap implements Map{
 
 	public String escapeExprSpecialWord(String keyword) {
 		if (StringUtils.isNotEmpty(keyword)) {
-			String[] fbsArr = { "\\","$","(",")","*","+",".","[", "]","?","^","{","}","|","'","%" };
+			String[] fbsArr = { "\\" };
 			for (String key : fbsArr) {
 				if (keyword.contains(key)) {
 					keyword = keyword.replace(key, "\\" + key);

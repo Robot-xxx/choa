@@ -273,6 +273,8 @@
             and
             (
             SYS_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+            REPRESENTATIVE LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+            BIAOSHUZHIZUOREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             PROJECT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             HOSPITAL LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             TEBDERING LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
@@ -284,10 +286,7 @@
         </if>
         <if test="pd.STATUS!= null and pd.STATUS != ''"><!-- 关键词检索 -->
             and
-            (
-            STATUS =#{pd.STATUS}
-
-            )
+            (STATUS =#{pd.STATUS})
         </if>
         <if test="pd.SYS_ID!= null and pd.SYS_ID != ''"><!-- 关键词检索 -->
             and
