@@ -167,7 +167,7 @@ public class IntAppuserController extends BaseController {
 		return AppUtil.returnObject(new PageData(), map);
 	}
 
-	/**查看上游信息
+	/**查看上游信息详情
 	 * @return
 	 */
 	@RequestMapping(value="/CheckUpperReaches")
@@ -238,6 +238,40 @@ public class IntAppuserController extends BaseController {
 		}
 		return AppUtil.returnObject(new PageData(), map);
 	}
+	/**获取项项目投标详情
+	 * @return
+	 */
+	@RequestMapping(value="/CheckProjectBid")
+	@ResponseBody
+	public Object CheckProjectBid(){
+		Map<String,Object> map = new HashMap<String,Object>();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		String result = "00";
+		try{
+			if(Tools.checkKey("CHOA", pd.getString("FKEY"))){	//检验请求key值是否合法
+
+				String PROJECT_BID_ID =pd.getString("PROJECT_BID_ID");
+
+				pd.put("PROJECT_BID_ID",PROJECT_BID_ID);
+
+				pd = projectbidService.findById(pd);	//根据上游ID查询
+
+				map.put("pd", pd);
+				result = (null == pd) ?  "02" :  "01";
+
+			}else{
+				result = "05";
+			}
+		}catch (Exception e){
+			logger.error(e.toString(), e);
+		}finally{
+			map.put("result", result);
+			logAfter(logger);
+		}
+		return AppUtil.returnObject(new PageData(), map);
+	}
+
 
 	/**获取项目立项
 	 * @return
@@ -275,6 +309,43 @@ public class IntAppuserController extends BaseController {
 		}
 		return AppUtil.returnObject(new PageData(), map);
 	}
+
+	/**获取项目立项详情
+	 * @return
+	 */
+	@RequestMapping(value="/CheckProject")
+	@ResponseBody
+	public Object CheckProject(){
+		Map<String,Object> map = new HashMap<String,Object>();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		String result = "00";
+		try{
+			if(Tools.checkKey("CHOA", pd.getString("FKEY"))){	//检验请求key值是否合法
+
+				String PROJECT_ID =pd.getString("PROJECT_ID");
+
+				pd.put("PROJECT_ID",PROJECT_ID);
+
+				pd = projectService.findById(pd);	//根据上游ID查询
+
+				map.put("pd", pd);
+				result = (null == pd) ?  "02" :  "01";
+
+			}else{
+				result = "05";
+			}
+		}catch (Exception e){
+			logger.error(e.toString(), e);
+		}finally{
+			map.put("result", result);
+			logAfter(logger);
+		}
+		return AppUtil.returnObject(new PageData(), map);
+	}
+
+
+
 	/**获取项目销售
 	 * @return
 	 */
@@ -311,6 +382,42 @@ public class IntAppuserController extends BaseController {
 		}
 		return AppUtil.returnObject(new PageData(), map);
 	}
+
+	/**获取项目立项详情
+	 * @return
+	 */
+	@RequestMapping(value="/CheckProjectMarket")
+	@ResponseBody
+	public Object CheckProjectMarket(){
+		Map<String,Object> map = new HashMap<String,Object>();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		String result = "00";
+		try{
+			if(Tools.checkKey("CHOA", pd.getString("FKEY"))){	//检验请求key值是否合法
+
+				String PROJECT_MARKET_ID =pd.getString("PROJECT_MARKET_ID");
+
+				pd.put("PROJECT_MARKET_ID",PROJECT_MARKET_ID);
+
+				pd = projectmarketService.findById(pd);	//根据上游ID查询
+
+				map.put("pd", pd);
+				result = (null == pd) ?  "02" :  "01";
+
+			}else{
+				result = "05";
+			}
+		}catch (Exception e){
+			logger.error(e.toString(), e);
+		}finally{
+			map.put("result", result);
+			logAfter(logger);
+		}
+		return AppUtil.returnObject(new PageData(), map);
+	}
+
+
 	/**获取项目采购
 	 * @return
 	 */
@@ -347,6 +454,46 @@ public class IntAppuserController extends BaseController {
 		}
 		return AppUtil.returnObject(new PageData(), map);
 	}
+	/**获取项目采购详情
+	 * @return
+	 */
+	@RequestMapping(value="/CheckProjectPurchase")
+	@ResponseBody
+	public Object CheckProjectPurchase(){
+		Map<String,Object> map = new HashMap<String,Object>();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		String result = "00";
+		try{
+			if(Tools.checkKey("CHOA", pd.getString("FKEY"))){	//检验请求key值是否合法
+
+				String PURCHASE_ID =pd.getString("PURCHASE_ID");
+
+				pd.put("PURCHASE_ID",PURCHASE_ID);
+
+				pd = projectpurchaseService.findById(pd);	//根据上游ID查询
+
+				map.put("pd", pd);
+				result = (null == pd) ?  "02" :  "01";
+
+			}else{
+				result = "05";
+			}
+		}catch (Exception e){
+			logger.error(e.toString(), e);
+		}finally{
+			map.put("result", result);
+			logAfter(logger);
+		}
+		return AppUtil.returnObject(new PageData(), map);
+	}
+
+
+
+
+
+
+
 
 
 
