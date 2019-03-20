@@ -151,21 +151,6 @@ public class CustomerController extends AcStartController {
         ModelAndView mv = this.getModelAndView();
         PageData pd = new PageData();
         pd = this.getPageData();
-     /*   if(pd.getString("SHENGCHANXUKEZHENG").equals("")){
-            pd.put("SHENGCHANXUKEZHENG",null);
-        }*/
-
-        if(pd.getString("JINGYINGXUKEZHENG").equals("")){
-            pd.put("JINGYINGXUKEZHENG",null);
-        }
-
-        if(pd.getString("FARENSHOUQUAN").equals("")){
-            pd.put("FARENSHOUQUAN",null);
-        }
-
-        if(pd.getString("SHOUQUANWEITUO").equals("")){
-            pd.put("SHOUQUANWEITUO",null);
-        }
         String customerId = this.get32UUID();
 
 
@@ -216,21 +201,6 @@ public class CustomerController extends AcStartController {
         PageData pd = new PageData();
         pd = this.getPageData();
         pd.put("FUZEREN", Jurisdiction.getUsername());
-        if(pd.getString("SHENGCHANXUKEZHENG").equals("")){
-            pd.put("SHENGCHANXUKEZHENG",null);
-        }
-
-        if(pd.getString("JINGYINGXUKEZHENG").equals("")){
-            pd.put("JINGYINGXUKEZHENG",null);
-        }
-
-        if(pd.getString("FARENSHOUQUAN").equals("")){
-            pd.put("FARENSHOUQUAN",null);
-        }
-
-        if(pd.getString("SHOUQUANWEITUO").equals("")){
-            pd.put("SHOUQUANWEITUO",null);
-        }
         pd.put("UPDATETIME", sd.format(new Date()));
         pd.put("STATUS",2);
         customerService.edit(pd);

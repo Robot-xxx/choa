@@ -67,6 +67,11 @@ public interface ProjectBidManager{
 	 * @throws Exception
 	 */
 	public PageData projectById(PageData pd)throws Exception;
+	/**通过id获取数据
+	 * @param pd
+	 * @throws Exception
+	 */
+	public List<PageData> findProjectBid(PageData pd)throws Exception;
 
 }
 

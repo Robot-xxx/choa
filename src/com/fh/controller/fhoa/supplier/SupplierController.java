@@ -166,21 +166,8 @@ public class SupplierController extends AcStartController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 
-		if(pd.getString("SHENGCHANXUKEZHENG").equals("")){
-            pd.put("SHENGCHANXUKEZHENG",null);
-        }
 
-        if(pd.getString("JINGYINGXUKEZHENG").equals("")){
-            pd.put("JINGYINGXUKEZHENG",null);
-        }
 
-        if(pd.getString("FARENSHOUQUAN").equals("")){
-            pd.put("FARENSHOUQUAN",null);
-        }
-
-        if(pd.getString("SHOUQUANWEITUO").equals("")){
-            pd.put("SHOUQUANWEITUO",null);
-        }
 		String suppliceid = this.get32UUID();
 
 		pd.put("SUPPLIER_ID", suppliceid);	//主键
@@ -222,21 +209,7 @@ public class SupplierController extends AcStartController {
 		pd = this.getPageData();
 		pd.put("FUZHEREN", Jurisdiction.getUsername());
 		pd.put("STATUS", 2);
-		if(pd.getString("SHENGCHANXUKEZHENG").equals("")){
-			pd.put("SHENGCHANXUKEZHENG",null);
-		}
 
-		if(pd.getString("JINGYINGXUKEZHENG").equals("")){
-			pd.put("JINGYINGXUKEZHENG",null);
-		}
-
-		if(pd.getString("FARENSHOUQUAN").equals("")){
-			pd.put("FARENSHOUQUAN",null);
-		}
-
-		if(pd.getString("SHOUQUANWEITUO").equals("")){
-			pd.put("SHOUQUANWEITUO",null);
-		}
 
 		pd.put("UPDATETIME", sd.format(new Date()));
 

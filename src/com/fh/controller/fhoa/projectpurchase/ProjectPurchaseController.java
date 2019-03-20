@@ -220,27 +220,8 @@ public class ProjectPurchaseController extends AcStartController {
         ModelAndView mv = this.getModelAndView();
         PageData pd = new PageData();
         pd = this.getPageData();
-        if(pd.getString("SHENGCHANXUKEZHENG").equals("")){
-            pd.put("SHENGCHANXUKEZHENG",null);
-        }
 
-        if(pd.getString("JINGYINGXUKEZHENG").equals("")){
-            pd.put("JINGYINGXUKEZHENG",null);
-        }
 
-        if(pd.getString("FARENSHOUQUAN").equals("")){
-            pd.put("FARENSHOUQUAN",null);
-        }
-
-        if(pd.getString("SHOUQUANWEITUO").equals("")){
-            pd.put("SHOUQUANWEITUO",null);
-        }
-        if(pd.getString("CONTRACT_SIGN_TIME").equals("")){
-            pd.put("CONTRACT_SIGN_TIME",null);
-        }
-        if(pd.getString("CONTRACT_PRICE").equals("")){
-            pd.put("CONTRACT_PRICE",null);
-        }
         String purchaseid = this.get32UUID();
 
         pd.put("PURCHASE_ID", purchaseid);
@@ -291,27 +272,7 @@ public class ProjectPurchaseController extends AcStartController {
         ModelAndView mv = this.getModelAndView();
         PageData pd = new PageData();
         pd = this.getPageData();
-        if(pd.getString("SHENGCHANXUKEZHENG").equals("")){
-            pd.put("SHENGCHANXUKEZHENG",null);
-        }
 
-        if(pd.getString("JINGYINGXUKEZHENG").equals("")){
-            pd.put("JINGYINGXUKEZHENG",null);
-        }
-
-        if(pd.getString("FARENSHOUQUAN").equals("")){
-            pd.put("FARENSHOUQUAN",null);
-        }
-
-        if(pd.getString("SHOUQUANWEITUO").equals("")){
-            pd.put("SHOUQUANWEITUO",null);
-        }
-        if(pd.getString("CONTRACT_SIGN_TIME").equals("")){
-            pd.put("CONTRACT_SIGN_TIME",null);
-        }
-        if(pd.getString("CONTRACT_PRICE").equals("")){
-            pd.put("CONTRACT_PRICE",null);
-        }
         pd.put("UPDATETIME", sd1.format(new Date()));
 
         projectpurchaseService.edit(pd);

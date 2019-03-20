@@ -272,7 +272,7 @@
         <if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
             and
             (
-            SYS_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+            PROJECT_ID  LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             REPRESENTATIVE LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             BIAOSHUZHIZUOREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             PROJECT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
@@ -327,7 +327,6 @@
             SYS_ID,
             PROJECT_NAME,
             PROJECT_ID,
-            PROJECT_ID,
             FUZEREN
         from
             oa_project
@@ -338,6 +337,7 @@
     <select id="projectById" parameterType="pd" resultType="pd">
         select
             PROJECT_NAME,
+            FUZEREN,
             SYS_ID
         from
             oa_project
@@ -345,5 +345,14 @@
             PROJECT_ID = #{PROJECT_ID}
     </select>
 
+    <!-- 通过id获取项目数据 -->
+    <select id="findProjectBid" parameterType="page" resultType="pd">
+        select
+            *
+        from
+            oa_project_bid
+        where
+            PROJECT_ID = #{PROJECT_ID}
+    </select>
 
 </mapper>

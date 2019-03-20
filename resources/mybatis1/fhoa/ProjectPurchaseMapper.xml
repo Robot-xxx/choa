@@ -257,6 +257,15 @@
 			where STATUS=1
 
 	</select>
+	<!-- 通过id获取项目数据 -->
+	<select id="findProjectPurchase" parameterType="page" resultType="pd" >
+		select
+			*
+		from
+			oa_project_purchase
+		where
+			SYS_ID= #{PROJECT_ID}
+	</select>
 
 
 </mapper>

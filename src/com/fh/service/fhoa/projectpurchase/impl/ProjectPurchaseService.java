@@ -69,7 +69,14 @@ public class ProjectPurchaseService implements ProjectPurchaseManager{
 	public PageData findById(PageData pd)throws Exception{
 		return (PageData)dao.findForObject("ProjectPurchaseMapper.findById", pd);
 	}
-	
+	/**通过id获取数据
+	 * @param pd
+	 * @throws Exception
+	 */
+	public List<PageData> findProjectPurchase(PageData pd)throws Exception{
+		return (List<PageData>)dao.findForList("ProjectPurchaseMapper.findProjectPurchase", pd);
+	}
+
 	/**批量删除
 	 * @param ArrayDATA_IDS
 	 * @throws Exception

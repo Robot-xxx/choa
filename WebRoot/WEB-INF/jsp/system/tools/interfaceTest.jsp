@@ -35,7 +35,7 @@
 											<input name="form-field-radio1" id="form-field-radio1" onclick="setType('POST');" type="radio" value="icon-edit" checked="checked" class="ace"><span class="lbl">POST</span>&nbsp;&nbsp;
 											<input name="form-field-radio1" id="form-field-radio2" onclick="setType('GET');" type="radio" value="icon-edit" class="ace"><span class="lbl">GET</span>&nbsp;&nbsp;&nbsp;&nbsp;
 											<input name="key" id="form-field-radio1" type="radio" value="icon-edit" checked="checked" class="ace" ><span class="lbl">加密参数:</span>
-											<input name="S_TYPE_S" id="S_TYPE_S" style="width:79px;" type="text" value="USERNAME" title="例子">
+											<input name="S_TYPE_S" id="S_TYPE_S" style="width:79px;" type="text" value="CHOA" title="加密参数">
 										</div>
 										<div class="step-content row-fluid position-relative" style="padding-top: 10px;">
 											<div style="float: left;">
@@ -63,7 +63,7 @@
 													相关参数协议：result: 00	请求失败 ; 01	请求成功; 02	返回空值; 03	请求协议参数不完整  ; 04  用户名或密码错误; 05  FKEY验证失败
 												</li>
 												<li class="text-warning green"><i class="ace-icon fa fa-star blue"></i>
-													校验加密规则：(取其中一个参数名+当前日期[格式 20150405]+混淆码",fh," 然后md5加密 的值作为 参数FKEY的值提交)
+													校验加密规则：(取其中一个参数名+当前日期[格式 20150405]+混淆码",ch," 然后md5加密 的值作为 参数FKEY的值提交)
 												</li>
 											</ul>
 										</div>

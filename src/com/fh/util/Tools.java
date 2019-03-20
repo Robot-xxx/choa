@@ -239,7 +239,7 @@ public class Tools {
 	 */
 	public static boolean checkKey(String paraname, String FKEY){
 		paraname = (null == paraname)? "":paraname;
-		return MD5.md5(paraname+DateUtil.getDays()+",fh,").equals(FKEY);
+		return MD5.md5(paraname+DateUtil.getDays()+",ch,").equals(FKEY);
 	}
 	 
 	/**

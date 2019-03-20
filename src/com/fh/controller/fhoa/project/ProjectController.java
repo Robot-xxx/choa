@@ -10,6 +10,9 @@ import javax.xml.crypto.dsig.keyinfo.PGPData;
 import com.fh.controller.activiti.AcStartController;
 import com.fh.entity.system.Dictionaries;
 import com.fh.service.fhoa.accessoryfile.AccessoryFileManager;
+import com.fh.service.fhoa.projectbid.ProjectBidManager;
+import com.fh.service.fhoa.projectmarket.ProjectMarketManager;
+import com.fh.service.fhoa.projectpurchase.ProjectPurchaseManager;
 import com.fh.service.fhoa.supplier.SupplierManager;
 import org.json.JSONObject;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -44,7 +47,58 @@ public class ProjectController extends AcStartController {
 	@Resource(name="supplierService")
 	private SupplierManager supplierService;
 
+	@Resource(name = "projectpurchaseService")
+	private ProjectPurchaseManager projectpurchaseService;//项目采购
+
+	@Resource(name="projectmarketService")
+	private ProjectMarketManager projectmarketService;//项目销售
+
+	@Resource(name = "projectbidService")
+	private ProjectBidManager projectbidService;//项目投标
+
+
 	SimpleDateFormat sd =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+
+
+	/**查询综合数据统计
+	 * @param
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/projectTongJi")
+	@ResponseBody
+	public  Map<String, Object> projectTongJi() throws Exception{
+		Map<String, Object> map = new HashMap<>();
+		List<PageData> list1= new ArrayList<>();
+		List<PageData> list2= new ArrayList<>();
+		List<PageData> list3= new ArrayList<>();
+		PageData pd = new PageData();
+
+		pd = this.getPageData();
+		try {
+			list1 = projectbidService.findProjectBid(pd);
+			list2 = projectmarketService.findProjectMarket(pd);
+			list3 = projectpurchaseService.findProjectPurchase(pd);
+			pd=projectService.findByProject(pd);
+			map.put("list1", list1);
+			map.put("list2", list2);
+			map.put("list3", list3);
+			map.put("pd", pd);
+			map.put("errInfo","success");
+			return map;
+
+		}catch (Exception e){
+			e.printStackTrace();
+			map.put("errInfo","error");
+		}
+
+		return map;
+	}
+
+
+
+
+
 
 	/**提交流程
 	 * @param

@@ -255,6 +255,15 @@
 		where
 			PROJECT_ID= #{PROJECT_ID}
 	</select>
+	<!-- 通过id获取项目数据 -->
+	<select id="findProjectMarket" parameterType="page" resultType="pd" >
+		select
+			*
+		from
+			oa_project_market
+		where
+			SYS_ID= #{PROJECT_ID}
+	</select>
 
 
 </mapper>

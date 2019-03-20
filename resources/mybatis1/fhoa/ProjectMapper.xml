@@ -183,7 +183,7 @@
 		from
 		<include refid="tableName"></include> f
 		where
-		f.SYS_ID = #{PROJIECT_ID}
+		SYS_ID = #{PROJECT_ID}
 	</select>
 	
 	<!-- 列表 -->

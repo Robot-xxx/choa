@@ -81,24 +81,20 @@
                                     </th>
                                     <th class="center" style="width:50px;">序号</th>
                                     <th class="center">选择公司</th>
-                                  <%--  <th class="center">付款申请编号</th>--%>
                                     <th class="center">申请日期</th>
                                     <th class="center">经办人</th>
                                     <th class="center">申请类型</th>
-                                    <th class="center">支付方式</th>
-                                 <%--   <th class="center">是否合作方</th>--%>
-                                    <%--<th class="center">账号类型</th>--%>
                                     <th class="center">收款单位</th>
-                                    <%--	<th class="center">收款单位地址</th>--%>
-                                    <th class="center">收款单位银行</th>
-                                    <th class="center">银行账号</th>
+
                                     <th class="center">附言</th>
-                                   <%-- <th class="center">项目编号</th>--%>
+                                    <th class="center">项目编号</th>
                                     <th class="center">项目名称</th>
-                                    <th class="center">采购合同编号</th>
-                                    <th class="center">金额(元)</th>
-                                    <%--<th class="center">垫付金额(元)</th>
-                                    <th class="center">来款单位</th>--%>
+                                    <th class="center">供应商名称</th>
+                                    <th class="center">合同金额(元)</th>
+                                    <th class="center">实付金额(元)</th>
+
+                                    <th class="center">垫付金额(元)</th>
+
                                     <th class="center">付款约定</th>
                                     <th class="center">备注</th>
                                     <th class="center">附件</th>
@@ -123,16 +119,10 @@
                                                     <td class='center'
                                                         style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
                                                     <td class='center'>${var.SELECTCOMPANY}</td>
-<%--
-                                                    <td class='center'>${var.REQUEST_NO}</td>
---%>
+
                                                     <td class='center'>${var.REQUEST_DATE}</td>
                                                     <td class='center'>${var.RESPONSIBLEPERSON}</td>
                                                     <td class='center'>${var.REQUEST_TYPE}</td>
-                                                    <td class='center'>${var.PAY_METHOD}</td>
-                                                <%--    <td class='center'>${var.ISHEZUO}</td>
---%>
-                                                        <%--	<td class='center'>${var.ACCOUNT_TYPE}</td>--%>
 
                                                     <c:if test="${var.ISHEZUO=='是'}">
                                                         <td class='center'>${var.PAYEE}</td>
@@ -141,16 +131,13 @@
                                                         <td class='center'>${var.COMPANY_NAME}</td>
                                                     </c:if>
 
-                                                        <%--<td class='center'>${var.PAYEEADDRESS}</td>--%>
-                                                    <td class='center'>${var.PAYEEBANK}</td>
-                                                    <td class='center'>${var.BANKACCOUNT}</td>
                                                     <td class='center'>${var.POSTSCRIPT}</td>
-                                                  <%--  <td class='center'>${var.PROJIECT_ID}</td>--%>
+                                                    <td class='center'>${var.PROJECT_ID}</td>
                                                     <td class='center'>${var.PROJECT_NAME}</td>
-                                                    <td class='center'>${var.CONTRACT_NO}</td>
+                                                    <td class='center'>${var.GONGYINGSHANG}</td>
+                                                    <td class='center'>${var.HETONGZONGE}</td>
                                                     <td class='center'>${var.MONEY}</td>
-                                            <%--        <td class='center'>${var.PAY_ACCOUNT}</td>
-                                                    <td class='center'>${var.PAY_UNIT}</td>--%>
+                                                    <td class='center'>${var.PAY_ACCOUNT}</td>
                                                     <td class='center'>${var.FUKUANYUEDING}</td>
                                                     <td class='center'>${var.BZ}</td>
                                                     <td class='center'><a onclick="allOaFile('${var.REQUEST_ID}','27be24c2087b4de88741b831a6b3686c')" style=" cursor:pointer;">查看附件</a></td>
@@ -525,7 +512,8 @@
 
     //导出excel
     function toExcel() {
-        window.location.href = '<%=basePath%>payrequest/excel.do';
+        console.log($("#ISSHENPI").val());
+        window.location.href = '<%=basePath%>payrequest/excel.do?STATUS='+$("#ISSHENPI").val();
     }
 </script>
 

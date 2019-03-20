@@ -60,6 +60,14 @@ public class SupplierService implements SupplierManager{
 	public List<PageData> listAll(PageData pd)throws Exception{
 		return (List<PageData>)dao.findForList("SupplierMapper.listAll", pd);
 	}
+	/**列表(全部)
+	 * @param pd
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	public List<PageData> getListAll(PageData pd)throws Exception{
+		return (List<PageData>)dao.findForList("SupplierMapper.getListAll", pd);
+	}
 	
 	/**通过id获取数据
 	 * @param pd
@@ -80,6 +88,13 @@ public class SupplierService implements SupplierManager{
 	@Override
 	public void editTableName(PageData pd) throws Exception {
 		dao.update("SupplierMapper.editTableName", pd);
+	}
+	/**通过id获取数据
+	 * @param pd
+	 * @throws Exception
+	 */
+	public PageData getById(PageData pd)throws Exception{
+		return (PageData)dao.findForObject("SupplierMapper.getById", pd);
 	}
 
 }

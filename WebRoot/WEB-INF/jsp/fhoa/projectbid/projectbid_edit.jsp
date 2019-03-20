@@ -34,6 +34,7 @@
                             <input type="hidden" name="msg" id="msg" value="${msg }"/>
                             <input type="hidden" name="oafileList" id="oafileList">
                             <input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
+                            <input type="hidden" name="PROJECT_ID" id="PROJECT_ID" value="${pd.PROJECT_ID }">
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
                                     <tr>
@@ -385,31 +386,6 @@
 
     $(function () {
 
-        var strOpthion='';
-        for (var i = 1; i <=20 ; i++) {
-            strOpthion+='<option value="'+i+'">' + i + '</option>';
-        }
-        $("#PRODUCT_NUMBER").append(strOpthion);
-
-
-        $("#PRODUCT_NUMBER").change(function () {
-            $(".removeTr").remove();
-            var num = $("#PRODUCT_NUMBER").val();
-            console.log(num)
-            for (var i = 0; i < num-1; i++) {
-
-                $("#tr1").after('<tr class="removeTr"> ' +
-                    '<td style="width:75px;text-align: right;padding-top: 13px;">' +
-                    '<font color="red">*</font>产品名称: ' +
-                    '</td>' +
-                    '<td>' +
-                    '<select  name="PRODUCT_ID"  data-placeholder="器械编号" style="vertical-align:top;width: 50%;">' +
-                        '<option value="">请选择器械名称</option>'+
-                    '</select>' +
-                    '<input type="text" readonly name="PRODUCT" id="PRODUCT"   value="" maxlength="100" placeholder="器械名称" title="器械名称"  style="width:48%;"/>  <input type="text" hidden name="PROJECT_ID" id="PROJECT_ID"   value="" maxlength="100" style="width:48%;"/>    <span style="color: red">注:需先在器械管理处填写资料并通过质控审批后才能选择</span>  </td></tr>')
-            }
-
-        })
 
 
 
@@ -538,6 +514,7 @@
         $("#projectId").change(function () {
             var str = $("#projectId").val();
             var str1 = $("#projectId option:selected").text();
+
             $("#PROJECT_NAME").val('');
             $("#HOSPITAL").val('');
             $("#SYS_ID").val('');
@@ -548,17 +525,22 @@
                 dataType: 'json',
                 cache: false,
                 success: function (data) {
+                    console.log(JSON.stringify(data))
                     if (data.errInfo == "success") {
                         $("#PROJECT_NAME").val(data.pd.PROJECT_NAME);
                         $("#HOSPITAL").val(data.pd.HOSPITAL);
                         $("#SYS_ID").val(str.substring(0, str.indexOf("=")));
-                        $("#PROJECT_ID").val(str1.substring(0, str1.lastIndexOf("-")));
-                        $("#FUZEREN").val(str.substring(str.indexOf("=") + 1, str.length));
+                        console.log(data.pd.FUZEREN);
+
+                        $("#PROJECT_ID").val(data.pd.SYS_ID);
+                        $("#FUZEREN").val(data.pd.FUZEREN);
 
 
                     }
                 }
+
             });
+
         })
         getInfo();
 

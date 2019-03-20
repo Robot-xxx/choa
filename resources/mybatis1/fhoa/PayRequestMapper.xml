@@ -24,7 +24,7 @@
 		f.PAYEEBANK,	
 		f.BANKACCOUNT,	
 		f.POSTSCRIPT,	
-		f.PROJIECT_ID,	
+		f.PROJECT_ID,
 		f.PROJECT_NAME,	
 		f.CONTRACT_NO,	
 		f.MONEY,	
@@ -45,6 +45,8 @@
 		f.UPDATETIME,
 		f.BZ,
 		f.LAIKUAN,
+		f.GONGYINGSHANG,
+		f.HETONGZONGE,
 		f.REQUEST_ID
 	</sql>
 
@@ -60,7 +62,7 @@
 		PAYEEBANK,	
 		BANKACCOUNT,	
 		POSTSCRIPT,	
-		PROJIECT_ID,	
+		PROJECT_ID,
 		PROJECT_NAME,	
 		CONTRACT_NO,	
 		MONEY,	
@@ -81,6 +83,8 @@
         UPDATETIME,
         BZ,
         LAIKUAN,
+        GONGYINGSHANG,
+        HETONGZONGE,
 		REQUEST_ID
 	</sql>
 
@@ -96,7 +100,7 @@
 		#{PAYEEBANK},	
 		#{BANKACCOUNT},	
 		#{POSTSCRIPT},	
-		#{PROJIECT_ID},	
+		#{PROJECT_ID},
 		#{PROJECT_NAME},	
 		#{CONTRACT_NO},	
 		#{MONEY},	
@@ -117,6 +121,8 @@
 		#{UPDATETIME},
 		#{BZ},
 		#{LAIKUAN},
+		#{GONGYINGSHANG},
+		#{HETONGZONGE},
 		#{REQUEST_ID}
 	</sql>
 
@@ -154,7 +160,7 @@
         PAYEEBANK = #{PAYEEBANK},
         BANKACCOUNT = #{BANKACCOUNT},
         POSTSCRIPT = #{POSTSCRIPT},
-        PROJIECT_ID = #{PROJIECT_ID},
+           PROJECT_ID = #{PROJECT_ID},
         PROJECT_NAME = #{PROJECT_NAME},
         CONTRACT_NO = #{CONTRACT_NO},
         MONEY = #{MONEY},
@@ -175,6 +181,8 @@
         UPDATETIME = #{UPDATETIME},
         BZ = #{BZ},
         LAIKUAN = #{LAIKUAN},
+        GONGYINGSHANG = #{GONGYINGSHANG},
+        HETONGZONGE = #{HETONGZONGE},
         REQUEST_ID = REQUEST_ID
         where
         REQUEST_ID = #{REQUEST_ID}
@@ -231,6 +239,14 @@
         from
         <include refid="tableName"></include>
         f
+        where 1=1
+        <if test="USERID!= null and USERID != ''"><!-- 关键词检索 -->
+            and USERID=#{USERID}
+        </if>
+        <if test="STATUS!= null and STATUS != ''"><!-- 关键词检索 -->
+           and f.STATUS=#{STATUS}
+        </if>
+
     </select>
 
     <!-- 批量删除 -->

@@ -68,6 +68,11 @@ public interface ProjectMarketManager{
 	 * @throws Exception
 	 */
 	public PageData projectMarketById(PageData pd)throws Exception;
+	/**通过id获取数据
+	 * @param pd
+	 * @throws Exception
+	 */
+	public List<PageData> findProjectMarket(PageData pd)throws Exception;
 
 
 

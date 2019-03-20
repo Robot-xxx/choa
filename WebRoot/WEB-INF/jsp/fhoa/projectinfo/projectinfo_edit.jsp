@@ -157,7 +157,7 @@
 								$("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
 								for (var i = 0; i < data.list.length; i++) {
 
-									$("#c_selectCompany").append("<option value=" + data.list[i].INSTRUMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+									$("#c_selectCompany").append("<option value=" + data.list[i].INSTRUMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "=>" + data.list[i].MODEL + "</option>");
 
 								}
 
@@ -180,7 +180,7 @@
 								$("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
 								for (var i = 0; i < data.list.length; i++) {
 
-									$("#c_selectCompany").append("<option value=" + data.list[i].INFORMATIZATION_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+									$("#c_selectCompany").append("<option value=" + data.list[i].INFORMATIZATION_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "=>" + data.list[i].MODEL + "</option>");
 
 								}
 
@@ -202,7 +202,7 @@
 								$("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
 								for (var i = 0; i < data.list.length; i++) {
 
-									$("#c_selectCompany").append("<option value=" + data.list[i].EQUIPMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+									$("#c_selectCompany").append("<option value=" + data.list[i].EQUIPMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "=>" + data.list[i].MODEL + "</option>");
 
 								}
 
@@ -223,9 +223,7 @@
 							if (data.errInfo == "success") {
 								$("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
 								for (var i = 0; i < data.list.length; i++) {
-
-									$("#c_selectCompany").append("<option value=" + data.list[i].EQUIPMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
-
+									$("#c_selectCompany").append("<option value=" + data.list[i].EQUIPMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "=>" + data.list[i].MODEL + "</option>");
 								}
 
 								downList('c_selectCompany');
@@ -245,9 +243,7 @@
 							if (data.errInfo == "success") {
 								$("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
 								for (var i = 0; i < data.list.length; i++) {
-
-									$("#c_selectCompany").append("<option value=" + data.list[i].CONSUMABLE_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
-
+									$("#c_selectCompany").append("<option value=" + data.list[i].CONSUMABLE_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "=>" + data.list[i].MODEL + "</option>");
 								}
 
 								downList('c_selectCompany');
@@ -257,10 +253,10 @@
 				}
             });
             //项目编号
-            $("#projectId").change(function () {
-                var str = $("#projectId").val();
-                var projectname = str.substring(str.indexOf("=") + 1, str.length);
-                var projectid = str.substring(0, str.indexOf("="));
+            $("#c_selectCompany").change(function () {
+                var str1 = $("#c_selectCompany option:selected").text();
+                var projectname = str1.substring(0,str1.indexOf("=>"));
+                var projectid = str1.substring(str1.indexOf("=>") + 1, str1.length);
 
                 $("#PROJECT_ID").val(projectid);
                 $("#PROJECT_NAME").val(projectname);
@@ -279,12 +275,9 @@
                 dataType: 'json',
                 cache: false,
                 success: function (data) {
-                    console.log(data)
                     $("#productType").append("<option value=''>请选择类型</option>");
                     $.each(data.list, function (i, dvar) {
-
                         $("#productType").append("<option value=" + dvar.NAME_EN + " >" + dvar.NAME + "</option>");
-
                     });
                     downList('productType');
                 }

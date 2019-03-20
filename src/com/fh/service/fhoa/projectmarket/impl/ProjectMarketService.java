@@ -95,6 +95,13 @@ public class ProjectMarketService implements ProjectMarketManager{
 	public PageData projectMarketById(PageData pd)throws Exception{
 		return (PageData)dao.findForObject("ProjectMarketMapper.projectBidById", pd);
 	}
+	/**通过id获取数据
+	 * @param pd
+	 * @throws Exception
+	 */
+	public List<PageData> findProjectMarket(PageData pd)throws Exception{
+		return (List<PageData>)dao.findForList("ProjectMarketMapper.findProjectMarket", pd);
+	}
 	
 }
 

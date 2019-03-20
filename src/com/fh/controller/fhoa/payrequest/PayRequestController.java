@@ -79,14 +79,18 @@ public class PayRequestController extends AcStartController {
 			map1.put("附言", pd.getString("POSTSCRIPT"));
 			map1.put("合同编号", pd.getString("CONTRACT_NO"));
 
-			map1.put("项目编号", pd.getString("PROJIECT_ID"));
+			map1.put("项目编号", pd.getString("PROJECT_ID"));
 
 			map1.put("项目名称", pd.getString("PROJECT_NAME"));
+			map1.put("供应商名称", pd.getString("GONGYINGSHANG"));
+			map1.put("合同总额", pd.getString("HETONGZONGE"));
 
 			map1.put("实付金额(元)", pd.getString("MONEY"));
 			map1.put("垫付金额(元)", pd.getString("PAY_ACCOUNT"));
 			map1.put("来款单位", pd.getString("PAY_UNIT"));
 			map1.put("付款约定", pd.getString("FUKUANYUEDING"));
+			map1.put("备注", pd.getString("BZ"));
+			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("REQUEST_ID")+"','2edba70525574ebfacda36e4e7607034')\" style=' cursor:pointer;'>查看附件</a>");
 
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
 
@@ -368,7 +372,11 @@ public class PayRequestController extends AcStartController {
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "cha")){return null;}
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
+		String userId= Jurisdiction.getUSERID();
 		pd = this.getPageData();
+		if(!userId.equals("1")){
+			pd.put("USERID",userId);
+		}
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
 		titles.add("选择公司");	//1
@@ -378,19 +386,20 @@ public class PayRequestController extends AcStartController {
 		titles.add("申请类型");	//4
 		titles.add("支付方式");	//5
 		titles.add("收款单位");	//6
-
 		titles.add("收款单位银行");	//8
 		titles.add("银行账号");	//9
 		titles.add("附言");	//10
-		titles.add("项目ID");	//11
+		titles.add("项目编号");	//11
 		titles.add("项目名称");	//12
+		titles.add("供应商名称");	//12
+		titles.add("合同总额");	//12
 		titles.add("合同编号");	//13
-		titles.add("金额");	//14
+		titles.add("实付金额");	//14
 		titles.add("垫付金额");	//15
 		titles.add("来款单位");	//16
-		titles.add("付款剩余余额");	//17
+		titles.add("来款情况");	//17
 		titles.add("付款约定");	//18
-		titles.add("付款时间");	//7
+		titles.add("付款时间");	//18
 		titles.add("备注");	//18
 		dataMap.put("titles", titles);
 		List<PageData> varOList = payrequestService.listAll(pd);
@@ -407,16 +416,18 @@ public class PayRequestController extends AcStartController {
 			vpd.put("var8", varOList.get(i).getString("PAYEEBANK"));	    //8
 			vpd.put("var9", varOList.get(i).getString("BANKACCOUNT"));	    //9
 			vpd.put("var10", varOList.get(i).getString("POSTSCRIPT"));	    //10
-			vpd.put("var11", varOList.get(i).getString("PROJIECT_ID"));	    //11
+			vpd.put("var11", varOList.get(i).getString("   PROJECT_ID"));	    //11
 			vpd.put("var12", varOList.get(i).getString("PROJECT_NAME"));	    //12
-			vpd.put("var13", varOList.get(i).getString("CONTRACT_NO"));	    //13
-			vpd.put("var14", varOList.get(i).getString("MONEY"));	    //14
-			vpd.put("var15", varOList.get(i).getString("PAY_ACCOUNT"));	    //15
-			vpd.put("var16", varOList.get(i).getString("PAY_UNIT"));	    //16
-			vpd.put("var17", varOList.get(i).getString("YUYUEFUKUAN"));	    //17
-			vpd.put("var18", varOList.get(i).getString("FUKUANYUEDING"));	    //18
-			vpd.put("var19", varOList.get(i).get("UPDATETIME").toString());	    //7
-			vpd.put("var20", varOList.get(i).getString("BZ"));	    //18
+			vpd.put("var13", varOList.get(i).getString("GONGYINGSHANG"));	    //12
+			vpd.put("var14", varOList.get(i).getString("HETONGZONGE"));	    //12
+			vpd.put("var15", varOList.get(i).getString("CONTRACT_NO"));	    //13
+			vpd.put("var16", varOList.get(i).getString("MONEY"));	    //14
+			vpd.put("var17", varOList.get(i).getString("PAY_ACCOUNT"));	    //15
+			vpd.put("var18", varOList.get(i).getString("PAY_UNIT"));	    //16
+			vpd.put("var19", varOList.get(i).getString("LAIKUAN"));	    //17
+			vpd.put("var20", varOList.get(i).getString("FUKUANYUEDING"));	    //18
+			vpd.put("var21", varOList.get(i).get("UPDATETIME").toString());	    //7
+			vpd.put("var22", varOList.get(i).getString("BZ"));	    //18
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

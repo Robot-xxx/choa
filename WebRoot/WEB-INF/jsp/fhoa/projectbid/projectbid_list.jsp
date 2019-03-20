@@ -65,6 +65,7 @@
 									</th>
 									<th class="center" style="width:50px;">序号</th>
 									<th class="center">选择公司</th>
+									<th class="center">项目编号</th>
 									<th class="center">项目名称</th>
 									<th class="center">医院</th>
 <%--
@@ -111,6 +112,7 @@
 											</td>
 											<td class='center' style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
 											<td class='center'>${var.SELECTCOMPANY}</td>
+											<td class='center'>${var.PROJECT_ID}</td>
 											<td class='center'>${var.PROJECT_NAME}</td>
 											<td class='center'>${var.HOSPITAL}</td>
 <%--

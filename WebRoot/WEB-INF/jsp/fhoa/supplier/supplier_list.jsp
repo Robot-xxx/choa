@@ -316,6 +316,7 @@
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="新增";
+
 			 diag.URL = '<%=basePath%>supplier/goAdd.do?FILETYPE=5696fb6f00b54056839fbc1acdbb166d';
 			 diag.Width = 800;
 			 diag.Height = 600;

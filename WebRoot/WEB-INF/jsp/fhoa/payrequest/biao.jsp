@@ -150,7 +150,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div style="width: 300px; height: 100%;float: left;">
 					<div style="text-align: right;float: left;width: 700px;">
-						<input value="${pd.PROJIECT_ID}"  style="margin-left:5px;width:700px;border-bottom:1px solid #558db5;border-right: 0px;border-left: 0px;border-top: 0px;"/>
+						<input value="${pd.PROJECT_ID}"  style="margin-left:5px;width:700px;border-bottom:1px solid #558db5;border-right: 0px;border-left: 0px;border-top: 0px;"/>
 									
 					</div>
 					<div style="text-align: right;float: left;width: 700px;">

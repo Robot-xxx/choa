@@ -163,18 +163,6 @@ public class ProjectMarketController extends AcStartController {
 		if(pd.getString("PRACTICAL_ACCOUT_TIME").equals("")){
 			pd.remove("PRACTICAL_ACCOUT_TIME");
 		}
-		if(pd.getString("SHENGCHANXUKEZHENG").equals("")){
-			pd.remove("SHENGCHANXUKEZHENG");
-		}
-		if(pd.getString("JINGYINGXUKEZHENG").equals("")){
-			pd.remove("JINGYINGXUKEZHENG");
-		}
-		if(pd.getString("FARENSHOUQUAN").equals("")){
-			pd.remove("FARENSHOUQUAN");
-		}
-		if(pd.getString("SHOUQUANWEITUO").equals("")){
-			pd.remove("SHOUQUANWEITUO");
-		}
 		if(pd.getString("ARRIVAL_TIME").equals("")){
 			pd.remove("ARRIVAL_TIME");
 		}
@@ -224,18 +212,7 @@ public class ProjectMarketController extends AcStartController {
 		if(pd.getString("PRACTICAL_ACCOUT_TIME").equals("")){
 			pd.remove("PRACTICAL_ACCOUT_TIME");
 		}
-		if(pd.getString("SHENGCHANXUKEZHENG").equals("")){
-			pd.remove("SHENGCHANXUKEZHENG");
-		}
-		if(pd.getString("JINGYINGXUKEZHENG").equals("")){
-			pd.remove("JINGYINGXUKEZHENG");
-		}
-		if(pd.getString("FARENSHOUQUAN").equals("")){
-			pd.remove("FARENSHOUQUAN");
-		}
-		if(pd.getString("SHOUQUANWEITUO").equals("")){
-			pd.remove("SHOUQUANWEITUO");
-		}
+
 
 		if(pd.getString("ARRIVAL_TIME").equals("")){
 			pd.remove("ARRIVAL_TIME");

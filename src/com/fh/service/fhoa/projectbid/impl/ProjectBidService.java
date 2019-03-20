@@ -96,5 +96,12 @@ public class ProjectBidService implements ProjectBidManager{
 	public PageData projectById(PageData pd)throws Exception{
 		return (PageData)dao.findForObject("ProjectBidMapper.projectById", pd);
 	}
+	/**通过id获取数据
+	 * @param pd
+	 * @throws Exception
+	 */
+	public List<PageData> findProjectBid(PageData pd)throws Exception{
+		return (List<PageData>)dao.findForList("ProjectBidMapper.findProjectBid", pd);
+	}
 }
 

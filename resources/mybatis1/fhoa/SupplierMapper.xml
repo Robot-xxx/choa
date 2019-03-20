@@ -248,8 +248,38 @@
 	</update>
 
 
+	<!--接口查询-->
+
+	<!-- 列表(全部) -->
+	<select id="getListAll" parameterType="pd" resultType="pd">
+		select
+		d7.BIANMA BIANMA7,
+		d7.NAME DNAME7,
+		<include refid="Field"></include>
+		from
+		<include refid="tableName"></include> f
+		left join
+		<include refid="dicTableName"></include> d7
+		on f.LICENCE = d7.BIANMA
+		where 1=1 and STATUS=#{STATUS}
+
+	</select>
+
+	<!-- 通过ID获取数据 -->
+	<select id="getById" parameterType="pd" resultType="pd">
+
+		select
+		d7.BIANMA BIANMA7,
+		d7.NAME DNAME7,
+		<include refid="Field"></include>
+		from
+		<include refid="tableName"></include> f
+		left join
+		<include refid="dicTableName"></include> d7
+		on f.LICENCE = d7.BIANMA
+		where f.SYS_ID = #{SYS_ID}
 
 
-
+	</select>
 
 </mapper>

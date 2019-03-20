@@ -1,4 +1,6 @@
 function downList(_this){
+    console.log(_this)
+
     $("#"+_this).chosen({
         disable_search_threshold: 0,
         no_results_text: '沒有此数据!',
@@ -6,3 +8,4 @@ function downList(_this){
         search_contains: true
     });
 }
+

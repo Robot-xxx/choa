@@ -173,10 +173,26 @@
                                     </tr>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
+                                                color="red">*</font>供应商名称:
+                                        </td>
+                                        <td><input type="text" name="GONGYINGSHANG" id="GONGYINGSHANG1"
+                                                   value="${pd.GONGYINGSHANG}" maxlength="100" placeholder="这里输入供应商名称"
+                                                   title="供应商名称" style="width:98%;"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font
+                                                color="red">*</font>合同总额:
+                                        </td>
+                                        <td><input type="text" name="HETONGZONGE" id="HETONGZONGE"
+                                                   value="${pd.HETONGZONGE}" maxlength="100" placeholder="这里输入合同总额"
+                                                   title="合同总额" style="width:98%;"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font
                                                 color="red">*</font>项目编号:
                                         </td>
-                                        <td><input type="text" name="PROJIECT_ID" id="PROJIECT_ID"
-                                                   value="${pd.PROJIECT_ID}" maxlength="100" placeholder="这里输入项目ID"
+                                        <td><input type="text" name="PROJECT_ID" id="PROJECT_ID"
+                                                   value="${pd.PROJECT_ID}" maxlength="100" placeholder="这里输入项目ID"
                                                    title="项目ID" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
@@ -368,14 +384,14 @@
             $("#PROJECT_NAME").focus();
             return false;
         }
-        if ($("#PROJIECT_ID").val() == "") {
-            $("#PROJIECT_ID").tips({
+        if ($("#PROJECT_ID").val() == "") {
+            $("#PROJECT_ID").tips({
                 side: 3,
                 msg: '请输入项目编号',
                 bg: '#AE81FF',
                 time: 2
             });
-            $("#PROJIECT_ID").focus();
+            $("#PROJECT_ID").focus();
             return false;
         }
         if ($("#MONEY").val() == "") {
@@ -465,7 +481,7 @@
                 $("#hiddenTr1").removeAttr("hidden");
                 $("#PAY_ACCOUNT").val("/");
                 $("#PAY_UNIT").val("/");
-                $("#PROJIECT_ID").val("/");
+                $("#PROJECT_ID").val("/");
                 $("#YUYUEFUKUAN").val("/");
                 $("#PAYEE").val("");
 
@@ -475,7 +491,7 @@
                 $("#hiddenTr1").attr("hidden", "hidden");
                 $("#PAY_ACCOUNT").val("");
                 $("#PAY_UNIT").val("");
-                $("#PROJIECT_ID").val("");
+                $("#PROJECT_ID").val("");
                 $("#YUYUEFUKUAN").val("");
                 $("#PAYEE").val("");
 
@@ -644,10 +660,13 @@
                 cache: false,
                 success: function (data) {
                     $("#CONTRACT_NO").val( data.pd.PURCHASE_CONTRACT_ID);
-                    $("#PROJIECT_ID").val( data.pd.SYS_ID);
+                    $("#PROJECT_ID").val( data.pd.SYS_ID);
                     $("#PROJECT_NAME").val( data.pd.PROJECTNAME);
-                    $("#MONEY").val( data.pd.CONTRACT_PRICE);
                     $("#FUKUANYUEDING").val( data.pd.FUKUANYUEDING);
+                    $("#HETONGZONGE").val( data.pd.CONTRACT_PRICE);
+                    $("#GONGYINGSHANG1").val( data.pd.SUPPLIERNAME);
+
+
                 }
             });
 
