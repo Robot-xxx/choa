@@ -44,7 +44,7 @@ public class ProjectPurchaseController extends AcStartController {
     private SupplierManager supplierService;
 
     SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
-    SimpleDateFormat sd1 = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sd1=new SimpleDateFormat("yyyy-MM-dd HH:mm:dd");
 
     /**
      * 提交流程
@@ -404,6 +404,7 @@ public class ProjectPurchaseController extends AcStartController {
         titles.add("风险条款");    //10
         titles.add("付款约定");    //10
         titles.add("负责人");    //10
+        titles.add("更新时间");    //10
         titles.add("备注");    //10
         dataMap.put("titles", titles);
         List<PageData> varOList = projectpurchaseService.listAll(pd);
@@ -427,7 +428,8 @@ public class ProjectPurchaseController extends AcStartController {
             vpd.put("var10", varOList.get(i).getString("FENGXIANTIAOKUAN"));        //5
             vpd.put("var11", varOList.get(i).getString("FUKUANYUEDING"));        //5
             vpd.put("var12", varOList.get(i).getString("FUZEREN"));        //5
-            vpd.put("var13", varOList.get(i).getString("BZ"));        //5
+            vpd.put("var13", varOList.get(i).get("UPDATETIME").toString());        //5
+            vpd.put("var14", varOList.get(i).getString("BZ"));        //5
             varList.add(vpd);
         }
         dataMap.put("varList", varList);

@@ -90,13 +90,13 @@
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">招标公司:</td>
                                         <td><input type="text" name="TEBDERING" id="TEBDERING" value="${pd.TEBDERING}"
-                                                   maxlength="12" placeholder="招标公司" title="招标公司" style="width:98%;"/>
+                                                   maxlength="100" placeholder="招标公司" title="招标公司" style="width:98%;"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">招标代表:</td>
                                         <td><input type="text" name="REPRESENTATIVE" id="REPRESENTATIVE"
-                                                   value="${pd.REPRESENTATIVE}" maxlength="100" placeholder="招标代表"
+                                                   value="${pd.REPRESENTATIVE}" maxlength="30" placeholder="招标代表"
                                                    title="招标代表" style="width:98%;"/></td>
                                     </tr>
                                     <tr>

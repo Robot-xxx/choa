@@ -101,7 +101,7 @@ public class TicketController extends AcStartController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd.put("USERID",Jurisdiction.getUSERID());
+		pd.put("USER_ID",Jurisdiction.getUSERID());
 		String ticketid = this.get32UUID();
 		Map<String, Object> map = new HashMap<>();
 		String[] oafileList = pd.getString("oafileList").toString().split(",");
@@ -300,6 +300,7 @@ public class TicketController extends AcStartController {
 		titles.add("已开票金额");	//6
 		titles.add("进项票备注");	//7
 		titles.add("开票原因");	//7
+		titles.add("更新时间");	//7
 		dataMap.put("titles", titles);
 		List<PageData> varOList = ticketService.listAll(pd);
 		List<PageData> varList = new ArrayList<PageData>();
@@ -315,6 +316,7 @@ public class TicketController extends AcStartController {
 			vpd.put("var8", varOList.get(i).getString("YIKAIPIAOJINE"));	    //7
 			vpd.put("var9", varOList.get(i).getString("TICKET_INFO"));	    //7
 			vpd.put("var10", varOList.get(i).getString("OPEN_TICKET_YUANYIN"));	    //7
+			vpd.put("var11", varOList.get(i).getString("UPDATETIME"));	    //7
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

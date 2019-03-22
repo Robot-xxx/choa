@@ -44,9 +44,9 @@ public class ProjectBidController extends AcStartController {
     SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat sd1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    @Resource(name="supplierService")
+    @Resource(name = "supplierService")
     private SupplierManager supplierService;
-    @Resource(name="claimantService")
+    @Resource(name = "claimantService")
     private ClaimantManager claimantService;
 
     /**
@@ -63,16 +63,16 @@ public class ProjectBidController extends AcStartController {
         PageData pd = new PageData();
         try {
             pd = this.getPageData();
-            pd.put("STATUS",1);
-            pd.put("PROJECT_ID",pd.getString("PROJECT_ID"));
+            pd.put("STATUS", 1);
+            pd.put("PROJECT_ID", pd.getString("PROJECT_ID"));
             page.setPd(pd);
             list = projectbidService.list(page);
 
             map.put("list", list);
-            list =  claimantService.list(page);
+            list = claimantService.list(page);
             Double count = 0.0;
-            for (int i = 0; i <list.size() ; i++) {
-                 count+= Double.valueOf( list.get(i).get("CLAIMANT_MONEY").toString());
+            for (int i = 0; i < list.size(); i++) {
+                count += Double.valueOf(list.get(i).get("CLAIMANT_MONEY").toString());
             }
             map.put("count", count);
         } catch (Exception e) {
@@ -85,115 +85,121 @@ public class ProjectBidController extends AcStartController {
     }
 
 
-
-    /**提交流程
+    /**
+     * 提交流程
+     *
      * @param
      * @throws Exception
      */
-    @RequestMapping(value="/tijiaoFlow")
+    @RequestMapping(value = "/tijiaoFlow")
     @ResponseBody
-    public  Map<String, Object> tijiaoFlow() throws Exception{
+    public Map<String, Object> tijiaoFlow() throws Exception {
         Map<String, Object> map = new HashMap<>();
         PageData pd = new PageData();
         pd = this.getPageData();
-        pd = projectbidService.findById(pd);	//根据ID读取
+        pd = projectbidService.findById(pd);    //根据ID读取
         try {
 
             /** 工作流的操作 **/
-            Map<String,Object> map1 = new LinkedHashMap<String, Object>();
-            map1.put("公司",pd.getString("SELECTCOMPANY") );			//选择公司
+            Map<String, Object> map1 = new LinkedHashMap<String, Object>();
+            map1.put("公司", pd.getString("SELECTCOMPANY"));            //选择公司
 
-            map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
+            map1.put("申请人", Jurisdiction.getU_name());            //当前用户的姓名
             map1.put("项目编号", pd.getString("PROJECT_ID"));
             map1.put("项目名称", pd.getString("PROJECT_NAME"));
             map1.put("医院", pd.getString("HOSPITAL"));
             map1.put("招标公司", pd.getString("TEBDERING"));
             map1.put("招标代表", pd.getString("REPRESENTATIVE"));
             map1.put("中标单位", pd.getString("WINNING_UNIT"));
-            map1.put("中标价格（元）", pd.get("WINNING_PRICE").toString());
-            map1.put("中标服务费垫资金额（元）", pd.get("SERVICE_PRICE").toString());
-            map1.put("投标保证金垫资金额（元）", pd.get("GUARANTEE_MONEY").toString());
-            map1.put("投标保证金预计缴纳时间", pd.get("SCHEDULED_TIME").toString());
-            map1.put("投标保证金实际缴纳时间", pd.get("PRACTICAL_TIME").toString());
-            map1.put("开标日期", pd.get("BID_OPEN_TIME").toString());
-            map1.put("中标服务费预计缴纳时间", pd.get("SCHEDULED_SERVICE_PRICE_TIME").toString());
-            map1.put("中标服务费实际缴纳时间", pd.get("PRACTICAL_SERVICE_PRICE_TIME").toString());
+            map1.put("中标价格（元）", pd.getString("WINNING_PRICE"));
 
-            map1.put("标书制作人", pd.get("BIAOSHUZHIZUOREN").toString());
-            map1.put("负责人", pd.get("FUZEREN").toString());
+            map1.put("中标服务费垫资金额（元）", pd.getString("SERVICE_PRICE"));
+            map1.put("投标保证金垫资金额（元）", pd.getString("GUARANTEE_MONEY"));
+            map1.put("投标保证金预计缴纳时间", pd.getString("SCHEDULED_TIME"));
+            map1.put("投标保证金实际缴纳时间", pd.getString("PRACTICAL_TIME"));
+            map1.put("开标日期", pd.getString("BID_OPEN_TIME"));
+            map1.put("中标服务费预计缴纳时间", pd.getString("SCHEDULED_SERVICE_PRICE_TIME"));
+            map1.put("中标服务费实际缴纳时间", pd.getString("PRACTICAL_SERVICE_PRICE_TIME"));
+
+            map1.put("标书制作人", pd.getString("BIAOSHUZHIZUOREN"));
+            map1.put("负责人", pd.getString("FUZEREN"));
             map1.put("备注", pd.getString("BZ"));
-            map1.put("到期日", pd.get("CHANPINDAOQIRI").toString());
+            map1.put("到期日", pd.getString("CHANPINDAOQIRI"));
 
-            map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("PROJECT_BID_ID")+"','929f3699b3a14562afbc34ca20a07b07')\" style=' cursor:pointer;'>查看附件</a>");
-            map1.put("查看产品", "<a onclick=\"selectProject2('"+pd.getString("PROJECT_BID_ID")+"')\" style=' cursor:pointer;'>查看产品</a>");
+            map1.put("附件", "<a onclick=\"allOaFile('" + pd.getString("PROJECT_BID_ID") + "','929f3699b3a14562afbc34ca20a07b07')\" style=' cursor:pointer;'>查看附件</a>");
+            map1.put("查看产品", "<a onclick=\"selectProject2('" + pd.getString("PROJECT_BID_ID") + "')\" style=' cursor:pointer;'>查看产品</a>");
 
-            map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
-            String act_id=startProcessInstanceByKeyHasVariables("oa_xiangmutoubiaoliucheng",map1);	//启动流程实例(请假单流程)通过KEY
+            map1.put("USERNAME", Jurisdiction.getUsername());        //指派代理人为当前用户
+            String act_id = startProcessInstanceByKeyHasVariables("oa_xiangmutoubiaoliucheng", map1);    //启动流程实例(请假单流程)通过KEY
 
-            pd.put("STATUS",3);
-            pd.put("ACT_ID",act_id);
-            pd.put("TABLENAME","oa_project_bid");
+            pd.put("STATUS", 3);
+            pd.put("ACT_ID", act_id);
+            pd.put("TABLENAME", "oa_project_bid");
             projectbidService.edit(pd);
             supplierService.editTableName(pd);
 
-            map.put("ASSIGNEE_",Jurisdiction.getUsername());
-            map.put("msg","success");
+            map.put("ASSIGNEE_", Jurisdiction.getUsername());
+            map.put("msg", "success");
         } catch (Exception e) {
-            map.put("msg","请联系管理员部署相应业务流程!");
-            map.put("errer","errer");
+            map.put("msg", "请联系管理员部署相应业务流程!");
+            map.put("errer", "errer");
         }
 
         return map;
     }
 
 
-
-    /**获取项目数据
+    /**
+     * 获取项目数据
+     *
      * @return
      */
-    @RequestMapping(value="/getProjectAll")
+    @RequestMapping(value = "/getProjectAll")
     @ResponseBody
-    public Map<String,Object> getCompanyById(){
+    public Map<String, Object> getCompanyById() {
         List<PageData> list = new ArrayList<>();
-        Map<String,Object> map  = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         String errInfo = "success";
         PageData pd = new PageData();
-        try{
+        try {
             pd = this.getPageData();
             list = projectbidService.projectAll(pd);
-        } catch(Exception e){
+        } catch (Exception e) {
             errInfo = "error";
             logger.error(e.toString(), e);
         }
-        map.put("errInfo",errInfo);
-        map.put("list",list);
+        map.put("errInfo", errInfo);
+        map.put("list", list);
         return map;
     }
 
-    /**获取委托公司数据
+    /**
+     * 获取委托公司数据
+     *
      * @return
      */
-    @RequestMapping(value="/projectById")
+    @RequestMapping(value = "/projectById")
     @ResponseBody
-    public Map<String,Object> projectById(){
+    public Map<String, Object> projectById() {
         List<PageData> list = new ArrayList<>();
-        Map<String,Object> map  = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         String errInfo = "success";
         PageData pd = new PageData();
-        try{
+        try {
             pd = this.getPageData();
             pd = projectbidService.projectById(pd);
-        } catch(Exception e){
+        } catch (Exception e) {
             errInfo = "error";
             logger.error(e.toString(), e);
         }
-        map.put("errInfo",errInfo);
-        map.put("pd",pd);
+        map.put("errInfo", errInfo);
+        map.put("pd", pd);
         return map;
     }
 
     /**
      * 保存
+     *
      * @param
      * @throws Exception
      */
@@ -213,19 +219,19 @@ public class ProjectBidController extends AcStartController {
         pd.put("PROJECT_BID_ID", projectbidid);    //主键
         //pd.put("FUZEREN", Jurisdiction.getUsername());    //主键
 
-        if(pd.getString("SCHEDULED_TIME").equals("")){
+        if (pd.getString("SCHEDULED_TIME").equals("")) {
             pd.remove("SCHEDULED_TIME");
         }
-        if(pd.getString("PRACTICAL_TIME").equals("")){
+        if (pd.getString("PRACTICAL_TIME").equals("")) {
             pd.remove("PRACTICAL_TIME");
         }
-        if(pd.getString("BID_OPEN_TIME").equals("")){
+        if (pd.getString("BID_OPEN_TIME").equals("")) {
             pd.remove("BID_OPEN_TIME");
         }
-        if(pd.getString("SCHEDULED_SERVICE_PRICE_TIME").equals("")){
+        if (pd.getString("SCHEDULED_SERVICE_PRICE_TIME").equals("")) {
             pd.remove("SCHEDULED_SERVICE_PRICE_TIME");
         }
-        if(pd.getString("PRACTICAL_SERVICE_PRICE_TIME").equals("")){
+        if (pd.getString("PRACTICAL_SERVICE_PRICE_TIME").equals("")) {
             pd.remove("PRACTICAL_SERVICE_PRICE_TIME");
         }
         pd.put("UPDATETIME", sd1.format(new Date()));
@@ -233,7 +239,7 @@ public class ProjectBidController extends AcStartController {
 
         projectbidService.save(pd);
 
-        mv.addObject("msg","success");
+        mv.addObject("msg", "success");
         pd.put("STATUS", 2);
 
         mv.setViewName("save_result");
@@ -275,19 +281,19 @@ public class ProjectBidController extends AcStartController {
         PageData pd = new PageData();
         pd = this.getPageData();
 
-        if(pd.getString("SCHEDULED_TIME").equals("")){
+        if (pd.getString("SCHEDULED_TIME").equals("")) {
             pd.remove("SCHEDULED_TIME");
         }
-        if(pd.getString("PRACTICAL_TIME").equals("")){
+        if (pd.getString("PRACTICAL_TIME").equals("")) {
             pd.remove("PRACTICAL_TIME");
         }
-        if(pd.getString("BID_OPEN_TIME").equals("")){
+        if (pd.getString("BID_OPEN_TIME").equals("")) {
             pd.remove("BID_OPEN_TIME");
         }
-        if(pd.getString("SCHEDULED_SERVICE_PRICE_TIME").equals("")){
+        if (pd.getString("SCHEDULED_SERVICE_PRICE_TIME").equals("")) {
             pd.remove("SCHEDULED_SERVICE_PRICE_TIME");
         }
-        if(pd.getString("PRACTICAL_SERVICE_PRICE_TIME").equals("")){
+        if (pd.getString("PRACTICAL_SERVICE_PRICE_TIME").equals("")) {
             pd.remove("PRACTICAL_SERVICE_PRICE_TIME");
         }
       /*  if(pd.getString("CHANPINDAOQIRI").equals("")){
@@ -413,6 +419,7 @@ public class ProjectBidController extends AcStartController {
         titles.add("选择公司");    //2
         titles.add("招标公司");    //2
         titles.add("招标代表");    //2
+        titles.add("项目编号");    //2
         titles.add("项目名称");    //2
         titles.add("医院");    //3
         titles.add("中标单位");    //4
@@ -427,6 +434,8 @@ public class ProjectBidController extends AcStartController {
         titles.add("标书制作人");    //12
         titles.add("风险条款");    //12
         titles.add("负责人");    //12
+        titles.add("更新时间");    //12
+
         titles.add("备注");    //12
 
         dataMap.put("titles", titles);
@@ -434,83 +443,44 @@ public class ProjectBidController extends AcStartController {
         List<PageData> varList = new ArrayList<PageData>();
         for (int i = 0; i < varOList.size(); i++) {
             PageData vpd = new PageData();
-           vpd.put("var1", varOList.get(i).getString("SELECTCOMPANY"));        //2
+            vpd.put("var1", varOList.get(i).getString("SELECTCOMPANY"));        //2
             vpd.put("var2", varOList.get(i).getString("TEBDERING"));        //2
             vpd.put("var3", varOList.get(i).getString("REPRESENTATIVE"));        //2
-           vpd.put("var4", varOList.get(i).getString("PROJECT_NAME"));        //2
+            vpd.put("var4", varOList.get(i).getString("PROJECT_ID"));        //2
+            vpd.put("var5", varOList.get(i).getString("PROJECT_NAME"));        //2
 
-            vpd.put("var5", varOList.get(i).getString("HOSPITAL"));        //3
-            vpd.put("var6", varOList.get(i).getString("WINNING_UNIT"));        //4
-            if (varOList.get(i).get("WINNING_PRICE")!=null&&!varOList.get(i).get("WINNING_PRICE").toString().equals("")) {
-                vpd.put("var7", varOList.get(i).get("WINNING_PRICE"));	    //8
-            }else {
-                vpd.put("var7","");	    //8
+            vpd.put("var6", varOList.get(i).getString("HOSPITAL"));        //3
+            vpd.put("var7", varOList.get(i).getString("WINNING_UNIT"));        //4
+            vpd.put("var8", varOList.get(i).getString("WINNING_PRICE"));        //8
 
-            }
-            if (varOList.get(i).get("SERVICE_PRICE")!=null&&!varOList.get(i).get("SERVICE_PRICE").toString().equals("")) {
-                vpd.put("var8", varOList.get(i).get("SERVICE_PRICE"));	    //8
-            }else {
-                vpd.put("var8","");	    //8
 
-            }
+            vpd.put("var9", varOList.get(i).getString("SERVICE_PRICE"));        //8
 
-            if (varOList.get(i).get("GUARANTEE_MONEY")!=null&&!varOList.get(i).get("GUARANTEE_MONEY").toString().equals("")) {
-                vpd.put("var9", varOList.get(i).get("GUARANTEE_MONEY"));	    //8
-            }else {
-                vpd.put("var9","");	    //8
 
-            }
-            if (varOList.get(i).get("SCHEDULED_TIME")!=null&&!varOList.get(i).get("SCHEDULED_TIME").toString().equals("")) {
-                vpd.put("var10", sd.format(varOList.get(i).get("SCHEDULED_TIME")));	    //8
-            }else {
-                vpd.put("var10","");	    //8
+            vpd.put("var10", varOList.get(i).getString("GUARANTEE_MONEY"));        //8
 
-            }
-            if (varOList.get(i).get("PRACTICAL_TIME")!=null&&!varOList.get(i).get("PRACTICAL_TIME").toString().equals("")) {
-                vpd.put("var11", sd.format(varOList.get(i).get("PRACTICAL_TIME")));	    //8
-            }else {
-                vpd.put("var11","");	    //8
+            vpd.put("var11", varOList.get(i).getString("SCHEDULED_TIME"));        //8
 
-            }
-            if (varOList.get(i).get("BID_OPEN_TIME")!=null&&!varOList.get(i).get("BID_OPEN_TIME").toString().equals("")) {
-                vpd.put("var12", sd.format(varOList.get(i).get("BID_OPEN_TIME")));	    //8
-            }else {
-                vpd.put("var12","");	    //8
+            vpd.put("var12", varOList.get(i).getString("PRACTICAL_TIME"));       //8
 
-            }
-            if (varOList.get(i).get("SCHEDULED_SERVICE_PRICE_TIME")!=null&&!varOList.get(i).get("SCHEDULED_SERVICE_PRICE_TIME").toString().equals("")) {
-                vpd.put("var13", sd.format(varOList.get(i).get("SCHEDULED_SERVICE_PRICE_TIME")));	    //8
-            }else {
-                vpd.put("var13","");	    //8
 
-            }
-            if (varOList.get(i).get("PRACTICAL_SERVICE_PRICE_TIME")!=null&&!varOList.get(i).get("PRACTICAL_SERVICE_PRICE_TIME").toString().equals("")) {
-                vpd.put("var14", sd.format(varOList.get(i).get("PRACTICAL_SERVICE_PRICE_TIME")));	    //8
-            }else {
-                vpd.put("var14","");	    //8
+            vpd.put("var13", varOList.get(i).getString("BID_OPEN_TIME"));        //8
 
-            }
+            vpd.put("var14", varOList.get(i).getString("SCHEDULED_SERVICE_PRICE_TIME"));        //8
 
-            if (varOList.get(i).get("BIAOSHUZHIZUOREN")!=null&&!varOList.get(i).get("BIAOSHUZHIZUOREN").toString().equals("")) {
-                vpd.put("var15", varOList.get(i).get("BIAOSHUZHIZUOREN"));	    //8
-            }else {
-                vpd.put("var15","");	    //8
+            vpd.put("var15", varOList.get(i).getString("PRACTICAL_SERVICE_PRICE_TIME"));        //8
 
-            }
 
-            if (varOList.get(i).get("FENGXIANTIAOKUAN")!=null&&!varOList.get(i).get("FENGXIANTIAOKUAN").toString().equals("")) {
-                vpd.put("var16", varOList.get(i).get("FENGXIANTIAOKUAN"));	    //8
-            }else {
-                vpd.put("var16","");	    //8
+            vpd.put("var16", varOList.get(i).getString("BIAOSHUZHIZUOREN"));        //8
 
-            }
-            vpd.put("var17", varOList.get(i).getString("FUZEREN"));	    //8
-            if (varOList.get(i).get("BZ")!=null&&!varOList.get(i).get("BZ").toString().equals("")) {
-                vpd.put("var18", varOList.get(i).get("BZ"));	    //8
-            }else {
-                vpd.put("var18","");	    //8
 
-            }
+            vpd.put("var17", varOList.get(i).getString("FENGXIANTIAOKUAN"));        //8
+
+            vpd.put("var18", varOList.get(i).getString("FUZEREN"));        //8
+
+            vpd.put("var19", sd1.format(varOList.get(i).get("UPDATETIME")));        //12
+            vpd.put("var20", varOList.get(i).getString("BZ"));        //8
+
 
             varList.add(vpd);
         }

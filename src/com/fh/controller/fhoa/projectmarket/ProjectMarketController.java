@@ -340,6 +340,7 @@ public class ProjectMarketController extends AcStartController {
 		titles.add("保证金退回时间");	//12
 		titles.add("负责人");	//12
 		titles.add("风险条款");	//12
+		titles.add("更新时间");	//12
 		titles.add("备注");	//12
 		dataMap.put("titles", titles);
 		List<PageData> varOList = projectmarketService.listAll(pd);
@@ -400,7 +401,9 @@ public class ProjectMarketController extends AcStartController {
 			vpd.put("var12",varOList.get(i).getString("BAOZHENGJINTUIHUISHIJIAN"));
 			vpd.put("var13",varOList.get(i).getString("FUZEREN"));
 			vpd.put("var14",varOList.get(i).getString("FENGXIANTIAOKUAN"));
-			vpd.put("var15",varOList.get(i).getString("BZ"));
+			vpd.put("var15", sd1.format(varOList.get(i).get("UPDATETIME")));	    //12
+
+			vpd.put("var16",varOList.get(i).getString("BZ"));
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

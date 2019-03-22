@@ -27,7 +27,7 @@
 		f.OPEN_TICKET_YUANYIN,
 		f.STATUS,
 		f.ACT_ID,
-		f.USERID,
+		f.USER_ID,
 		f.CREATETIME,
 		f.UPDATETIME,
 		f.TICKET_ID
@@ -48,7 +48,7 @@
 		OPEN_TICKET_YUANYIN,
 		STATUS,
 		ACT_ID,
-		USERID,
+		USER_ID,
 		CREATETIME,
 		UPDATETIME,
 		TICKET_ID
@@ -69,7 +69,7 @@
 		#{OPEN_TICKET_YUANYIN},
 		#{STATUS},
 		#{ACT_ID},
-		#{USERID},
+		#{USER_ID},
 		#{CREATETIME},
 		#{UPDATETIME},
 		#{TICKET_ID}
@@ -112,7 +112,7 @@
 			OPEN_TICKET_YUANYIN = #{OPEN_TICKET_YUANYIN},
 			STATUS = #{STATUS},
 			ACT_ID = #{ACT_ID},
-			USERID = #{USERID},
+		USER_ID = #{USER_ID},
 			CREATETIME = #{CREATETIME},
 			UPDATETIME = #{UPDATETIME},
 			TICKET_ID = TICKET_ID
@@ -137,8 +137,8 @@
 		from 
 		<include refid="tableName"></include> f
 		where 1=1
-		<if test="pd.USERID!= null and pd.USERID != ''"><!-- 关键词检索 -->
-			and USERID=#{pd.USERID}
+		<if test="pd.USER_ID!= null and pd.USER_ID != ''"><!-- 关键词检索 -->
+			and USER_ID=#{pd.USER_ID}
 		</if>
 		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
 			and

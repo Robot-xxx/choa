@@ -304,6 +304,7 @@ public class InputTicketController extends BaseController {
 		titles.add("发票号");	//1
 		titles.add("已回票金额(元)");	//1
 		titles.add("金额(元)");	//1
+		titles.add("更新时间");	//1
 		titles.add("备注");	//1
 
 		dataMap.put("titles", titles);
@@ -319,7 +320,8 @@ public class InputTicketController extends BaseController {
 			vpd.put("var6", varOList.get(i).getString("TICKET_NO"));	    //1
 			vpd.put("var7", varOList.get(i).getString("YIHUIPIAOJINE"));	    //1
 			vpd.put("var8", varOList.get(i).getString("MONEY"));	    //1
-			vpd.put("var9", varOList.get(i).getString("BZ"));	    //1
+			vpd.put("var9", varOList.get(i).getString("UPDATETIME"));	    //1
+			vpd.put("var10", varOList.get(i).getString("BZ"));	    //1
 
 			varList.add(vpd);
 		}

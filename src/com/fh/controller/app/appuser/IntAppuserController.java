@@ -9,11 +9,13 @@ import javax.annotation.Resource;
 import com.fh.entity.Page;
 import com.fh.entity.system.User;
 import com.fh.service.fhoa.customer.CustomerManager;
+import com.fh.service.fhoa.payrequest.PayRequestManager;
 import com.fh.service.fhoa.project.ProjectManager;
 import com.fh.service.fhoa.projectbid.ProjectBidManager;
 import com.fh.service.fhoa.projectmarket.ProjectMarketManager;
 import com.fh.service.fhoa.projectpurchase.ProjectPurchaseManager;
 import com.fh.service.fhoa.supplier.SupplierManager;
+import com.fh.service.fhoa.ticket.TicketManager;
 import com.fh.service.system.user.UserManager;
 import com.fh.util.*;
 import org.apache.shiro.SecurityUtils;
@@ -59,6 +61,10 @@ public class IntAppuserController extends BaseController {
 	private ProjectMarketManager projectmarketService;//项目销售
 	@Resource(name = "projectpurchaseService")
 	private ProjectPurchaseManager projectpurchaseService;//项目采购
+	@Resource(name="payrequestService")
+	private PayRequestManager payrequestService;//付款申请
+	@Resource(name="ticketService")
+	private TicketManager ticketService;//开票申请
 
 	/**根据用户名获取会员信息
 	 * @return 
@@ -488,12 +494,147 @@ public class IntAppuserController extends BaseController {
 		return AppUtil.returnObject(new PageData(), map);
 	}
 
+	/**付款申请
+	 * @return
+	 */
+	@RequestMapping(value="/PayRequest")
+	@ResponseBody
+	public Object PayRequest(Page page){
+		Map<String,Object> map = new HashMap<String,Object>();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+
+		String result = "00";
+		try{
+			if(Tools.checkKey("CHOA", pd.getString("FKEY"))){	//检验请求key值是否合法
+
+				String USER_ID = pd.getString("USER_ID");	//审批状态
+
+				pd.put("USER_ID",USER_ID);
+
+				page.setPd(pd);
+
+				List<PageData> varList = payrequestService.list(page);
+
+				map.put("list", varList);
+				result = (null == varList) ?  "02" :  "01";
+
+			}else{
+				result = "05";
+			}
+		}catch (Exception e){
+			logger.error(e.toString(), e);
+		}finally{
+			map.put("result", result);
+			logAfter(logger);
+		}
+		return AppUtil.returnObject(new PageData(), map);
+	}
+	/**获取付款申请详情
+	 * @return
+	 */
+	@RequestMapping(value="/CheckPayRequest")
+	@ResponseBody
+	public Object CheckPayRequest(){
+		Map<String,Object> map = new HashMap<String,Object>();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		String result = "00";
+		try{
+			if(Tools.checkKey("CHOA", pd.getString("FKEY"))){	//检验请求key值是否合法
+
+				String REQUEST_ID =pd.getString("REQUEST_ID");
+
+				pd.put("REQUEST_ID",REQUEST_ID);
+
+				pd = payrequestService.findById(pd);	//根据上游ID查询
+
+				map.put("pd", pd);
+				result = (null == pd) ?  "02" :  "01";
+
+			}else{
+				result = "05";
+			}
+		}catch (Exception e){
+			logger.error(e.toString(), e);
+		}finally{
+			map.put("result", result);
+			logAfter(logger);
+		}
+		return AppUtil.returnObject(new PageData(), map);
+	}
 
 
 
+	/**开票申请
+	 * @return
+	 */
+	@RequestMapping(value="/OpenTicket")
+	@ResponseBody
+	public Object OpenTicket(Page page){
+		Map<String,Object> map = new HashMap<String,Object>();
+		PageData pd = new PageData();
+		pd = this.getPageData();
 
+		String result = "00";
+		try{
+			if(Tools.checkKey("CHOA", pd.getString("FKEY"))){	//检验请求key值是否合法
 
+				String USER_ID = pd.getString("USER_ID");	//审批状态
 
+				pd.put("USER_ID",USER_ID);
+
+				page.setPd(pd);
+
+				List<PageData> varList = ticketService.list(page);
+
+				map.put("list", varList);
+				result = (null == varList) ?  "02" :  "01";
+
+			}else{
+				result = "05";
+			}
+		}catch (Exception e){
+			logger.error(e.toString(), e);
+		}finally{
+			map.put("result", result);
+			logAfter(logger);
+		}
+		return AppUtil.returnObject(new PageData(), map);
+	}
+	/**获取开票申请详情
+	 * @return
+	 */
+	@RequestMapping(value="/CheckOpenTicket")
+	@ResponseBody
+	public Object CheckOpenTicket(){
+		Map<String,Object> map = new HashMap<String,Object>();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		String result = "00";
+		try{
+			if(Tools.checkKey("CHOA", pd.getString("FKEY"))){	//检验请求key值是否合法
+
+				String TICKET_ID =pd.getString("TICKET_ID");
+
+				pd.put("TICKET_ID",TICKET_ID);
+
+				pd = ticketService.findById(pd);	//根据上游ID查询
+
+				map.put("pd", pd);
+				result = (null == pd) ?  "02" :  "01";
+
+			}else{
+				result = "05";
+			}
+		}catch (Exception e){
+			logger.error(e.toString(), e);
+		}finally{
+			map.put("result", result);
+			logAfter(logger);
+		}
+		return AppUtil.returnObject(new PageData(), map);
+	}
 
 
 

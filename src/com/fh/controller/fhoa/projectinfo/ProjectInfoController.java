@@ -36,7 +36,7 @@ public class ProjectInfoController extends BaseController {
 	String menuUrl = "projectinfo/list.do"; //菜单地址(权限用)
 	@Resource(name="projectinfoService")
 	private ProjectInfoManager projectinfoService;
-	
+	SimpleDateFormat sd1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	/**保存
 	 * @param
 	 * @throws Exception

@@ -562,6 +562,7 @@ public class ProjectController extends AcStartController {
 
 		titles.add("付款约定");	//12
 		titles.add("负责人");	//12
+		titles.add("更新时间");	//12
 		titles.add("备注");	//12
 		dataMap.put("titles", titles);
 		List<PageData> varOList = projectService.listAll(pd);
@@ -582,7 +583,8 @@ public class ProjectController extends AcStartController {
 
 			vpd.put("var12", varOList.get(i).getString("ACCESSORY"));	    //12
 			vpd.put("var13", varOList.get(i).getString("FUZEREN"));	    //12
-			vpd.put("var14", varOList.get(i).getString("BZ"));	    //12
+			vpd.put("var14", sd.format(varOList.get(i).get("UPDATETIME")));	    //12
+			vpd.put("var15", varOList.get(i).getString("BZ"));	    //12
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

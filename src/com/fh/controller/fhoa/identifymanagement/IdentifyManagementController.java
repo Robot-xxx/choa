@@ -197,6 +197,7 @@ public class IdentifyManagementController extends BaseController {
 		titles.add("进款金额");	//3
 		titles.add("回款单位");	//4
 		titles.add("日期");	//5
+		titles.add("更新时间");	//5
 		titles.add("汇款备注");	//6
 		dataMap.put("titles", titles);
 		List<PageData> varOList = identifymanagementService.listAll(pd);
@@ -207,7 +208,8 @@ public class IdentifyManagementController extends BaseController {
 			vpd.put("var1", varOList.get(i).get("INCOME_MONEY").toString());	//3
 			vpd.put("var2", varOList.get(i).getString("RETURN_MONEY"));	    //4
 			vpd.put("var3", sd.format(varOList.get(i).get("CREATE_DATE")));	    //5
-			vpd.put("var4", varOList.get(i).getString("BZ"));	    //6
+			vpd.put("var4", sd.format(varOList.get(i).get("UPDATETIME")));	    //5
+			vpd.put("var5", varOList.get(i).getString("BZ"));	    //6
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);
