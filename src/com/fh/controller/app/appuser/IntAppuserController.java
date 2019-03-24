@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import com.fh.entity.Page;
 import com.fh.entity.system.User;
+import com.fh.service.activiti.ruprocdef.RuprocdefManager;
 import com.fh.service.fhoa.customer.CustomerManager;
 import com.fh.service.fhoa.payrequest.PayRequestManager;
 import com.fh.service.fhoa.project.ProjectManager;
@@ -65,6 +66,8 @@ public class IntAppuserController extends BaseController {
 	private PayRequestManager payrequestService;//付款申请
 	@Resource(name="ticketService")
 	private TicketManager ticketService;//开票申请
+	@Resource(name="ruprocdefService")
+	private RuprocdefManager ruprocdefService;//流程
 
 	/**根据用户名获取会员信息
 	 * @return 
@@ -635,6 +638,47 @@ public class IntAppuserController extends BaseController {
 		}
 		return AppUtil.returnObject(new PageData(), map);
 	}
+
+	/**审批开票申请
+	 * @return
+	 */
+	@RequestMapping(value="/UpdateOpenTicket")
+	@ResponseBody
+	public Object UpdateOpenTicket(){
+		Map<String,Object> map = new HashMap<String,Object>();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		String result = "00";
+		try{
+			if(Tools.checkKey("CHOA", pd.getString("FKEY"))){	//检验请求key值是否合法
+
+				String TICKET_ID =pd.getString("TICKET_ID");
+				String STATUS =pd.getString("STATUS");
+
+				pd.put("TICKET_ID",TICKET_ID);
+				pd=ticketService.findById(pd);
+				pd.put("ACT_ID",pd.getString("ACT_ID"));
+				pd.put("STATUS",STATUS);
+				List<PageData>	varList = ruprocdefService.varList(pd);			//列出流程变量列表
+
+				 ticketService.edit(pd);	//根据上游ID查询
+
+				map.put("varList", varList);
+				map.put("pd", pd);
+				result = (null == pd) ?  "02" :  "01";
+
+			}else{
+				result = "05";
+			}
+		}catch (Exception e){
+			logger.error(e.toString(), e);
+		}finally{
+			map.put("result", result);
+			logAfter(logger);
+		}
+		return AppUtil.returnObject(new PageData(), map);
+	}
+
 
 
 
