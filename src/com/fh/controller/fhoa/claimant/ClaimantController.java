@@ -97,32 +97,37 @@ public class ClaimantController extends BaseController {
 		PageData pd2 = new PageData();
 		pd = this.getPageData();
 		pd.put("SYS_ID", this.get32UUID());	//主键
-
-
 		//认款金额
 		Double money = Double.valueOf(pd.getString("money"))- Double.valueOf(pd.getString("CLAIMANT_MONEY"));
-
 		//认领金额
 		pd.put("INCOME_MONEY",money);
-
-
 		//认款类型
 		pd.put("RENKUAILEIXING",pd.getString("RENKUAILEIXING"));
 
-
 		//未认领金额
 		pd2 = claimantService.findOneClaimant(pd.getString("PROJECT_ID"));
-		Double money1=0.0;
-		if(pd2==null){
-			money1 =Double.valueOf(pd.get("CONTRACT_PRICE").toString())-Double.valueOf(pd.getString("CLAIMANT_MONEY"));
-			pd.put("WEIRENLINGJINE",money1);
+		Double money1 = 0.0;
+		if(pd.getString("RENKUAILEIXING").equals("货款")) {
+
+			if (pd2 == null) {
+				money1 = Double.valueOf(pd.get("CONTRACT_PRICE").toString()) - Double.valueOf(pd.getString("CLAIMANT_MONEY"));
+				pd.put("WEIRENLINGJINE", money1);
+			} else {
+				money1 = Double.valueOf(pd2.get("WEIRENLINGJINE").toString()) - Double.valueOf(pd.getString("CLAIMANT_MONEY"));
+				pd.put("WEIRENLINGJINE", money1);
+
+			}
+
 		}else{
-			money1=Double.valueOf(pd2.get("WEIRENLINGJINE").toString())-Double.valueOf(pd.getString("CLAIMANT_MONEY"));
-			pd.put("WEIRENLINGJINE",money1);
+			if (pd2 == null) {
+				money1 = Double.valueOf(pd.get("CONTRACT_PRICE").toString()) - Double.valueOf(pd.getString("CLAIMANT_MONEY"));
+				pd.put("WEIRENLINGJINE", money1);
+			} else {
+				money1 = Double.valueOf(pd2.get("WEIRENLINGJINE").toString()) - Double.valueOf(pd.getString("CLAIMANT_MONEY"));
+				pd.put("WEIRENLINGJINE", money1);
 
+			}
 		}
-
-
 
 		//是否认款
 		if(money1<=0){

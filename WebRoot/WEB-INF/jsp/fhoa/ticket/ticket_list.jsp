@@ -68,7 +68,6 @@
 									<th class="center">选择公司</th>
 									<th class="center">系统编序号</th>
 									 <th class="center">销售合同</th>
-									 <th class="center">进项票产品名称</th>
 									<th class="center">进项备注</th>
 									<th class="center">进项票总额(元)</th>
 									<th class="center">合同总额(元)</th>
@@ -93,7 +92,6 @@
 											<td class='center'>${var.SYS_ID}</td>
 
 											<td class='center'>${var.SALES_CONTRACT_ID}</td>
-											<td class='center'>${var.ENTRYTICKETNAME}</td>
 											<td class='center'>${var.TICKET_INFO}</td>
 											<td class='center'>${var.TICKET_PRICE}</td>
 											<td class='center'>${var.OPEN_TICKET_PRICE}</td>

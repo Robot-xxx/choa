@@ -119,7 +119,7 @@
 <%--
                                             <td class='center'><a onclick="selectHuiKuai('${var.PURCHASE_ID}')" style=" cursor:pointer;">查看回款信息</a></td>
 --%>
-                                            <td class='center'><a onclick="fukuan('${var.PURCHASE_ID}')" style=" cursor:pointer;">查看付款信息</a></td>
+                                            <td class='center'><a onclick="fukuan('${var.PURCHASE_ID}')" style=" cursor:pointer;">查看付款条件</a></td>
 
                                             <td class='center'><a onclick="allOaFile('${var.PURCHASE_ID}','514b510ca4f0414492b2942fba27ee97')" style=" cursor:pointer;">查看附件</a></td>
 

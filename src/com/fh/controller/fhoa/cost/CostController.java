@@ -361,6 +361,7 @@ public class CostController extends AcStartController {
 		titles.add("是否代理商付款");	//1
 		titles.add("项目编号");	//2
 		titles.add("项目名称");	//2
+		titles.add("总额");	//2
 		titles.add("部门");	//3
 		titles.add("日期");	//4
 		titles.add("报销人");	//5
@@ -375,12 +376,13 @@ public class CostController extends AcStartController {
 			vpd.put("var1", varOList.get(i).getString("IS_THEAGENT"));	    //1
 			vpd.put("var2", varOList.get(i).getString("PROJECT_ID"));	    //2
 			vpd.put("var3", varOList.get(i).get("PROJECT_NAME"));	    //3
-			vpd.put("var4", varOList.get(i).getString("DEPARTMENT"));	    //4
-			vpd.put("var5", varOList.get(i).getString("CREATE_DATE"));	    //5
-			vpd.put("var6", varOList.get(i).get("BXR").toString());	//6
-			vpd.put("var7", varOList.get(i).get("JIEZHIRIQI"));	//6
-			vpd.put("var8", varOList.get(i).get("UPDATETIME"));	//6
-			vpd.put("var9", varOList.get(i).getString("BZ"));	    //7
+			vpd.put("var4", varOList.get(i).get("MONEY"));	    //3
+			vpd.put("var5", varOList.get(i).getString("DEPARTMENT"));	    //4
+			vpd.put("var6", varOList.get(i).getString("CREATE_DATE"));	    //5
+			vpd.put("var7", varOList.get(i).get("BXR").toString());	//6
+			vpd.put("var8", varOList.get(i).get("JIEZHIRIQI"));	//6
+			vpd.put("var9", varOList.get(i).get("UPDATETIME"));	//6
+			vpd.put("var10", varOList.get(i).getString("BZ"));	    //7
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);
