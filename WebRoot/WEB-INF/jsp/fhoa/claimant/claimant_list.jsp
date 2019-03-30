@@ -60,12 +60,9 @@
 									<th class="center">认款类型</th>
 									<th class="center">项目编号</th>
 									<th class="center">项目名称</th>
-									<th class="center">合同总价</th>
 									<th class="center">认领时间</th>
 									<th class="center">认领人名称</th>
 									<th class="center">认领金额(元)</th>
-									<th class="center">未认领金额</th>
-									<th class="center">是否完成认款</th>
 									<th class="center">备注</th>
 									<th class="center">操作</th>
 								</tr>
@@ -85,12 +82,10 @@
 											<td class='center'>${var.RENKUAILEIXING}</td>
 											<td class='center'>${var.PROJECT_ID}</td>
 											<td class='center'>${var.PROJECT_NAME}</td>
-											<td class='center'>${var.CONTRACT_PRICE}</td>
+
 											<td class='center'>${var.CREATE_TIME}</td>
 											<td class='center'>${var.CLAIMANT_NAME}</td>
 											<td class='center'>${var.CLAIMANT_MONEY}</td>
-											<td class='center'>${var.WEIRENLINGJINE}</td>
-											<td class='center'>${var.SHIFOURENKUAN}</td>
 											<td class='center'>${var.BZ}</td>
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">

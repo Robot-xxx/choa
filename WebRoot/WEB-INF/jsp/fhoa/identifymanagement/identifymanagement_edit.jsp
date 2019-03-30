@@ -31,17 +31,21 @@
 						<input type="hidden" name="IDENTIFYMANAGEMENT_ID" id="IDENTIFYMANAGEMENT_ID" value="${pd.IDENTIFYMANAGEMENT_ID}"/>
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
-
-                            <tr>
+							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>进款金额(元):</td>
-								<td><input type="number" name="INCOME_MONEY" id="INCOME_MONEY" value="${pd.INCOME_MONEY}" maxlength="32" placeholder="这里输入进款金额" title="进款金额" style="width:98%;"/></td>
+								<td><input type="number" readonly name="INCOME_MONEY" id="INCOME_MONEY" value="${pd.INCOME_MONEY}" maxlength="32" placeholder="这里输入进款金额" title="进款金额" style="width:98%;"/></td>
 							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>未领金额:</td>
+								<td><input type="number" name="WEILINGJINE" id="WEILINGJINE" value="${pd.WEILINGJINE}" maxlength="32" placeholder="这里输入未领金额" title="未领金额" style="width:98%;"/></td>
+							</tr>
+
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>回款单位:</td>
 								<td><input name="RETURN_MONEY" id="RETURN_MONEY" value="${pd.RETURN_MONEY}" type="text" placeholder="回款单位" title="回款单位" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>日期:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>回款日期:</td>
 								<td><input class="span10 date-picker" name="CREATE_DATE" id="CREATE_DATE" value="${pd.CREATE_DATE}" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="日期" title="日期" style="width:98%;"/></td>
 							</tr>
 							<tr>
@@ -88,7 +92,7 @@
 			if($("#INCOME_MONEY").val()==""){
 				$("#INCOME_MONEY").tips({
 					side:3,
-		            msg:'请输入进款金额',
+		            msg:'请输入未领金额',
 		            bg:'#AE81FF',
 		            time:2
 		        });
@@ -149,6 +153,10 @@
 		}
 
 		$(function() {
+
+		    $("#WEILINGJINE").keyup(function (){$("#INCOME_MONEY").val($("#WEILINGJINE").val());
+
+			})
 
             $("#projectId").change(function (){
                 $("#PROJECT_NAME").val('');

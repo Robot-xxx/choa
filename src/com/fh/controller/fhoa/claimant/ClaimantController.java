@@ -110,10 +110,10 @@ public class ClaimantController extends BaseController {
 		if(pd.getString("RENKUAILEIXING").equals("货款")) {
 
 			if (pd2 == null) {
-				money1 = Double.valueOf(pd.get("CONTRACT_PRICE").toString()) - Double.valueOf(pd.getString("CLAIMANT_MONEY"));
+				money1 = Double.valueOf(pd.get("CONTRACT_PRICE").toString()) - Double.valueOf(pd.getString("CLAIMANT_MONEY"))-0;
 				pd.put("WEIRENLINGJINE", money1);
 			} else {
-				money1 = Double.valueOf(pd2.get("WEIRENLINGJINE").toString()) - Double.valueOf(pd.getString("CLAIMANT_MONEY"));
+				money1 = Double.valueOf(pd2.get("WEIRENLINGJINE").toString()) - Double.valueOf(pd.getString("CLAIMANT_MONEY"))-0;
 				pd.put("WEIRENLINGJINE", money1);
 
 			}
@@ -279,12 +279,9 @@ public class ClaimantController extends BaseController {
 		titles.add("认款类型");	//1
 		titles.add("项目编号");	//1
 		titles.add("项目名称");	//2
-		titles.add("合同总价");	//2
 		titles.add("认领时间");	//3
 		titles.add("认领人名称");	//4
 		titles.add("认领金额");	//5
-		titles.add("未认领金额");	//5
-		titles.add("是否完成认款");	//5
 		titles.add("备注");	//6
 		dataMap.put("titles", titles);
 		List<PageData> varOList = claimantService.listAll(pd);
@@ -294,13 +291,10 @@ public class ClaimantController extends BaseController {
 			vpd.put("var1", varOList.get(i).getString("RENKUAILEIXING"));	    //1
 			vpd.put("var2", varOList.get(i).getString("PROJECT_ID"));	    //1
 			vpd.put("var3", varOList.get(i).getString("PROJECT_NAME"));	    //2
-			vpd.put("var4", varOList.get(i).get("CONTRACT_PRICE").toString());	    //2
 			vpd.put("var5", varOList.get(i).getString("CREATE_TIME"));	    //3
 			vpd.put("var6", varOList.get(i).getString("CLAIMANT_NAME"));	    //4
 			vpd.put("var7", varOList.get(i).get("CLAIMANT_MONEY").toString());	//5
-			vpd.put("var8", varOList.get(i).get("WEIRENLINGJINE").toString());	//5
-			vpd.put("var9", varOList.get(i).get("SHIFOURENKUAN").toString());	//5
-			vpd.put("var10", varOList.get(i).getString("BZ"));	    //6
+			vpd.put("var8", varOList.get(i).getString("BZ"));	    //6
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

@@ -71,9 +71,10 @@
                           <%--          <th class="center">项目编号</th>
                                     <th class="center">项目名称</th>--%>
                                    <%-- <th class="center">回款期数</th>--%>
+                                    <th class="center">未认领金额</th>
                                     <th class="center">进款金额(元)</th>
                                     <th class="center">回款单位</th>
-                                    <th class="center">日期</th>
+                                    <th class="center">回款日期</th>
 
                                     <th class="center">备注</th>
                                     <th class="center">附件</th>
@@ -101,6 +102,7 @@
                                                     <td class='center'>${var.PROJECT_NAME}</td>--%>
                                                  <%--   <td class='center'>${var.HUIKUAN}</td>--%>
                                                     <td class='center'><c:if test="${var.INCOME_MONEY<=0}">是</c:if><c:if test="${var.INCOME_MONEY>0}">否</c:if></td>
+                                                    <td class='center'>${var.WEILINGJINE}</td>
                                                     <td class='center'>${var.INCOME_MONEY}</td>
                                                     <td class='center'>${var.RETURN_MONEY}</td>
                                                     <td class='center'>${var.CREATE_DATE}</td>

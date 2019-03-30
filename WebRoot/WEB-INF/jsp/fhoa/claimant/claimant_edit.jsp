@@ -56,12 +56,12 @@
                                 <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>项目名称:</td>
                                 <td><input readonly type="text" name="PROJECT_NAME" id="PROJECT_NAME" value="${pd.PROJECT_NAME}" maxlength="50" placeholder="这里输入项目名称" title="项目名称" style="width:98%;"/></td>
                             </tr>
-							<tr>
+						<%--	<tr>
 
 
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>合同总额:</td>
 								<td><input  name="CONTRACT_PRICE" id="CONTRACT_PRICE" value="${pd.CONTRACT_PRICE}" type="text"  placeholder="合同总额" title="合同总额" style="width:98%;"/></td>
-							</tr>
+							</tr>--%>
 							<tr>
 
 
@@ -137,7 +137,7 @@
 				$("#RENKUAILEIXING").focus();
 			return false;
 			}
-			if($("#CONTRACT_PRICE").val()==""){
+		/*	if($("#CONTRACT_PRICE").val()==""){
 				$("#CONTRACT_PRICE").tips({
 					side:3,
 		            msg:'请输入合同总额',
@@ -146,7 +146,7 @@
 		        });
 				$("#CONTRACT_PRICE").focus();
 			return false;
-			}
+			}*/
 			if($("#PROJECT_NAME").val()==""){
 				$("#PROJECT_NAME").tips({
 					side:3,
