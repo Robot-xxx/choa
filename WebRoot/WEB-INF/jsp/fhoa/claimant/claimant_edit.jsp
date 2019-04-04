@@ -31,7 +31,7 @@
 						<input type="hidden" name="SYS_ID" id="SYS_ID" value="${pd.SYS_ID}"/>
 						<input type="hidden" name="money" id="money" value="${pd.money}"/>
 						<input type="hidden" name="moneyId" id="moneyId" value="${pd.moneyId}"/>
-						<input type="hidden" name="CONTRACT_PRICE" id="hetongMoney" value=""/>
+						<input type="hidden" name="CONTRACT_PRICE" id="hetongMoney" value="${pd.money}"/>
 						<input type="hidden" name="PROJECT_MARKET_ID" id="PROJECT_MARKET_ID" value="${pd.PROJECT_MARKET_ID}"/>
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">

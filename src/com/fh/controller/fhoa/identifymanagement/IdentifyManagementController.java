@@ -112,9 +112,6 @@ public class IdentifyManagementController extends BaseController {
 		List<PageData>	varList = identifymanagementService.list(page);	//列出IdentifyManagement列表
 
 
-		for (int i = 0; i <varList.size() ; i++) {
-			varList.get(i).put("CREATE_DATE",sd.format(varList.get(i).get("CREATE_DATE")));
-		}
 
 		mv.setViewName("fhoa/identifymanagement/identifymanagement_list");
 		mv.addObject("varList", varList);

@@ -108,7 +108,7 @@
                                                     <td class='center'>${var.CREATE_DATE}</td>
                                                     <td class='center'>${var.BZ}</td>
                                                     <td class='center'><a onclick="allOaFile('${var.IDENTIFYMANAGEMENT_ID}','5e90f10240ad487bbbf12eaea0831258')" style=" cursor:pointer;">查看附件</a></td>
-                                                    <td class='center'><a class="btn btn-mini btn-purple" onclick="addRenKuan('${var.RENKUAILEIXING}','${var.INCOME_MONEY}','${var.IDENTIFYMANAGEMENT_ID}','${var.PROJECT_ID}','${var.PROJECT_NAME}')">
+                                                    <td class='center'><a class="btn btn-mini btn-purple" onclick="addRenKuan('${var.RENKUAILEIXING}','${var.WEILINGJINE}','${var.IDENTIFYMANAGEMENT_ID}','${var.PROJECT_ID}','${var.PROJECT_NAME}')">
                                                         <i class="icon-pencil"></i>认款</a>
                                                     </td>
 

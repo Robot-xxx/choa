@@ -29,13 +29,24 @@ public interface IdentifyManagementManager{
 	 * @throws Exception
 	 */
 	public void edit(PageData pd)throws Exception;
-	
+	/**修改
+	 * @param pd
+	 * @throws Exception
+	 */
+	public void editFoProjectId(PageData pd)throws Exception;
+
 	/**列表
 	 * @param page
 	 * @throws Exception
 	 */
 	public List<PageData> list(Page page)throws Exception;
-	
+
+	/**列表
+	 * @param page
+	 * @throws Exception
+	 */
+	public List<PageData> identifyFoProjcetId(Page page)throws Exception;
+
 	/**列表(全部)
 	 * @param pd
 	 * @throws Exception

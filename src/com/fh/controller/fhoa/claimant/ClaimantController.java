@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
+
+import com.fh.service.fhoa.identifymanagement.IdentifyManagementManager;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -38,6 +40,8 @@ public class ClaimantController extends BaseController {
 	String menuUrl = "claimant/list.do"; //菜单地址(权限用)
 	@Resource(name="claimantService")
 	private ClaimantManager claimantService;
+	@Resource(name="identifymanagementService")
+	private IdentifyManagementManager identifymanagementService;
 	SimpleDateFormat sd =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	@RequestMapping(value="/getAllInstrument")
 	@ResponseBody
@@ -90,44 +94,29 @@ public class ClaimantController extends BaseController {
 	 */
 	@RequestMapping(value="/save")
 	public ModelAndView save() throws Exception{
+		Page page = new Page();
 		logBefore(logger, Jurisdiction.getUsername()+"新增Claimant");
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "add")){return null;} //校验权限
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		PageData pd2 = new PageData();
+
 		pd = this.getPageData();
 		pd.put("SYS_ID", this.get32UUID());	//主键
-		//认款金额
-		Double money = Double.valueOf(pd.getString("money"))- Double.valueOf(pd.getString("CLAIMANT_MONEY"));
-		//认领金额
-		pd.put("INCOME_MONEY",money);
+
+		page.setPd(pd);
+		pd.put("IDENTIFYMANAGEMENT_ID",pd.getString("moneyId"));
+		//获取回款时间和回款金额
+		pd2= identifymanagementService.findById(pd);
 		//认款类型
 		pd.put("RENKUAILEIXING",pd.getString("RENKUAILEIXING"));
 
-		//未认领金额
-		pd2 = claimantService.findOneClaimant(pd.getString("PROJECT_ID"));
 		Double money1 = 0.0;
-		if(pd.getString("RENKUAILEIXING").equals("货款")) {
 
-			if (pd2 == null) {
-				money1 = Double.valueOf(pd.get("CONTRACT_PRICE").toString()) - Double.valueOf(pd.getString("CLAIMANT_MONEY"))-0;
-				pd.put("WEIRENLINGJINE", money1);
-			} else {
-				money1 = Double.valueOf(pd2.get("WEIRENLINGJINE").toString()) - Double.valueOf(pd.getString("CLAIMANT_MONEY"))-0;
-				pd.put("WEIRENLINGJINE", money1);
+		money1 = Double.valueOf(pd.get("money").toString()) - Double.valueOf(pd.getString("CLAIMANT_MONEY"));
 
-			}
-
-		}else{
-			if (pd2 == null) {
-				money1 = Double.valueOf(pd.get("CONTRACT_PRICE").toString()) - Double.valueOf(pd.getString("CLAIMANT_MONEY"));
-				pd.put("WEIRENLINGJINE", money1);
-			} else {
-				money1 = Double.valueOf(pd2.get("WEIRENLINGJINE").toString()) - Double.valueOf(pd.getString("CLAIMANT_MONEY"));
-				pd.put("WEIRENLINGJINE", money1);
-
-			}
-		}
+		pd.put("WEILINGJINE",money1);
+		identifymanagementService.editFoProjectId(pd);
 
 		//是否认款
 		if(money1<=0){
@@ -138,9 +127,10 @@ public class ClaimantController extends BaseController {
 
 
 
-		claimantService.updateMoney(pd);
-		pd.put("UPDATETIME", sd.format(new Date()));
 
+		pd.put("UPDATETIME", sd.format(new Date()));
+		pd.put("HUIKUANRIQI",pd2.getString("CREATE_DATE"));
+		pd.put("JINKUANJINE",pd2.get("INCOME_MONEY").toString());
 		claimantService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
@@ -198,6 +188,7 @@ public class ClaimantController extends BaseController {
 		}
 		page.setPd(pd);
 		List<PageData>	varList = claimantService.list(page);	//列出Claimant列表
+
 		mv.setViewName("fhoa/claimant/claimant_list");
 		mv.addObject("varList", varList);
 		mv.addObject("pd", pd);

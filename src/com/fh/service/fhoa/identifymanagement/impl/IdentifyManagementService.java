@@ -43,6 +43,13 @@ public class IdentifyManagementService implements IdentifyManagementManager{
 	public void edit(PageData pd)throws Exception{
 		dao.update("IdentifyManagementMapper.edit", pd);
 	}
+	/**修改
+	 * @param pd
+	 * @throws Exception
+	 */
+	public void editFoProjectId(PageData pd)throws Exception{
+		dao.update("IdentifyManagementMapper.editFoProjectId", pd);
+	}
 	
 	/**列表
 	 * @param page
@@ -51,6 +58,14 @@ public class IdentifyManagementService implements IdentifyManagementManager{
 	@SuppressWarnings("unchecked")
 	public List<PageData> list(Page page)throws Exception{
 		return (List<PageData>)dao.findForList("IdentifyManagementMapper.datalistPage", page);
+	}
+	/**列表
+	 * @param page
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	public List<PageData> identifyFoProjcetId(Page page)throws Exception{
+		return (List<PageData>)dao.findForList("IdentifyManagementMapper.identifyFoProjcetId", page);
 	}
 	
 	/**列表(全部)

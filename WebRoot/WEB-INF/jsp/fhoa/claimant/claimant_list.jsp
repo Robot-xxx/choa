@@ -60,9 +60,11 @@
 									<th class="center">认款类型</th>
 									<th class="center">项目编号</th>
 									<th class="center">项目名称</th>
+									<th class="center">回款时间</th>
 									<th class="center">认领时间</th>
 									<th class="center">认领人名称</th>
 									<th class="center">认领金额(元)</th>
+									<th class="center">进款金额(元)</th>
 									<th class="center">备注</th>
 									<th class="center">操作</th>
 								</tr>
@@ -83,9 +85,11 @@
 											<td class='center'>${var.PROJECT_ID}</td>
 											<td class='center'>${var.PROJECT_NAME}</td>
 
+											<td class='center'>${var.HUIKUANRIQI}</td>
 											<td class='center'>${var.CREATE_TIME}</td>
 											<td class='center'>${var.CLAIMANT_NAME}</td>
 											<td class='center'>${var.CLAIMANT_MONEY}</td>
+											<td class='center'>${var.JINKUANJINE}</td>
 											<td class='center'>${var.BZ}</td>
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">

@@ -33,11 +33,11 @@
 						<table id="table_report" class="table table-striped table-bordered table-hover">
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>进款金额(元):</td>
-								<td><input type="number" readonly name="INCOME_MONEY" id="INCOME_MONEY" value="${pd.INCOME_MONEY}" maxlength="32" placeholder="这里输入进款金额" title="进款金额" style="width:98%;"/></td>
+								<td><input type="number"  name="INCOME_MONEY" id="INCOME_MONEY" value="${pd.INCOME_MONEY}" maxlength="32" placeholder="这里输入进款金额" title="进款金额" style="width:98%;"/></td>
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>未领金额:</td>
-								<td><input type="number" name="WEILINGJINE" id="WEILINGJINE" value="${pd.WEILINGJINE}" maxlength="32" placeholder="这里输入未领金额" title="未领金额" style="width:98%;"/></td>
+								<td><input type="number" readonly name="WEILINGJINE" id="WEILINGJINE" value="${pd.WEILINGJINE}" maxlength="32" placeholder="这里输入未领金额" title="未领金额" style="width:98%;"/></td>
 							</tr>
 
 							<tr>
@@ -154,7 +154,7 @@
 
 		$(function() {
 
-		    $("#WEILINGJINE").keyup(function (){$("#INCOME_MONEY").val($("#WEILINGJINE").val());
+		    $("#INCOME_MONEY").keyup(function (){$("#WEILINGJINE").val($("#INCOME_MONEY").val());
 
 			})
 

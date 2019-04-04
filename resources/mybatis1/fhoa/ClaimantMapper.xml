@@ -27,6 +27,8 @@
 		f.WEIRENLINGJINE,
 		f.SHIFOURENKUAN,
 		f.WEIRENLINGZONGE,
+		f.JINKUANJINE,
+		f.HUIKUANRIQI,
 
 		f.SYS_ID
 	</sql>
@@ -46,6 +48,8 @@
 		WEIRENLINGJINE,
 		SHIFOURENKUAN,
 		WEIRENLINGZONGE,
+		JINKUANJINE,
+		HUIKUANRIQI,
 
 		SYS_ID
 	</sql>
@@ -65,6 +69,8 @@
 		#{WEIRENLINGJINE},
 		#{SHIFOURENKUAN},
 		#{WEIRENLINGZONGE},
+		#{JINKUANJINE},
+		#{HUIKUANRIQI},
 
 		#{SYS_ID}
 	</sql>
@@ -106,6 +112,8 @@
 			WEIRENLINGJINE = #{WEIRENLINGJINE},
 			SHIFOURENKUAN = #{SHIFOURENKUAN},
 			WEIRENLINGZONGE = #{WEIRENLINGZONGE},
+			JINKUANJINE = #{JINKUANJINE},
+			HUIKUANRIQI = #{HUIKUANRIQI},
 
 		SYS_ID = SYS_ID
 		where
@@ -162,16 +170,6 @@
 	</delete>
 
 
-
-	<!-- 修改 -->
-	<update id="updateMoney" parameterType="pd">
-		update
-			oa_identify_management
-		set
-		INCOME_MONEY = #{INCOME_MONEY}
-		where
-		IDENTIFYMANAGEMENT_ID = #{moneyId}
-	</update>
 
 	<select id="findProjectMarket" parameterType="String" resultType="pd">
 		select
