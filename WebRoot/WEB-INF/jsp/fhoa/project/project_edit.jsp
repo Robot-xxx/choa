@@ -107,13 +107,13 @@
 
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">业务联系人:</td>
-                                        <td><input type="text" readonly name="LINKMAN" id="LINKMAN"
+                                        <td><input type="text"  name="LINKMAN" id="LINKMAN"
                                                    value="${pd.LINKMAN}" maxlength="50" placeholder="这里输入联系人"
                                                    title="联系人" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">业务联系人电话:</td>
-                                        <td><input type="text" readonly name="BUSINESS_PEOPLE" id="BUSINESS_PEOPLE"
+                                        <td><input type="text"  name="BUSINESS_PEOPLE" id="BUSINESS_PEOPLE"
                                                    value="${pd.BUSINESS_PEOPLE}" maxlength="50" placeholder="这里输入联系人"
                                                    title="联系人" style="width:98%;"/></td>
                                     </tr>

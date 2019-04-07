@@ -144,18 +144,18 @@
                                                    data-date-format="yyyy-mm-dd" readonly="readonly"
                                                    placeholder="合同签订时间" title="合同签订时间" style="width:98%;"/></td>
                                     </tr>
-                                    <tr>
+                                   <%-- <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">到货期时间:</td>
                                         <td>
                                             <input class="span10 date-picker" placeholder="到货期时间" data-date-format="yyyy-mm-dd" readonly  type="text" name="DAOHUOQI" id="DAOHUOQI" value="${pd.DAOHUOQI}" maxlength="100" style="width:98%;"/>
                                         </td>
-                                    </tr>
-                                    <tr>
+                                    </tr>--%>
+                               <%--     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">验收时间:</td>
                                         <td>
                                             <input class="span10 date-picker" placeholder="验收时间" data-date-format="yyyy-mm-dd" readonly  type="text" name="YANSHOUSHIJIAN" id="YANSHOUSHIJIAN" value="${pd.YANSHOUSHIJIAN}" maxlength="100" style="width:98%;"/>
                                         </td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><span style="color: red">*</span>合同总价(元):</td>
                                         <td><input type="text" name="CONTRACT_PRICE" id="CONTRACT_PRICE"

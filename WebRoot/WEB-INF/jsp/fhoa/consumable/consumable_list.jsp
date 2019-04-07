@@ -69,7 +69,6 @@
 									<th class="center">产品名称</th>
 									<th class="center">型号丶规格</th>
 									<th class="center">生产厂家</th>
-									<th class="center">注册证号</th>
 									<th class="center">注册证类别</th>
 									<th class="center">上传者</th>
 
@@ -94,7 +93,6 @@
 											<td class='center'>${var.PRODUCT_NAME}</td>
 											<td class='center'>${var.MODEL}</td>
 											<td class='center'>${var.MANUFACTURERS}</td>
-											<td class='center'>${var.REGISTRATION}</td>
 											<td class='center'>${var.BUSINESS}</td>
 											<td class='center'>${var.FUZEREN}</td>
 											<td class='center'><a onclick="allOaFile('${var.CONSUMABLE_ID}','14990971a69d4be1b26f6d7c4a99f9ff')" style=" cursor:pointer;">查看附件</a></td>

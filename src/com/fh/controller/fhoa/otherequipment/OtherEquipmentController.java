@@ -84,7 +84,6 @@ public class OtherEquipmentController extends AcStartController {
 			map1.put("产品名称", pd.getString("PRODUCT_NAME"));
 			map1.put("型号、规格", pd.getString("MODEL"));
 			map1.put("生产厂家", pd.getString("MANUFACTURERS"));
-			map1.put("注册证号", pd.getString("REGISTRATION"));
 			map1.put("注册证类型", pd.getString("BUSINESS"));
 			map1.put("生产批次", pd.getString("BATCH"));
 
@@ -276,12 +275,12 @@ public class OtherEquipmentController extends AcStartController {
 		titles.add("产品名称");	//2
 		titles.add("型号丶规格");	//3
 		titles.add("生产厂家");	//4
-		titles.add("注册证号");	//5
 		titles.add("注册证类别");	//6
 		titles.add("生产批次");	//7
 		titles.add("纸质资料是否齐全");	//7
 		titles.add("补交时间");	//7
 		titles.add("上传者");	//7
+		titles.add("状态");	//7
 		titles.add("备注");	//9
 		dataMap.put("titles", titles);
 		List<PageData> varOList = otherequipmentService.listAll(pd);
@@ -292,10 +291,16 @@ public class OtherEquipmentController extends AcStartController {
 			vpd.put("var2", varOList.get(i).getString("PRODUCT_NAME"));	    //2
 			vpd.put("var3", varOList.get(i).getString("MODEL"));	    //3
 			vpd.put("var4", varOList.get(i).getString("MANUFACTURERS"));	    //4
-			vpd.put("var5", varOList.get(i).getString("REGISTRATION"));	    //5
-			vpd.put("var6", varOList.get(i).getString("BUSINESS"));	    //6
-			vpd.put("var7", varOList.get(i).getString("BATCH"));	    //7
-			vpd.put("var8", varOList.get(i).getString("FUZEREN"));	    //8
+			vpd.put("var5", varOList.get(i).getString("BUSINESS"));	    //6
+			vpd.put("var6", varOList.get(i).getString("BATCH"));	    //7
+			vpd.put("var7", varOList.get(i).getString("FUZEREN"));	    //8
+			if(varOList.get(i).getString("STATUS").equals("1")){
+				vpd.put("var8", varOList.get(i).getString("已审批"));	    //6
+			}else if(varOList.get(i).getString("STATUS").equals("2")){
+				vpd.put("var8", varOList.get(i).getString("未审批"));	    //6
+			}else{
+				vpd.put("var8", varOList.get(i).getString("审批中"));	    //6
+			}
 			vpd.put("var9", varOList.get(i).getString("ACCESSORY"));	    //9
 			varList.add(vpd);
 		}

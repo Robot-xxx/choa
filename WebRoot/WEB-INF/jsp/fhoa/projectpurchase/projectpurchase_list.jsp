@@ -71,8 +71,12 @@
 									<th class="center">供应商名称</th>
 
 									<th class="center">合同签订时间</th>
+<%--
 									<th class="center">到货期时间</th>
+--%>
+<%--
 									<th class="center">验收时间</th>
+--%>
 									<th class="center">合同金额(元)</th>
 									<%--<th class="center">是否资料齐全</th>--%>
 
@@ -106,8 +110,12 @@
 
 											<td class='center'>${var.SUPPLIERNAME}</td>
 											<td class='center'>${var.CONTRACT_SIGN_TIME}</td>
+<%--
 											<td class='center'>${var.DAOHUOQI}</td>
+--%>
+<%--
 											<td class='center'>${var.YANSHOUSHIJIAN}</td>
+--%>
 											<td class='center'>${var.CONTRACT_PRICE}</td>
 										<%--	<td class='center'>${var.ISZILIAOQQ}</td>--%>
 

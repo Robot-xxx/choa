@@ -67,7 +67,6 @@ public class ConsumableController extends AcStartController {
             map1.put("产品名称", pd.getString("PRODUCT_NAME"));
             map1.put("型号、规格", pd.getString("MODEL"));
             map1.put("生产厂家", pd.getString("MANUFACTURERS"));
-            map1.put("注册证号", pd.getString("REGISTRATION"));
             map1.put("注册证类型", pd.getString("BUSINESS"));
             map1.put("生产批次", pd.getString("BATCH"));
             map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("CONSUMABLE_ID")+"','14990971a69d4be1b26f6d7c4a99f9ff')\" style=' cursor:pointer;'>查看附件</a>");
@@ -308,9 +307,9 @@ public class ConsumableController extends AcStartController {
         titles.add("产品名称");    //3
         titles.add("型号丶规格");    //4
         titles.add("生产厂家");    //5
-        titles.add("注册证号");    //6
         titles.add("注册证类别");    //7
         titles.add("上传者");    //8
+        titles.add("状态");    //8
 
         dataMap.put("titles", titles);
         List<PageData> varOList = consumableService.listAll(pd);
@@ -322,9 +321,15 @@ public class ConsumableController extends AcStartController {
             vpd.put("var3", varOList.get(i).getString("PRODUCT_NAME"));        //3
             vpd.put("var4", varOList.get(i).getString("MODEL"));        //4
             vpd.put("var5", varOList.get(i).getString("MANUFACTURERS"));        //5
-            vpd.put("var6", varOList.get(i).getString("REGISTRATION"));        //6
-            vpd.put("var7", varOList.get(i).getString("BUSINESS"));        //7
-            vpd.put("var8", varOList.get(i).getString("FUZEREN"));        //8
+            vpd.put("var6", varOList.get(i).getString("BUSINESS"));        //7
+            vpd.put("var7", varOList.get(i).getString("FUZEREN"));        //8
+            if(varOList.get(i).getString("STATUS").equals("1")){
+                vpd.put("var8", varOList.get(i).getString("已审批"));	    //6
+            }else if(varOList.get(i).getString("STATUS").equals("2")){
+                vpd.put("var8", varOList.get(i).getString("未审批"));	    //6
+            }else{
+                vpd.put("var8", varOList.get(i).getString("审批中"));	    //6
+            }
 
             varList.add(vpd);
         }

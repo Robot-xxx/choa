@@ -50,10 +50,10 @@
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>生产厂家:</td>
 								<td><input type="text" name="MANUFACTURERS" id="MANUFACTURERS" value="${pd.MANUFACTURERS}" maxlength="255" placeholder="这里输入生产厂家" title="生产厂家" style="width:98%;"/></td>
 							</tr>
-							<tr>
+					<%--		<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>注册证号:</td>
 								<td><input type="text" name="REGISTRATION" id="REGISTRATION" value="${pd.REGISTRATION}" maxlength="255" placeholder="这里输入注册证号" title="注册证号" style="width:98%;"/></td>
-							</tr>
+							</tr>--%>
 
 
 							<tr>

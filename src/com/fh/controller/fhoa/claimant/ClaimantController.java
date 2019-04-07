@@ -131,6 +131,7 @@ public class ClaimantController extends BaseController {
 		pd.put("UPDATETIME", sd.format(new Date()));
 		pd.put("HUIKUANRIQI",pd2.getString("CREATE_DATE"));
 		pd.put("JINKUANJINE",pd2.get("INCOME_MONEY").toString());
+		pd.put("HUIKUANDANWEI",pd2.get("RETURN_MONEY").toString());
 		claimantService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

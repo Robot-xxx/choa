@@ -169,47 +169,55 @@ public class TicketController extends AcStartController {
 		if(null != keywords && !"".equals(keywords)){
 			pd.put("keywords", keywords.trim());
 		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028135540')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028180980')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028198917')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028334317')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028366864')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028393142')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028397702')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028424192')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028494663')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028494663')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028664118')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028805468')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028850724')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181029191323')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
+
+		if(
+				!Jurisdiction.getRnumbers().equals("('R20181028683296')") ||
+						!Jurisdiction.getRnumbers().equals("('R20181028664118')") ||
+						!Jurisdiction.getRnumbers().equals("('R20190123706606')")
+		) {
+
+			if (Jurisdiction.getRnumbers().equals("('R20181028135540')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028180980')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028198917')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028334317')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028366864')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028393142')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028397702')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028424192')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028494663')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028494663')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028664118')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028805468')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028850724')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181029191323')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
 		}
 		page.setPd(pd);
 		List<PageData>	varList = ticketService.list(page);	//列出Ticket列表
@@ -301,6 +309,7 @@ public class TicketController extends AcStartController {
 		titles.add("进项票备注");	//7
 		titles.add("开票原因");	//7
 		titles.add("更新时间");	//7
+		titles.add("状态");	//7
 		dataMap.put("titles", titles);
 		List<PageData> varOList = ticketService.listAll(pd);
 		List<PageData> varList = new ArrayList<PageData>();
@@ -317,6 +326,13 @@ public class TicketController extends AcStartController {
 			vpd.put("var9", varOList.get(i).getString("TICKET_INFO"));	    //7
 			vpd.put("var10", varOList.get(i).getString("OPEN_TICKET_YUANYIN"));	    //7
 			vpd.put("var11", varOList.get(i).getString("UPDATETIME"));	    //7
+			if(varOList.get(i).getString("STATUS").equals("1")){
+				vpd.put("var12", varOList.get(i).getString("已审批"));	    //6
+			}else if(varOList.get(i).getString("STATUS").equals("2")){
+				vpd.put("var12", varOList.get(i).getString("未审批"));	    //6
+			}else{
+				vpd.put("var12", varOList.get(i).getString("审批中"));	    //6
+			}
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

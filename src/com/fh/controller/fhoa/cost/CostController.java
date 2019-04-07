@@ -231,49 +231,56 @@ public class CostController extends AcStartController {
 			pd.put("keywords", keywords.trim());
 		}
 		System.out.println(Jurisdiction.getRnumbers());
-		if(Jurisdiction.getRnumbers().equals("('R20181028135540')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028180980')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028198917')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028334317')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028366864')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028393142')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028397702')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028424192')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028494663')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028494663')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028664118')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028805468')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028850724')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181029191323')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
 
+		if(
+				!Jurisdiction.getRnumbers().equals("('R20181028683296')") ||
+						!Jurisdiction.getRnumbers().equals("('R20181028664118')") ||
+						!Jurisdiction.getRnumbers().equals("('R20190123706606')")
+		) {
+
+			if (Jurisdiction.getRnumbers().equals("('R20181028135540')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028180980')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028198917')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028334317')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028366864')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028393142')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028397702')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028424192')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028494663')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028494663')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028664118')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028805468')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028850724')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181029191323')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+		}
 		page.setPd(pd);
 		List<PageData>	varList = costService.list(page);	//列出Cost列表
 
@@ -367,6 +374,7 @@ public class CostController extends AcStartController {
 		titles.add("报销人");	//5
 		titles.add("报销截止日期");	//6
 		titles.add("更新时间");	//6
+		titles.add("状态");	//6
 		titles.add("备注");	//7
 		dataMap.put("titles", titles);
 		List<PageData> varOList = costService.listAll(pd);
@@ -382,7 +390,14 @@ public class CostController extends AcStartController {
 			vpd.put("var7", varOList.get(i).get("BXR").toString());	//6
 			vpd.put("var8", varOList.get(i).get("JIEZHIRIQI"));	//6
 			vpd.put("var9", varOList.get(i).get("UPDATETIME"));	//6
-			vpd.put("var10", varOList.get(i).getString("BZ"));	    //7
+			if(varOList.get(i).getString("STATUS").equals("1")){
+				vpd.put("var10", varOList.get(i).getString("已审批"));	    //6
+			}else if(varOList.get(i).getString("STATUS").equals("2")){
+				vpd.put("var10", varOList.get(i).getString("未审批"));	    //6
+			}else{
+				vpd.put("var10", varOList.get(i).getString("审批中"));	    //6
+			}
+			vpd.put("var11", varOList.get(i).getString("BZ"));	    //7
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

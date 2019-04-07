@@ -111,21 +111,21 @@
                                                    value="${pd.WINNING_PRICE}" maxlength="50" placeholder="这里输入中标价格(元)"
                                                    title="中标价格(元)" style="width:98%;"/></td>
                                     </tr>
-                                    <tr>
+                                <%--    <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">中标服务费垫资金额（元）:</td>
                                         <td><input onchange="change1(this.value)" type="text" name="SERVICE_PRICE" id="SERVICE_PRICE"
                                                    value="${pd.SERVICE_PRICE}" maxlength="50"
                                                    placeholder="这里输入中标服务费垫资金额（元）" title="中标服务费垫资金额（元）"
                                                    style="width:98%;"/></td>
-                                    </tr>
-                                    <tr>
+                                    </tr>--%>
+                                 <%--   <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">投标保证金垫资金额(元):</td>
                                         <td><input onchange="change2(this.value)" type="text" name="GUARANTEE_MONEY" id="GUARANTEE_MONEY"
                                                    value="${pd.GUARANTEE_MONEY}" maxlength="50"
                                                    placeholder="这里输入投标保证金垫资金额(元)" title="投标保证金垫资金额(元)"
                                                    style="width:98%;"/></td>
-                                    </tr>
-                                    <tr>
+                                    </tr>--%>
+                              <%--      <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">投标保证金预计缴纳时间:</td>
                                         <td>
                                             <input class="span10 date-picker" name="SCHEDULED_TIME" id="SCHEDULED_TIME"
@@ -133,7 +133,7 @@
                                                    data-date-format="yyyy-mm-dd" readonly="readonly"
                                                    placeholder="投标保证金预计缴纳时间" title="投标保证金预计缴纳时间" style="width:98%;"/>
                                         </td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">投标保证金实际缴纳时间:</td>
                                         <td><input class="span10 date-picker" name="PRACTICAL_TIME" id="PRACTICAL_TIME"
@@ -150,7 +150,7 @@
                                                    style="width:98%;"/></td>
                                     </tr>
 
-                                    <tr>
+                              <%--      <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">中标服务费预计缴纳时间:</td>
                                         <td><input class="span10 date-picker" name="SCHEDULED_SERVICE_PRICE_TIME"
                                                    id="SCHEDULED_SERVICE_PRICE_TIME"
@@ -158,7 +158,7 @@
                                                    data-date-format="yyyy-mm-dd" readonly="readonly"
                                                    placeholder="中标服务费预计缴纳时间" title="中标服务费预计缴纳时间" style="width:98%;"/>
                                         </td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">中标服务费实际缴纳时间:</td>
                                         <td><input class="span10 date-picker" name="PRACTICAL_SERVICE_PRICE_TIME"

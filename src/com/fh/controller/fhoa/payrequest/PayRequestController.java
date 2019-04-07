@@ -195,6 +195,12 @@ public class PayRequestController extends AcStartController {
 		if(null != keywords && !"".equals(keywords)){
 			pd.put("keywords", keywords.trim());
 		}
+		if(
+				!Jurisdiction.getRnumbers().equals("('R20181028683296')") ||
+				!Jurisdiction.getRnumbers().equals("('R20181028664118')") ||
+				!Jurisdiction.getRnumbers().equals("('R20190123706606')")
+		) {
+
 		if(Jurisdiction.getRnumbers().equals("('R20181028135540')")) {
 			pd.put("USERID",Jurisdiction.getUSERID());
 		}
@@ -236,6 +242,7 @@ public class PayRequestController extends AcStartController {
 		}
 		if(Jurisdiction.getRnumbers().equals("('R20181029191323')")) {
 			pd.put("USERID",Jurisdiction.getUSERID());
+		}
 		}
 		page.setPd(pd);
 		List<PageData>	varList = payrequestService.list(page);	//列出PayRequest列表
@@ -400,6 +407,7 @@ public class PayRequestController extends AcStartController {
 		titles.add("来款情况");	//17
 		titles.add("付款约定");	//18
 		titles.add("付款时间");	//18
+		titles.add("状态");	//18
 		titles.add("备注");	//18
 		dataMap.put("titles", titles);
 		List<PageData> varOList = payrequestService.listAll(pd);
@@ -427,7 +435,14 @@ public class PayRequestController extends AcStartController {
 			vpd.put("var19", varOList.get(i).getString("LAIKUAN"));	    //17
 			vpd.put("var20", varOList.get(i).getString("FUKUANYUEDING"));	    //18
 			vpd.put("var21", varOList.get(i).get("UPDATETIME").toString());	    //7
-			vpd.put("var22", varOList.get(i).getString("BZ"));	    //18
+			if(varOList.get(i).getString("STATUS").equals("1")){
+				vpd.put("var22", varOList.get(i).getString("已审批"));	    //6
+			}else if(varOList.get(i).getString("STATUS").equals("2")){
+				vpd.put("var22", varOList.get(i).getString("未审批"));	    //6
+			}else{
+				vpd.put("var22", varOList.get(i).getString("审批中"));	    //6
+			}
+			vpd.put("var23", varOList.get(i).getString("BZ"));	    //18
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

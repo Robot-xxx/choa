@@ -78,12 +78,20 @@
 									<th class="center">招标代表</th>
 									<th class="center">中标单位</th>
 									<th class="center">中标价格(元)</th>
+<%--
 									<th class="center">投标保证金垫资金额(元)</th>
+--%>
+<%--
 									<th class="center">投标保证金预计缴纳时间</th>
+--%>
 									<th class="center">投标保证金实际缴纳时间</th>
 									<th class="center">开标日期</th>
+<%--
 									<th class="center">中标服务费垫资金额（元）</th>
+--%>
+<%--
 									<th class="center">中标服务费预计缴纳时间</th>
+--%>
 									<th class="center">中标服务费实际缴纳时间</th>
 									<th class="center">负责人</th>
 								<%--	<th class="center">是否资料齐全</th>--%>
@@ -125,12 +133,12 @@
 											<td class='center'>${var.REPRESENTATIVE}</td>
 											<td class='center'>${var.WINNING_UNIT}</td>
 											<td class='center'>${var.WINNING_PRICE}</td>
-											<td class='center'>${var.GUARANTEE_MONEY}</td>
-											<td class='center'>${var.SCHEDULED_TIME}</td>
+									<%--		<td class='center'>${var.GUARANTEE_MONEY}</td>
+											<td class='center'>${var.SCHEDULED_TIME}</td>--%>
 											<td class='center'>${var.PRACTICAL_TIME}</td>
 											<td class='center'>${var.BID_OPEN_TIME}</td>
-											<td class='center'>${var.SERVICE_PRICE}</td>
-											<td class='center'>${var.SCHEDULED_SERVICE_PRICE_TIME}</td>
+										<%--	<td class='center'>${var.SERVICE_PRICE}</td>
+											<td class='center'>${var.SCHEDULED_SERVICE_PRICE_TIME}</td>--%>
 											<td class='center'>${var.PRACTICAL_SERVICE_PRICE_TIME}</td>
 											<td class='center'>${var.FUZEREN}</td>
 										<%--	<td class='center'>${var.ISZILIAOQQ}</td>--%>

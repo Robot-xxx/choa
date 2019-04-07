@@ -73,9 +73,6 @@ public class ProjectPurchaseController extends AcStartController {
             map1.put("供应商序号", pd.getString("SUPPLIER_ID"));
             map1.put("供应商名称", pd.getString("SUPPLIERNAME"));
 
-            if (pd.get("CONTRACT_SIGN_TIME")!=null&&!pd.get("CONTRACT_SIGN_TIME").toString().equals("")){
-                map1.put("合同签订时间", pd.get("CONTRACT_SIGN_TIME").toString());
-            }
 
             map1.put("合同金额(元)", pd.get("CONTRACT_PRICE").toString());
             if (pd.get("CONTRACT_SIGN_TIME")!=null&&!pd.get("CONTRACT_SIGN_TIME").toString().equals("")){
@@ -398,13 +395,14 @@ public class ProjectPurchaseController extends AcStartController {
         titles.add("供应商");    //4
 
         titles.add("合同签订时间");    //9
-        titles.add("到货期时间");    //10
-        titles.add("验收时间");    //10
+/*        titles.add("到货期时间");    //10
+        titles.add("验收时间");    //10*/
         titles.add("合同总价(元)");    //10
         titles.add("风险条款");    //10
         titles.add("付款约定");    //10
         titles.add("负责人");    //10
         titles.add("更新时间");    //10
+        titles.add("状态");    //10
         titles.add("备注");    //10
         dataMap.put("titles", titles);
         List<PageData> varOList = projectpurchaseService.listAll(pd);
@@ -419,17 +417,24 @@ public class ProjectPurchaseController extends AcStartController {
 
 
                 vpd.put("var6", varOList.get(i).getString("CONTRACT_SIGN_TIME"));	    //8
-
+/*
                 vpd.put("var7", varOList.get(i).getString("DAOHUOQI"));	    //8
-                vpd.put("var8", varOList.get(i).getString("YANSHOUSHIJIAN"));	    //8
-                vpd.put("var9", varOList.get(i).getString("CONTRACT_PRICE"));	    //8
+                vpd.put("var8", varOList.get(i).getString("YANSHOUSHIJIAN"));	    //8*/
+                vpd.put("var7", varOList.get(i).getString("CONTRACT_PRICE"));	    //8
 
             //4
-            vpd.put("var10", varOList.get(i).getString("FENGXIANTIAOKUAN"));        //5
-            vpd.put("var11", varOList.get(i).getString("FUKUANYUEDING"));        //5
-            vpd.put("var12", varOList.get(i).getString("FUZEREN"));        //5
-            vpd.put("var13", varOList.get(i).get("UPDATETIME").toString());        //5
-            vpd.put("var14", varOList.get(i).getString("BZ"));        //5
+            vpd.put("var8", varOList.get(i).getString("FENGXIANTIAOKUAN"));        //5
+            vpd.put("var9", varOList.get(i).getString("FUKUANYUEDING"));        //5
+            vpd.put("var10", varOList.get(i).getString("FUZEREN"));        //5
+            vpd.put("var11", varOList.get(i).get("UPDATETIME").toString());        //5
+            if(varOList.get(i).getString("STATUS").equals("1")){
+                vpd.put("var12", varOList.get(i).getString("已审批"));	    //6
+            }else if(varOList.get(i).getString("STATUS").equals("2")){
+                vpd.put("var12", varOList.get(i).getString("未审批"));	    //6
+            }else{
+                vpd.put("var12", varOList.get(i).getString("审批中"));	    //6
+            }
+            vpd.put("var13", varOList.get(i).getString("BZ"));        //5
             varList.add(vpd);
         }
         dataMap.put("varList", varList);

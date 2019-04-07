@@ -175,47 +175,53 @@ public class InputTicketController extends BaseController {
 		if(null != keywords && !"".equals(keywords)){
 			pd.put("keywords", keywords.trim());
 		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028135540')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028180980')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028198917')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028334317')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028366864')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028393142')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028397702')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028424192')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028494663')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028494663')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028664118')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028805468')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181028850724')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
-		}
-		if(Jurisdiction.getRnumbers().equals("('R20181029191323')")) {
-			pd.put("USERID",Jurisdiction.getUSERID());
+		if(
+				!Jurisdiction.getRnumbers().equals("('R20181028683296')") ||
+						!Jurisdiction.getRnumbers().equals("('R20181028664118')") ||
+						!Jurisdiction.getRnumbers().equals("('R20190123706606')")
+		) {
+			if (Jurisdiction.getRnumbers().equals("('R20181028135540')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028180980')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028198917')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028334317')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028366864')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028393142')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028397702')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028424192')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028494663')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028494663')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028664118')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028805468')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181028850724')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
+			if (Jurisdiction.getRnumbers().equals("('R20181029191323')")) {
+				pd.put("USERID", Jurisdiction.getUSERID());
+			}
 		}
 		page.setPd(pd);
 		List<PageData>	varList = inputticketService.list(page);	//列出InputTicket列表

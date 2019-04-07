@@ -101,25 +101,25 @@
                                                    title="合同总价" style="width:98%;"/></td>
                                     </tr>
 
-                                    <tr>
+                               <%--     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>医院预付款（元）:</td>
                                         <td><input onchange="change(this.value)" type="text" name="EQUIPMENT_ADVANCE" id="EQUIPMENT_ADVANCE"
                                                    value="${pd.EQUIPMENT_ADVANCE}" maxlength="50"
                                                    placeholder="这里输入医院预付款" title="医院预付款" style="width:98%;"/></td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>预计到账时间:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>发货时间:</td>
                                         <td><input class="span10 date-picker" name="PREDICT_ACCOUNT_TIME"
                                                    id="PREDICT_ACCOUNT_TIME" value="${pd.PREDICT_ACCOUNT_TIME}"
                                                    type="text" data-date-format="yyyy-mm-dd" readonly="readonly"
-                                                   placeholder="预计到账时间" title="预计到账时间" style="width:98%;"/></td>
+                                                   placeholder="发货时间" title="发货时间" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">实际到账时间:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">合同签订时间:</td>
                                         <td><input class="span10 date-picker" name="PRACTICAL_ACCOUT_TIME"
                                                    id="PRACTICAL_ACCOUT_TIME" value="${pd.PRACTICAL_ACCOUT_TIME}"
                                                    type="text" data-date-format="yyyy-mm-dd" readonly="readonly"
-                                                   placeholder="实际到账时间" title="实际到账时间" style="width:98%;"/></td>
+                                                   placeholder="合同签订时间" title="合同签订时间" style="width:98%;"/></td>
                                     </tr>
                                  <%--   <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">累计开票总额:</td>
@@ -128,10 +128,10 @@
                                                    placeholder="这里输入累计开票总额" title="累计开票总额" style="width:98%;"/></td>
                                     </tr>--%>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">预计到货时间:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">实际到货时间:</td>
                                         <td><input class="span10 date-picker" name="ARRIVAL_TIME" id="ARRIVAL_TIME"
                                                    value="${pd.ARRIVAL_TIME}" type="text" data-date-format="yyyy-mm-dd"
-                                                   readonly="readonly" placeholder="到货时间" title="到货时间"
+                                                   readonly="readonly" placeholder="实际到货时间" title="实际到货时间"
                                                    style="width:98%;"/></td>
                                     </tr>
                                     <tr>

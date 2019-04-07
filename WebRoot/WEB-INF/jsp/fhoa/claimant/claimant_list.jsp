@@ -61,6 +61,7 @@
 									<th class="center">项目编号</th>
 									<th class="center">项目名称</th>
 									<th class="center">回款时间</th>
+									<th class="center">回款单位</th>
 									<th class="center">认领时间</th>
 									<th class="center">认领人名称</th>
 									<th class="center">认领金额(元)</th>
@@ -86,6 +87,7 @@
 											<td class='center'>${var.PROJECT_NAME}</td>
 
 											<td class='center'>${var.HUIKUANRIQI}</td>
+											<td class='center'>${var.HUIKUANDANWEI}</td>
 											<td class='center'>${var.CREATE_TIME}</td>
 											<td class='center'>${var.CLAIMANT_NAME}</td>
 											<td class='center'>${var.CLAIMANT_MONEY}</td>

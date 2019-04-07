@@ -324,6 +324,7 @@ public class SupplierController extends AcStartController {
 		titles.add("统一社会代码");	//7
 
         titles.add("上传者");	//6
+        titles.add("状态");	//6
 		titles.add("备注");	//9
 		dataMap.put("titles", titles);
 		List<PageData> varOList = supplierService.listAll(pd);
@@ -346,7 +347,15 @@ public class SupplierController extends AcStartController {
 
 			vpd.put("var10", varOList.get(i).getString("FUZHEREN"));	    //6
 
-			vpd.put("var11", varOList.get(i).getString("BZ"));	    //9
+			if(varOList.get(i).getString("STATUS").equals("1")){
+				vpd.put("var11", varOList.get(i).getString("已审批"));	    //6
+			}else if(varOList.get(i).getString("STATUS").equals("2")){
+				vpd.put("var11", varOList.get(i).getString("未审批"));	    //6
+			}else{
+				vpd.put("var11", varOList.get(i).getString("审批中"));	    //6
+			}
+
+			vpd.put("var12", varOList.get(i).getString("BZ"));	    //9
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

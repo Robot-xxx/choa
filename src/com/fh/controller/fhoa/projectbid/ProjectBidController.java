@@ -113,12 +113,12 @@ public class ProjectBidController extends AcStartController {
             map1.put("中标单位", pd.getString("WINNING_UNIT"));
             map1.put("中标价格（元）", pd.getString("WINNING_PRICE"));
 
-            map1.put("中标服务费垫资金额（元）", pd.getString("SERVICE_PRICE"));
-            map1.put("投标保证金垫资金额（元）", pd.getString("GUARANTEE_MONEY"));
-            map1.put("投标保证金预计缴纳时间", pd.getString("SCHEDULED_TIME"));
+          //  map1.put("中标服务费垫资金额（元）", pd.getString("SERVICE_PRICE"));
+          //  map1.put("投标保证金垫资金额（元）", pd.getString("GUARANTEE_MONEY"));
+      //      map1.put("投标保证金预计缴纳时间", pd.getString("SCHEDULED_TIME"));
             map1.put("投标保证金实际缴纳时间", pd.getString("PRACTICAL_TIME"));
             map1.put("开标日期", pd.getString("BID_OPEN_TIME"));
-            map1.put("中标服务费预计缴纳时间", pd.getString("SCHEDULED_SERVICE_PRICE_TIME"));
+            //map1.put("中标服务费预计缴纳时间", pd.getString("SCHEDULED_SERVICE_PRICE_TIME"));
             map1.put("中标服务费实际缴纳时间", pd.getString("PRACTICAL_SERVICE_PRICE_TIME"));
 
             map1.put("标书制作人", pd.getString("BIAOSHUZHIZUOREN"));
@@ -424,17 +424,18 @@ public class ProjectBidController extends AcStartController {
         titles.add("医院");    //3
         titles.add("中标单位");    //4
         titles.add("中标价格(元)");    //5
-        titles.add("中标服务费垫资金额（元）");    //6
-        titles.add("投标保证金垫资金额(元)");    //7
-        titles.add("投标保证金预计缴纳时间");    //8
+       // titles.add("中标服务费垫资金额（元）");    //6
+        //titles.add("投标保证金垫资金额(元)");    //7
+       // titles.add("投标保证金预计缴纳时间");    //8
         titles.add("投标保证金实际缴纳时间");    //9
         titles.add("开标日期");    //10
-        titles.add("中标服务费预计缴纳时间");    //11
+      //  titles.add("中标服务费预计缴纳时间");    //11
         titles.add("中标服务费实际缴纳时间");    //12
         titles.add("标书制作人");    //12
         titles.add("风险条款");    //12
         titles.add("负责人");    //12
         titles.add("更新时间");    //12
+        titles.add("状态");    //12
 
         titles.add("备注");    //12
 
@@ -479,7 +480,14 @@ public class ProjectBidController extends AcStartController {
             vpd.put("var18", varOList.get(i).getString("FUZEREN"));        //8
 
             vpd.put("var19", sd1.format(varOList.get(i).get("UPDATETIME")));        //12
-            vpd.put("var20", varOList.get(i).getString("BZ"));        //8
+            if(varOList.get(i).getString("STATUS").equals("1")){
+                vpd.put("var20", varOList.get(i).getString("已审批"));	    //6
+            }else if(varOList.get(i).getString("STATUS").equals("2")){
+                vpd.put("var20", varOList.get(i).getString("未审批"));	    //6
+            }else{
+                vpd.put("var20", varOList.get(i).getString("审批中"));	    //6
+            }
+            vpd.put("var21", varOList.get(i).getString("BZ"));        //8
 
 
             varList.add(vpd);
