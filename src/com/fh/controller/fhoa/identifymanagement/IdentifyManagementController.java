@@ -203,11 +203,11 @@ public class IdentifyManagementController extends BaseController {
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
 
-			vpd.put("var1", varOList.get(i).get("WEILINGJINE").toString());	//3
-			vpd.put("var2", varOList.get(i).get("INCOME_MONEY").toString());	//3
+			vpd.put("var1", varOList.get(i).getString("WEILINGJINE"));	//3
+			vpd.put("var2", varOList.get(i).getString("INCOME_MONEY"));	//3
 			vpd.put("var3", varOList.get(i).getString("RETURN_MONEY"));	    //4
-			vpd.put("var4", sd.format(varOList.get(i).get("CREATE_DATE")));	    //5
-			vpd.put("var5", sd.format(varOList.get(i).get("UPDATETIME")));	    //5
+			vpd.put("var4", varOList.get(i).get("CREATE_DATE").toString());	    //5
+			vpd.put("var5",  varOList.get(i).get("UPDATETIME").toString());	    //5
 			vpd.put("var6", varOList.get(i).getString("BZ"));	    //6
 			varList.add(vpd);
 		}

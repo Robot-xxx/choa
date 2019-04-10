@@ -57,7 +57,7 @@
                                                     style="vertical-align:top;width: 68px; width: 98%">
 
                                             </select>
-                                            <input type="hidden" name="FUZEREN" id="FUZEREN">
+                                            <input type="hidden" name="FUZEREN" id="FUZEREN" value="${pd.FUZEREN }">
                                             <input hidden type="text" name="SYS_ID" id="SYS_ID" value="${pd.SYS_ID}"
                                                    maxlength="100" placeholder="这里输入系统编序号" title="系统编序号"
                                                    style="width:98%;"/>
