@@ -219,18 +219,14 @@ public class ProjectBidController extends AcStartController {
         pd.put("PROJECT_BID_ID", projectbidid);    //主键
         //pd.put("FUZEREN", Jurisdiction.getUsername());    //主键
 
-        if (pd.getString("SCHEDULED_TIME").equals("")) {
-            pd.remove("SCHEDULED_TIME");
-        }
+
         if (pd.getString("PRACTICAL_TIME").equals("")) {
             pd.remove("PRACTICAL_TIME");
         }
         if (pd.getString("BID_OPEN_TIME").equals("")) {
             pd.remove("BID_OPEN_TIME");
         }
-        if (pd.getString("SCHEDULED_SERVICE_PRICE_TIME").equals("")) {
-            pd.remove("SCHEDULED_SERVICE_PRICE_TIME");
-        }
+
         if (pd.getString("PRACTICAL_SERVICE_PRICE_TIME").equals("")) {
             pd.remove("PRACTICAL_SERVICE_PRICE_TIME");
         }
