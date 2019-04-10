@@ -34,6 +34,7 @@
                             <input type="hidden" name="msg" id="msg" value="${msg }"/>
                             <input type="hidden" name="oafileList" id="oafileList">
                             <input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
+                            <input type="hidden" name="FUZEREN" id="FUZEREN" value="${pd.FUZEREN}" />
                             <input type="hidden" name="PROJECT_ID" id="PROJECT_ID" value="${pd.PROJECT_ID }">
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
@@ -59,7 +60,8 @@
                                                     style="vertical-align:top;width: 68px; width: 98%">
 
                                             </select>
-                                            <input type="hidden" name="FUZEREN" id="FUZEREN">
+
+
                                             <input type="text" hidden name="SYS_ID" id="SYS_ID" value="${pd.SYS_ID}"
                                                    maxlength="100" placeholder="这里输入系统编序号" title="系统编序号"
                                                    style="width:98%;"/>

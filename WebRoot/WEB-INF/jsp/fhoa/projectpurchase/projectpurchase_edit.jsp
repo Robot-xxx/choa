@@ -56,7 +56,7 @@
                                             <select class="chosen-select form-control" id="projectId">
 
                                             </select>
-                                            <input type="hidden" name="FUZEREN" id="FUZEREN">
+                                            <input type="hidden" name="FUZEREN" id="FUZEREN" value="${pd.FUZEREN }">
                                             <input readonly type="text" name="PROJECTNAME" id="PROJECTNAME"
                                                    value="${pd.PROJECTNAME}" style="width:44%;"/>
 

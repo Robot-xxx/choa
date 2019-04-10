@@ -81,7 +81,6 @@
 									<th class="center">下游序号</th>--%>
 									<th class="center">下游名称</th>
 									<th class="center">合同总价(元)</th>
-									<th class="center">医院预付款（元）</th>
 									<th class="center">发货时间</th>
 									<th class="center">合同签订时间</th>
 								<%--	<th class="center">累计开票总额</th>--%>
@@ -117,7 +116,6 @@
 											<td class='center'>${var.CLIENT_NAME}</td>
 
 											<td class='center'>${var.CONTRACT_PRICE}</td>
-											<td class='center'>${var.EQUIPMENT_ADVANCE}</td>
 											<td class='center'>${var.PREDICT_ACCOUNT_TIME}</td>
 											<td class='center'>${var.PRACTICAL_ACCOUT_TIME}</td>
 <%--
