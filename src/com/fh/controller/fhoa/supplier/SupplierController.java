@@ -348,11 +348,11 @@ public class SupplierController extends AcStartController {
 			vpd.put("var10", varOList.get(i).getString("FUZHEREN"));	    //6
 
 			if(varOList.get(i).getString("STATUS").equals("1")){
-				vpd.put("var11", varOList.get(i).getString("已审批"));	    //6
+				vpd.put("var11", "已审批");	    //6
 			}else if(varOList.get(i).getString("STATUS").equals("2")){
-				vpd.put("var11", varOList.get(i).getString("未审批"));	    //6
+				vpd.put("var11", "未审批");	    //6
 			}else{
-				vpd.put("var11", varOList.get(i).getString("审批中"));	    //6
+				vpd.put("var11","审批中");	    //6
 			}
 
 			vpd.put("var12", varOList.get(i).getString("BZ"));	    //9

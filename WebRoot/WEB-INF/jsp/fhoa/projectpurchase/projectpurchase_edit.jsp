@@ -185,7 +185,9 @@
                                         <td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
                                         <td><input type="text" name="BZ" value="${pd.BZ}"
                                                    maxlength="255" placeholder="这里输入备注" title="备注"
-                                                   style="width:98%;"/></td>
+                                                   style="width:98%;"/>
+                                            <span style="color: red;">如文件已上传齐，则注明资料已齐全；如果未齐全，则详细说明哪些资料未齐、预计补交时间</span>
+                                        </td>
                                     </tr>
 
                                     <tr>

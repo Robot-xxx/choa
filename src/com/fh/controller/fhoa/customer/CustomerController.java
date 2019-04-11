@@ -351,11 +351,11 @@ public class CustomerController extends AcStartController {
                 vpd.put("var10", varOList.get(i).getString("SHOUQUANWEITUO"));	    //8
             vpd.put("var11", varOList.get(i).getString("FUZEREN"));	    //6
             if(varOList.get(i).getString("STATUS").equals("1")){
-                vpd.put("var12", varOList.get(i).getString("已审批"));	    //6
+                vpd.put("var12", "已审批");	    //6
             }else if(varOList.get(i).getString("STATUS").equals("2")){
-                vpd.put("var12", varOList.get(i).getString("未审批"));	    //6
+                vpd.put("var12", "未审批");	    //6
             }else{
-                vpd.put("var12", varOList.get(i).getString("审批中"));	    //6
+                vpd.put("var12","审批中");	    //6
             }
             vpd.put("var13", varOList.get(i).getString("BZ"));        //10
             varList.add(vpd);

@@ -586,11 +586,11 @@ public class ProjectController extends AcStartController {
 			vpd.put("var13", varOList.get(i).getString("FUZEREN"));	    //12
 			vpd.put("var14", sd.format(varOList.get(i).get("UPDATETIME")));	    //12
 			if(varOList.get(i).getString("STATUS").equals("1")){
-				vpd.put("var15", varOList.get(i).getString("已审批"));	    //6
+				vpd.put("var15","已审批");	    //6
 			}else if(varOList.get(i).getString("STATUS").equals("2")){
-				vpd.put("var15", varOList.get(i).getString("未审批"));	    //6
+				vpd.put("var15", "未审批");	    //6
 			}else{
-				vpd.put("var15", varOList.get(i).getString("审批中"));	    //6
+				vpd.put("var15", "审批中");	    //6
 			}
 			vpd.put("var16", varOList.get(i).getString("BZ"));	    //12
 			varList.add(vpd);

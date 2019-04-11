@@ -314,7 +314,7 @@ public class PayRequestController extends AcStartController {
 
 		for (int i = 0; i < list.size(); i++) {
 			if(list.get(i).get("ASSIGNEE_")!=null&&!list.get(i).toString().equals("")){
-				if(list.get(i).getString("ASSIGNEE_").toString().equals("R20181028660767")){
+				if(list.get(i).getString("ASSIGNEE_").toString().equals("R20181028660767")||list.get(i).getString("ASSIGNEE_").toString().equals("R20190325859065")){
 					map.put("tag","1");
 					return map;
 				}
@@ -436,11 +436,11 @@ public class PayRequestController extends AcStartController {
 			vpd.put("var20", varOList.get(i).getString("FUKUANYUEDING"));	    //18
 			vpd.put("var21", varOList.get(i).get("UPDATETIME").toString());	    //7
 			if(varOList.get(i).getString("STATUS").equals("1")){
-				vpd.put("var22", varOList.get(i).getString("已审批"));	    //6
+				vpd.put("var22", "已审批");	    //6
 			}else if(varOList.get(i).getString("STATUS").equals("2")){
-				vpd.put("var22", varOList.get(i).getString("未审批"));	    //6
+				vpd.put("var22", "未审批");	    //6
 			}else{
-				vpd.put("var22", varOList.get(i).getString("审批中"));	    //6
+				vpd.put("var22", "审批中");	    //6
 			}
 			vpd.put("var23", varOList.get(i).getString("BZ"));	    //18
 			varList.add(vpd);

@@ -45,6 +45,8 @@
 								<td style="vertical-align:top;padding-left:2px"><a class="btn btn-light btn-xs" onclick="tosearch();"  title="检索"><i id="nav-search-icon" class="ace-icon fa fa-search bigger-110 nav-search-icon blue"></i></a></td>
 								</c:if>
 								<c:if test="${QX.toExcel == 1 }"><td style="vertical-align:top;padding-left:2px;"><a class="btn btn-light btn-xs" onclick="toExcel();" title="导出到EXCEL"><i id="nav-search-icon" class="ace-icon fa fa-download bigger-110 nav-search-icon blue"></i></a></td></c:if>
+								<c:if test="${QX.toExcel == 1 }"><td style="vertical-align:top;padding-left:2px;"><a class="btn btn-light btn-xs" onclick="toExcel1();" title="导出明细EXCEL"><i id="nav-search-icon" class="ace-icon fa fa-download bigger-110 nav-search-icon blue"></i></a></td></c:if>
+
 							</tr>
 						</table>
 						<!-- 检索  -->
@@ -473,6 +475,10 @@
 		//导出excel
 		function toExcel(){
 			window.location.href='<%=basePath%>cost/excel.do';
+		}
+
+		function toExcel1(){
+			window.location.href='<%=basePath%>cost/exportExcel1.do';
 		}
 	</script>
 

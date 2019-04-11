@@ -53,7 +53,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">文件类型:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><span style="color: red;">*</span>文件类型:</td>
 								<td>
 									<select name="FILETYPE1" id="DICTIONARIES" title="文件类型"
 											style="width:50%;">

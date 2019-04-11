@@ -391,11 +391,11 @@ public class CostController extends AcStartController {
 			vpd.put("var8", varOList.get(i).get("JIEZHIRIQI"));	//6
 			vpd.put("var9", varOList.get(i).get("UPDATETIME"));	//6
 			if(varOList.get(i).getString("STATUS").equals("1")){
-				vpd.put("var10", varOList.get(i).getString("已审批"));	    //6
+				vpd.put("var10", "已审批");	    //6
 			}else if(varOList.get(i).getString("STATUS").equals("2")){
-				vpd.put("var10", varOList.get(i).getString("未审批"));	    //6
+				vpd.put("var10", "未审批");	    //6
 			}else{
-				vpd.put("var10", varOList.get(i).getString("审批中"));	    //6
+				vpd.put("var10","审批中");	    //6
 			}
 			vpd.put("var11", varOList.get(i).getString("BZ"));	    //7
 			varList.add(vpd);
@@ -405,7 +405,62 @@ public class CostController extends AcStartController {
 		mv = new ModelAndView(erv,dataMap);
 		return mv;
 	}
-	
+
+
+	/**导出到excel
+	 * @param
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/exportExcel1")
+	public ModelAndView exportExcel1() throws Exception{
+		logBefore(logger, Jurisdiction.getUsername()+"导出Cost到excel");
+		if(!Jurisdiction.buttonJurisdiction(menuUrl, "cha")){return null;}
+		ModelAndView mv = new ModelAndView();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		Map<String,Object> dataMap = new HashMap<String,Object>();
+		List<String> titles = new ArrayList<String>();
+		titles.add("是否代理商付款");	//1
+		titles.add("项目编号");	//2
+		titles.add("项目名称");	//2
+		titles.add("总额");	//2
+		titles.add("部门");	//3
+		titles.add("日期");	//4
+		titles.add("报销人");	//5
+		titles.add("报销截止日期");	//6
+		titles.add("更新时间");	//6
+		titles.add("状态");	//6
+		titles.add("备注");	//7
+		dataMap.put("titles", titles);
+		List<PageData> varOList = costService.listAll(pd);
+		List<PageData> varList = new ArrayList<PageData>();
+		for(int i=0;i<varOList.size();i++){
+			PageData vpd = new PageData();
+			vpd.put("var1", varOList.get(i).getString("IS_THEAGENT"));	    //1
+			vpd.put("var2", varOList.get(i).getString("PROJECT_ID"));	    //2
+			vpd.put("var3", varOList.get(i).get("PROJECT_NAME"));	    //3
+			vpd.put("var4", varOList.get(i).get("MONEY"));	    //3
+			vpd.put("var5", varOList.get(i).getString("DEPARTMENT"));	    //4
+			vpd.put("var6", varOList.get(i).getString("CREATE_DATE"));	    //5
+			vpd.put("var7", varOList.get(i).get("BXR").toString());	//6
+			vpd.put("var8", varOList.get(i).get("JIEZHIRIQI"));	//6
+			vpd.put("var9", varOList.get(i).get("UPDATETIME"));	//6
+			if(varOList.get(i).getString("STATUS").equals("1")){
+				vpd.put("var10", "已审批");	    //6
+			}else if(varOList.get(i).getString("STATUS").equals("2")){
+				vpd.put("var10", "未审批");	    //6
+			}else{
+				vpd.put("var10","审批中");	    //6
+			}
+			vpd.put("var11", varOList.get(i).getString("BZ"));	    //7
+			varList.add(vpd);
+		}
+		dataMap.put("varList", varList);
+		ObjectExcelView erv = new ObjectExcelView();
+		mv = new ModelAndView(erv,dataMap);
+		return mv;
+	}
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder){
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");

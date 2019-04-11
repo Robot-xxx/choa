@@ -327,11 +327,11 @@ public class TicketController extends AcStartController {
 			vpd.put("var10", varOList.get(i).getString("OPEN_TICKET_YUANYIN"));	    //7
 			vpd.put("var11", varOList.get(i).getString("UPDATETIME"));	    //7
 			if(varOList.get(i).getString("STATUS").equals("1")){
-				vpd.put("var12", varOList.get(i).getString("已审批"));	    //6
+				vpd.put("var12", "已审批");	    //6
 			}else if(varOList.get(i).getString("STATUS").equals("2")){
-				vpd.put("var12", varOList.get(i).getString("未审批"));	    //6
+				vpd.put("var12", "未审批");	    //6
 			}else{
-				vpd.put("var12", varOList.get(i).getString("审批中"));	    //6
+				vpd.put("var12","审批中");	    //6
 			}
 			varList.add(vpd);
 		}

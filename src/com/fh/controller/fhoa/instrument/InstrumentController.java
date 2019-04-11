@@ -310,11 +310,11 @@ public class InstrumentController extends AcStartController {
 			vpd.put("var7", varOList.get(i).getString("FUZEREN"));
 			vpd.put("var8", varOList.get(i).getString("BUJIAOSHIJIAN"));	    //8
 			if(varOList.get(i).getString("STATUS").equals("1")){
-				vpd.put("var9", varOList.get(i).getString("已审批"));	    //6
+				vpd.put("var9","已审批");	    //6
 			}else if(varOList.get(i).getString("STATUS").equals("2")){
-				vpd.put("var9", varOList.get(i).getString("未审批"));	    //6
+				vpd.put("var9","未审批");	    //6
 			}else{
-				vpd.put("var9", varOList.get(i).getString("审批中"));	    //6
+				vpd.put("var9", "审批中");	    //6
 			}
 			vpd.put("var10", varOList.get(i).getString("BZ"));	    //8
 			varList.add(vpd);

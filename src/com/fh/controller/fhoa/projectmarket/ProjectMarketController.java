@@ -336,7 +336,6 @@ public class ProjectMarketController extends AcStartController {
 		titles.add("合同签订时间");	//9
 		titles.add("实际到货时间");	//11
 		titles.add("验收时间");	//12
-		titles.add("保证金退回时间");	//12
 		titles.add("负责人");	//12
 		titles.add("风险条款");	//12
 		titles.add("更新时间");	//12
@@ -398,18 +397,17 @@ public class ProjectMarketController extends AcStartController {
 
 			}
 
-			vpd.put("var12",varOList.get(i).getString("BAOZHENGJINTUIHUISHIJIAN"));
-			vpd.put("var13",varOList.get(i).getString("FUZEREN"));
-			vpd.put("var14",varOList.get(i).getString("FENGXIANTIAOKUAN"));
-			vpd.put("var15", sd1.format(varOList.get(i).get("UPDATETIME")));	    //12
+			vpd.put("var12",varOList.get(i).getString("FUZEREN"));
+			vpd.put("var13",varOList.get(i).getString("FENGXIANTIAOKUAN"));
+			vpd.put("var14", sd1.format(varOList.get(i).get("UPDATETIME")));	    //12
 			if(varOList.get(i).getString("STATUS").equals("1")){
-				vpd.put("var16", varOList.get(i).getString("已审批"));	    //6
+				vpd.put("var15", "已审批");	    //6
 			}else if(varOList.get(i).getString("STATUS").equals("2")){
-				vpd.put("var16", varOList.get(i).getString("未审批"));	    //6
+				vpd.put("var15", "未审批");	    //6
 			}else{
-				vpd.put("var16", varOList.get(i).getString("审批中"));	    //6
+				vpd.put("var15", "审批中");	    //6
 			}
-			vpd.put("var17",varOList.get(i).getString("BZ"));
+			vpd.put("var16",varOList.get(i).getString("BZ"));
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

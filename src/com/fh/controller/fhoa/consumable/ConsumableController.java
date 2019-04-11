@@ -324,11 +324,11 @@ public class ConsumableController extends AcStartController {
             vpd.put("var6", varOList.get(i).getString("BUSINESS"));        //7
             vpd.put("var7", varOList.get(i).getString("FUZEREN"));        //8
             if(varOList.get(i).getString("STATUS").equals("1")){
-                vpd.put("var8", varOList.get(i).getString("已审批"));	    //6
+                vpd.put("var8","已审批");	    //6
             }else if(varOList.get(i).getString("STATUS").equals("2")){
-                vpd.put("var8", varOList.get(i).getString("未审批"));	    //6
+                vpd.put("var8","未审批");	    //6
             }else{
-                vpd.put("var8", varOList.get(i).getString("审批中"));	    //6
+                vpd.put("var8","审批中");	    //6
             }
 
             varList.add(vpd);

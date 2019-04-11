@@ -101,7 +101,7 @@
                                                   <%--  <td class='center'>${var.PROJECT_ID}</td>
                                                     <td class='center'>${var.PROJECT_NAME}</td>--%>
                                                  <%--   <td class='center'>${var.HUIKUAN}</td>--%>
-                                                    <td class='center'><c:if test="${var.INCOME_MONEY<=0}">是</c:if><c:if test="${var.INCOME_MONEY>0}">否</c:if></td>
+                                                    <td class='center'><c:if test="${var.WEILINGJINE<=0}">是</c:if><c:if test="${var.WEILINGJINE>0}">否</c:if></td>
                                                     <td class='center'>${var.WEILINGJINE}</td>
                                                     <td class='center'>${var.INCOME_MONEY}</td>
                                                     <td class='center'>${var.RETURN_MONEY}</td>
@@ -330,8 +330,8 @@
         diag.Drag = true;
         diag.Title = "新增";
         diag.URL = '<%=basePath%>identifymanagement/goAdd.do';
-        diag.Width = 450;
-        diag.Height = 355;
+        diag.Width = 800;
+        diag.Height = 500;
         diag.Modal = true;				//有无遮罩窗口
         diag.ShowMaxButton = true;	//最大化按钮
         diag.ShowMinButton = true;		//最小化按钮

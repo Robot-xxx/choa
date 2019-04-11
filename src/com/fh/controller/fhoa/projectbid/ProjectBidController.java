@@ -416,19 +416,14 @@ public class ProjectBidController extends AcStartController {
         titles.add("医院");    //3
         titles.add("中标单位");    //4
         titles.add("中标价格(元)");    //5
-       // titles.add("中标服务费垫资金额（元）");    //6
-        //titles.add("投标保证金垫资金额(元)");    //7
-       // titles.add("投标保证金预计缴纳时间");    //8
         titles.add("投标保证金实际缴纳时间");    //9
         titles.add("开标日期");    //10
-      //  titles.add("中标服务费预计缴纳时间");    //11
         titles.add("中标服务费实际缴纳时间");    //12
         titles.add("标书制作人");    //12
         titles.add("风险条款");    //12
         titles.add("负责人");    //12
         titles.add("更新时间");    //12
         titles.add("状态");    //12
-
         titles.add("备注");    //12
 
         dataMap.put("titles", titles);
@@ -441,47 +436,24 @@ public class ProjectBidController extends AcStartController {
             vpd.put("var3", varOList.get(i).getString("REPRESENTATIVE"));        //2
             vpd.put("var4", varOList.get(i).getString("PROJECT_ID"));        //2
             vpd.put("var5", varOList.get(i).getString("PROJECT_NAME"));        //2
-
             vpd.put("var6", varOList.get(i).getString("HOSPITAL"));        //3
             vpd.put("var7", varOList.get(i).getString("WINNING_UNIT"));        //4
             vpd.put("var8", varOList.get(i).getString("WINNING_PRICE"));        //8
-
-
-            vpd.put("var9", varOList.get(i).getString("SERVICE_PRICE"));        //8
-
-
-            vpd.put("var10", varOList.get(i).getString("GUARANTEE_MONEY"));        //8
-
-            vpd.put("var11", varOList.get(i).getString("SCHEDULED_TIME"));        //8
-
-            vpd.put("var12", varOList.get(i).getString("PRACTICAL_TIME"));       //8
-
-
-            vpd.put("var13", varOList.get(i).getString("BID_OPEN_TIME"));        //8
-
-            vpd.put("var14", varOList.get(i).getString("SCHEDULED_SERVICE_PRICE_TIME"));        //8
-
-            vpd.put("var15", varOList.get(i).getString("PRACTICAL_SERVICE_PRICE_TIME"));        //8
-
-
-            vpd.put("var16", varOList.get(i).getString("BIAOSHUZHIZUOREN"));        //8
-
-
-            vpd.put("var17", varOList.get(i).getString("FENGXIANTIAOKUAN"));        //8
-
-            vpd.put("var18", varOList.get(i).getString("FUZEREN"));        //8
-
-            vpd.put("var19", sd1.format(varOList.get(i).get("UPDATETIME")));        //12
+            vpd.put("var9", varOList.get(i).getString("PRACTICAL_TIME"));        //8
+            vpd.put("var10", varOList.get(i).getString("BID_OPEN_TIME"));        //8
+            vpd.put("var11", varOList.get(i).getString("PRACTICAL_SERVICE_PRICE_TIME"));        //8
+            vpd.put("var12", varOList.get(i).getString("BIAOSHUZHIZUOREN"));       //8
+            vpd.put("var13", varOList.get(i).getString("FENGXIANTIAOKUAN"));        //8
+            vpd.put("var14", varOList.get(i).getString("FUZEREN"));        //8
+            vpd.put("var15", varOList.get(i).get("UPDATETIME").toString());        //8
             if(varOList.get(i).getString("STATUS").equals("1")){
-                vpd.put("var20", varOList.get(i).getString("已审批"));	    //6
+                vpd.put("var16", "已审批");	    //6
             }else if(varOList.get(i).getString("STATUS").equals("2")){
-                vpd.put("var20", varOList.get(i).getString("未审批"));	    //6
+                vpd.put("var16", "未审批");	    //6
             }else{
-                vpd.put("var20", varOList.get(i).getString("审批中"));	    //6
+                vpd.put("var16", "审批中");	    //6
             }
-            vpd.put("var21", varOList.get(i).getString("BZ"));        //8
-
-
+            vpd.put("var17", varOList.get(i).getString("BZ"));        //8
             varList.add(vpd);
         }
         dataMap.put("varList", varList);
