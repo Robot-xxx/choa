@@ -1,4 +1,4 @@
-package com.fh.controller.fhoa.identifymanagement;
+package com.fh.controller.fhoa.quality;
 
 import java.io.PrintWriter;
 import java.text.DateFormat;
@@ -23,37 +23,34 @@ import com.fh.util.ObjectExcelView;
 import com.fh.util.PageData;
 import com.fh.util.Jurisdiction;
 import com.fh.util.Tools;
-import com.fh.service.fhoa.identifymanagement.IdentifyManagementManager;
+import com.fh.service.fhoa.quality.QualityManager;
 
 /** 
- * 说明：认款管理
+ * 说明：质控档案
  *
- * 创建时间：2018-09-14
+ * 创建时间：2019-04-14
  */
 @Controller
-@RequestMapping(value="/identifymanagement")
-public class IdentifyManagementController extends BaseController {
+@RequestMapping(value="/quality")
+public class QualityController extends BaseController {
 	
-	String menuUrl = "identifymanagement/list.do"; //菜单地址(权限用)
-	@Resource(name="identifymanagementService")
-	private IdentifyManagementManager identifymanagementService;
-	SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
-	SimpleDateFormat sd1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	String menuUrl = "quality/list.do"; //菜单地址(权限用)
+	@Resource(name="qualityService")
+	private QualityManager qualityService;
+	
 	/**保存
 	 * @param
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/save")
 	public ModelAndView save() throws Exception{
-		logBefore(logger, Jurisdiction.getUsername()+"新增IdentifyManagement");
+		logBefore(logger, Jurisdiction.getUsername()+"新增Quality");
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "add")){return null;} //校验权限
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd.put("IDENTIFYMANAGEMENT_ID", this.get32UUID());	//主键
-		pd.put("UPDATETIME", sd1.format(new Date()));
-
-		identifymanagementService.save(pd);
+		pd.put("QUALITY_ID", this.get32UUID());	//主键
+		qualityService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
 		return mv;
@@ -65,11 +62,11 @@ public class IdentifyManagementController extends BaseController {
 	 */
 	@RequestMapping(value="/delete")
 	public void delete(PrintWriter out) throws Exception{
-		logBefore(logger, Jurisdiction.getUsername()+"删除IdentifyManagement");
+		logBefore(logger, Jurisdiction.getUsername()+"删除Quality");
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "del")){return;} //校验权限
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		identifymanagementService.delete(pd);
+		qualityService.delete(pd);
 		out.write("success");
 		out.close();
 	}
@@ -80,14 +77,12 @@ public class IdentifyManagementController extends BaseController {
 	 */
 	@RequestMapping(value="/edit")
 	public ModelAndView edit() throws Exception{
-		logBefore(logger, Jurisdiction.getUsername()+"修改IdentifyManagement");
+		logBefore(logger, Jurisdiction.getUsername()+"修改Quality");
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "edit")){return null;} //校验权限
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd.put("UPDATETIME", sd1.format(new Date()));
-
-		identifymanagementService.edit(pd);
+		qualityService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
 		return mv;
@@ -99,7 +94,7 @@ public class IdentifyManagementController extends BaseController {
 	 */
 	@RequestMapping(value="/list")
 	public ModelAndView list(Page page) throws Exception{
-		logBefore(logger, Jurisdiction.getUsername()+"列表IdentifyManagement");
+		logBefore(logger, Jurisdiction.getUsername()+"列表Quality");
 		//if(!Jurisdiction.buttonJurisdiction(menuUrl, "cha")){return null;} //校验权限(无权查看时页面会有提示,如果不注释掉这句代码就无法进入列表页面,所以根据情况是否加入本句代码)
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
@@ -109,18 +104,8 @@ public class IdentifyManagementController extends BaseController {
 			pd.put("keywords", keywords.trim());
 		}
 		page.setPd(pd);
-		List<PageData>	varList = identifymanagementService.list(page);	//列出IdentifyManagement列表
-
-		for (int i = 0; i < varList.size(); i++) {
-			if(Double.valueOf(varList.get(i).get("WEILINGJINE").toString())<=0){
-				varList.get(i).put("SHIFOURENKUAN","是");
-			}else if(Double.valueOf(varList.get(i).get("WEILINGJINE").toString())>0){
-				varList.get(i).put("SHIFOURENKUAN","否");
-			}
-		}
-
-
-		mv.setViewName("fhoa/identifymanagement/identifymanagement_list");
+		List<PageData>	varList = qualityService.list(page);	//列出Quality列表
+		mv.setViewName("fhoa/quality/quality_list");
 		mv.addObject("varList", varList);
 		mv.addObject("pd", pd);
 		mv.addObject("QX",Jurisdiction.getHC());	//按钮权限
@@ -136,7 +121,7 @@ public class IdentifyManagementController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		mv.setViewName("fhoa/identifymanagement/identifymanagement_edit");
+		mv.setViewName("fhoa/quality/quality_edit");
 		mv.addObject("msg", "save");
 		mv.addObject("pd", pd);
 		return mv;
@@ -151,8 +136,8 @@ public class IdentifyManagementController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd = identifymanagementService.findById(pd);	//根据ID读取
-		mv.setViewName("fhoa/identifymanagement/identifymanagement_edit");
+		pd = qualityService.findById(pd);	//根据ID读取
+		mv.setViewName("fhoa/quality/quality_edit");
 		mv.addObject("msg", "edit");
 		mv.addObject("pd", pd);
 		return mv;
@@ -165,7 +150,7 @@ public class IdentifyManagementController extends BaseController {
 	@RequestMapping(value="/deleteAll")
 	@ResponseBody
 	public Object deleteAll() throws Exception{
-		logBefore(logger, Jurisdiction.getUsername()+"批量删除IdentifyManagement");
+		logBefore(logger, Jurisdiction.getUsername()+"批量删除Quality");
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "del")){return null;} //校验权限
 		PageData pd = new PageData();		
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -174,7 +159,7 @@ public class IdentifyManagementController extends BaseController {
 		String DATA_IDS = pd.getString("DATA_IDS");
 		if(null != DATA_IDS && !"".equals(DATA_IDS)){
 			String ArrayDATA_IDS[] = DATA_IDS.split(",");
-			identifymanagementService.deleteAll(ArrayDATA_IDS);
+			qualityService.deleteAll(ArrayDATA_IDS);
 			pd.put("msg", "ok");
 		}else{
 			pd.put("msg", "no");
@@ -190,32 +175,26 @@ public class IdentifyManagementController extends BaseController {
 	 */
 	@RequestMapping(value="/excel")
 	public ModelAndView exportExcel() throws Exception{
-		logBefore(logger, Jurisdiction.getUsername()+"导出IdentifyManagement到excel");
+		logBefore(logger, Jurisdiction.getUsername()+"导出Quality到excel");
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "cha")){return null;}
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
-
-		titles.add("未认领金额");	//3
-		titles.add("进款金额(元)");	//3
-		titles.add("回款单位");	//4
-		titles.add("回款日期");	//5
-		titles.add("更新时间");	//5
-		titles.add("备注");	//6
+		titles.add("项目ID");	//1
+		titles.add("项目名称");	//2
+		titles.add("负责人");	//3
+		titles.add("文件ID");	//4
 		dataMap.put("titles", titles);
-		List<PageData> varOList = identifymanagementService.listAll(pd);
+		List<PageData> varOList = qualityService.listAll(pd);
 		List<PageData> varList = new ArrayList<PageData>();
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
-
-			vpd.put("var1", varOList.get(i).getString("WEILINGJINE"));	//3
-			vpd.put("var2", varOList.get(i).getString("INCOME_MONEY"));	//3
-			vpd.put("var3", varOList.get(i).getString("RETURN_MONEY"));	    //4
-			vpd.put("var4", varOList.get(i).get("CREATE_DATE").toString());	    //5
-			vpd.put("var5",  varOList.get(i).get("UPDATETIME").toString());	    //5
-			vpd.put("var6", varOList.get(i).getString("BZ"));	    //6
+			vpd.put("var1", varOList.get(i).getString("PROJECT_ID"));	    //1
+			vpd.put("var2", varOList.get(i).getString("PROJECT_NAME"));	    //2
+			vpd.put("var3", varOList.get(i).getString("FUZEREN"));	    //3
+			vpd.put("var4", varOList.get(i).getString("XULEIHAO"));	    //4
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

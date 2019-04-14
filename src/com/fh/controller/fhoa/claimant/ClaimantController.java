@@ -116,15 +116,15 @@ public class ClaimantController extends BaseController {
 		money1 = Double.valueOf(pd.get("money").toString()) - Double.valueOf(pd.getString("CLAIMANT_MONEY"));
 
 		pd.put("WEILINGJINE",money1);
+
 		identifymanagementService.editFoProjectId(pd);
 
-		//是否认款
+//是否认款
 		if(money1<=0){
 			pd.put("SHIFOURENKUAN","是");
 		}else if(money1>0){
 			pd.put("SHIFOURENKUAN","否");
 		}
-
 
 
 

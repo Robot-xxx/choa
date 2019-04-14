@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="IdentifyManagementMapper">
+<mapper namespace="QualityMapper">
 	
 	<!--表名 -->
 	<sql id="tableName">
-		OA_IDENTIFY_MANAGEMENT
+		OA_QUALITY
 	</sql>
 	
 	<!--数据字典表名 -->
@@ -16,51 +16,27 @@
 	<sql id="Field">
 		f.PROJECT_ID,	
 		f.PROJECT_NAME,	
-		f.INCOME_MONEY,	
-		f.RETURN_MONEY,	
-		f.CREATE_DATE,	
-		f.BZ,	
-		f.HUIKUAN,
-		f.CREATETIME,
-		f.UPDATETIME,
-		f.RENKUAILEIXING,
-		f.WEILINGJINE,
-		f.SHIFOURENKUAN,
-		f.IDENTIFYMANAGEMENT_ID
+		f.FUZEREN,	
+		f.XULEIHAO,	
+		f.QUALITY_ID
 	</sql>
 	
 	<!-- 字段用于新增 -->
 	<sql id="Field2">
 		PROJECT_ID,	
 		PROJECT_NAME,	
-		INCOME_MONEY,	
-		RETURN_MONEY,	
-		CREATE_DATE,	
-		BZ,	
-		HUIKUAN,
-		CREATETIME,
-		UPDATETIME,
-		RENKUAILEIXING,
-		WEILINGJINE,
-		SHIFOURENKUAN,
-		IDENTIFYMANAGEMENT_ID
+		FUZEREN,	
+		XULEIHAO,	
+		QUALITY_ID
 	</sql>
 	
 	<!-- 字段值 -->
 	<sql id="FieldValue">
 		#{PROJECT_ID},	
 		#{PROJECT_NAME},	
-		#{INCOME_MONEY},	
-		#{RETURN_MONEY},	
-		#{CREATE_DATE},	
-		#{BZ},	
-		#{HUIKUAN},
-		#{CREATETIME},
-		#{UPDATETIME},
-		#{RENKUAILEIXING},
-		#{WEILINGJINE},
-		#{SHIFOURENKUAN},
-		#{IDENTIFYMANAGEMENT_ID}
+		#{FUZEREN},	
+		#{XULEIHAO},	
+		#{QUALITY_ID}
 	</sql>
 	
 	<!-- 新增-->
@@ -79,13 +55,9 @@
 		delete from
 		<include refid="tableName"></include>
 		where 
-			IDENTIFYMANAGEMENT_ID = #{IDENTIFYMANAGEMENT_ID}
+			QUALITY_ID = #{QUALITY_ID}
 	</delete>
-
-
-
-
-
+	
 	<!-- 修改 -->
 	<update id="edit" parameterType="pd">
 		update
@@ -93,35 +65,12 @@
 		set 
 			PROJECT_ID = #{PROJECT_ID},
 			PROJECT_NAME = #{PROJECT_NAME},
-			INCOME_MONEY = #{INCOME_MONEY},
-			RETURN_MONEY = #{RETURN_MONEY},
-			CREATE_DATE = #{CREATE_DATE},
-			BZ = #{BZ},
-			HUIKUAN = #{HUIKUAN},
-			CREATETIME = #{CREATETIME},
-			UPDATETIME = #{UPDATETIME},
-			RENKUAILEIXING = #{RENKUAILEIXING},
-			WEILINGJINE = #{WEILINGJINE},
-		SHIFOURENKUAN = #{SHIFOURENKUAN},
-			IDENTIFYMANAGEMENT_ID = IDENTIFYMANAGEMENT_ID
+			FUZEREN = #{FUZEREN},
+			XULEIHAO = #{XULEIHAO},
+			QUALITY_ID = QUALITY_ID
 		where 
-			IDENTIFYMANAGEMENT_ID = #{IDENTIFYMANAGEMENT_ID}
+			QUALITY_ID = #{QUALITY_ID}
 	</update>
-
-
-
-
-	<!-- 修改 -->
-	<update id="editFoProjectId" parameterType="pd">
-		update
-		<include refid="tableName"></include>
-		set
-		WEILINGJINE = #{WEILINGJINE},
-		SHIFOURENKUAN = #{SHIFOURENKUAN}
-		where
-		IDENTIFYMANAGEMENT_ID = #{moneyId}
-	</update>
-
 	
 	<!-- 通过ID获取数据 -->
 	<select id="findById" parameterType="pd" resultType="pd">
@@ -130,39 +79,31 @@
 		from 
 		<include refid="tableName"></include> f
 		where 
-			f.IDENTIFYMANAGEMENT_ID = #{IDENTIFYMANAGEMENT_ID}
+			f.QUALITY_ID = #{QUALITY_ID}
 	</select>
 	
 	<!-- 列表 -->
 	<select id="datalistPage" parameterType="page" resultType="pd">
 		select
 		<include refid="Field"></include>
-		from
+		from 
 		<include refid="tableName"></include> f
 		where 1=1
 		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
 			and
 				(
-			PROJECT_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
-			PROJECT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
-			RETURN_MONEY LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+			PROJECT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+			PROJECT_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+			FUZEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+				<!--	根据需求自己加检索条件
 
+					 or 
+					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
+				-->
 				)
 		</if>
-			order by concat(INCOME_MONEY,UPDATETIME)  DESC
 	</select>
-	<!-- 列表 -->
-	<select id="identifyFoProjcetId" parameterType="page" resultType="pd">
-		select
-		<include refid="Field"></include>
-		from
-		<include refid="tableName"></include> f
-		where 1=1
-		<if test="pd.PROJECT_ID!= null and pd.PROJECT_ID != ''"><!-- 关键词检索 -->
-			and PROJECT_ID =#{pd.PROJECT_ID}
-
-		</if>
-	</select>
+	
 	<!-- 列表(全部) -->
 	<select id="listAll" parameterType="pd" resultType="pd">
 		select
@@ -176,7 +117,7 @@
 		delete from
 		<include refid="tableName"></include>
 		where 
-			IDENTIFYMANAGEMENT_ID in
+			QUALITY_ID in
 		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
                  #{item}
 		</foreach>

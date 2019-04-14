@@ -98,10 +98,8 @@
                                                     </td>
                                                     <td class='center'
                                                         style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
-                                                  <%--  <td class='center'>${var.PROJECT_ID}</td>
-                                                    <td class='center'>${var.PROJECT_NAME}</td>--%>
-                                                 <%--   <td class='center'>${var.HUIKUAN}</td>--%>
-                                                    <td class='center'><c:if test="${var.WEILINGJINE<=0}">是</c:if><c:if test="${var.WEILINGJINE>0}">否</c:if></td>
+
+                                                    <td class='center'>${var.SHIFOURENKUAN}</td>
                                                     <td class='center'>${var.WEILINGJINE}</td>
                                                     <td class='center'>${var.INCOME_MONEY}</td>
                                                     <td class='center'>${var.RETURN_MONEY}</td>
