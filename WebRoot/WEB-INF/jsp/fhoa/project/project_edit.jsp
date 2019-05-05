@@ -31,6 +31,7 @@
                             <input type="hidden" name="PROJECT_ID" id="PROJECT_ID" value="${pd.PROJECT_ID}"/>
                             <input type="hidden" name="msg" id="msg" value="${msg }"/>
                             <input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
+                            <input type="hidden" name="tag" id="tag" >
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
                                     <tr>
@@ -135,6 +136,19 @@
                                                    style="width:98%;"/></td>
                                     </tr>
                                     <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">是否投标项目:</td>
+                                        <td>
+                                            <select name="ISTOUBIAOXIANGMU" id="ISTOUBIAOXIANGMU" title=""
+                                                   style="width:38%;">
+                                                <option value="" >请选择</option>
+                                                <option value="是" <c:if test="${pd.ISTOUBIAOXIANGMU=='是'}">selected</c:if>>是</option>
+                                                <option value="否" <c:if test="${pd.ISTOUBIAOXIANGMU=='否'}">selected</c:if>>否</option>
+                                            </select>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
                                         <td><input type="text" name="BZ" value="${pd.BZ}"
                                                    maxlength="255" placeholder="这里输入备注" title="备注"
@@ -196,6 +210,21 @@
 
     //保存
     function save() {
+
+
+        if($("#tag").val()=='no'){
+            console.log(123)
+            $("#SYS_ID").tips({
+                side: 3,
+                msg: '项目编号已重复！请注意修改',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#SYS_ID").focus();
+            return false;
+        }
+
+
         if ($("#xuanzeCompany").val() == "") {
             $("#xuanzeCompany").tips({
                 side: 3,
@@ -206,6 +235,16 @@
             $("#xuanzeCompany").focus();
             return false;
         }
+        if ($("#ISTOUBIAOXIANGMU").val() == "") {
+            $("#ISTOUBIAOXIANGMU").tips({
+                side: 3,
+                msg: '请选择是否项目投标',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#ISTOUBIAOXIANGMU").focus();
+            return false;
+        }
         if ($("#SYS_ID").val() == "") {
             $("#SYS_ID").tips({
                 side: 3,
@@ -214,6 +253,7 @@
                 time: 2
             });
             $("#SYS_ID").focus();
+
             return false;
         }
         if ($("#PROJECT_NAME").val() == "") {
@@ -251,6 +291,7 @@
 
 
 
+
         $("#Form").submit();
         $("#zhongxin").hide();
         $("#zhongxin2").show();
@@ -268,6 +309,21 @@
     }
 
     $(function () {
+
+
+        $("#SYS_ID").change(function (){
+            $.ajax({
+                type: "POST",
+                url: '<%=basePath%>/project/findByProject.do?tm=' + new Date().getTime(),
+                dataType: 'json',
+                data:{"PROJECT_ID": $("#SYS_ID").val()},
+                cache: false,
+                success: function (data) {
+                    $("#tag").val(data.isUniqueness);
+
+                }
+            });
+        })
 
         //委托公司
         $("#selectCompany").change(function (){

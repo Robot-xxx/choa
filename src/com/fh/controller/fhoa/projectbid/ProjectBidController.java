@@ -117,7 +117,7 @@ public class ProjectBidController extends AcStartController {
           //  map1.put("投标保证金垫资金额（元）", pd.getString("GUARANTEE_MONEY"));
       //      map1.put("投标保证金预计缴纳时间", pd.getString("SCHEDULED_TIME"));
             map1.put("投标保证金实际缴纳时间", pd.getString("PRACTICAL_TIME"));
-            map1.put("开标日期", pd.getString("BID_OPEN_TIME"));
+            map1.put("实际开标日期", pd.getString("BID_OPEN_TIME"));
             //map1.put("中标服务费预计缴纳时间", pd.getString("SCHEDULED_SERVICE_PRICE_TIME"));
             map1.put("中标服务费实际缴纳时间", pd.getString("PRACTICAL_SERVICE_PRICE_TIME"));
 
@@ -408,16 +408,16 @@ public class ProjectBidController extends AcStartController {
         pd = this.getPageData();
         Map<String, Object> dataMap = new HashMap<String, Object>();
         List<String> titles = new ArrayList<String>();
+        titles.add("项目编号");    //2
+        titles.add("项目名称");    //2
         titles.add("选择公司");    //2
         titles.add("招标公司");    //2
         titles.add("招标代表");    //2
-        titles.add("项目编号");    //2
-        titles.add("项目名称");    //2
         titles.add("医院");    //3
         titles.add("中标单位");    //4
         titles.add("中标价格(元)");    //5
         titles.add("投标保证金实际缴纳时间");    //9
-        titles.add("开标日期");    //10
+        titles.add("实际开标日期");    //10
         titles.add("中标服务费实际缴纳时间");    //12
         titles.add("标书制作人");    //12
         titles.add("风险条款");    //12
@@ -431,11 +431,12 @@ public class ProjectBidController extends AcStartController {
         List<PageData> varList = new ArrayList<PageData>();
         for (int i = 0; i < varOList.size(); i++) {
             PageData vpd = new PageData();
-            vpd.put("var1", varOList.get(i).getString("SELECTCOMPANY"));        //2
-            vpd.put("var2", varOList.get(i).getString("TEBDERING"));        //2
-            vpd.put("var3", varOList.get(i).getString("REPRESENTATIVE"));        //2
-            vpd.put("var4", varOList.get(i).getString("PROJECT_ID"));        //2
-            vpd.put("var5", varOList.get(i).getString("PROJECT_NAME"));        //2
+            vpd.put("var1", varOList.get(i).getString("PROJECT_ID"));        //2
+            vpd.put("var2", varOList.get(i).getString("PROJECT_NAME"));        //2
+            vpd.put("var3", varOList.get(i).getString("SELECTCOMPANY"));        //2
+            vpd.put("var4", varOList.get(i).getString("TEBDERING"));        //2
+            vpd.put("var5", varOList.get(i).getString("REPRESENTATIVE"));        //2
+
             vpd.put("var6", varOList.get(i).getString("HOSPITAL"));        //3
             vpd.put("var7", varOList.get(i).getString("WINNING_UNIT"));        //4
             vpd.put("var8", varOList.get(i).getString("WINNING_PRICE"));        //8

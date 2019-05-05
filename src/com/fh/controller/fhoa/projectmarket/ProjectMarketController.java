@@ -69,16 +69,16 @@ public class ProjectMarketController extends AcStartController {
 			map1.put("下游名称", pd.getString("CLIENT_NAME"));
 
 			if (pd.get("PREDICT_ACCOUNT_TIME")!=null&&!pd.get("PREDICT_ACCOUNT_TIME").toString().equals("")){
-				map1.put("发货时间", pd.get("PREDICT_ACCOUNT_TIME").toString());
+				map1.put("预计发货时间", pd.get("PREDICT_ACCOUNT_TIME").toString());
 			}
 			if (pd.get("PRACTICAL_ACCOUT_TIME")!=null&&!pd.get("PRACTICAL_ACCOUT_TIME").toString().equals("")){
-				map1.put("合同签订时间", pd.get("PRACTICAL_ACCOUT_TIME").toString());
+				map1.put("实际双签合同签订时间", pd.get("PRACTICAL_ACCOUT_TIME").toString());
 			}
 			if (pd.get("ARRIVAL_TIME")!=null&&!pd.get("ARRIVAL_TIME").toString().equals("")){
 				map1.put("实际到货时间", pd.get("ARRIVAL_TIME").toString());
 			}
 			if (pd.get("RECEPTION_TIME")!=null&&!pd.get("RECEPTION_TIME").toString().equals("")){
-				map1.put("验收时间", pd.get("RECEPTION_TIME").toString());
+				map1.put("实际验收时间", pd.get("RECEPTION_TIME").toString());
 			}
 			if (pd.get("BAOZHENGJINTUIHUISHIJIAN")!=null&&!pd.get("BAOZHENGJINTUIHUISHIJIAN").toString().equals("")){
 				map1.put("保证金退回时间", pd.get("BAOZHENGJINTUIHUISHIJIAN").toString());
@@ -324,18 +324,19 @@ public class ProjectMarketController extends AcStartController {
 		pd = this.getPageData();
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
-		titles.add("选择公司");	//1
 		titles.add("项目编号");	//1
 		titles.add("项目名称");	//1
+		titles.add("选择公司");	//1
+
 		titles.add("销售合同编号");	//2
 		titles.add("下游");	//3
 		titles.add("合同总价(元)");	//4
 		titles.add("医院预付款(元)");	//5
-		titles.add("发货时间");	//6
+		titles.add("预计发货时间");	//6
 
-		titles.add("合同签订时间");	//9
+		titles.add("实际双签合同签订时间");	//9
 		titles.add("实际到货时间");	//11
-		titles.add("验收时间");	//12
+		titles.add("实际验收时间");	//12
 		titles.add("负责人");	//12
 		titles.add("风险条款");	//12
 		titles.add("更新时间");	//12
@@ -346,9 +347,10 @@ public class ProjectMarketController extends AcStartController {
 		List<PageData> varList = new ArrayList<PageData>();
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
-			vpd.put("var1", varOList.get(i).getString("SELECTCOMPANY"));	    //1
-			vpd.put("var2", varOList.get(i).getString("SYS_ID"));	    //1
-			vpd.put("var3", varOList.get(i).getString("PROJECT_NAME"));	    //1
+			vpd.put("var1", varOList.get(i).getString("SYS_ID"));	    //1
+			vpd.put("var2", varOList.get(i).getString("PROJECT_NAME"));	    //1
+			vpd.put("var3", varOList.get(i).getString("SELECTCOMPANY"));	    //1
+
 			vpd.put("var4", varOList.get(i).getString("SALES_CONTRACT_ID"));	    //2
 			vpd.put("var5", varOList.get(i).getString("CLIENT_NAME"));	    //3
 

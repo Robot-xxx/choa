@@ -41,6 +41,7 @@
 		f.CREATETIME,
 		f.UPDATETIME,
 		f.ZHAOBIAOYUJI,
+		f.ISTOUBIAOXIANGMU,
 
 		f.PROJECT_ID
 	</sql>
@@ -74,6 +75,7 @@
 		CREATETIME,
 		UPDATETIME,
 		ZHAOBIAOYUJI,
+		ISTOUBIAOXIANGMU,
 		PROJECT_ID
 	</sql>
 	
@@ -106,6 +108,7 @@
 		#{CREATETIME},
 		#{UPDATETIME},
 		#{ZHAOBIAOYUJI},
+		#{ISTOUBIAOXIANGMU},
 		#{PROJECT_ID}
 	</sql>
 	
@@ -160,11 +163,12 @@
 			CREATETIME = #{CREATETIME},
 			UPDATETIME = #{UPDATETIME},
 			ZHAOBIAOYUJI = #{ZHAOBIAOYUJI},
+			ISTOUBIAOXIANGMU = #{ISTOUBIAOXIANGMU},
 			PROJECT_ID = PROJECT_ID
 		where 
 			PROJECT_ID = #{PROJECT_ID}
 	</update>
-	
+
 	<!-- 通过ID获取数据 -->
 	<select id="findById" parameterType="pd" resultType="pd">
 		select 

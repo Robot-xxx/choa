@@ -3,12 +3,11 @@ package com.fh.controller.fhoa.quality;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import javax.annotation.Resource;
+
+import com.fh.controller.activiti.AcStartController;
+import com.fh.service.fhoa.supplier.SupplierManager;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -32,12 +31,58 @@ import com.fh.service.fhoa.quality.QualityManager;
  */
 @Controller
 @RequestMapping(value="/quality")
-public class QualityController extends BaseController {
+public class QualityController extends AcStartController {
 	
 	String menuUrl = "quality/list.do"; //菜单地址(权限用)
 	@Resource(name="qualityService")
 	private QualityManager qualityService;
-	
+	@Resource(name="supplierService")
+	private SupplierManager supplierService;
+
+
+
+	/**提交流程
+	 * @param
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/tijiaoFlow")
+	@ResponseBody
+	public  Map<String, Object> tijiaoFlow() throws Exception{
+		Map<String, Object> map = new HashMap<>();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		pd = qualityService.findById(pd);	//根据ID读取
+		try {
+
+			/** 工作流的操作 **/
+			Map<String,Object> map1 = new LinkedHashMap<String, Object>();
+			map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
+			map1.put("项目编号", pd.getString("PROJECT_ID"));
+			map1.put("项目名称", pd.getString("PROJECT_NAME"));
+			map1.put("负责人", pd.getString("FUZEREN"));
+			map1.put("备注", pd.getString("BZ"));
+
+			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
+			String act_id=startProcessInstanceByKeyHasVariables("oa_zhikongdangan",map1);	//启动流程实例(请假单流程)通过KEY
+
+
+			pd.put("STATUS",3);
+			pd.put("ACT_ID",act_id);
+			pd.put("TABLENAME","oa_quality");
+			qualityService.edit(pd);
+			supplierService.editTableName(pd);
+
+
+			map.put("ASSIGNEE_",Jurisdiction.getUsername());
+			map.put("msg","success");
+		} catch (Exception e) {
+			map.put("msg","请联系管理员部署相应业务流程!");
+			map.put("errer","errer");
+		}
+
+		return map;
+	}
+
 	/**保存
 	 * @param
 	 * @throws Exception
@@ -50,6 +95,7 @@ public class QualityController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		pd.put("QUALITY_ID", this.get32UUID());	//主键
+		pd.put("STATUS", 2);	//主键
 		qualityService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
@@ -182,10 +228,10 @@ public class QualityController extends BaseController {
 		pd = this.getPageData();
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
-		titles.add("项目ID");	//1
+		titles.add("项目编号");	//1
 		titles.add("项目名称");	//2
 		titles.add("负责人");	//3
-		titles.add("文件ID");	//4
+		titles.add("备注");	//3
 		dataMap.put("titles", titles);
 		List<PageData> varOList = qualityService.listAll(pd);
 		List<PageData> varList = new ArrayList<PageData>();
@@ -194,7 +240,7 @@ public class QualityController extends BaseController {
 			vpd.put("var1", varOList.get(i).getString("PROJECT_ID"));	    //1
 			vpd.put("var2", varOList.get(i).getString("PROJECT_NAME"));	    //2
 			vpd.put("var3", varOList.get(i).getString("FUZEREN"));	    //3
-			vpd.put("var4", varOList.get(i).getString("XULEIHAO"));	    //4
+			vpd.put("var4", varOList.get(i).getString("BZ"));	    //3
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

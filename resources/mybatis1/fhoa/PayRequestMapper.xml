@@ -160,7 +160,7 @@
         PAYEEBANK = #{PAYEEBANK},
         BANKACCOUNT = #{BANKACCOUNT},
         POSTSCRIPT = #{POSTSCRIPT},
-           PROJECT_ID = #{PROJECT_ID},
+        PROJECT_ID = #{PROJECT_ID},
         PROJECT_NAME = #{PROJECT_NAME},
         CONTRACT_NO = #{CONTRACT_NO},
         MONEY = #{MONEY},
@@ -260,6 +260,14 @@
         </foreach>
     </delete>
 
+    <select id="findByProject" parameterType="pd" resultType="pd">
+        select
+          count(0) num
+        from
+        <include refid="tableName"></include> f
+        where
+        PROJECT_ID = #{PROJECT_ID}
+    </select>
 
 
     <select id="taskAll" parameterType="pd" resultType="pd">

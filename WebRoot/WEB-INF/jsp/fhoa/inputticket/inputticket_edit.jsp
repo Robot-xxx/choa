@@ -30,6 +30,7 @@
 					<form action="inputticket/${msg }.do" name="Form" id="Form" method="post">
 						<input type="hidden" name="SYS_ID" id="SYS_ID" value="${pd.SYS_ID}"/>
 						<input type="hidden" name="msg" id="msg" value="${msg }"/>
+						<input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }"/>
 						<input type="hidden" name="oafileList" id="oafileList">
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">

@@ -44,6 +44,31 @@ public class PayRequestController extends AcStartController {
 	private SupplierManager supplierService;
 
 
+
+	@RequestMapping(value="/findByProject")
+	@ResponseBody
+	public Map<String, Object> findByProject()throws Exception{
+		Map<String, Object> map = new HashMap<>();
+		List<PageData> list = new ArrayList<>();
+		PageData pd = new PageData();
+		String errInfo = "success";
+
+		pd = this.getPageData();
+		pd.put("PROJECT_ID",pd.getString("PROJECT_ID").trim());
+		pd = payrequestService.findByProject(pd);	//根据ID读取
+		if(Integer.valueOf(pd.get("num").toString())>0){
+			map.put("isUniqueness", "no");
+		}else{
+			map.put("isUniqueness", "ok");
+		}
+
+		map.put("list", pd);
+		return map;
+	}
+
+
+
+
 	/**提交流程
 	 * @param
 	 * @throws Exception

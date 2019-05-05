@@ -151,7 +151,7 @@
 
 				)
 		</if>
-		order by UPDATETIME DESC
+		order by HUIKUANRIQI DESC
 	</select>
 	
 	<!-- 列表(全部) -->

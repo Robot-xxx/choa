@@ -85,7 +85,7 @@
 									<th class="center">投标保证金预计缴纳时间</th>
 --%>
 									<th class="center">投标保证金实际缴纳时间</th>
-									<th class="center">开标日期</th>
+									<th class="center">实际开标日期</th>
 <%--
 									<th class="center">中标服务费垫资金额（元）</th>
 --%>

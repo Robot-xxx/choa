@@ -81,6 +81,8 @@ public class PayRequestService implements PayRequestManager{
 	public List<PageData> taskAll(PageData pd) throws Exception {
 		return (List<PageData>)dao.findForList("PayRequestMapper.taskAll", pd);
 	}
-
+	public PageData findByProject(PageData pd)throws Exception{
+		return (PageData)dao.findForObject("PayRequestMapper.findByProject", pd);
+	}
 }
 

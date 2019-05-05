@@ -138,11 +138,11 @@
                                     </tr>--%>
 
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">合同签订时间:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">实际合同签订时间 :</td>
                                         <td><input class="span10 date-picker" name="CONTRACT_SIGN_TIME"
                                                    id="CONTRACT_SIGN_TIME" value="${pd.CONTRACT_SIGN_TIME}" type="text"
                                                    data-date-format="yyyy-mm-dd" readonly="readonly"
-                                                   placeholder="合同签订时间" title="合同签订时间" style="width:98%;"/></td>
+                                                   placeholder="实际合同签订时间 " title="实际合同签订时间 " style="width:98%;"/></td>
                                     </tr>
                                    <%-- <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">到货期时间:</td>

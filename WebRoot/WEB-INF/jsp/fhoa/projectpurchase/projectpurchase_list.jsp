@@ -70,7 +70,7 @@
 
 									<th class="center">供应商名称</th>
 
-									<th class="center">合同签订时间</th>
+									<th class="center">实际合同签订时间 </th>
 <%--
 									<th class="center">到货期时间</th>
 --%>

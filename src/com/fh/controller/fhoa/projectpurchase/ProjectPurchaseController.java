@@ -76,7 +76,7 @@ public class ProjectPurchaseController extends AcStartController {
 
             map1.put("合同金额(元)", pd.get("CONTRACT_PRICE").toString());
             if (pd.get("CONTRACT_SIGN_TIME")!=null&&!pd.get("CONTRACT_SIGN_TIME").toString().equals("")){
-                map1.put("合同签订时间", pd.get("CONTRACT_SIGN_TIME").toString());
+                map1.put("实际合同签订时间", pd.get("CONTRACT_SIGN_TIME").toString());
             }
             map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
             map1.put("附件", "<a onclick=\"allOaFile('" + pd.getString("PURCHASE_ID") + "','514b510ca4f0414492b2942fba27ee97')\" style=' cursor:pointer;'>查看附件</a>");
@@ -388,13 +388,14 @@ public class ProjectPurchaseController extends AcStartController {
         pd = this.getPageData();
         Map<String, Object> dataMap = new HashMap<String, Object>();
         List<String> titles = new ArrayList<String>();
-        titles.add("选择公司");    //1
         titles.add("项目编号");    //1
         titles.add("项目名称");    //1
+        titles.add("选择公司");    //1
+
         titles.add("采购合同编号");    //3
         titles.add("供应商");    //4
 
-        titles.add("合同签订时间");    //9
+        titles.add("实际合同签订时间 ");    //9
 /*        titles.add("到货期时间");    //10
         titles.add("验收时间");    //10*/
         titles.add("合同总价(元)");    //10
@@ -409,17 +410,16 @@ public class ProjectPurchaseController extends AcStartController {
         List<PageData> varList = new ArrayList<PageData>();
         for (int i = 0; i < varOList.size(); i++) {
             PageData vpd = new PageData();
-            vpd.put("var1", varOList.get(i).getString("SELECTCOMPANY"));        //1
-            vpd.put("var2", varOList.get(i).getString("SYS_ID"));        //1
-            vpd.put("var3", varOList.get(i).getString("PROJECTNAME"));        //1
+            vpd.put("var1", varOList.get(i).getString("SYS_ID"));        //1
+            vpd.put("var2", varOList.get(i).getString("PROJECTNAME"));        //1
+            vpd.put("var3", varOList.get(i).getString("SELECTCOMPANY"));        //1
+
             vpd.put("var4", varOList.get(i).getString("PURCHASE_CONTRACT_ID"));        //3
             vpd.put("var5", varOList.get(i).getString("SUPPLIERNAME"));
 
 
                 vpd.put("var6", varOList.get(i).getString("CONTRACT_SIGN_TIME"));	    //8
-/*
-                vpd.put("var7", varOList.get(i).getString("DAOHUOQI"));	    //8
-                vpd.put("var8", varOList.get(i).getString("YANSHOUSHIJIAN"));	    //8*/
+
                 vpd.put("var7", varOList.get(i).getString("CONTRACT_PRICE"));	    //8
 
             //4

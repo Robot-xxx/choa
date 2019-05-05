@@ -108,14 +108,14 @@
                                                    placeholder="这里输入医院预付款" title="医院预付款" style="width:98%;"/></td>
                                     </tr>--%>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>发货时间:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>预计发货时间:</td>
                                         <td><input class="span10 date-picker" name="PREDICT_ACCOUNT_TIME"
                                                    id="PREDICT_ACCOUNT_TIME" value="${pd.PREDICT_ACCOUNT_TIME}"
                                                    type="text" data-date-format="yyyy-mm-dd" readonly="readonly"
-                                                   placeholder="发货时间" title="发货时间" style="width:98%;"/></td>
+                                                   placeholder="预计发货时间" title="预计发货时间" style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">合同签订时间:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">实际双签合同签订时间:</td>
                                         <td><input class="span10 date-picker" name="PRACTICAL_ACCOUT_TIME"
                                                    id="PRACTICAL_ACCOUT_TIME" value="${pd.PRACTICAL_ACCOUT_TIME}"
                                                    type="text" data-date-format="yyyy-mm-dd" readonly="readonly"
@@ -135,7 +135,7 @@
                                                    style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">预计验收时间:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">实际验收时间:</td>
                                         <td><input class="span10 date-picker" name="RECEPTION_TIME" id="RECEPTION_TIME"
                                                    value="${pd.RECEPTION_TIME}" type="text"
                                                    data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="验收时间"

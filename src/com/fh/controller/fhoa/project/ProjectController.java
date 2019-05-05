@@ -197,6 +197,11 @@ public class ProjectController extends AcStartController {
 
 		pd = this.getPageData();
 		pd = projectService.findByProject(pd);	//根据ID读取
+		if(pd!=null){
+			map.put("isUniqueness", "no");
+		}else{
+			map.put("isUniqueness", "ok");
+		}
 
 		map.put("list", pd);
 		return map;
@@ -548,9 +553,9 @@ public class ProjectController extends AcStartController {
 		pd = this.getPageData();
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
-		titles.add("选择公司");	//1
 		titles.add("项目编号");	//1
 		titles.add("项目名称");	//2
+		titles.add("选择公司");	//1
 		titles.add("医院");	//3
 		titles.add("投标限价(元)");	//4
 		titles.add("委托公司");	//5
@@ -570,9 +575,10 @@ public class ProjectController extends AcStartController {
 		List<PageData> varList = new ArrayList<PageData>();
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
-			vpd.put("var1", varOList.get(i).getString("SELECTCOMPANY"));	    //1
-			vpd.put("var2", varOList.get(i).getString("SYS_ID"));	    //1
-			vpd.put("var3", varOList.get(i).getString("PROJECT_NAME"));	    //2
+			vpd.put("var1", varOList.get(i).getString("SYS_ID"));	    //1
+			vpd.put("var2", varOList.get(i).getString("PROJECT_NAME"));	    //2
+			vpd.put("var3", varOList.get(i).getString("SELECTCOMPANY"));	    //1
+
 			vpd.put("var4", varOList.get(i).getString("HOSPITAL"));	    //3
 			vpd.put("var5", varOList.get(i).get("LIMITED_PRICE").toString());	    //4
 			vpd.put("var6", varOList.get(i).getString("CORPORATE_COMPANY"));	    //5

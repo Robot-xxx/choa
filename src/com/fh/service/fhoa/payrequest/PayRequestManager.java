@@ -55,6 +55,7 @@ public interface PayRequestManager{
 
 
 	public List<PageData> taskAll(PageData pd)throws Exception;
+	public  PageData findByProject(PageData pd)throws Exception;
 
 }
 

@@ -31,6 +31,7 @@
 						<input type="hidden" name="QUALITY_ID" id="QUALITY_ID" value="${pd.QUALITY_ID}"/>
 						<input readonly type="hidden" name="XULEIHAO" id="XULEIHAO" value="${pd.XULEIHAO}"/>
 						<input  type="hidden" name="PROJECT_ID" id="PROJECT_ID" value="${pd.PROJECT_ID}"/>
+						<input  type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS}"/>
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
 							<tr>
@@ -49,6 +50,10 @@
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">负责人:</td>
 								<td><input type="text" name="FUZEREN" id="FUZEREN" value="${pd.FUZEREN}" maxlength="255" placeholder="这里输入负责人" title="负责人" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
+								<td><input type="text" name="BZ" id="BZ" value="${pd.BZ}" maxlength="255" placeholder="这里输入备注" title="备注" style="width:98%;"/></td>
 							</tr>
 
 							<tr>

@@ -46,8 +46,8 @@
 								</td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>系统编序号:</td>
-								<td><input type="text" readonly name="SYS_ID" id="SYS_ID" value="${pd.SYS_ID}" maxlength="100" placeholder="这里输入系统编序号" title="系统编序号" style="width:98%;"/></td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>开票编号:</td>
+								<td><input type="text" readonly name="SYS_ID" id="SYS_ID" value="${pd.SYS_ID}" maxlength="100" placeholder="这里输入开票编号" title="开票编号" style="width:98%;"/></td>
 							</tr>
 
 							<tr>
@@ -155,81 +155,78 @@
 				$("#xuanzeCompany").focus();
 			return false;
 			}
-			if($("#jinxiang").val()==""){
-				$("#jinxiang").tips({
-					side:3,
-		            msg:'请选择产品',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#jinxiang").focus();
-			return false;
-			}
-			if($("#TICKET_PRICE").val()==""){
-				$("#TICKET_PRICE").tips({
-					side:3,
-		            msg:'请输入进项票总额',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#TICKET_PRICE").focus();
-			return false;
-			}
-
-            if($("#KAIPIAOJINE").val()==""){
-                $("#KAIPIAOJINE").tips({
-                    side:3,
-                    msg:'请输入开票金额',
-                    bg:'#AE81FF',
-                    time:2
-                });
-                $("#KAIPIAOJINE").focus();
-                return false;
-            }
-
-            if($("#YIKAIPIAOJINE").val()==""){
-                $("#YIKAIPIAOJINE").tips({
-                    side:3,
-                    msg:'请输入已开票金额',
-                    bg:'#AE81FF',
-                    time:2
-                });
-                $("#YIKAIPIAOJINE").focus();
-                return false;
-            }
-
-
-			if($("#SYS_ID").val()==""){
+		if($("#SYS_ID").val()==""){
 				$("#SYS_ID").tips({
 					side:3,
-		            msg:'请输入系统编序号',
+		            msg:'开票编号不能为空',
 		            bg:'#AE81FF',
 		            time:2
 		        });
 				$("#SYS_ID").focus();
 			return false;
 			}
-			if($("#SALES_CONTRACT_ID").val()==""){
-				$("#SALES_CONTRACT_ID").tips({
+		if($("#jinxiang").val()==""){
+				$("#jinxiang").tips({
 					side:3,
-		            msg:'请输入销售合同',
+		            msg:'采购合同不能为空',
 		            bg:'#AE81FF',
 		            time:2
 		        });
-				$("#SALES_CONTRACT_ID").focus();
+				$("#jinxiang").focus();
 			return false;
 			}
-
-			if($("#OPEN_TICKET_PRICE").val()==""){
-				$("#OPEN_TICKET_PRICE").tips({
+		if($("#TICKET_PRICE").val()==""){
+				$("#TICKET_PRICE").tips({
 					side:3,
-		            msg:'请输入合同总额',
+		            msg:'进项票总额不能为空',
 		            bg:'#AE81FF',
 		            time:2
 		        });
 				$("#TICKET_PRICE").focus();
 			return false;
 			}
+		if($("#xiaoshou").val()==""){
+				$("#xiaoshou").tips({
+					side:3,
+		            msg:'销售合同不能为空',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#xiaoshou").focus();
+			return false;
+			}
+		if($("#OPEN_TICKET_PRICE").val()==""){
+				$("#OPEN_TICKET_PRICE").tips({
+					side:3,
+		            msg:'合同总额不能为空',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#OPEN_TICKET_PRICE").focus();
+			return false;
+			}
+		if($("#KAIPIAOJINE").val()==""){
+				$("#KAIPIAOJINE").tips({
+					side:3,
+		            msg:'开票金额不能为空',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#KAIPIAOJINE").focus();
+			return false;
+			}
+		if($("#YIKAIPIAOJINE").val()==""){
+				$("#YIKAIPIAOJINE").tips({
+					side:3,
+		            msg:'已开票金额不能为空',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YIKAIPIAOJINE").focus();
+			return false;
+			}
+
+
 
 			$("#Form").submit();
 			$("#zhongxin").hide();

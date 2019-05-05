@@ -81,11 +81,11 @@
 									<th class="center">下游序号</th>--%>
 									<th class="center">下游名称</th>
 									<th class="center">合同总价(元)</th>
-									<th class="center">发货时间</th>
-									<th class="center">合同签订时间</th>
+									<th class="center">预计发货时间</th>
+									<th class="center">实际双签合同签订时间</th>
 								<%--	<th class="center">累计开票总额</th>--%>
 									<th class="center">实际到货时间</th>
-									<th class="center">验收时间</th>
+									<th class="center">实际验收时间</th>
 								<%--	<th class="center">是否资料齐全</th>--%>
 
                                     <th class="center">负责人</th>

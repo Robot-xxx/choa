@@ -70,7 +70,9 @@
 									<th class="center" style="width:50px;">序号</th>
 									<th class="center">选择公司</th>
 									<th class="center">项目编号</th>
+<%--
 									<th class="center">采购合同编号</th>
+--%>
 									<th class="center">项目名称</th>
 									<th class="center">进项票总额(元)</th>
 									<th class="center">发票号</th>
@@ -95,7 +97,9 @@
 											<td class='center' style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
 											<td class='center'>${var.SELECTCOMPANY}</td>
 											<td class='center'>${var.PROJECT_ID}</td>
+<%--
 											<td class='center'>${var.PURCHASENUMBER}</td>
+--%>
 											<td class='center'>${var.PROJECT_NAME}</td>
 											<td class='center'>${var.JINPRICE}</td>
 											<td class='center'>${var.TICKET_NO}</td>
@@ -108,6 +112,9 @@
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
 												</c:if>
 												<div class="hidden-sm hidden-xs btn-group">
+													<a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if>  class="<c:if test="${var.STATUS==1}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==2}">btn btn-xs btn-success</c:if><c:if test="${var.STATUS==3}">btn btn-xs btn-yellow</c:if>" title="提交" onclick="tijiao('${var.SYS_ID}',this)">
+														<i class="ace-icon fa fa-check-circle-o bigger-120" title="提交"></i>
+													</a>
 													<c:if test="${QX.edit == 1 }">
 													<a class="btn btn-xs btn-success" title="编辑" onclick="edit('${var.SYS_ID}');">
 														<i class="ace-icon fa fa-pencil-square-o bigger-120" title="编辑"></i>
@@ -126,6 +133,11 @@
 														</button>
 			
 														<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+															<li>
+																<a <c:if test="${var.STATUS==3||var.STATUS==1}">disabled="disabled" </c:if>  class="btn btn-xs btn-success" title="提交" onclick="tijiao('${var.SYS_ID}',this)">
+																	<i class="ace-icon fa fa-check-circle-o bigger-120" title="提交"></i>
+																</a>
+															</li>
 															<c:if test="${QX.edit == 1 }">
 															<li>
 																<a style="cursor:pointer;" onclick="edit('${var.SYS_ID}');" class="tooltip-success" data-rel="tooltip" title="修改">
@@ -217,6 +229,24 @@
 	<!-- 文件上传-->
 	<script src="upload/oaFile.js"></script>
 	<script type="text/javascript">
+
+		function tijiao(SYS_ID,obj){
+			$.ajax({
+				url: "<%=basePath%>inputticket/tijiaoFlow.do",
+				data:{'SYS_ID':SYS_ID},
+				success: function(data){
+					if(data.msg=="success"){
+						top.fhtaskmsg(data.ASSIGNEE_);
+						top.topTask();//刷新顶部任务列表
+						obj.setAttribute("disabled","disabled");
+						top.alert("提交成功！")
+					}else {
+						top.alert("提交失败，请稍后再试")
+					}
+				}
+			});
+		}
+
         //下载模版
         function xiazai(){
             window.location.href='<%=basePath%>inputticket/downExcel.do';

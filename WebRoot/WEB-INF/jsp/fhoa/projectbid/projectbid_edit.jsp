@@ -145,10 +145,10 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">开标日期:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">实际开标日期:</td>
                                         <td><input class="span10 date-picker" name="BID_OPEN_TIME" id="BID_OPEN_TIME"
                                                    value="${pd.BID_OPEN_TIME}" type="text" data-date-format="yyyy-mm-dd"
-                                                   readonly="readonly" placeholder="开标日期" title="开标日期"
+                                                   readonly="readonly" placeholder="实际开标日期" title="实际开标日期"
                                                    style="width:98%;"/></td>
                                     </tr>
 

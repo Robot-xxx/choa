@@ -3,15 +3,13 @@ package com.fh.controller.fhoa.inputticket;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fh.controller.activiti.AcStartController;
 import com.fh.service.fhoa.accessoryfile.AccessoryFileManager;
+import com.fh.service.fhoa.supplier.SupplierManager;
 import com.fh.util.*;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -30,14 +28,66 @@ import com.fh.service.fhoa.inputticket.InputTicketManager;
  */
 @Controller
 @RequestMapping(value="/inputticket")
-public class InputTicketController extends BaseController {
+public class InputTicketController extends AcStartController {
 	
 	String menuUrl = "inputticket/list.do"; //菜单地址(权限用)
 	@Resource(name="inputticketService")
 	private InputTicketManager inputticketService;
+	@Resource(name="supplierService")
+	private SupplierManager supplierService;
 	@Resource
 	private AccessoryFileManager accessoryFileManager;
 	SimpleDateFormat sd1 =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+
+
+	/**提交流程
+	 * @param
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/tijiaoFlow")
+	@ResponseBody
+	public  Map<String, Object> tijiaoFlow() throws Exception{
+		Map<String, Object> map = new HashMap<>();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		pd = inputticketService.findById(pd);	//根据ID读取
+		try {
+
+			/** 工作流的操作 **/
+			Map<String,Object> map1 = new LinkedHashMap<String, Object>();
+			map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
+			map1.put("项目编号", pd.getString("PROJECT_ID"));
+			map1.put("项目名称", pd.getString("PROJECT_NAME"));
+			map1.put("采购合同", pd.getString("PURCHASENUMBER"));
+			map1.put("进项票总额(元)", pd.getString("JINPRICE"));
+			map1.put("发票号", pd.getString("TICKET_NO"));
+			map1.put("已回票金额(元)", pd.getString("YIHUIPIAOJINE"));
+			map1.put("金额(元)", pd.getString("MONEY"));
+			map1.put("备注", pd.getString("JINBZ"));
+
+			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
+			String act_id=startProcessInstanceByKeyHasVariables("OA_JINXIANGPIAOLIUCHENG",map1);	//启动流程实例(请假单流程)通过KEY
+
+
+			pd.put("STATUS",3);
+			pd.put("ACT_ID",act_id);
+			pd.put("TABLENAME","oa_quality");
+			inputticketService.edit(pd);
+			supplierService.editTableName(pd);
+
+
+			map.put("ASSIGNEE_",Jurisdiction.getUsername());
+			map.put("msg","success");
+		} catch (Exception e) {
+			map.put("msg","请联系管理员部署相应业务流程!");
+			map.put("errer","errer");
+		}
+
+		return map;
+	}
+
+
 
 
 	/**获取进项票信息byid
@@ -120,6 +170,7 @@ public class InputTicketController extends BaseController {
 		pd.put("UPDATETIME", sd1.format(new Date()));
 
 		pd.put("SYS_ID",inputticketid);	//主键
+		pd.put("STATUS",2);
 		inputticketService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");

@@ -135,6 +135,15 @@
 			    });
 			return false;
 			}
+			if($("#FILETYPE").val()==""){
+				$("#FILETYPE").tips({
+					side:3,
+			        msg:'请选择文件类型',
+			        bg:'#AE81FF',
+			        time:2
+			    });
+			return false;
+			}
            /* if($("#DICTIONARIES").val()==""){
                 $("#DICTIONARIES").tips({
                     side:3,

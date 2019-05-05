@@ -27,6 +27,7 @@
 		f.CREATETIME,
 		f.UPDATETIME,
 		f.YIHUIPIAOJINE,
+		f.STATUS,
 		f.SYS_ID
 	</sql>
 	
@@ -45,6 +46,7 @@
 		CREATETIME,
 		UPDATETIME,
 		YIHUIPIAOJINE,
+		STATUS,
 		SYS_ID
 	</sql>
 	
@@ -63,6 +65,7 @@
 		#{CREATETIME},
 		#{UPDATETIME},
 		#{YIHUIPIAOJINE},
+		#{STATUS},
 		#{SYS_ID}
 	</sql>
 	
@@ -103,6 +106,7 @@
 			CREATETIME = #{CREATETIME},
 			UPDATETIME = #{UPDATETIME},
 			YIHUIPIAOJINE = #{YIHUIPIAOJINE},
+			STATUS = #{STATUS},
 			SYS_ID = SYS_ID
 		where
 		SYS_ID = #{SYS_ID}

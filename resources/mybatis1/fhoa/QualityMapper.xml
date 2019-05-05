@@ -18,6 +18,9 @@
 		f.PROJECT_NAME,	
 		f.FUZEREN,	
 		f.XULEIHAO,	
+		f.STATUS,
+		f.ACT_ID,
+		f.BZ,
 		f.QUALITY_ID
 	</sql>
 	
@@ -27,6 +30,9 @@
 		PROJECT_NAME,	
 		FUZEREN,	
 		XULEIHAO,	
+		STATUS,
+		ACT_ID,
+		BZ,
 		QUALITY_ID
 	</sql>
 	
@@ -36,6 +42,9 @@
 		#{PROJECT_NAME},	
 		#{FUZEREN},	
 		#{XULEIHAO},	
+		#{STATUS},
+		#{ACT_ID},
+		#{BZ},
 		#{QUALITY_ID}
 	</sql>
 	
@@ -67,6 +76,9 @@
 			PROJECT_NAME = #{PROJECT_NAME},
 			FUZEREN = #{FUZEREN},
 			XULEIHAO = #{XULEIHAO},
+			STATUS = #{STATUS},
+			ACT_ID = #{ACT_ID},
+			BZ = #{BZ},
 			QUALITY_ID = QUALITY_ID
 		where 
 			QUALITY_ID = #{QUALITY_ID}

@@ -30,6 +30,8 @@
                         <form action="payrequest/${msg }.do" name="Form" id="Form" method="post">
                             <input type="hidden" name="REQUEST_ID" id="REQUEST_ID" value="${pd.REQUEST_ID}"/>
                             <input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
+                            <input type="hidden" name="ACT_ID" id="ACT_ID" value="${pd.ACT_ID }">
+                            <input type="hidden" name="tag" id="tag" >
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
                                     <tr>
@@ -301,6 +303,17 @@
 
     //保存
     function save() {
+
+        if($("#tag").val()=='no'){
+            $("#PROJECT_ID").tips({
+                side: 3,
+                msg: '项目编号已重复！请注意修改',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#PROJECT_ID").focus();
+            return false;
+        }
         if ($("#xuanzeCompany").val() == "") {
             $("#xuanzeCompany").tips({
                 side: 3,
@@ -433,6 +446,39 @@
 
     $(function () {
 
+        $("#requesttype").change(function(){
+            if( $("#requesttype").val()=='投标保证金'||$("#requesttype").val()=='中标服务费'){
+                $.ajax({
+                    type: "POST",
+                    data:{"PROJECT_ID":$("#PROJECT_ID").val()},
+                    url: '<%=basePath%>payrequest/findByProject.do?tm=' + new Date().getTime(),
+                    dataType: 'json',
+                    cache: false,
+                    success: function (data) {
+                        $("#tag").val(data.isUniqueness);
+                    }
+                });
+            }else{
+                $("#tag").val('ok');
+            }
+        })
+
+        $("#PROJECT_ID").change(function (){
+            if( $("#requesttype").val()=='投标保证金'||$("#requesttype").val()=='中标服务费'){
+                $.ajax({
+                    type: "POST",
+                    data:{"PROJECT_ID":$("#PROJECT_ID").val()},
+                    url: '<%=basePath%>payrequest/findByProject.do?tm=' + new Date().getTime(),
+                    dataType: 'json',
+                    cache: false,
+                    success: function (data) {
+                        $("#tag").val(data.isUniqueness);
+                    }
+                });
+            }
+        })
+
+
         $("#LICENCE").change(function () {
             if ($("#LICENCE").val() == "其他") {
                 $("#xuanzeCompany").removeAttr("hidden");
@@ -441,8 +487,6 @@
                 $("#xuanzeCompany").attr("hidden", "hidden");
                 $("#xuanzeCompany").val($("#LICENCE").val());
             }
-
-
         })
 
 
@@ -665,8 +709,6 @@
                     $("#FUKUANYUEDING").val( data.pd.FUKUANYUEDING);
                     $("#HETONGZONGE").val( data.pd.CONTRACT_PRICE);
                     $("#GONGYINGSHANG1").val( data.pd.SUPPLIERNAME);
-
-
                 }
             });
 

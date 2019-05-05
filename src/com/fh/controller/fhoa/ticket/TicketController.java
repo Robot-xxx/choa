@@ -325,7 +325,7 @@ public class TicketController extends AcStartController {
 			vpd.put("var8", varOList.get(i).getString("YIKAIPIAOJINE"));	    //7
 			vpd.put("var9", varOList.get(i).getString("TICKET_INFO"));	    //7
 			vpd.put("var10", varOList.get(i).getString("OPEN_TICKET_YUANYIN"));	    //7
-			vpd.put("var11", varOList.get(i).getString("UPDATETIME"));	    //7
+			vpd.put("var11", varOList.get(i).get("UPDATETIME").toString());	    //7
 			if(varOList.get(i).getString("STATUS").equals("1")){
 				vpd.put("var12", "已审批");	    //6
 			}else if(varOList.get(i).getString("STATUS").equals("2")){
