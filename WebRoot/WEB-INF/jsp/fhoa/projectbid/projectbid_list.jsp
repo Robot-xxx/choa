@@ -96,6 +96,7 @@
 									<th class="center">负责人</th>
 								<%--	<th class="center">是否资料齐全</th>--%>
 									<th class="center">标书制作人</th>
+									<th class="center">投标状态</th>
 
 									<th class="center">备注</th>
 									<th class="center">产品</th>
@@ -143,6 +144,7 @@
 											<td class='center'>${var.FUZEREN}</td>
 										<%--	<td class='center'>${var.ISZILIAOQQ}</td>--%>
 											<td class='center'>${var.BIAOSHUZHIZUOREN}</td>
+											<td class='center'>${var.TOUBIAOZHUANGTAI}</td>
 											<td class='center'>${var.BZ}</td>
 											<td class='center'><a onclick="selectProject2('${var.PROJECT_BID_ID}')" style=" cursor:pointer;">查看产品</a></td>
 

@@ -14,85 +14,32 @@
 
     <!-- 字段 -->
     <sql id="Field">
-        f
-        .
-        SYS_ID
-        ,
-        f
-        .
-        PROJECT_NAME,
-        f
-        .
-        HOSPITAL,
-        f
-        .
-        WINNING_UNIT,
-        f
-        .
-        WINNING_PRICE,
-        f
-        .
-        GUARANTEE_MONEY,
-        f
-        .
-        SCHEDULED_TIME,
-        f
-        .
-        PRACTICAL_TIME,
-        f
-        .
-        BID_OPEN_TIME,
-        f
-        .
-        SERVICE_PRICE,
-        f
-        .
-        SCHEDULED_SERVICE_PRICE_TIME,
-        f
-        .
-        PRACTICAL_SERVICE_PRICE_TIME,
-        f
-        .
-        ADVICE,
-        f
-        .
-        CONTRACT_MODEL_TIME,
-        f
-        .
-        COUNTER_SIGN_TIME,
-        f
-        .
-        WITHDRAWAL_SECURITY,
-        f
-        .
-        SELECTCOMPANY,
-        f
-        .
-        TEBDERING,
-        f
-        .
-        REPRESENTATIVE,
-        f
-        .
-        STATUS,
-        f
-        .
-        ACT_ID,
-        f
-        .
-        HOSPITALID,
-        f
-        .
-        PRODUCT,
-        f
-        .
-        SUPPLIER,
-        f
-        .
-        CLIENT,
-        f
-        .
-        FUZEREN,
+        f.SYS_ID,
+        f.PROJECT_NAME,
+        f.HOSPITAL,
+        f.WINNING_UNIT,
+        f.WINNING_PRICE,
+        f.GUARANTEE_MONEY,
+        f.SCHEDULED_TIME,
+        f.PRACTICAL_TIME,
+        f.BID_OPEN_TIME,
+        f.SERVICE_PRICE,
+        f.SCHEDULED_SERVICE_PRICE_TIME,
+        f.PRACTICAL_SERVICE_PRICE_TIME,
+        f.ADVICE,
+        f.CONTRACT_MODEL_TIME,
+        f.COUNTER_SIGN_TIME,
+        f.WITHDRAWAL_SECURITY,
+        f.SELECTCOMPANY,
+        f.TEBDERING,
+        f.REPRESENTATIVE,
+        f.STATUS,
+        f.ACT_ID,
+        f. HOSPITALID,
+        f .PRODUCT,
+        f .SUPPLIER,
+        f. CLIENT,
+        f.FUZEREN,
         f.BIAOSHUZHIZUOREN,
         f.CHANPINDAOQIRI,
         f.ISZILIAOQQ,
@@ -102,6 +49,7 @@
         f.CREATETIME,
         f.FENGXIANTIAOKUAN,
         f.BAOZHENGJINTUIHUISHIJIAN,
+        f.TOUBIAOZHUANGTAI,
         f.PROJECT_BID_ID
     </sql>
 
@@ -142,13 +90,13 @@
         CREATETIME,
         FENGXIANTIAOKUAN,
         BAOZHENGJINTUIHUISHIJIAN,
+        TOUBIAOZHUANGTAI,
         PROJECT_BID_ID
     </sql>
 
     <!-- 字段值 -->
     <sql id="FieldValue">
-        #{SYS_ID}
-        ,
+        #{SYS_ID},
         #{PROJECT_NAME},
         #{HOSPITAL},
         #{WINNING_UNIT},
@@ -183,6 +131,7 @@
         #{CREATETIME},
         #{FENGXIANTIAOKUAN},
         #{BAOZHENGJINTUIHUISHIJIAN},
+        #{TOUBIAOZHUANGTAI},
         #{PROJECT_BID_ID}
     </sql>
 
@@ -245,6 +194,7 @@
         CREATETIME = #{CREATETIME},
         FENGXIANTIAOKUAN = #{FENGXIANTIAOKUAN},
         BAOZHENGJINTUIHUISHIJIAN = #{BAOZHENGJINTUIHUISHIJIAN},
+        TOUBIAOZHUANGTAI = #{TOUBIAOZHUANGTAI},
         PROJECT_BID_ID = PROJECT_BID_ID
         where
         PROJECT_BID_ID = #{PROJECT_BID_ID}

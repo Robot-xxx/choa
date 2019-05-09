@@ -104,8 +104,8 @@
 		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
 			and
 				(
-			PROJECT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-			PROJECT_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+			PROJECT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			PROJECT_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			FUZEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 				<!--	根据需求自己加检索条件
 

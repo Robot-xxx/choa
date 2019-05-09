@@ -202,7 +202,14 @@
                                         </td>
                                     </tr>--%>
 
+                                    <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>投标状态:</td>
+                                        <td>
+                                            <select name="TOUBIAOZHUANGTAI" id="TOUBIAOZHUANGTAI" title=""
+                                                    style="width:38%;"></select>
 
+                                        </td>
+                                    </tr>
 
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
@@ -281,6 +288,15 @@
             });
             $("#xuanzeCompany").focus();
             return false;
+        }     if ($("#TOUBIAOZHUANGTAI").val() == "") {
+            $("#TOUBIAOZHUANGTAI").tips({
+                side: 3,
+                msg: '请选择投标状态',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#TOUBIAOZHUANGTAI").focus();
+            return false;
         }
         if ($("#PROJECT_NAME").val() == "") {
             $("#PROJECT_NAME").tips({
@@ -347,7 +363,6 @@
 
     function getInfo() {
 
-
         var project = "${pd.SYS_ID}";
 
         //项目编号
@@ -373,12 +388,6 @@
     }
 
     function fmtDate(obj) {
-
-
-
-
-
-        console.log(obj)
         var date = new Date(obj);
         var y = 1900 + date.getYear();
         var m = "0" + (date.getMonth() + 1);
@@ -387,7 +396,6 @@
     }
 
     $(function () {
-
 
 
 
@@ -569,6 +577,30 @@
         $('.date-picker').datepicker({autoclose: true, todayHighlight: true});
 
 
+    });
+
+
+
+    var TAG= "${pd.TOUBIAOZHUANGTAI}";
+
+    $.ajax({
+        type: "POST",
+        url: '<%=basePath%>dictionaries/getLevels.do?tm=' + new Date().getTime(),
+        data: {DICTIONARIES_ID: 'ce898b1920b24c259ca2fce8fb0ef685'},
+        dataType: 'json',
+        cache: false,
+        success: function (data) {
+            $("#TOUBIAOZHUANGTAI").append("<option value=''>请选择投标状态</option>");
+            $.each(data.list, function (i, dvar) {
+                if (TAG == dvar.NAME) {
+
+                    $("#TOUBIAOZHUANGTAI").append("<option value=" + dvar.NAME + " selected='selected'>" + dvar.NAME + "</option>");
+                } else {
+                    $("#TOUBIAOZHUANGTAI").append("<option value=" + dvar.NAME + ">" + dvar.NAME + "</option>");
+                }
+            });
+
+        }
     });
 
 
