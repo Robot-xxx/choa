@@ -247,9 +247,9 @@
 				$("#jinxiang").append("<option value=''>请选择采购合同</option>");
 			for (var i = 0; i < data.list.length; i++) {
 				if (data.list[i].SYS_ID  == project) {
-					$("#jinxiang").append("<option value=" +  data.list[i].PURCHASE_ID  + " selected='selected'>" +data.list[i].PURCHASE_CONTRACT_ID +"-"+data.list[i].PROJECTNAME +"</option>");
+					$("#jinxiang").append("<option value=" +  data.list[i].PURCHASE_ID  +"=》"+data.list[i].CONTRACT_PRICE+ " selected='selected'>" +data.list[i].SYS_ID +"=》"+data.list[i].PROJECTNAME +"</option>");
 				} else {
-					$("#jinxiang").append("<option value=" + data.list[i].PURCHASE_ID  + ">" +data.list[i].PURCHASE_CONTRACT_ID +"-"+data.list[i].PROJECTNAME+ "</option>");
+					$("#jinxiang").append("<option value=" + data.list[i].PURCHASE_ID  +"=》"+data.list[i].CONTRACT_PRICE+ ">" +data.list[i].SYS_ID +"=》"+data.list[i].PROJECTNAME+ "</option>");
 				}
 			}
 			downList('jinxiang');
@@ -271,9 +271,9 @@
                         $("#xiaoshou").append("<option value=''>请选择销售合同</option>");
                         for (var i = 0; i < data.list.length; i++) {
                             if (data.list[i].SALES_CONTRACT_ID  == SALES_CONTRACT_ID) {
-                                $("#xiaoshou").append("<option value=" +  data.list[i].CONTRACT_PRICE  + " selected='selected'>" +data.list[i].SALES_CONTRACT_ID+"-"+data.list[i].PROJECT_NAME+ "</option>");
+                                $("#xiaoshou").append("<option value=" +  data.list[i].CONTRACT_PRICE  +"=》"+ data.list[i].SALES_CONTRACT_ID + " selected='selected'>" +data.list[i].SYS_ID+"=》"+data.list[i].PROJECT_NAME+ "</option>");
                             } else {
-                                $("#xiaoshou").append("<option value=" + data.list[i].CONTRACT_PRICE  + ">" +data.list[i].SALES_CONTRACT_ID+"-"+data.list[i].PROJECT_NAME+  "</option>");
+                                $("#xiaoshou").append("<option value=" +data.list[i].CONTRACT_PRICE  +"=》"+ data.list[i].SALES_CONTRACT_ID  + ">" +data.list[i].SYS_ID+"=》"+data.list[i].PROJECT_NAME+  "</option>");
                             }
                         }
                         downList('xiaoshou');
@@ -291,14 +291,17 @@
                 $("#TICKET_INFO").val('');
                 $("#ENTRYTICKETNAME").val('');
                 $("#JINXIANGID").val('');
+				var str1 =$("#jinxiang").val();
+				$("#TICKET_PRICE").val(str1.substring(str1.indexOf("=》")+2,str1.length))
+				console.log(str1.substring(0,str1.indexOf("=》")))
                 $.ajax({
                     type: "POST",
-                    url: '<%=basePath%>/inputticket/getJinxXiangById.do?SYS_ID=' + $("#jinxiang").val(),
+                    url: '<%=basePath%>/inputticket/getJinxXiangById.do?SYS_ID=' + str1.substring(0,str1.indexOf("=》")),
                     dataType: 'json',
                     cache: false,
                     success: function (data) {
                         if (data.errInfo == "success") {
-                            console.log(JSON.stringify(data))
+                        	console.log(JSON.stringify(data))
                             $("#TICKET_PRICE").val(data.pd.JINPRICE);
                             $("#TICKET_INFO").val(data.pd.JINBZ);
                             $("#ENTRYTICKETNAME").val($("#jinxiang option:selected").text());
@@ -310,9 +313,15 @@
 
             //选择销售合同
             $("#xiaoshou").change(function (){
-                $("#SALES_CONTRACT_ID").val($("#xiaoshou option:selected").text());
+				var str1= $("#xiaoshou option:selected").text();
 
-                $("#OPEN_TICKET_PRICE").val($("#xiaoshou").val());
+				var str2= $("#xiaoshou").val();
+                $("#SALES_CONTRACT_ID").val(str2.substring(str2.indexOf("=》")+2,str1.length)+"-"+str1.substring(str1.indexOf("=》")+2,str1.length));
+
+                $("#OPEN_TICKET_PRICE").val(str2.substring(0,str2.indexOf("=》")));
+
+
+
 
 
             })

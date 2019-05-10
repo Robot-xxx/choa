@@ -353,6 +353,6 @@ public class TicketController extends AcStartController {
 	 */
 	@RequestMapping(value="/downExcel")
 	public void downExcel(HttpServletResponse response)throws Exception{
-		FileDownload.fileDownload(response, PathUtil.getClasspath() + Const.FILEPATHFILE + "开发票联络单（模板）.xls", "开发票联络单（模板）.xls");
+		FileDownload.fileDownload(response, PathUtil.getClasspath() + Const.FILEPATHFILE + "开发票联络单.xls", "开发票联络单.xls");
 	}
 }

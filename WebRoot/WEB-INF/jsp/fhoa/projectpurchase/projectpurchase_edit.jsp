@@ -159,7 +159,7 @@
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><span style="color: red">*</span>合同总价(元):</td>
                                         <td><input type="text" name="CONTRACT_PRICE" id="CONTRACT_PRICE"
-                                                   value="${pd.CONTRACT_PRICE}" maxlength="30"
+                                                   value="${pd.CONTRACT_PRICE}" maxlength="50"
                                                    placeholder="这里输入合同总价(元)" title="合同总价(元)" style="width:98%;"/></td>
                                     </tr>
                                     <tr>

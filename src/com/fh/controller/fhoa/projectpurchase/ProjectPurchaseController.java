@@ -186,7 +186,6 @@ public class ProjectPurchaseController extends AcStartController {
             if(pd.get("tag")!=null){
                 if(pd.get("tag").toString().equals("inputticket")){
                     pd.remove("STATUS");
-
                 }
             }
             page.setShowCount(9999999);

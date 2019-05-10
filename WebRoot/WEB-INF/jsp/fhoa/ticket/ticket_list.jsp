@@ -69,7 +69,7 @@
 <%--
 									<th class="center">系统编序号</th>
 --%>
-									 <th class="center">销售合同</th>
+									<th class="center">销售合同</th>
 									<th class="center">进项备注</th>
 									<th class="center">进项票总额(元)</th>
 									<th class="center">合同总额(元)</th>
