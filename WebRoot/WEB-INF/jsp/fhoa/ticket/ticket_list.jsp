@@ -69,11 +69,18 @@
 <%--
 									<th class="center">系统编序号</th>
 --%>
+<%--
 									<th class="center">销售合同</th>
+--%>
+									<th class="center">项目编号</th>
+									<th class="center">项目名称</th>
 									<th class="center">进项备注</th>
 									<th class="center">进项票总额(元)</th>
 									<th class="center">合同总额(元)</th>
-									<th class="center">进项票信息</th>
+									<th class="center">开票金额(元)</th>
+									<th class="center">已开票金额(元)</th>
+									<th class="center">进项票备注</th>
+									<th class="center">开票原因</th>
 									<th class="center">附件</th>
 									<th class="center">操作</th>
 								</tr>
@@ -95,10 +102,17 @@
 											<td class='center'>${var.SYS_ID}</td>
 --%>
 
+<%--
 											<td class='center'>${var.SALES_CONTRACT_ID}</td>
+--%>
+											<td class='center'>${var.PROJECT_ID}</td>
+											<td class='center'>${var.PROJECT_NMAE}</td>
 											<td class='center'>${var.TICKET_INFO}</td>
 											<td class='center'>${var.TICKET_PRICE}</td>
 											<td class='center'>${var.OPEN_TICKET_PRICE}</td>
+											<td class='center'>${var.YIKAIPIAOJINE}</td>
+											<td class='center'>${var.TICKET_INFO}</td>
+											<td class='center'>${var.OPEN_TICKET_YUANYIN}</td>
 
 											<td class='center'><a onclick="allInvoice('${var.TICKET_ID}')" style=" cursor:pointer;">查看进项票信息</a></td>
                                             <td class='center'><a onclick="allOaFile('${var.TICKET_ID}','9c3468e93719466ca4693babf2fa3908')" style=" cursor:pointer;">查看附件</a></td>

@@ -409,7 +409,7 @@ public class PayRequestController extends AcStartController {
 		PageData pd = new PageData();
 		String userId= Jurisdiction.getUSERID();
 		pd = this.getPageData();
-		if(!userId.equals("1")){
+		if(!userId.equals("1")||!userId.equals("R20181028683296")||!userId.equals("R20190123706606")){
 			pd.put("USERID",userId);
 		}
 		Map<String,Object> dataMap = new HashMap<String,Object>();

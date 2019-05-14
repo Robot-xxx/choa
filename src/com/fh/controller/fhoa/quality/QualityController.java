@@ -61,7 +61,7 @@ public class QualityController extends AcStartController {
 			map1.put("项目名称", pd.getString("PROJECT_NAME"));
 			map1.put("负责人", pd.getString("FUZEREN"));
 			map1.put("备注", pd.getString("BZ"));
-			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("QUALITY_ID")+"','de4e7214627e487c9b989ce222de88de')\" style=' cursor:pointer;'>查看附件</a>");
+			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("XULEIHAO")+"','de4e7214627e487c9b989ce222de88de')\" style=' cursor:pointer;'>查看附件</a>");
 
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
 			String act_id=startProcessInstanceByKeyHasVariables("oa_zhikongdangan",map1);	//启动流程实例(请假单流程)通过KEY

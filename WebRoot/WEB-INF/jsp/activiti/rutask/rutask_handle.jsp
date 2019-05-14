@@ -260,7 +260,24 @@
 																	};
 																	diag.show();
 																}
+                                                                //查看文件列表
+                                                                function allOaFile(oafileid,FILETYPE){
+                                                                    top.jzts();
+                                                                    var diag = new top.Dialog();
+                                                                    diag.Drag=true;
+                                                                    diag.Title ="查看文件";
+                                                                    diag.URL = '<%=basePath%>/oafile/allList.do?keywords='+oafileid+"&FILETYPE="+FILETYPE;
+                                                                    diag.Width = 1100;
+                                                                    diag.Height = 600;
+                                                                    diag.Modal = true;				//有无遮罩窗口
+                                                                    diag. ShowMaxButton = true;	//最大化按钮
+                                                                    diag.ShowMinButton = true;		//最小化按钮
+                                                                    diag.CancelEvent = function(){ //关闭事件
 
+                                                                        diag.close();
+                                                                    };
+                                                                    diag.show();
+                                                                }
 																//审批意见详情页
 																function details(htmlId){
 																	var content = $("#"+htmlId).val().split(',fh,');
