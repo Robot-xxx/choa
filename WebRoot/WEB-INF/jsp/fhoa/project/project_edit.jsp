@@ -136,7 +136,7 @@
                                                    style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">是否投标项目:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>是否投标项目:</td>
                                         <td>
                                             <select name="ISTOUBIAOXIANGMU" id="ISTOUBIAOXIANGMU" title=""
                                                    style="width:38%;">

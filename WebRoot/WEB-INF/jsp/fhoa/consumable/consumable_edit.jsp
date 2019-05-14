@@ -35,12 +35,12 @@
 
                             <div id="zhongxin" style="padding-top: 13px;">
                                 <table id="table_report" class="table table-striped table-bordered table-hover">
-                                    <tr>
+                                  <%--  <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>系统编序号:</td>
                                         <td><input readonly type="text" name="SYS_ID" id="SYS_ID" value="${pd.SYS_ID}"
                                                    maxlength="100" placeholder="这里输入系统编序号" title="系统编序号"
                                                    style="width:98%;"/></td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>附加值:</td>
                                         <td>

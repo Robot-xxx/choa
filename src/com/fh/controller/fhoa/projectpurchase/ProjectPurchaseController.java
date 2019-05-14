@@ -69,8 +69,12 @@ public class ProjectPurchaseController extends AcStartController {
             map1.put("选择公司", pd.getString("SELECTCOMPANY"));
             map1.put("项目编号", pd.getString("SYS_ID"));
             map1.put("项目名称", pd.getString("PROJECTNAME"));
+/*
             map1.put("采购合同编号", pd.getString("PURCHASE_CONTRACT_ID"));
+*/
+/*
             map1.put("供应商序号", pd.getString("SUPPLIER_ID"));
+*/
             map1.put("供应商名称", pd.getString("SUPPLIERNAME"));
 
 
@@ -78,7 +82,6 @@ public class ProjectPurchaseController extends AcStartController {
             if (pd.get("CONTRACT_SIGN_TIME")!=null&&!pd.get("CONTRACT_SIGN_TIME").toString().equals("")){
                 map1.put("实际合同签订时间", pd.get("CONTRACT_SIGN_TIME").toString());
             }
-            map1.put("是否资料齐全", pd.getString("ISZILIAOQQ"));
             map1.put("附件", "<a onclick=\"allOaFile('" + pd.getString("PURCHASE_ID") + "','514b510ca4f0414492b2942fba27ee97')\" style=' cursor:pointer;'>查看附件</a>");
             map1.put("查看产品", "<a onclick=\"selectProduct('"+pd.getString("PURCHASE_ID")+"')\" style=' cursor:pointer;'>查看产品</a>");
             map1.put("风险条款", pd.getString("FENGXIANTIAOKUAN"));
@@ -391,11 +394,11 @@ public class ProjectPurchaseController extends AcStartController {
         titles.add("项目名称");    //1
         titles.add("选择公司");    //1
 
-        titles.add("采购合同编号");    //3
+        /*titles.add("采购合同编号");    //3*/
         titles.add("供应商");    //4
 
         titles.add("实际合同签订时间 ");    //9
-/*        titles.add("到货期时间");    //10
+/*      titles.add("到货期时间");    //10
         titles.add("验收时间");    //10*/
         titles.add("合同总价(元)");    //10
         titles.add("风险条款");    //10
@@ -413,7 +416,7 @@ public class ProjectPurchaseController extends AcStartController {
             vpd.put("var2", varOList.get(i).getString("PROJECTNAME"));        //1
             vpd.put("var3", varOList.get(i).getString("SELECTCOMPANY"));        //1
 
-            vpd.put("var4", varOList.get(i).getString("PURCHASE_CONTRACT_ID"));        //3
+        /*    vpd.put("var4", varOList.get(i).getString("PURCHASE_CONTRACT_ID"));        //3*/
             vpd.put("var5", varOList.get(i).getString("SUPPLIERNAME"));
 
 

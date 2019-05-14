@@ -89,6 +89,7 @@
 								<%--	<th class="center">是否资料齐全</th>--%>
 
                                     <th class="center">负责人</th>
+                                    <th class="center">风险条款</th>
                                     <th class="center">备注</th>
 									<th class="center">产品信息</th>
 									<th class="center">回款条款</th>
@@ -130,6 +131,7 @@
 
                                             <td class='center'>${var.FUZEREN}</td>
 
+                                            <td class='center'>${var.FENGXIANTIAOKUAN}</td>
                                             <td class='center'>${var.BZ}</td>
 											<td class='center'><a onclick="selectProject('${var.PROJECT_MARKET_ID}')" style=" cursor:pointer;">查看产品</a></td>
 											<td class='center'><a onclick="selectHuiKuai('${var.PROJECT_MARKET_ID}')" style=" cursor:pointer;">查看回款信息</a></td>

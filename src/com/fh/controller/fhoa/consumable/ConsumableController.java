@@ -63,7 +63,9 @@ public class ConsumableController extends AcStartController {
             /** 工作流的操作 **/
             Map<String,Object> map1 = new LinkedHashMap<String, Object>();
             map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
+/*
             map1.put("耗材资料编号", pd.getString("SYS_ID"));
+*/
             map1.put("产品名称", pd.getString("PRODUCT_NAME"));
             map1.put("型号、规格", pd.getString("MODEL"));
             map1.put("生产厂家", pd.getString("MANUFACTURERS"));
@@ -303,7 +305,9 @@ public class ConsumableController extends AcStartController {
         Map<String, Object> dataMap = new HashMap<String, Object>();
         List<String> titles = new ArrayList<String>();
         titles.add("附加值");    //1
+/*
         titles.add("系统编序号");    //2
+*/
         titles.add("产品名称");    //3
         titles.add("型号丶规格");    //4
         titles.add("生产厂家");    //5
@@ -317,12 +321,14 @@ public class ConsumableController extends AcStartController {
         for (int i = 0; i < varOList.size(); i++) {
             PageData vpd = new PageData();
             vpd.put("var1", varOList.get(i).getString("DICTIONARIES"));        //1
+/*
             vpd.put("var2", varOList.get(i).getString("SYS_ID"));        //2
-            vpd.put("var3", varOList.get(i).getString("PRODUCT_NAME"));        //3
-            vpd.put("var4", varOList.get(i).getString("MODEL"));        //4
-            vpd.put("var5", varOList.get(i).getString("MANUFACTURERS"));        //5
-            vpd.put("var6", varOList.get(i).getString("BUSINESS"));        //7
-            vpd.put("var7", varOList.get(i).getString("FUZEREN"));        //8
+*/
+            vpd.put("var2", varOList.get(i).getString("PRODUCT_NAME"));        //3
+            vpd.put("var3", varOList.get(i).getString("MODEL"));        //4
+            vpd.put("var4", varOList.get(i).getString("MANUFACTURERS"));        //5
+            vpd.put("var5", varOList.get(i).getString("BUSINESS"));        //7
+            vpd.put("var6", varOList.get(i).getString("FUZEREN"));        //8
             if(varOList.get(i).getString("STATUS").equals("1")){
                 vpd.put("var8","已审批");	    //6
             }else if(varOList.get(i).getString("STATUS").equals("2")){

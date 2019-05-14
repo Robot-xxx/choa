@@ -45,12 +45,12 @@
                                                    style="width:60%;"/>
                                         </td>
                                     </tr>
-                                    <tr>
+                              <%--      <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">付款申请编号:</td>
                                         <td><input type="text" name="REQUEST_NO" readonly id="REQUEST_NO"
                                                    value="${pd.REQUEST_NO}" maxlength="100" placeholder="这里输入付款申请编号"
                                                    title="付款申请编号" style="width:98%;"/></td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">申请日期:</td>
                                         <td><input class="span10 date-picker" name="REQUEST_DATE" id="REQUEST_DATE"

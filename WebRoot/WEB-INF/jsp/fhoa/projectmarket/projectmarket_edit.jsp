@@ -120,7 +120,8 @@
                                                    id="PRACTICAL_ACCOUT_TIME" value="${pd.PRACTICAL_ACCOUT_TIME}"
                                                    type="text" data-date-format="yyyy-mm-dd" readonly="readonly"
                                                    placeholder="合同签订时间" title="合同签订时间" style="width:98%;"/></td>
-                                    </tr>
+
+                                    `   9                                    </tr>
                                  <%--   <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">累计开票总额:</td>
                                         <td><input type="number" name="CUMULATIVE_BILLING" id="CUMULATIVE_BILLING"

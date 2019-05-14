@@ -27,7 +27,6 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
-
                         <form action="projectpurchase/${msg }.do" name="Form" id="Form" method="post">
                             <input type="hidden" name="PURCHASE_ID" id="PURCHASE_ID"
                                    value="${pd.PURCHASE_ID}"/>
@@ -77,7 +76,7 @@
                                             <span style="color:red;">注:完成立项丶销售流程后才能选择对应合同</span>
                                         </td>
                                     </tr>--%>
-                                    <tr>
+                             <%--       <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
                                                 color="red">*</font>采购合同编号:
                                         </td>
@@ -86,21 +85,18 @@
                                                    id="PURCHASE_CONTRACT_ID"
                                                    value="${pd.PURCHASE_CONTRACT_ID}" maxlength="100"
                                                    placeholder="这里输入采购合同编号" title="采购合同编号" style="width:98%;"/></td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
-                                                color="red">*</font>供应商序号:
+                                                color="red">*</font>供应商名称:
                                         </td>
                                         <td>
                                             <select class="chosen-select form-control" id="gongyingshangID"
                                                     style="vertical-align:top;width: 68px; width: 98%">
-
                                             </select>
-
-
                                             <input hidden type="text" name="SUPPLIER_ID" id="SUPPLIER_ID"
-                                                   value="${pd.SUPPLIER_ID}" maxlength="100" placeholder="这里输入供应商序号"
-                                                   title="供应商序号" style="width:98%;"/>
+                                                   value="${pd.SUPPLIER_ID}" maxlength="100" placeholder="这里输入供应商名称"
+                                                   title="供应商名称" style="width:98%;"/>
 
                                             <input hidden type="text" name="SUPPLIERNAME" id="SUPPLIERNAME"
                                                    value="${pd.SUPPLIERNAME}" maxlength="100" placeholder="这里输入供应商序号"
@@ -189,7 +185,6 @@
                                             <span style="color: red;">如文件已上传齐，则注明资料已齐全；如果未齐全，则详细说明哪些资料未齐、预计补交时间</span>
                                         </td>
                                     </tr>
-
                                     <tr>
                                         <td style="text-align: center;" colspan="10">
                                             <a class="btn btn-mini btn-primary" onclick="save();">保存</a>
@@ -214,7 +209,6 @@
 </div>
 <!-- /.main-container -->
 
-
 <!-- 页面底部js¨ -->
 <%@ include file="../../system/index/foot.jsp" %>
 <!-- 下拉框 -->
@@ -237,8 +231,6 @@
     var str1 = "<option value=''>请选择类型</option>";
     var str2 = "<option value=''>请选择类型</option>";
     $(top.hangge());
-
-
 
     function fmtDate(obj){
         console.log(obj)
@@ -359,9 +351,9 @@
                     $("#gongyingshangID").append("<option value=''>请选择供应商编号</option>");
                     for (var i = 0; i < data.list.length; i++) {
                         if (data.list[i].SYS_ID == gy) {
-                            $("#gongyingshangID").append("<option value=" + data.list[i].SYS_ID + " selected='selected'>" + data.list[i].SYS_ID + "-" + data.list[i].COMPANY_NAME + "</option>");
+                            $("#gongyingshangID").append("<option value=" + data.list[i].SYS_ID + " selected='selected'>" +  data.list[i].COMPANY_NAME + "</option>");
                         } else {
-                            $("#gongyingshangID").append("<option value=" + data.list[i].SYS_ID + ">" + data.list[i].SYS_ID + "-" + data.list[i].COMPANY_NAME + "</option>");
+                            $("#gongyingshangID").append("<option value=" + data.list[i].SYS_ID + ">" + data.list[i].COMPANY_NAME + "</option>");
                         }
                     }
                     downList('gongyingshangID');

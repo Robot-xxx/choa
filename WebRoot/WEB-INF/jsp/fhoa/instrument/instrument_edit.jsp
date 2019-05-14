@@ -34,10 +34,10 @@
 						<input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
-							<tr>
+						<%--	<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>器械编号:</td>
 								<td><input type="text" name="SYS_ID" id="SYS_ID" readonly value="${pd.SYS_ID}" maxlength="100" placeholder="这里输入器械编号" title="器械编号" style="width:98%;"/></td>
-							</tr>
+							</tr>--%>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>器械名称:</td>
 								<td><input type="text" name="PRODUCT_NAME" id="PRODUCT_NAME" value="${pd.PRODUCT_NAME}" maxlength="100" placeholder="这里输入产品名称" title="产品名称" style="width:98%;"/></td>
@@ -60,8 +60,8 @@
 							</tr>--%>
 
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>有效期:</td>
-								<td><input class="span10 date-picker" type="text" name="VALIDITY" id="VALIDITY" value="${pd.VALIDITY}" maxlength="100" data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="这里输入有效期" title="注册证号" style="width:98%;"/></td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>注册证有效期:</td>
+								<td><input class="span10 date-picker" type="text" name="VALIDITY" id="VALIDITY" value="${pd.VALIDITY}" maxlength="100" data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="这里输入注册证有效期" title="注册证有效期" style="width:98%;"/></td>
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>注册证类别:</td>
@@ -122,7 +122,7 @@
 		$(top.hangge());
 		//保存
 		function save(){
-			if($("#SYS_ID").val()==""){
+		/*	if($("#SYS_ID").val()==""){
 				$("#SYS_ID").tips({
 					side:3,
 		            msg:'请输入器械编号',
@@ -131,7 +131,7 @@
 		        });
 				$("#SYS_ID").focus();
 			return false;
-			}
+			}*/
 			if($("#PRODUCT_NAME").val()==""){
 				$("#PRODUCT_NAME").tips({
 					side:3,

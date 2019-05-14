@@ -73,7 +73,7 @@
                                                    style="width:98%;"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">统一社会信用代码:</td>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>统一社会信用代码:</td>
                                         <td><input type="text" name="DUTY_PARAGRAPH" id="DUTY_PARAGRAPH"
                                                    value="${pd.DUTY_PARAGRAPH}" maxlength="150" placeholder="这里输入统一社会信用代码"
                                                    title="统一社会信用代码" style="width:98%;"/></td>
@@ -209,6 +209,16 @@
                 time: 2
             });
             $("#COMPANY_NAME").focus();
+            return false;
+        }
+        if ($("#DUTY_PARAGRAPH").val() == "") {
+            $("#DUTY_PARAGRAPH").tips({
+                side: 3,
+                msg: '请输入统一社会信用代码',
+                bg: '#AE81FF',
+                time: 2
+            });
+            $("#DUTY_PARAGRAPH").focus();
             return false;
         }
         if ($("#LINKMAN").val() == "") {

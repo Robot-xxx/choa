@@ -229,6 +229,9 @@ public class PayRequestController extends AcStartController {
 		if(Jurisdiction.getRnumbers().equals("('R20181028135540')")) {
 			pd.put("USERID",Jurisdiction.getUSERID());
 		}
+			if(Jurisdiction.getRnumbers().equals("('R20190513135539')")) {
+				pd.put("USERID",Jurisdiction.getUSERID());
+			}
 		if(Jurisdiction.getRnumbers().equals("('R20181028180980')")) {
 			pd.put("USERID",Jurisdiction.getUSERID());
 		}

@@ -60,16 +60,18 @@ public class InstrumentController extends AcStartController {
 			/** 工作流的操作 **/
 			Map<String,Object> map1 = new LinkedHashMap<String, Object>();
 			map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
+/*
 			map1.put("器械编号", pd.getString("SYS_ID"));
+*/
 			map1.put("器械名称", pd.getString("PRODUCT_NAME"));
 			map1.put("器械型号", pd.getString("MODEL"));
 			map1.put("生产厂家", pd.getString("MANUFACTURERS"));
 			map1.put("注册证号", pd.getString("REGISTRATION"));
 			map1.put("注册证类型", pd.getString("BUSINESS"));
-			map1.put("生产批次", pd.getString("BATCH"));
+
 
 			if (pd.get("VALIDITY")!=null&&!pd.get("VALIDITY").toString().equals("")){
-				map1.put("有效期", pd.get("VALIDITY").toString());
+				map1.put("注册证有效期", pd.get("VALIDITY").toString());
 			}
 			map1.put("上传者", pd.get("FUZEREN").toString());
 			map1.put("备注", pd.get("BZ").toString());
@@ -284,7 +286,9 @@ public class InstrumentController extends AcStartController {
 		pd = this.getPageData();
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
+/*
 		titles.add("器械编号");	//1
+*/
 		titles.add("器械名称");	//2
 		titles.add("器械型号");	//3
 		titles.add("生产厂家");	//4
@@ -292,7 +296,7 @@ public class InstrumentController extends AcStartController {
 		titles.add("注册证类别");	//6
 
 		titles.add("上传者");	//7
-		titles.add("有效期");	//8
+		titles.add("注册证有效期");	//8
 		titles.add("状态");	//8
 		titles.add("备注");	//8
 		dataMap.put("titles", titles);
@@ -300,23 +304,25 @@ public class InstrumentController extends AcStartController {
 		List<PageData> varList = new ArrayList<PageData>();
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
+/*
 			vpd.put("var1", varOList.get(i).getString("SYS_ID"));	    //1
-			vpd.put("var2", varOList.get(i).getString("PRODUCT_NAME"));	    //2
-			vpd.put("var3", varOList.get(i).getString("MODEL"));	    //3
-			vpd.put("var4", varOList.get(i).getString("MANUFACTURERS"));	    //4
-			vpd.put("var5", varOList.get(i).getString("REGISTRATION"));	    //5
-			vpd.put("var6", varOList.get(i).getString("BUSINESS"));	    //6
+*/
+			vpd.put("var1", varOList.get(i).getString("PRODUCT_NAME"));	    //2
+			vpd.put("var2", varOList.get(i).getString("MODEL"));	    //3
+			vpd.put("var3", varOList.get(i).getString("MANUFACTURERS"));	    //4
+			vpd.put("var4", varOList.get(i).getString("REGISTRATION"));	    //5
+			vpd.put("var5", varOList.get(i).getString("BUSINESS"));	    //6
 
-			vpd.put("var7", varOList.get(i).getString("FUZEREN"));
-			vpd.put("var8", varOList.get(i).getString("BUJIAOSHIJIAN"));	    //8
+			vpd.put("var6", varOList.get(i).getString("FUZEREN"));
+			vpd.put("var7", varOList.get(i).getString("BUJIAOSHIJIAN"));	    //8
 			if(varOList.get(i).getString("STATUS").equals("1")){
-				vpd.put("var9","已审批");	    //6
+				vpd.put("var8","已审批");	    //6
 			}else if(varOList.get(i).getString("STATUS").equals("2")){
-				vpd.put("var9","未审批");	    //6
+				vpd.put("var8","未审批");	    //6
 			}else{
-				vpd.put("var9", "审批中");	    //6
+				vpd.put("var8", "审批中");	    //6
 			}
-			vpd.put("var10", varOList.get(i).getString("BZ"));	    //8
+			vpd.put("var9", varOList.get(i).getString("BZ"));	    //8
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

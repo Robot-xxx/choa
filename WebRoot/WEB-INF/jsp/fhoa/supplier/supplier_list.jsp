@@ -69,15 +69,15 @@
 									<th class="center">公司名称</th>
 									<th class="center">联系人</th>
 									<%--<th class="center">联系电话</th>
-									<th class="center">税号</th>
+
 									<th class="center">开户银行</th>
 									<th class="center">开户银行账号</th>--%>
 									<th class="center">医疗许可证类型</th>
 									<th class="center">二类备案号</th>
 
 
-									<th class="center">统一社会信用代码</th>
 
+									<th class="center">税号</th>
 									<th class="center">上传者</th>
 
 									<th class="center">备注</th>

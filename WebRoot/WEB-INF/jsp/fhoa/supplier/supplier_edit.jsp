@@ -85,12 +85,12 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
+                               <%--     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">统一社会信用代码:</td>
                                         <td><input type="text" name="TONGYISHEHUIDAIMA" id="TONGYISHEHUIDAIMA"
                                                    value="${pd.TONGYISHEHUIDAIMA}" maxlength="100" placeholder="这里输入统一社会信用代码"
                                                    title="统一社会信用代码" style="width:98%;"/></td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">二类备案号:</td>
                                         <td><input type="text" name="ERLEIBEIANHAO" id="ERLEIBEIANHAO"

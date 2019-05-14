@@ -64,7 +64,9 @@
 									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
 									</th>
 									<th class="center" style="width:50px;">序号</th>
+<%--
 									<th class="center">系统编序号</th>
+--%>
 									<th class="center">产品名称</th>
 									<th class="center">型号丶规格</th>
 									<th class="center">生产厂家</th>
@@ -90,7 +92,9 @@
 												<label class="pos-rel"><input type='checkbox' name='ids' value="${var.EQUIPMENT_ID}" class="ace" /><span class="lbl"></span></label>
 											</td>
 											<td class='center' style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
+<%--
 											<td class='center'>${var.SYS_ID}</td>
+--%>
 											<td class='center'>${var.PRODUCT_NAME}</td>
 											<td class='center'>${var.MODEL}</td>
 											<td class='center'>${var.MANUFACTURERS}</td>

@@ -66,16 +66,18 @@ public class CustomerController extends AcStartController {
             map1.put("公司全称", pd.getString("COMPANY_NAME"));
             map1.put("联系人", pd.getString("LINKMAN"));
             map1.put("联系电话", pd.getString("PHONE"));
-            map1.put("税号", pd.getString("DUTY_PARAGRAPH"));
-            map1.put("开户行", pd.getString("OPENING_BANK"));
-            map1.put("开户账号", pd.getString("BANKACCOUNT"));
+            map1.put("统一社会信用代码", pd.getString("DUTY_PARAGRAPH"));
+          /*  map1.put("开户行", pd.getString("OPENING_BANK"));
+            map1.put("开户账号", pd.getString("BANKACCOUNT"));*/
             map1.put("医疗许可证", pd.getString("DNAME8"));
-            if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("FARENSHOUQUAN").toString().equals("")){
+
                 map1.put("法人授权书", pd.get("FARENSHOUQUAN").toString());
-            }
-            if (pd.get("SHENGCHANXUKEZHENG")!=null&&!pd.get("SHOUQUANWEITUO").toString().equals("")){
+
+
                 map1.put("授权委托书", pd.get("SHOUQUANWEITUO").toString());
-            }
+                map1.put("二类备案号", pd.get("ERLEIBEIANHAO").toString());
+
+
             map1.put("上传者", pd.getString("FUZEREN"));
             map1.put("备注", pd.getString("BZ"));
             map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("CUSTOMER_ID")+"','cf29c9db335046c58071d5dfc84d3d21')\" style=' cursor:pointer;'>查看附件</a>");
@@ -323,8 +325,8 @@ public class CustomerController extends AcStartController {
         titles.add("联系人");    //4
         titles.add("联系电话");    //5
         titles.add("统一社会信用代码");    //6
-        titles.add("开户行");    //7
-        titles.add("开户行账号");    //7
+    /*    titles.add("开户行");    //7
+        titles.add("开户行账号");    //7*/
         titles.add("医疗许可证");    //8
         titles.add("法人授权书期日");	//6
         titles.add("授权委托书期日");	//6
@@ -343,21 +345,21 @@ public class CustomerController extends AcStartController {
             vpd.put("var3", varOList.get(i).getString("LINKMAN"));        //4
             vpd.put("var4", varOList.get(i).getString("PHONE"));        //5
             vpd.put("var5", varOList.get(i).getString("DUTY_PARAGRAPH"));        //6
-            vpd.put("var6", varOList.get(i).getString("OPENING_BANK"));        //7
-            vpd.put("var7", varOList.get(i).getString("BANKACCOUNT"));        //7
-            vpd.put("var8", varOList.get(i).getString("DNAME8"));        //8
-                vpd.put("var9", varOList.get(i).getString("FARENSHOUQUAN"));	    //8
+       /*     vpd.put("var6", varOList.get(i).getString("OPENING_BANK"));        //7
+            vpd.put("var7", varOList.get(i).getString("BANKACCOUNT"));        //7*/
+            vpd.put("var6", varOList.get(i).getString("DNAME8"));        //8
+                vpd.put("var7", varOList.get(i).getString("FARENSHOUQUAN"));	    //8
 
-                vpd.put("var10", varOList.get(i).getString("SHOUQUANWEITUO"));	    //8
-            vpd.put("var11", varOList.get(i).getString("FUZEREN"));	    //6
+                vpd.put("var8", varOList.get(i).getString("SHOUQUANWEITUO"));	    //8
+            vpd.put("var9", varOList.get(i).getString("FUZEREN"));	    //6
             if(varOList.get(i).getString("STATUS").equals("1")){
-                vpd.put("var12", "已审批");	    //6
+                vpd.put("var10", "已审批");	    //6
             }else if(varOList.get(i).getString("STATUS").equals("2")){
-                vpd.put("var12", "未审批");	    //6
+                vpd.put("var10", "未审批");	    //6
             }else{
-                vpd.put("var12","审批中");	    //6
+                vpd.put("var10","审批中");	    //6
             }
-            vpd.put("var13", varOList.get(i).getString("BZ"));        //10
+            vpd.put("var11", varOList.get(i).getString("BZ"));        //10
             varList.add(vpd);
         }
         dataMap.put("varList", varList);

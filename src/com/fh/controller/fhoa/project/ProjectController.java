@@ -129,6 +129,7 @@ public class ProjectController extends AcStartController {
 			map1.put("业务联系人", pd.getString("LINKMAN"));
 			map1.put("业务联系人电话", pd.getString("BUSINESS_PEOPLE"));
 			map1.put("付款约定", pd.getString("ACCESSORY"));
+			map1.put("是否投标项目", pd.getString("ISTOUBIAOXIANGMU"));
 			map1.put("备注", pd.getString("BZ"));
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
 			String act_id=startProcessInstanceByKeyHasVariables("oa_lixiangliucheng",map1);	//启动流程实例(请假单流程)通过KEY
@@ -567,6 +568,7 @@ public class ProjectController extends AcStartController {
 
 		titles.add("付款约定");	//12
 		titles.add("负责人");	//12
+		titles.add("是否投标项目");	//12
 		titles.add("更新时间");	//12
 		titles.add("状态");	//12
 		titles.add("备注");	//12
@@ -590,15 +592,16 @@ public class ProjectController extends AcStartController {
 
 			vpd.put("var12", varOList.get(i).getString("ACCESSORY"));	    //12
 			vpd.put("var13", varOList.get(i).getString("FUZEREN"));	    //12
-			vpd.put("var14", sd.format(varOList.get(i).get("UPDATETIME")));	    //12
+			vpd.put("var14", varOList.get(i).getString("ISTOUBIAOXIANGMU"));	    //12
+			vpd.put("var15", sd.format(varOList.get(i).get("UPDATETIME")));	    //12
 			if(varOList.get(i).getString("STATUS").equals("1")){
-				vpd.put("var15","已审批");	    //6
+				vpd.put("var16","已审批");	    //6
 			}else if(varOList.get(i).getString("STATUS").equals("2")){
-				vpd.put("var15", "未审批");	    //6
+				vpd.put("var16", "未审批");	    //6
 			}else{
-				vpd.put("var15", "审批中");	    //6
+				vpd.put("var16", "审批中");	    //6
 			}
-			vpd.put("var16", varOList.get(i).getString("BZ"));	    //12
+			vpd.put("var17", varOList.get(i).getString("BZ"));	    //12
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

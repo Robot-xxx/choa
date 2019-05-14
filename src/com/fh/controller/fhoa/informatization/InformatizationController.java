@@ -82,7 +82,9 @@ public class InformatizationController extends AcStartController {
 			/** 工作流的操作 **/
 			Map<String,Object> map1 = new LinkedHashMap<String, Object>();
 			map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
+/*
 			map1.put("产品编号", pd.getString("SYS_ID"));
+*/
 			map1.put("产品名称", pd.getString("PRODUCT_NAME"));
 			map1.put("型号丶规格", pd.getString("MODEL"));
 			map1.put("生产厂家", pd.getString("MANUFACTURERS"));
@@ -274,7 +276,7 @@ public class InformatizationController extends AcStartController {
 		pd = this.getPageData();
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
-		titles.add("系统编序号");	//1
+		/*titles.add("系统编序号");	//1*/
 		titles.add("产品名称");	//2
 		titles.add("型号丶规格");	//3
 		titles.add("生产厂家");	//4
@@ -287,20 +289,22 @@ public class InformatizationController extends AcStartController {
 		List<PageData> varList = new ArrayList<PageData>();
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
+/*
 			vpd.put("var1", varOList.get(i).getString("SYS_ID"));	    //1
-			vpd.put("var2", varOList.get(i).getString("PRODUCT_NAME"));	    //2
-			vpd.put("var3", varOList.get(i).getString("MODEL"));	    //3
-			vpd.put("var4", varOList.get(i).getString("MANUFACTURERS"));	    //4
+*/
+			vpd.put("var1", varOList.get(i).getString("PRODUCT_NAME"));	    //2
+			vpd.put("var2", varOList.get(i).getString("MODEL"));	    //3
+			vpd.put("var3", varOList.get(i).getString("MANUFACTURERS"));	    //4
 
-			vpd.put("var5", varOList.get(i).getString("FUZEREN"));	    //5
+			vpd.put("var4", varOList.get(i).getString("FUZEREN"));	    //5
 			if(varOList.get(i).getString("STATUS").equals("1")){
-				vpd.put("var6","已审批");	    //6
+				vpd.put("var5","已审批");	    //6
 			}else if(varOList.get(i).getString("STATUS").equals("2")){
-				vpd.put("var6", "未审批");	    //6
+				vpd.put("var5", "未审批");	    //6
 			}else{
-				vpd.put("var6", "审批中");	    //6
+				vpd.put("var5", "审批中");	    //6
 			}
-			vpd.put("var7", varOList.get(i).getString("BUSINESS"));	    //6
+			vpd.put("var6", varOList.get(i).getString("BUSINESS"));	    //6
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

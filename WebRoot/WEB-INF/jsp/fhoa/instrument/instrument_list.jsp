@@ -67,14 +67,16 @@
 									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
 									</th>
 									<th class="center" style="width:50px;">序号</th>
+<%--
 									<th class="center">器械编号</th>
+--%>
 									<th class="center">器械名称</th>
 									<th class="center">器械型号</th>
 									<th class="center">生产厂家</th>
 									<th class="center">注册证号</th>
 									<th class="center">注册证类别</th>
 								<%--	<th class="center">生产批次</th>--%>
-									<th class="center">有效期</th>
+									<th class="center">注册证有效期</th>
 
 									<th class="center">上传者</th>
 									<th class="center">备注</th>
@@ -94,7 +96,9 @@
 												<label class="pos-rel"><input type='checkbox' name='ids' value="${var.INSTRUMENT_ID}" class="ace" /><span class="lbl"></span></label>
 											</td>
 											<td class='center' style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
+<%--
 											<td class='center'>${var.SYS_ID}</td>
+--%>
 											<td class='center'>${var.PRODUCT_NAME}</td>
 											<td class='center'>${var.MODEL}</td>
 											<td class='center'>${var.MANUFACTURERS}</td>

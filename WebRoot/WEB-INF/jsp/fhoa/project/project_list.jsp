@@ -80,6 +80,7 @@
 									<th class="center">客户名称</th>--%>
 									<th class="center">付款约定</th>
 									<th class="center">负责人</th>
+									<th class="center">是否投标项目</th>
 									<th class="center">备注</th>
 									<th class="center">更新时间</th>
 									<th class="center">操作</th>
@@ -113,6 +114,7 @@
 											<td class='center'>${var.CLIENT}</td>--%>
 											<td class='center'>${var.ACCESSORY}</td>
 											<td class='center'>${var.FUZEREN}</td>
+											<td class='center'>${var.ISTOUBIAOXIANGMU}</td>
 											<td class='center'>${var.BZ}</td>
 											<td class='center'>${var.UPDATETIME}</td>
 											<td class="center">

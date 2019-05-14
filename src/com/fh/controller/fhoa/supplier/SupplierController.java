@@ -58,7 +58,9 @@ public class SupplierController extends AcStartController {
 			/** 工作流的操作 **/
 			Map<String,Object> map1 = new LinkedHashMap<String, Object>();
 			map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
+/*
 			map1.put("供应商编号", pd.getString("SYS_ID"));
+*/
 			map1.put("公司全称", pd.getString("COMPANY_NAME"));
 			map1.put("联系人", pd.getString("LINKMAN"));
 			map1.put("联系电话", pd.getString("PHONE"));
@@ -67,11 +69,11 @@ public class SupplierController extends AcStartController {
 			map1.put("开户银行账号", pd.getString("BANKACCOUNT"));
 
 			map1.put("医疗许可证", pd.getString("DNAME7"));
-			map1.put("经营范围", pd.getString("JINGYINGFANWEI"));
-			map1.put("统一社会代码", pd.getString("TONGYISHEHUIDAIMA"));
+
+/*			map1.put("统一社会代码", pd.getString("TONGYISHEHUIDAIMA"));*/
 
 
-			map1.put("上传者", pd.getString("FUZEREN"));
+			map1.put("上传者", pd.getString("FUZHEREN"));
 
 
 			map1.put("备注", pd.getString("BZ"));
@@ -313,7 +315,7 @@ public class SupplierController extends AcStartController {
 		pd = this.getPageData();
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
-		titles.add("系统编序号");	//1
+/*		titles.add("系统编序号");	//1*/
 		titles.add("公司名称");	//2
 		titles.add("联系人");	//3
 		titles.add("联系电话");	//4
@@ -321,7 +323,7 @@ public class SupplierController extends AcStartController {
 		titles.add("开户银行");	//6
 		titles.add("开户银行账号");	//6
 		titles.add("医疗许可证类型");	//7
-		titles.add("统一社会代码");	//7
+
 
         titles.add("上传者");	//6
         titles.add("状态");	//6
@@ -331,31 +333,33 @@ public class SupplierController extends AcStartController {
 		List<PageData> varList = new ArrayList<PageData>();
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
+/*
 			vpd.put("var1", varOList.get(i).getString("SYS_ID"));	    //1
-			vpd.put("var2", varOList.get(i).getString("COMPANY_NAME"));	    //2
-			vpd.put("var3", varOList.get(i).getString("LINKMAN"));	    //3
-			vpd.put("var4", varOList.get(i).getString("PHONE"));	    //4
-			vpd.put("var5", varOList.get(i).getString("DUTY_PARAGRAPH"));	    //5
-			vpd.put("var6", varOList.get(i).getString("OPENING_BANK"));	    //6
-			vpd.put("var7", varOList.get(i).getString("BANKACCOUNT"));	    //6
-            vpd.put("var8", varOList.get(i).getString("DNAME7"));	    //7
-			vpd.put("var9", varOList.get(i).getString("TONGYISHEHUIDAIMA"));	    //6
+*/
+			vpd.put("var1", varOList.get(i).getString("COMPANY_NAME"));	    //2
+			vpd.put("var2", varOList.get(i).getString("LINKMAN"));	    //3
+			vpd.put("var3", varOList.get(i).getString("PHONE"));	    //4
+			vpd.put("var4", varOList.get(i).getString("DUTY_PARAGRAPH"));	    //5
+			vpd.put("var5", varOList.get(i).getString("OPENING_BANK"));	    //6
+			vpd.put("var6", varOList.get(i).getString("BANKACCOUNT"));	    //6
+            vpd.put("var7", varOList.get(i).getString("DNAME7"));	    //7
 
 
 
 
 
-			vpd.put("var10", varOList.get(i).getString("FUZHEREN"));	    //6
+
+			vpd.put("var8", varOList.get(i).getString("FUZHEREN"));	    //6
 
 			if(varOList.get(i).getString("STATUS").equals("1")){
-				vpd.put("var11", "已审批");	    //6
+				vpd.put("var9", "已审批");	    //6
 			}else if(varOList.get(i).getString("STATUS").equals("2")){
-				vpd.put("var11", "未审批");	    //6
+				vpd.put("var9", "未审批");	    //6
 			}else{
-				vpd.put("var11","审批中");	    //6
+				vpd.put("var9","审批中");	    //6
 			}
 
-			vpd.put("var12", varOList.get(i).getString("BZ"));	    //9
+			vpd.put("var10", varOList.get(i).getString("BZ"));	    //9
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

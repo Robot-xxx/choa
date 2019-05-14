@@ -34,10 +34,10 @@
 						<input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
-							<tr>
+					<%--		<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">系统编序号:</td>
 								<td><input readonly type="text" name="SYS_ID" id="SYS_ID" value="${pd.SYS_ID}" maxlength="100" placeholder="这里输入系统编序号" title="系统编序号" style="width:98%;"/></td>
-							</tr>
+							</tr>--%>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>产品名称:</td>
 								<td><input type="text" name="PRODUCT_NAME" id="PRODUCT_NAME" value="${pd.PRODUCT_NAME}" maxlength="255" placeholder="这里输入产品名称" title="产品名称" style="width:98%;"/></td>
