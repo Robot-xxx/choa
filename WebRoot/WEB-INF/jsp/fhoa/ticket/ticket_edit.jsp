@@ -30,6 +30,8 @@
 					<form action="ticket/${msg }.do" name="Form" id="Form" method="post">
 						<input type="hidden" name="TICKET_ID" id="TICKET_ID" value="${pd.TICKET_ID}"/>
 						<input type="hidden" name="msg" id="msg" value="${msg }"/>
+						<input type="hidden" name="PROJECT_ID" id="PROJECT_ID" value="${pd.PROJECT_ID }">
+						<input type="hidden" name="PROJECT_NAME" id="PROJECT_NAME" value="${pd.PROJECT_NAME }">
 						<input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }">
 						<input type="hidden" name="oafileList" id="oafileList">
 						<div id="zhongxin" style="padding-top: 13px;">
@@ -320,8 +322,9 @@
 
                 $("#OPEN_TICKET_PRICE").val(str2.substring(0,str2.indexOf("=》")));
 
+                $("#PROJECT_ID").val(str1.substring(0,str1.indexOf("=》")))
 
-
+                $("#PROJECT_NAME").val(str1.substring(str1.indexOf("=》")+2,str1.length))
 
 
             })

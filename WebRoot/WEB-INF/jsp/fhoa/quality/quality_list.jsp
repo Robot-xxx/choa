@@ -81,7 +81,7 @@
 											<td class='center'>${var.PROJECT_NAME}</td>
 											<td class='center'>${var.FUZEREN}</td>
 											<td class='center'>${var.BZ}</td>
-											<td class='center'><a onclick="allOaFile('${var.QUALITY_ID}','de4e7214627e487c9b989ce222de88de')" style=" cursor:pointer;">查看附件</a></td>
+											<td class='center'><a onclick="allOaFile('${var.XULEIHAO}','de4e7214627e487c9b989ce222de88de')" style=" cursor:pointer;">查看附件</a></td>
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>

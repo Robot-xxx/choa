@@ -108,7 +108,7 @@
 											<td class='center'>${var.ERLEIBEIANHAO}</td>
 
 
-                                            <td class='center'>${var.TONGYISHEHUIDAIMA}</td>
+                                            <td class='center'>${var.DUTY_PARAGRAPH}</td>
 
 											<td class='center'>${var.FUZHEREN}</td>
                                             <td class='center'>${var.BZ}</td>

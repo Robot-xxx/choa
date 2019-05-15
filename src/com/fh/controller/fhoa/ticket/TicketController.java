@@ -59,9 +59,15 @@ public class TicketController extends AcStartController {
 			/** 工作流的操作 **/
 			Map<String,Object> map1 = new LinkedHashMap<String, Object>();
 			map1.put("申请人", Jurisdiction.getU_name());			//当前用户的姓名
-			map1.put("项目编号", pd.getString("SYS_ID"));
-			map1.put("销售合同", pd.getString("SALES_CONTRACT_ID"));
+			map1.put("选择公司", pd.getString("SELECTCOMPANY"));
+			map1.put("项目编号", pd.getString("PROJECT_ID"));
+			map1.put("项目名称", pd.getString("PROJECT_NAME"));
 			map1.put("进项票总额（元）", pd.get("TICKET_PRICE").toString());
+			map1.put("合同总额(元)", pd.get("OPEN_TICKET_PRICE").toString());
+			map1.put("开票金额", pd.get("KAIPIAOJINE").toString());
+			map1.put("已开票金额", pd.get("YIKAIPIAOJINE").toString());
+			map1.put("进项票备注", pd.get("TICKET_INFO").toString());
+			map1.put("开票原因", pd.get("OPEN_TICKET_YUANYIN").toString());
 			map1.put("附件", "<a onclick=\"allOaFile('"+pd.getString("TICKET_ID")+"','9c3468e93719466ca4693babf2fa3908')\" style=' cursor:pointer;'>查看附件</a>");
 
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
