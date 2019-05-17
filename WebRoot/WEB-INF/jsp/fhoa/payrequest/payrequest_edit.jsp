@@ -304,6 +304,9 @@
     //保存
     function save() {
 
+
+
+
         if($("#tag").val()=='no'){
             $("#PROJECT_ID").tips({
                 side: 3,
@@ -450,7 +453,7 @@
             if( $("#requesttype").val()=='投标保证金'||$("#requesttype").val()=='中标服务费'){
                 $.ajax({
                     type: "POST",
-                    data:{"PROJECT_ID":$("#PROJECT_ID").val()},
+                    data:{"PROJECT_ID":$("#PROJECT_ID").val(),"REQUEST_TYPE":$("#requesttype").val()},
                     url: '<%=basePath%>payrequest/findByProject.do?tm=' + new Date().getTime(),
                     dataType: 'json',
                     cache: false,
@@ -467,7 +470,7 @@
             if( $("#requesttype").val()=='投标保证金'||$("#requesttype").val()=='中标服务费'){
                 $.ajax({
                     type: "POST",
-                    data:{"PROJECT_ID":$("#PROJECT_ID").val()},
+                    data:{"PROJECT_ID":$("#PROJECT_ID").val(),"REQUEST_TYPE":$("#requesttype").val()},
                     url: '<%=basePath%>payrequest/findByProject.do?tm=' + new Date().getTime(),
                     dataType: 'json',
                     cache: false,
@@ -709,8 +712,24 @@
                     $("#FUKUANYUEDING").val( data.pd.FUKUANYUEDING);
                     $("#HETONGZONGE").val( data.pd.CONTRACT_PRICE);
                     $("#GONGYINGSHANG1").val( data.pd.SUPPLIERNAME);
+
+                    if( $("#requesttype").val()=='投标保证金'||$("#requesttype").val()=='中标服务费'){
+                        $.ajax({
+                            type: "POST",
+                            data:{"PROJECT_ID":data.pd.SYS_ID,"REQUEST_TYPE":$("#requesttype").val()},
+                            url: '<%=basePath%>payrequest/findByProject.do?tm=' + new Date().getTime(),
+                            dataType: 'json',
+                            cache: false,
+                            success: function (data) {
+                                $("#tag").val(data.isUniqueness);
+                            }
+                        });
+                    }
                 }
             });
+
+
+
 
 
 
@@ -733,9 +752,9 @@
                     $("#hetongbianhao").append("<option value=''>请选择合同编号</option>");
                     for (var i = 0; i < data.list.length; i++) {
                         if (data.list[i].PURCHASE_CONTRACT_ID == weituo) {
-                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_ID + " selected='selected'>" + data.list[i].PURCHASE_CONTRACT_ID +"=>"+data.list[i].PROJECTNAME + "</option>");
+                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_ID + " selected='selected'>" +data.list[i].SYS_ID +"=》"+ data.list[i].PROJECTNAME + "</option>");
                         } else {
-                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_ID + ">" + data.list[i].PURCHASE_CONTRACT_ID+"=>"+data.list[i].PROJECTNAME  + "</option>");
+                            $("#hetongbianhao").append("<option value=" + data.list[i].PURCHASE_ID + ">"  +data.list[i].SYS_ID +"=》"+ data.list[i].PROJECTNAME  + "</option>");
                         }
                     }
                     downList('hetongbianhao');

@@ -266,7 +266,8 @@
         from
         <include refid="tableName"></include> f
         where
-        PROJECT_ID = #{PROJECT_ID}
+        PROJECT_ID = #{PROJECT_ID} and
+        REQUEST_TYPE=#{REQUEST_TYPE}
     </select>
 
 

@@ -184,6 +184,41 @@
 															<script type="text/javascript" src="static/js/jquery.tips.js"></script>
 															<script type="text/javascript">
 																$(top.hangge());
+																//查看产品
+																function selectProduct(PARENT_ID){
+																	top.jzts();
+																	var diag = new top.Dialog();
+																	diag.Drag=true;
+																	diag.Title ="查看产品";
+																	diag.URL = '<%=basePath%>projectinfo/list.do?PARENT_ID='+PARENT_ID;
+																	diag.Width = 1100;
+																	diag.Height = 600;
+																	diag.Modal = true;				//有无遮罩窗口
+																	diag. ShowMaxButton = true;	//最大化按钮
+																	diag.ShowMinButton = true;		//最小化按钮
+																	diag.CancelEvent = function(){ //关闭事件
+
+																		diag.close();
+																	};
+																	diag.show();
+																}
+																//查看产品信息
+																function selectProject2(PARENT_ID){
+																	top.jzts();
+																	var diag = new top.Dialog();
+																	diag.Drag=true;
+																	diag.Title ="新增";
+																	diag.URL = '<%=basePath%>projectproduct/list.do?PARENT_ID='+PARENT_ID;
+																	diag.Width = 800;
+																	diag.Height = 600;
+																	diag.Modal = true;				//有无遮罩窗口
+																	diag. ShowMaxButton = true;	//最大化按钮
+																	diag.ShowMinButton = true;		//最小化按钮
+																	diag.CancelEvent = function(){ //关闭事件
+																		diag.close();
+																	};
+																	diag.show();
+																}
 
 																//办理任务
 																function handle(msg){
