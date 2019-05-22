@@ -21,6 +21,7 @@
 		f.STATUS,
 		f.ACT_ID,
 		f.BZ,
+		f.UPDATETIME,
 		f.QUALITY_ID
 	</sql>
 	
@@ -33,6 +34,7 @@
 		STATUS,
 		ACT_ID,
 		BZ,
+		UPDATETIME,
 		QUALITY_ID
 	</sql>
 	
@@ -45,6 +47,7 @@
 		#{STATUS},
 		#{ACT_ID},
 		#{BZ},
+		#{UPDATETIME},
 		#{QUALITY_ID}
 	</sql>
 	
@@ -79,6 +82,7 @@
 			STATUS = #{STATUS},
 			ACT_ID = #{ACT_ID},
 			BZ = #{BZ},
+			UPDATETIME = #{UPDATETIME},
 			QUALITY_ID = QUALITY_ID
 		where 
 			QUALITY_ID = #{QUALITY_ID}
@@ -114,6 +118,7 @@
 				-->
 				)
 		</if>
+		order by UPDATETIME
 	</select>
 	
 	<!-- 列表(全部) -->

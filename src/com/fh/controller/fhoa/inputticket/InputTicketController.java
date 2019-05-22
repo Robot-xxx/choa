@@ -64,6 +64,7 @@ public class InputTicketController extends AcStartController {
 			map1.put("发票号", pd.getString("TICKET_NO"));
 			map1.put("已回票金额(元)", pd.getString("YIHUIPIAOJINE"));
 			map1.put("金额(元)", pd.getString("MONEY"));
+			map1.put("负责人", pd.getString("FUZEREN"));
 			map1.put("备注", pd.getString("JINBZ"));
 
 			map1.put("USERNAME", Jurisdiction.getUsername());		//指派代理人为当前用户
@@ -143,7 +144,7 @@ public class InputTicketController extends AcStartController {
 	 */
 	@RequestMapping(value="/downExcel")
 	public void downExcel(HttpServletResponse response)throws Exception{
-		FileDownload.fileDownload(response, PathUtil.getClasspath() + Const.FILEPATHFILE + "收发票联络单（模板）.xls", "收发票联络单（模板）.xls");
+		FileDownload.fileDownload(response, PathUtil.getClasspath() + Const.FILEPATHFILE + "收发票联络单.xls", "收发票联络单.xls");
 	}
 
 	/**保存
@@ -362,6 +363,7 @@ public class InputTicketController extends AcStartController {
 		titles.add("已回票金额(元)");	//1
 		titles.add("金额(元)");	//1
 		titles.add("更新时间");	//1
+		titles.add("负责人");	//1
 		titles.add("备注");	//1
 
 		dataMap.put("titles", titles);
@@ -377,8 +379,9 @@ public class InputTicketController extends AcStartController {
 			vpd.put("var6", varOList.get(i).getString("TICKET_NO"));	    //1
 			vpd.put("var7", varOList.get(i).getString("YIHUIPIAOJINE"));	    //1
 			vpd.put("var8", varOList.get(i).getString("MONEY"));	    //1
-			vpd.put("var9", varOList.get(i).getString("UPDATETIME"));	    //1
-			vpd.put("var10", varOList.get(i).getString("BZ"));	    //1
+			vpd.put("var9", varOList.get(i).get("UPDATETIME").toString());	    //1
+			vpd.put("var10", varOList.get(i).getString("FUZEREN"));	    //1
+			vpd.put("var11", varOList.get(i).getString("BZ"));	    //1
 
 			varList.add(vpd);
 		}

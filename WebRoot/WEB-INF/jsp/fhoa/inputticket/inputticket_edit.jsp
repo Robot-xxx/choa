@@ -31,6 +31,7 @@
 						<input type="hidden" name="SYS_ID" id="SYS_ID" value="${pd.SYS_ID}"/>
 						<input type="hidden" name="msg" id="msg" value="${msg }"/>
 						<input type="hidden" name="STATUS" id="STATUS" value="${pd.STATUS }"/>
+						<input type="hidden" name="FUZEREN" id="FUZEREN" value="${pd.FUZEREN }"/>
 						<input type="hidden" name="oafileList" id="oafileList">
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
@@ -255,9 +256,9 @@
                             $("#cghetong").append("<option value=''>请选择采购合同编号</option>");
                             for (var i = 0; i < data.list.length; i++) {
                                 if (data.list[i].PURCHASE_ID  == cg) {
-                                    $("#cghetong").append("<option value=" +  data.list[i].PURCHASE_ID+"-"+data.list[i].CONTRACT_PRICE  + " selected='selected'>" + data.list[i].PURCHASE_CONTRACT_ID+"-"+data.list[i].PROJECTNAME + "</option>");
+                                    $("#cghetong").append("<option value=" +  data.list[i].PURCHASE_ID+"=》"+data.list[i].CONTRACT_PRICE +"&"+data.list[i].FUZEREN  + " selected='selected'>" + data.list[i].PURCHASE_CONTRACT_ID+"-"+data.list[i].PROJECTNAME + "</option>");
                                 } else {
-                                    $("#cghetong").append("<option value=" + data.list[i].PURCHASE_ID+"-"+data.list[i].CONTRACT_PRICE   + ">" + data.list[i].PURCHASE_CONTRACT_ID+"-"+data.list[i].PROJECTNAME + "</option>");
+                                    $("#cghetong").append("<option value=" + data.list[i].PURCHASE_ID+"=》"+data.list[i].CONTRACT_PRICE+"&"+data.list[i].FUZEREN    + ">" + data.list[i].PURCHASE_CONTRACT_ID+"-"+data.list[i].PROJECTNAME + "</option>");
                                 }
                             }
                             downList('cghetong');
@@ -269,19 +270,16 @@
 
 
             }
-            //截取字符串
-            function jiequ(str){
-                return str.substring(0,str.indexOf('-'));
-            }
+
 		$(function() {
 
 
 
             $("#cghetong").change(function (){
            		var str= $("#cghetong").val();
-           		$("#PURCHASENUMBER").val(jiequ($("#cghetong option:selected").text()));
-           		$("#JINPRICE").val(str.substring(str.indexOf("-")+1,str.length));
-
+           		$("#PURCHASENUMBER").val(str.substring(0,str.indexOf('=》')));
+           		$("#JINPRICE").val(str.substring(str.indexOf("=》")+2,str.indexOf("&")));
+				$("#FUZEREN").val(str.substring(str.indexOf("&")+1),str.length)
             })
 
 

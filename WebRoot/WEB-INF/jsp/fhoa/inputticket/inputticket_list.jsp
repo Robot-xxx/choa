@@ -78,6 +78,7 @@
 									<th class="center">发票号</th>
 									<th class="center">金额(元)</th>
 									<th class="center">已回票金额(元)</th>
+									<th class="center">负责人</th>
 									<th class="center">备注</th>
 									<th class="center">附件</th>
 									<th class="center">操作</th>
@@ -105,6 +106,7 @@
 											<td class='center'>${var.TICKET_NO}</td>
 											<td class='center'>${var.MONEY}</td>
 											<td class='center'>${var.YIHUIPIAOJINE}</td>
+											<td class='center'>${var.FUZEREN}</td>
 											<td class='center'>${var.JINBZ}</td>
 											<td class='center'><a onclick="allOaFile('${var.SYS_ID}','ca5306c094aa4bd8b1dbf642c9ace871')" style=" cursor:pointer;">查看附件</a></td>
 											<td class="center">

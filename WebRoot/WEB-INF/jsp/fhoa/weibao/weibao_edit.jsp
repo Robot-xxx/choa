@@ -44,12 +44,23 @@
 								<td><input type="text" name="GONGYINGSHANMINGCHENG" id="GONGYINGSHANMINGCHENG" value="${pd.GONGYINGSHANMINGCHENG}" maxlength="100" placeholder="这里输入供应商名称" title="供应商名称" style="width:98%;"/></td>
 							</tr>
 							<tr>
+
 								<td style="width:75px;text-align: right;padding-top: 13px;">开始时间:</td>
-								<td><input type="text" name="KAISHISHIJIAN" id="KAISHISHIJIAN" value="${pd.KAISHISHIJIAN}" maxlength="100" placeholder="这里输入开始时间" title="开始时间" style="width:98%;"/></td>
+								<td><input class="span10 date-picker" name="KAISHISHIJIAN" id="KAISHISHIJIAN"
+										   value="${pd.KAISHISHIJIAN}" type="text"
+										   data-date-format="yyyy-mm-dd" readonly="readonly"
+										   placeholder="这里输入开始时间" title="开始时间" style="width:98%;"/>
+
+								</td>
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">到期时间:</td>
-								<td><input type="text" name="DAOQISHIJIAN" id="DAOQISHIJIAN" value="${pd.DAOQISHIJIAN}" maxlength="100" placeholder="这里输入到期时间" title="到期时间" style="width:98%;"/></td>
+								<td>
+									<input class="span10 date-picker" name="DAOQISHIJIAN" id="DAOQISHIJIAN"
+										   value="${pd.DAOQISHIJIAN}" type="text"
+										   data-date-format="yyyy-mm-dd" readonly="readonly"
+										   placeholder="这里输入到期时间" title="到期时间" style="width:98%;"/>
+								</td>
 							</tr>
 							<tr>
 								<td style="text-align: center;" colspan="10">

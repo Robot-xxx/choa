@@ -76,16 +76,16 @@
                                             <span style="color:red;">注:完成立项丶销售流程后才能选择对应合同</span>
                                         </td>
                                     </tr>--%>
-                             <%--       <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;"><font
+                                    <tr>
+                                        <td hidden style="width:75px;text-align: right;padding-top: 13px;"><font
                                                 color="red">*</font>采购合同编号:
                                         </td>
                                         <td>
-                                            <input readonly type="text" name="PURCHASE_CONTRACT_ID"
+                                            <input hidden readonly type="text" name="PURCHASE_CONTRACT_ID"
                                                    id="PURCHASE_CONTRACT_ID"
                                                    value="${pd.PURCHASE_CONTRACT_ID}" maxlength="100"
                                                    placeholder="这里输入采购合同编号" title="采购合同编号" style="width:98%;"/></td>
-                                    </tr>--%>
+                                    </tr>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font
                                                 color="red">*</font>供应商名称:
@@ -289,7 +289,7 @@
         $("#Form").submit();
         $("#zhongxin").hide();
         $("#zhongxin2").show();
-        localStorage.setItem("Identification", "save");
+
     }
 
 

@@ -197,6 +197,7 @@ public class ProjectController extends AcStartController {
 		String errInfo = "success";
 
 		pd = this.getPageData();
+        pd.put("PROJECT_ID",pd.getString("PROJECT_ID").trim());
 		pd = projectService.findByProject(pd);	//根据ID读取
 		if(pd!=null){
 			map.put("isUniqueness", "no");

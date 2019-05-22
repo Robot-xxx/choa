@@ -46,6 +46,7 @@
 									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
 									</th>
 									<th class="center" style="width:50px;">序号</th>
+									<th class="center">产品类型</th>
 									<th class="center">器械名称</th>
 									<th class="center">器械到期日</th>
 									<th class="center">器械型号</th>
@@ -65,6 +66,7 @@
 												<label class="pos-rel"><input type='checkbox' name='ids' value="${var.PRODUCT_ID}" class="ace" /><span class="lbl"></span></label>
 											</td>
 											<td class='center' style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
+											<td class='center'>${var.PRODUCTTYPENAME}</td>
 											<td class='center'>${var.PRODUCT_NAME}</td>
 											<td class='center'>${var.PRODUCT_TIME}</td>
 											<td class='center'>${var.PRODUCT_MODEL}</td>

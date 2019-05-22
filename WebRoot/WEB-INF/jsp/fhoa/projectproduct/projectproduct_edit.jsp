@@ -29,6 +29,7 @@
 					
 					<form action="projectproduct/${msg }.do" name="Form" id="Form" method="post">
 						<input type="hidden" name="PROJECTPRODUCT_ID" id="PROJECTPRODUCT_ID" value="${pd.PROJECTPRODUCT_ID}"/>
+						<input type="hidden" name="PRODUCTTYPENAME" id="PRODUCTTYPENAME" value="${pd.PRODUCTTYPENAME}"/>
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
 							<tr>
@@ -118,6 +119,8 @@
 
 			$("#productType").change(function(){
 
+				$("#PRODUCTTYPENAME").val($("#productType option:selected").text())
+
                 $('#c_selectCompany').empty();
 
 				if($('#productType').val()!=''){
@@ -176,7 +179,7 @@
                     //产品管理
                     $.ajax({
                         type: "POST",
-                        url: '<%=basePath%>/equipment/getAllInstrument.do?tm=' + new Date().getTime(),
+                        url: '<%=basePath%>/weibao/getAllInstrument.do?tm=' + new Date().getTime(),
                         dataType: 'json',
                         cache: false,
                         success: function (data) {
@@ -184,7 +187,7 @@
                                 $("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
                                 for (var i = 0; i < data.list.length; i++) {
 
-                                    $("#c_selectCompany").append("<option value=" + data.list[i].EQUIPMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+                                    $("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].DAOQISHIJIAN + ">" + data.list[i].WEIBAOMINGCHENG + "-" + data.list[i].QIXIEXINGHAO + "</option>");
 
                                 }
 
@@ -290,7 +293,7 @@
                 var str1= $("#c_selectCompany option:selected").text();
                 var str = $("#c_selectCompany").val();
 
-                $("#PRODUCT_TIME").val(fmtDate(parseFloat(str.substring(str.indexOf("=") + 1, str.length))));
+                $("#PRODUCT_TIME").val(str.substring(str.indexOf("=") + 1, str.length));
 
                 $("#PRODUCT_NAME").val('');
 

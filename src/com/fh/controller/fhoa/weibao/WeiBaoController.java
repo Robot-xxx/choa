@@ -37,7 +37,27 @@ public class WeiBaoController extends BaseController {
 	String menuUrl = "weibao/list.do"; //菜单地址(权限用)
 	@Resource(name="weibaoService")
 	private WeiBaoManager weibaoService;
-	
+	@RequestMapping(value="/getAllInstrument")
+	@ResponseBody
+	public Map<String,Object> getAllInstrument(Page page){
+		List<PageData> list = new ArrayList<>();
+		Map<String,Object> map  = new HashMap<>();
+		String errInfo = "success";
+		PageData pd = new PageData();
+		try{
+			pd = this.getPageData();
+			page.setPd(pd);
+			page.setShowCount(99999);
+			list = weibaoService.list(page);
+		} catch(Exception e){
+			errInfo = "error";
+			logger.error(e.toString(), e);
+		}
+		map.put("errInfo",errInfo);
+		map.put("list",list);
+		return map;
+	}
+
 	/**保存
 	 * @param
 	 * @throws Exception
