@@ -82,6 +82,7 @@
 
 
 									<th class="center">负责人</th>
+									<th class="center">风险条款</th>
 									<th class="center">备注</th>
 									<th class="center">付款约定</th>
                                     <th class="center">产品信息</th>
@@ -120,6 +121,7 @@
 										<%--	<td class='center'>${var.ISZILIAOQQ}</td>--%>
 
                                             <td class='center'>${var.FUZEREN}</td>
+                                            <td class='center'>${var.FENGXIANTIAOKUAN}</td>
                                             <td class='center'>${var.BZ}</td>
                                             <td class='center'>${var.FUKUANYUEDING}</td>
                                             <td class='center'><a onclick="selectProduct('${var.PURCHASE_ID}')" style=" cursor:pointer;">查看产品</a></td>
