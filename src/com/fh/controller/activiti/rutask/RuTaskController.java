@@ -1,15 +1,18 @@
 package com.fh.controller.activiti.rutask;
 
 import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.annotation.Resource;
 
+import org.activiti.bpmn.model.BpmnModel;
+import org.activiti.bpmn.model.FlowNode;
+import org.activiti.engine.HistoryService;
+import org.activiti.engine.RepositoryService;
+import org.activiti.engine.history.HistoricActivityInstance;
+import org.activiti.engine.history.HistoricProcessInstance;
 import org.apache.shiro.session.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -44,7 +47,7 @@ public class RuTaskController extends AcBusinessController {
 	private HiprocdefManager hiprocdefService;
 	@Resource(name="fhsmsService")
 	private FhsmsManager fhsmsService;
-	
+
 	/**待办任务列表
 	 * @param page
 	 * @throws Exception
@@ -142,7 +145,7 @@ public class RuTaskController extends AcBusinessController {
 		mv.addObject("QX",Jurisdiction.getHC());	//按钮权限
 		return mv;
 	}
-	
+
 	/**办理任务
 	 * @param
 	 * @throws Exception

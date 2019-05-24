@@ -1,6 +1,7 @@
 package com.fh.controller.app.appuser;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,11 +20,18 @@ import com.fh.service.fhoa.supplier.SupplierManager;
 import com.fh.service.fhoa.ticket.TicketManager;
 import com.fh.service.system.user.UserManager;
 import com.fh.util.*;
+import org.activiti.bpmn.model.BpmnModel;
+import org.activiti.bpmn.model.FlowNode;
+import org.activiti.engine.HistoryService;
+import org.activiti.engine.RepositoryService;
+import org.activiti.engine.history.HistoricActivityInstance;
+import org.activiti.engine.history.HistoricProcessInstance;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -68,6 +76,59 @@ public class IntAppuserController extends BaseController {
 	private TicketManager ticketService;//开票申请
 	@Resource(name="ruprocdefService")
 	private RuprocdefManager ruprocdefService;//流程
+	@Autowired
+	private RepositoryService repositoryService; //管理流程定义  与流程定义和部署对象相关的Service
+	@Autowired
+	private HistoryService historyService; 		//历史管理(执行完的数据的管理)
+	/**获取发起人
+	 * @param PROC_INST_ID_ //流程实例ID
+	 * @return
+	 */
+	protected String getInitiator(String PROC_INST_ID_) {
+		HistoricProcessInstance hip = historyService.createHistoricProcessInstanceQuery().processInstanceId(PROC_INST_ID_).singleResult(); 			//获取历史流程实例
+		List<HistoricActivityInstance> hais = historyService.createHistoricActivityInstanceQuery().processInstanceId(PROC_INST_ID_)
+				.orderByHistoricActivityInstanceId().asc().list();	//获取流程中已经执行的节点，按照执行先后顺序排序
+		BpmnModel bpmnModel = repositoryService.getBpmnModel(hip.getProcessDefinitionId()); // 获取bpmnModel
+		List<FlowNode> historicFlowNodeList = new LinkedList<FlowNode>();					//全部活动实例
+		for(HistoricActivityInstance hai : hais) {
+			historicFlowNodeList.add((FlowNode) bpmnModel.getMainProcess().getFlowElement(hai.getActivityId()));
+			if(hai.getAssignee() != null) {
+				return hai.getAssignee();	//不为空的第一个节点办理人就是发起人
+			}
+		}
+		return null;
+	}
+
+
+
+	@RequestMapping(value = "getDaiBan")
+	@ResponseBody
+	public Map<String,Object> getDaiBan(){
+		Page page= new Page();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		String keywords = pd.getString("keywords");				//关键词检索条件
+		if(null != keywords && !"".equals(keywords)){
+			pd.put("keywords", keywords.trim());
+		}
+
+		pd.put("USERNAME", Jurisdiction.getUsername()); 		//查询当前用户的任务(用户名查询)
+		pd.put("RNUMBERS", Jurisdiction.getRnumbers()); 		//查询当前用户的任务(角色编码查询)
+		page.setPd(pd);
+		List<PageData>	varList = null;	//列出Rutask列表
+		try {
+			varList = ruprocdefService.list(page);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for(int i=0;i<varList.size();i++){
+			varList.get(i).put("INITATOR", getInitiator(varList.get(i).getString("PROC_INST_ID_")));//流程申请人
+		}
+			return null;
+	}
+
+
+
 
 	/**根据用户名获取会员信息
 	 * @return 
