@@ -121,8 +121,10 @@ public class AccessoryFileController extends BaseController {
             PageData npd = new PageData();
             String qqq= varList.get(i).getString("FILEPATH");
             String FILEPATH = varList.get(i).getString("FILEPATH");
-
-            String Extension_name = FILEPATH.substring(20, FILEPATH.length());//文件拓展名
+            String Extension_name = "";
+            if(FILEPATH!=null&&!FILEPATH.equals("")){
+                Extension_name=FILEPATH.substring(20, FILEPATH.length());//文件拓展名
+            }
             String fileType = "file";
             int zindex1 = "java,php,jsp,html,css,txt,asp".indexOf(Extension_name);
             if (zindex1 != -1) {

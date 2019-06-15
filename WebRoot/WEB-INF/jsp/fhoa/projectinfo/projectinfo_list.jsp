@@ -43,6 +43,7 @@
 									</th>
 									<th class="center" style="width:50px;">序号</th>
 
+									<th class="center">产品类型</th>
 									<th class="center">产品名称</th>
 									<th class="center">产品数量</th>
 									<th class="center">单价</th>
@@ -64,6 +65,7 @@
 											</td>
 											<td class='center' style="width: 30px;">${page.showCount*(page.currentPage-1)+vs.index+1}</td>
 
+											<td class='center'>${var.PRODUCTTYPENAME}</td>
 											<td class='center'>${var.PROJECT_NAME}</td>
 											<td class='center'>${var.PROJECTNUMBER}</td>
 											<td class='center'>${var.PROJECTPRICE}</td>

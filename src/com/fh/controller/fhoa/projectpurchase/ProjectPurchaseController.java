@@ -417,26 +417,26 @@ public class ProjectPurchaseController extends AcStartController {
             vpd.put("var3", varOList.get(i).getString("SELECTCOMPANY"));        //1
 
         /*    vpd.put("var4", varOList.get(i).getString("PURCHASE_CONTRACT_ID"));        //3*/
-            vpd.put("var5", varOList.get(i).getString("SUPPLIERNAME"));
+            vpd.put("var4", varOList.get(i).getString("SUPPLIERNAME"));
 
 
-                vpd.put("var6", varOList.get(i).getString("CONTRACT_SIGN_TIME"));	    //8
+                vpd.put("var5", varOList.get(i).getString("CONTRACT_SIGN_TIME"));	    //8
 
-                vpd.put("var7", varOList.get(i).getString("CONTRACT_PRICE"));	    //8
+                vpd.put("var6", varOList.get(i).getString("CONTRACT_PRICE"));	    //8
 
             //4
-            vpd.put("var8", varOList.get(i).getString("FENGXIANTIAOKUAN"));        //5
-            vpd.put("var9", varOList.get(i).getString("FUKUANYUEDING"));        //5
-            vpd.put("var10", varOList.get(i).getString("FUZEREN"));        //5
-            vpd.put("var11", varOList.get(i).get("UPDATETIME").toString());        //5
+            vpd.put("var7", varOList.get(i).getString("FENGXIANTIAOKUAN"));        //5
+            vpd.put("var8", varOList.get(i).getString("FUKUANYUEDING"));        //5
+            vpd.put("var9", varOList.get(i).getString("FUZEREN"));        //5
+            vpd.put("var10", varOList.get(i).get("UPDATETIME").toString());        //5
             if(varOList.get(i).getString("STATUS").equals("1")){
-                vpd.put("var12", "已审批");	    //6
+                vpd.put("var11", "已审批");	    //6
             }else if(varOList.get(i).getString("STATUS").equals("2")){
-                vpd.put("var12", "未审批");	    //6
+                vpd.put("var11", "未审批");	    //6
             }else{
-                vpd.put("var12", "审批中");	    //6
+                vpd.put("var11", "审批中");	    //6
             }
-            vpd.put("var13", varOList.get(i).getString("BZ"));        //5
+            vpd.put("var12", varOList.get(i).getString("BZ"));        //5
             varList.add(vpd);
         }
         dataMap.put("varList", varList);

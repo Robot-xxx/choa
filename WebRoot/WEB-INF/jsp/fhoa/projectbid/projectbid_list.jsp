@@ -86,6 +86,7 @@
 --%>
 									<th class="center">投标保证金实际缴纳时间</th>
 									<th class="center">实际开标日期</th>
+									<th class="center">中标服务费(元)</th>
 <%--
 									<th class="center">中标服务费垫资金额（元）</th>
 --%>
@@ -140,6 +141,7 @@
 											<td class='center'>${var.BID_OPEN_TIME}</td>
 										<%--	<td class='center'>${var.SERVICE_PRICE}</td>
 											<td class='center'>${var.SCHEDULED_SERVICE_PRICE_TIME}</td>--%>
+											<td class='center'>${var.SERVICE_PRICE}</td>
 											<td class='center'>${var.PRACTICAL_SERVICE_PRICE_TIME}</td>
 											<td class='center'>${var.FUZEREN}</td>
 										<%--	<td class='center'>${var.ISZILIAOQQ}</td>--%>

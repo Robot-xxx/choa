@@ -210,6 +210,7 @@
 		
 		//流程信息
 		function view(PROC_INST_ID_,DEPLOYMENT_ID_,FILENAME){
+
 			 top.jzts();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
@@ -218,7 +219,7 @@
 			 diag.Width = 1100;
 			 diag.Height = 500;
 			 diag.Modal = true;				//有无遮罩窗口
-			 diag. ShowMaxButton = true;	//最大化按钮
+			 diag.ShowMaxButton = true;	//最大化按钮
 		     diag.ShowMinButton = true;		//最小化按钮 
 			 diag.CancelEvent = function(){ //关闭事件
 				diag.close();

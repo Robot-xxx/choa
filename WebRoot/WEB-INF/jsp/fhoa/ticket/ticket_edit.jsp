@@ -95,11 +95,30 @@
                                 <td style="width:75px;text-align: right;padding-top: 13px;">进项票备注:</td>
                                 <td><input type="text" name="TICKET_INFO" id="TICKET_INFO" value="${pd.TICKET_INFO}" maxlength="255" placeholder="这里输入进项票备注" title="进项票备注" style="width:98%;"/></td>
                             </tr>
+							<tr>
 
+								<td style="width:75px;text-align: right;padding-top: 13px;"><span style="color: red">*</span>是否已验收:</td>
+								<td>
+									<select class="chosen-select form-control"  id="SHIFOUYIYANSHOU" name="SHIFOUYIYANSHOU" style="vertical-align:top;width: 68px; width: 98%">
+										<option value="是" <c:if test="${pd.SHIFOUYIYANSHOU=='是'}">selected</c:if>>是</option>
+										<option value="否" <c:if test="${pd.SHIFOUYIYANSHOU=='否'}">selected</c:if>>否</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+
+								<td style="width:75px;text-align: right;padding-top: 13px;"><span style="color: red">*</span>是否预开票:</td>
+								<td>
+									<select class="chosen-select form-control"  id="SHIFOUYUKAIPIAO" name="SHIFOUYUKAIPIAO" style="vertical-align:top;width: 68px; width: 98%">
+										<option value="是" <c:if test="${pd.SHIFOUYUKAIPIAO=='是'}">selected</c:if>>是</option>
+										<option value="否" <c:if test="${pd.SHIFOUYUKAIPIAO=='否'}">selected</c:if>>否</option>
+									</select>
+								</td>
+							</tr>
                             <tr>
                             <td style="width:75px;text-align: right;padding-top: 13px;">开票原因:</td>
                             <td><input type="text" name="OPEN_TICKET_YUANYIN" id="OPEN_TICKET_YUANYIN" value="${pd.OPEN_TICKET_YUANYIN}" maxlength="255" placeholder="开票原因" title="开票原因" style="width:98%;"/>
-								<span style="color: red">注：请注明回款时间</span>
+								<span style="color: red">注：开票收钱情况、进项票进度</span>
 							</td>
                         </tr>
 							<tr>
@@ -227,6 +246,7 @@
 				$("#YIKAIPIAOJINE").focus();
 			return false;
 			}
+
 
 
 

@@ -29,6 +29,7 @@
 					
 					<form action="projectinfo/${msg }.do" name="Form" id="Form" method="post">
 						<input type="hidden" name="PROJECTINFO_ID" id="PROJECTINFO_ID" value="${pd.PROJECTINFO_ID}"/>
+						<input type="hidden" name="PRODUCTTYPENAME" id="PRODUCTTYPENAME" value="${pd.PRODUCTTYPENAME}"/>
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
 							<tr>
@@ -47,7 +48,7 @@
 
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>产品ID:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>产品编号:</td>
 								<td>
 									<select class="chosen-select form-control"  name="PRODUCT_ID" data-placeholder="选择产品" id="c_selectCompany" style="vertical-align:top;width: 68px; width: 98%">
 
@@ -143,6 +144,8 @@
 					$('#c_selectCompany').chosen("destroy")
 				}
 
+				$("#PRODUCTTYPENAME").val($("#productType option:selected").text())
+
 
 				if(	$("#productType").val()=="instrument"){
 					var cp = "${pd.PRODUCT_NAME}";
@@ -157,7 +160,7 @@
 								$("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
 								for (var i = 0; i < data.list.length; i++) {
 
-									$("#c_selectCompany").append("<option value=" + data.list[i].INSTRUMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "=>" + data.list[i].MODEL + "</option>");
+									$("#c_selectCompany").append("<option value=" + data.list[i].INSTRUMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
 
 								}
 
@@ -180,7 +183,7 @@
 								$("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
 								for (var i = 0; i < data.list.length; i++) {
 
-									$("#c_selectCompany").append("<option value=" + data.list[i].INFORMATIZATION_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "=>" + data.list[i].MODEL + "</option>");
+									$("#c_selectCompany").append("<option value=" + data.list[i].INFORMATIZATION_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
 
 								}
 
@@ -194,7 +197,7 @@
 					//产品管理
 					$.ajax({
 						type: "POST",
-						url: '<%=basePath%>/equipment/getAllInstrument.do?tm=' + new Date().getTime(),
+						url: '<%=basePath%>/weibao/getAllInstrument.do?tm=' + new Date().getTime(),
 						dataType: 'json',
 						cache: false,
 						success: function (data) {
@@ -202,7 +205,7 @@
 								$("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
 								for (var i = 0; i < data.list.length; i++) {
 
-									$("#c_selectCompany").append("<option value=" + data.list[i].EQUIPMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "=>" + data.list[i].MODEL + "</option>");
+									$("#c_selectCompany").append("<option value=" + data.list[i].SYS_ID + "=" + data.list[i].DAOQISHIJIAN + ">" + data.list[i].WEIBAOMINGCHENG + "-" + data.list[i].QIXIEXINGHAO + "</option>");
 
 								}
 
@@ -223,7 +226,9 @@
 							if (data.errInfo == "success") {
 								$("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
 								for (var i = 0; i < data.list.length; i++) {
-									$("#c_selectCompany").append("<option value=" + data.list[i].EQUIPMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "=>" + data.list[i].MODEL + "</option>");
+
+									$("#c_selectCompany").append("<option value=" + data.list[i].EQUIPMENT_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+
 								}
 
 								downList('c_selectCompany');
@@ -243,7 +248,9 @@
 							if (data.errInfo == "success") {
 								$("#c_selectCompany").append("<option value=''>请选择器械名称</option>");
 								for (var i = 0; i < data.list.length; i++) {
-									$("#c_selectCompany").append("<option value=" + data.list[i].CONSUMABLE_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "=>" + data.list[i].MODEL + "</option>");
+
+									$("#c_selectCompany").append("<option value=" + data.list[i].CONSUMABLE_ID + "=" + data.list[i].VALIDITY + ">" + data.list[i].PRODUCT_NAME + "-" + data.list[i].MODEL + "</option>");
+
 								}
 
 								downList('c_selectCompany');

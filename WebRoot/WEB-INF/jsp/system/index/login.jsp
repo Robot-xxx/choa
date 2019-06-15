@@ -114,7 +114,7 @@
 							onclick="savePaw();" style="padding-top:0px;" />
 					</div>
 				</div>
-				<div class="form-actions">
+				<di v class="form-actions">
 					<div style="width:86%;padding-left:8%;">
 
 						<div style="float: left;padding-top:2px;">

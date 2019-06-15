@@ -113,13 +113,13 @@
                                                    value="${pd.WINNING_PRICE}" maxlength="50" placeholder="这里输入中标价格(元)"
                                                    title="中标价格(元)" style="width:98%;"/></td>
                                     </tr>
-                                <%--    <tr>
-                                        <td style="width:75px;text-align: right;padding-top: 13px;">中标服务费垫资金额（元）:</td>
+                                <tr>
+                                        <td style="width:75px;text-align: right;padding-top: 13px;">中标服务费(元):</td>
                                         <td><input onchange="change1(this.value)" type="text" name="SERVICE_PRICE" id="SERVICE_PRICE"
                                                    value="${pd.SERVICE_PRICE}" maxlength="50"
-                                                   placeholder="这里输入中标服务费垫资金额（元）" title="中标服务费垫资金额（元）"
+                                                   placeholder="这里输入中标服务费" title="中标服务费"
                                                    style="width:98%;"/></td>
-                                    </tr>--%>
+                                    </tr>
                                  <%--   <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">投标保证金垫资金额(元):</td>
                                         <td><input onchange="change2(this.value)" type="text" name="GUARANTEE_MONEY" id="GUARANTEE_MONEY"
@@ -170,7 +170,7 @@
                                                    placeholder="中标服务费实际缴纳时间" title="中标服务费实际缴纳时间" style="width:98%;"/>
                                         </td>
                                     </tr>
-                                    <tr>
+                                   <%-- <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;">保证金退回时间:</td>
                                         <td><input class="span10 date-picker" name="BAOZHENGJINTUIHUISHIJIAN"
                                                    id="BAOZHENGJINTUIHUISHIJIAN"
@@ -178,7 +178,7 @@
                                                    data-date-format="yyyy-mm-dd" readonly="readonly"
                                                    placeholder="保证金退回时间" title="保证金退回时间" style="width:98%;"/>
                                         </td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td style="width:75px;text-align: right;padding-top: 13px;"><font style="color: red">*</font>标书制作人:</td>
                                         <td><input name="BIAOSHUZHIZUOREN" id="BIAOSHUZHIZUOREN"

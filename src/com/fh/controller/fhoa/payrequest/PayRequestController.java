@@ -409,9 +409,10 @@ public class PayRequestController extends AcStartController {
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
 		String userId= Jurisdiction.getUSERID();
+		String userCode= Jurisdiction.getRnumbers();
 		pd = this.getPageData();
 		pd.put("USERID",userId);
-		if(userId.equals("1")||userId.equals("R20181028683296")||userId.equals("R20190123706606")){
+		if(userId.equals("1")||userCode.equals("('R20181028683296')")||userCode.equals("('R20190123706606')")){
 			pd.remove("USERID");
 		}
 

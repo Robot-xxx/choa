@@ -128,6 +128,7 @@ public class ProjectController extends AcStartController {
 			map1.put("委托公司老板电话", pd.getString("BOSS_PHONE"));
 			map1.put("业务联系人", pd.getString("LINKMAN"));
 			map1.put("业务联系人电话", pd.getString("BUSINESS_PEOPLE"));
+			map1.put("预计开标时间", pd.getString("ZHAOBIAOYUJI"));
 			map1.put("付款约定", pd.getString("ACCESSORY"));
 			map1.put("是否投标项目", pd.getString("ISTOUBIAOXIANGMU"));
 			map1.put("备注", pd.getString("BZ"));

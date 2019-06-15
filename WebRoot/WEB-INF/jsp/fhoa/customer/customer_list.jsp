@@ -81,8 +81,8 @@
 									<th class="center">联系人</th>
 									<th class="center">联系电话</th>
 									<th class="center">统一社会信用代码</th>
-									<th class="center">开户行</th>
-									<th class="center">开户行账号</th>
+								<%--	<th class="center">开户行</th>
+									<th class="center">开户行账号</th>--%>
 									<th class="center">医疗许可证</th>
 									<th class="center">二类备案号</th>
 <%--
@@ -117,8 +117,8 @@
 											<td class='center'>${var.LINKMAN}</td>
 											<td class='center'>${var.PHONE}</td>
 											<td class='center'>${var.DUTY_PARAGRAPH}</td>
-											<td class='center'>${var.OPENING_BANK}</td>
-											<td class='center'>${var.BANKACCOUNT}</td>
+										<%--	<td class='center'>${var.OPENING_BANK}</td>
+											<td class='center'>${var.BANKACCOUNT}</td>--%>
 											<td class='center'>${var.DNAME8}</td>
 											<td class='center'>${var.ERLEIBEIANHAO}</td>
 <%--

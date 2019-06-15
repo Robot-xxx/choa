@@ -1,14 +1,16 @@
 package com.fh.controller.app.appuser;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.net.URLDecoder;
+import java.util.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
+import com.fh.controller.activiti.AcBusinessController;
 import com.fh.entity.Page;
+import com.fh.entity.system.Role;
 import com.fh.entity.system.User;
+import com.fh.service.activiti.hiprocdef.HiprocdefManager;
 import com.fh.service.activiti.ruprocdef.RuprocdefManager;
 import com.fh.service.fhoa.customer.CustomerManager;
 import com.fh.service.fhoa.payrequest.PayRequestManager;
@@ -18,6 +20,7 @@ import com.fh.service.fhoa.projectmarket.ProjectMarketManager;
 import com.fh.service.fhoa.projectpurchase.ProjectPurchaseManager;
 import com.fh.service.fhoa.supplier.SupplierManager;
 import com.fh.service.fhoa.ticket.TicketManager;
+import com.fh.service.system.role.RoleManager;
 import com.fh.service.system.user.UserManager;
 import com.fh.util.*;
 import org.activiti.bpmn.model.BpmnModel;
@@ -26,18 +29,22 @@ import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.history.HistoricActivityInstance;
 import org.activiti.engine.history.HistoricProcessInstance;
+import org.apache.http.HttpResponse;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fh.controller.base.BaseController;
 import com.fh.service.system.appuser.AppuserManager;
+import org.springframework.web.servlet.ModelAndView;
 
 
 /**@author
@@ -52,7 +59,7 @@ import com.fh.service.system.appuser.AppuserManager;
  */
 @Controller
 @RequestMapping(value="/appuser")
-public class IntAppuserController extends BaseController {
+public class IntAppuserController extends AcBusinessController {
     
 	@Resource(name="appuserService")
 	private AppuserManager appuserService;
@@ -80,6 +87,105 @@ public class IntAppuserController extends BaseController {
 	private RepositoryService repositoryService; //管理流程定义  与流程定义和部署对象相关的Service
 	@Autowired
 	private HistoryService historyService; 		//历史管理(执行完的数据的管理)
+	@Resource(name="roleService")
+	private RoleManager roleService;
+	@Resource(name="hiprocdefService")
+	private HiprocdefManager hiprocdefService;
+
+
+
+	/**办理任务
+	 * @param
+	 * @throws Exception
+	 */
+	@CrossOrigin
+	@ResponseBody
+	@RequestMapping(value="/handle")
+	public Map<String,Object> handle() throws Exception{
+
+		Session session = Jurisdiction.getSession();
+
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		String taskId = pd.getString("ID_");	//任务ID
+		String sfrom = "";
+		Object ofrom = getVariablesByTaskIdAsMap(taskId,"审批结果");
+		if(null != ofrom){
+			sfrom = ofrom.toString();
+		}
+		Map<String,Object> map = new LinkedHashMap<String, Object>();
+		String OPINION = sfrom + Jurisdiction.getU_name() + ",fh,"+pd.getString("OPINION");//审批人的姓名+审批意见
+		String msg = pd.getString("msg");
+		if("yes".equals(msg)){								//批准
+			map.put("审批结果", "【批准】" + OPINION);		//审批结果
+			setVariablesByTaskIdAsMap(taskId,map);			//设置流程变量
+			setVariablesByTaskId(taskId,"RESULT","批准");
+			completeMyPersonalTask(taskId);
+		}else{												//驳回
+			map.put("审批结果", "【驳回】" + OPINION);		//审批结果
+			setVariablesByTaskIdAsMap(taskId,map);			//设置流程变量
+			setVariablesByTaskId(taskId,"RESULT","驳回");
+			completeMyPersonalTask(taskId);
+		}
+		try{
+			removeVariablesByPROC_INST_ID_(pd.getString("PROC_INST_ID_"),"RESULT");			//移除流程变量(从正在运行中)
+		}catch(Exception e){
+			/*此流程变量在历史中**/
+		}
+		try{
+			String ASSIGNEE_ = pd.getString("ASSIGNEE_");							//下一待办对象
+			if(Tools.notEmpty(ASSIGNEE_)){
+				setAssignee(session.getAttribute("TASKID").toString(),ASSIGNEE_);	//指定下一任务待办对象
+			}else{
+				Object os = session.getAttribute("YAssignee");
+				if(null != os && !"".equals(os.toString())){
+					ASSIGNEE_ = os.toString();										//没有指定就是默认流程的待办人
+				}else{
+					 //没有任务监听时，默认流程结束，发送站内信给任务发起人
+				}
+			}
+
+		}catch(Exception e){
+			/*手动指定下一待办人，才会触发此异常。
+			 * 任务结束不需要指定下一步办理人了,发送站内信通知任务发起人**/
+
+		}
+		pd.put("ACT_ID",pd.getString("PROC_INST_ID_"));
+		List<PageData> list = ruprocdefService.queryRenWu(pd);
+		if(list.get(0).getString("END_ACT_ID_")!=null&&!list.get(0).getString("END_ACT_ID_").toString().equals("")){
+			String tablename= list.get(0).getString("TABLENAME");
+			PageData pd1 = new PageData();
+			pd1.put("tablename",tablename);
+			pd1.put("ACT_ID",pd.getString("PROC_INST_ID_"));
+			ruprocdefService.updateParent(pd1);
+
+		}
+
+		return map;
+	}
+
+
+
+
+	/**通过角色ID数组获取角色列表拼接角色编码
+	 * @return
+	 * @throws Exception
+	 */
+	public String getRnumbers(String username) throws Exception{
+		PageData userpd = new PageData();
+		userpd.put(Const.SESSION_USERNAME, username);
+		userpd = userService.findByUsername(userpd);		//通过用户名获取用户信息
+		String ZROLE_ID = userpd.get("ROLE_ID").toString()+",fh,"+userpd.getString("ROLE_IDS");
+		String arryROLE_ID[] = ZROLE_ID.split(",fh,");
+		List<Role> rlist = roleService.getRoleByArryROLE_ID(arryROLE_ID);
+		StringBuffer RNUMBERS = new StringBuffer();
+		RNUMBERS.append("(");
+		for(Role role:rlist){
+			RNUMBERS.append("'"+role.getRNUMBER()+"'");
+		}
+		RNUMBERS.append(")");
+		return RNUMBERS.toString();
+	}
 	/**获取发起人
 	 * @param PROC_INST_ID_ //流程实例ID
 	 * @return
@@ -101,30 +207,143 @@ public class IntAppuserController extends BaseController {
 
 
 
-	@RequestMapping(value = "getDaiBan")
+	/**查看流程信息页面
+	 * @param
+	 * @throws Exception
+	 */
+	@CrossOrigin
 	@ResponseBody
-	public Map<String,Object> getDaiBan(){
+	@RequestMapping(value="/DaiBanview")
+	public Map<String,Object> DaiBanview()throws Exception{
+		Map<String,Object> map = new HashMap<>();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		String result = "00";
+		List<PageData>	varList = hiprocdefService.hivarList(pd);			//列出历史流程变量列表
+		List<PageData>	hitaskList = ruprocdefService.hiTaskList(pd);		//历史任务节点列表
+		if(Tools.checkKey("CHOA", pd.getString("FKEY"))){	//检验请求key值是否合法
+		for(int i=0;i<hitaskList.size();i++){								//根据耗时的毫秒数计算天时分秒
+			if(null != hitaskList.get(i).get("DURATION_")){
+				Long ztime = Long.parseLong(hitaskList.get(i).get("DURATION_").toString());
+				Long tian = ztime / (1000*60*60*24);
+				Long shi = (ztime % (1000*60*60*24))/(1000*60*60);
+				Long fen = (ztime % (1000*60*60*24))%(1000*60*60)/(1000*60);
+				Long miao = (ztime % (1000*60*60*24))%(1000*60*60)%(1000*60)/1000;
+				hitaskList.get(i).put("ZTIME", tian+"天"+shi+"时"+fen+"分"+miao+"秒");
+			}
+
+		}
+
+		map.put("varList",varList);
+		map.put("hitaskList",hitaskList);
+		result = (null == varList) ?  "02" :  "01";
+		}else{
+			result = "05";
+		}
+		map.put("result",result);
+
+		return map;
+	}
+
+
+
+	/**
+	 *
+	 * 已办理任务
+	 * @return
+	 */
+	@CrossOrigin
+	@RequestMapping(value = "getYiBan")
+	@ResponseBody
+	public Map<String,Object> getYiBan(){
+		Map<String,Object> map = new HashMap<String,Object>();
+
 		Page page= new Page();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		String keywords = pd.getString("keywords");				//关键词检索条件
-		if(null != keywords && !"".equals(keywords)){
-			pd.put("keywords", keywords.trim());
-		}
+		String result = "00";
 
-		pd.put("USERNAME", Jurisdiction.getUsername()); 		//查询当前用户的任务(用户名查询)
-		pd.put("RNUMBERS", Jurisdiction.getRnumbers()); 		//查询当前用户的任务(角色编码查询)
-		page.setPd(pd);
-		List<PageData>	varList = null;	//列出Rutask列表
 		try {
-			varList = ruprocdefService.list(page);
+			if(Tools.checkKey("CHOA", pd.getString("FKEY"))){	//检验请求key值是否合法
+				String USERNAME = pd.getString("USERNAME");	//登录过来的用户名
+
+				pd.put("USERNAME", USERNAME); 		//查询当前用户的任务(用户名查询)
+				pd.put("RNUMBERS", getRnumbers(USERNAME)); 		//查询当前用户的任务(角色编码查询)
+				page.setPd(pd);
+				List<PageData>	varList = null;	//列出Rutask列表
+
+				varList = ruprocdefService.hitasklist(page);
+
+				for(int i=0;i<varList.size();i++){
+					Long ztime = Long.parseLong(varList.get(i).get("DURATION_").toString());
+					Long tian = ztime / (1000*60*60*24);
+					Long shi = (ztime % (1000*60*60*24))/(1000*60*60);
+					Long fen = (ztime % (1000*60*60*24))%(1000*60*60)/(1000*60);
+					Long miao = (ztime % (1000*60*60*24))%(1000*60*60)%(1000*60)/1000;
+					varList.get(i).put("ZTIME", tian+"天"+shi+"时"+fen+"分"+miao+"秒");
+					varList.get(i).put("INITATOR", getInitiator(varList.get(i).getString("PROC_INST_ID_")));//流程申请人
+				}
+				map.put("varList",varList);
+				map.put("varListsize",varList.size());
+
+
+				result = (null == varList) ?  "02" :  "01";
+
+			}else{
+				result = "05";
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		for(int i=0;i<varList.size();i++){
-			varList.get(i).put("INITATOR", getInitiator(varList.get(i).getString("PROC_INST_ID_")));//流程申请人
+		map.put("result",result);
+		return map;
+	}
+
+
+
+	/**
+	 *
+	 * 待办理任务
+	 * @return
+	 */
+	@CrossOrigin
+	@RequestMapping(value = "getDaiBan")
+	@ResponseBody
+	public Map<String,Object> getDaiBan(){
+		Map<String,Object> map = new HashMap<String,Object>();
+
+		Page page= new Page();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		String result = "00";
+
+		try {
+		if(Tools.checkKey("CHOA", pd.getString("FKEY"))){	//检验请求key值是否合法
+				String USERNAME = pd.getString("USERNAME");	//登录过来的用户名
+
+				pd.put("USERNAME", USERNAME); 		//查询当前用户的任务(用户名查询)
+				pd.put("RNUMBERS", getRnumbers(USERNAME)); 		//查询当前用户的任务(角色编码查询)
+				page.setPd(pd);
+				List<PageData>	varList = null;	//列出Rutask列表
+
+			    varList = ruprocdefService.list(page);
+
+				for(int i=0;i<varList.size();i++){
+					varList.get(i).put("INITATOR", getInitiator(varList.get(i).getString("PROC_INST_ID_")));//流程申请人
+				}
+				map.put("varList",varList);
+				map.put("varListsize",varList.size());
+
+				result = (null == varList) ?  "02" :  "01";
+
+		}else{
+			result = "05";
 		}
-			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		map.put("result",result);
+		return map;
 	}
 
 
@@ -133,6 +352,7 @@ public class IntAppuserController extends BaseController {
 	/**根据用户名获取会员信息
 	 * @return 
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/getAppuserByUm")
 	@ResponseBody
 	public Object getAppuserByUsernmae(){
@@ -166,9 +386,10 @@ public class IntAppuserController extends BaseController {
 	/**验证登陆信息
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/login")
 	@ResponseBody
-	public Object login(){
+	public Object login(HttpServletResponse response){
 		Map<String,Object> map = new HashMap<String,Object>();
 		PageData pd = new PageData();
 		pd = this.getPageData();
@@ -207,6 +428,7 @@ public class IntAppuserController extends BaseController {
 	/**获取上游信息
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/UpperReaches")
 	@ResponseBody
 	public Object UpperReaches(){
@@ -240,6 +462,7 @@ public class IntAppuserController extends BaseController {
 	/**查看上游信息详情
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/CheckUpperReaches")
 	@ResponseBody
 	public Object CheckUpperReaches(){
@@ -275,6 +498,7 @@ public class IntAppuserController extends BaseController {
 	/**获取项目投标
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/ProjectBid")
 	@ResponseBody
 	public Object ProjectBid(Page page){
@@ -311,6 +535,7 @@ public class IntAppuserController extends BaseController {
 	/**获取项项目投标详情
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/CheckProjectBid")
 	@ResponseBody
 	public Object CheckProjectBid(){
@@ -346,6 +571,7 @@ public class IntAppuserController extends BaseController {
 	/**获取项目立项
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/Project")
 	@ResponseBody
 	public Object Project(Page page){
@@ -383,6 +609,7 @@ public class IntAppuserController extends BaseController {
 	/**获取项目立项详情
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/CheckProject")
 	@ResponseBody
 	public Object CheckProject(){
@@ -419,6 +646,7 @@ public class IntAppuserController extends BaseController {
 	/**获取项目销售
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/ProjectMarket")
 	@ResponseBody
 	public Object ProjectMarket(Page page){
@@ -456,6 +684,7 @@ public class IntAppuserController extends BaseController {
 	/**获取项目立项详情
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/CheckProjectMarket")
 	@ResponseBody
 	public Object CheckProjectMarket(){
@@ -491,6 +720,7 @@ public class IntAppuserController extends BaseController {
 	/**获取项目采购
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/ProjectPurchase")
 	@ResponseBody
 	public Object ProjectPurchase(Page page){
@@ -527,6 +757,7 @@ public class IntAppuserController extends BaseController {
 	/**获取项目采购详情
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/CheckProjectPurchase")
 	@ResponseBody
 	public Object CheckProjectPurchase(){
@@ -561,6 +792,7 @@ public class IntAppuserController extends BaseController {
 	/**付款申请
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/PayRequest")
 	@ResponseBody
 	public Object PayRequest(Page page){
@@ -597,6 +829,7 @@ public class IntAppuserController extends BaseController {
 	/**获取付款申请详情
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/CheckPayRequest")
 	@ResponseBody
 	public Object CheckPayRequest(){
@@ -633,6 +866,7 @@ public class IntAppuserController extends BaseController {
 	/**开票申请
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/OpenTicket")
 	@ResponseBody
 	public Object OpenTicket(Page page){
@@ -669,6 +903,7 @@ public class IntAppuserController extends BaseController {
 	/**获取开票申请详情
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/CheckOpenTicket")
 	@ResponseBody
 	public Object CheckOpenTicket(){
@@ -703,6 +938,7 @@ public class IntAppuserController extends BaseController {
 	/**审批开票申请
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/UpdateOpenTicket")
 	@ResponseBody
 	public Object UpdateOpenTicket(){
@@ -749,6 +985,7 @@ public class IntAppuserController extends BaseController {
 	/**获取下游信息
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/DownStream")
 	@ResponseBody
 	public Object DownStream(Page page){

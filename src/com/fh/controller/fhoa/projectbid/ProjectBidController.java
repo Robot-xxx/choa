@@ -10,7 +10,7 @@ import com.fh.controller.activiti.AcStartController;
 import com.fh.service.fhoa.accessoryfile.AccessoryFileManager;
 import com.fh.service.fhoa.claimant.ClaimantManager;
 import com.fh.service.fhoa.supplier.SupplierManager;
-import org.json.JSONObject;
+
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -18,13 +18,11 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import com.fh.controller.base.BaseController;
 import com.fh.entity.Page;
 import com.fh.util.AppUtil;
 import com.fh.util.ObjectExcelView;
 import com.fh.util.PageData;
 import com.fh.util.Jurisdiction;
-import com.fh.util.Tools;
 import com.fh.service.fhoa.projectbid.ProjectBidManager;
 
 /**
@@ -113,7 +111,7 @@ public class ProjectBidController extends AcStartController {
             map1.put("中标单位", pd.getString("WINNING_UNIT"));
             map1.put("中标价格（元）", pd.getString("WINNING_PRICE"));
 
-          //  map1.put("中标服务费垫资金额（元）", pd.getString("SERVICE_PRICE"));
+            map1.put("中标服务费(元)", pd.getString("SERVICE_PRICE"));
           //  map1.put("投标保证金垫资金额（元）", pd.getString("GUARANTEE_MONEY"));
       //      map1.put("投标保证金预计缴纳时间", pd.getString("SCHEDULED_TIME"));
             map1.put("投标保证金实际缴纳时间", pd.getString("PRACTICAL_TIME"));
@@ -277,7 +275,6 @@ public class ProjectBidController extends AcStartController {
         PageData pd = new PageData();
         pd = this.getPageData();
 
-
         if (pd.getString("PRACTICAL_TIME").equals("")) {
             pd.remove("PRACTICAL_TIME");
         }
@@ -418,9 +415,11 @@ public class ProjectBidController extends AcStartController {
         titles.add("中标价格(元)");    //5
         titles.add("投标保证金实际缴纳时间");    //9
         titles.add("实际开标日期");    //10
+        titles.add("中标服务费");    //10
         titles.add("中标服务费实际缴纳时间");    //12
         titles.add("标书制作人");    //12
         titles.add("风险条款");    //12
+        titles.add("投标状态");    //12
         titles.add("负责人");    //12
         titles.add("更新时间");    //12
         titles.add("状态");    //12
@@ -445,16 +444,18 @@ public class ProjectBidController extends AcStartController {
             vpd.put("var11", varOList.get(i).getString("PRACTICAL_SERVICE_PRICE_TIME"));        //8
             vpd.put("var12", varOList.get(i).getString("BIAOSHUZHIZUOREN"));       //8
             vpd.put("var13", varOList.get(i).getString("FENGXIANTIAOKUAN"));        //8
-            vpd.put("var14", varOList.get(i).getString("FUZEREN"));        //8
-            vpd.put("var15", varOList.get(i).get("UPDATETIME").toString());        //8
+            vpd.put("var14", varOList.get(i).getString("SERVICE_PRICE"));        //8
+            vpd.put("var15", varOList.get(i).getString("TOUBIAOZHUANGTAI"));        //8
+            vpd.put("var16", varOList.get(i).getString("FUZEREN"));        //8
+            vpd.put("var17", varOList.get(i).get("UPDATETIME").toString());        //8
             if(varOList.get(i).getString("STATUS").equals("1")){
-                vpd.put("var16", "已审批");	    //6
+                vpd.put("var18", "已审批");	    //6
             }else if(varOList.get(i).getString("STATUS").equals("2")){
-                vpd.put("var16", "未审批");	    //6
+                vpd.put("var18", "未审批");	    //6
             }else{
-                vpd.put("var16", "审批中");	    //6
+                vpd.put("var18", "审批中");	    //6
             }
-            vpd.put("var17", varOList.get(i).getString("BZ"));        //8
+            vpd.put("var19", varOList.get(i).getString("BZ"));        //8
             varList.add(vpd);
         }
         dataMap.put("varList", varList);
