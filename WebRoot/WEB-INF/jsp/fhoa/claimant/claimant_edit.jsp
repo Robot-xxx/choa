@@ -74,7 +74,7 @@
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;"><font color="red">*</font>认领金额(元):</td>
-								<td><input type="number" name="CLAIMANT_MONEY" id="CLAIMANT_MONEY" value="${pd.CLAIMANT_MONEY}" maxlength="32" placeholder="这里输入认领金额" title="认领金额" style="width:98%;"/></td>
+								<td><input type="text" name="CLAIMANT_MONEY" id="CLAIMANT_MONEY" value="${pd.CLAIMANT_MONEY}" maxlength="32" placeholder="这里输入认领金额" title="认领金额" style="width:98%;"/></td>
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>

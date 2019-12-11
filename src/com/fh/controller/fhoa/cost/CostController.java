@@ -5,14 +5,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.annotation.Resource;
-
 import com.fh.controller.activiti.AcStartController;
 import com.fh.entity.system.Dictionaries;
 import com.fh.service.fhoa.accessoryfile.AccessoryFileManager;
 import com.fh.service.fhoa.claimexpense.impl.ClaimexpenseService;
 import com.fh.service.fhoa.supplier.SupplierManager;
 import com.fh.service.system.dictionaries.DictionariesManager;
-import org.json.JSONObject;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -20,13 +18,11 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import com.fh.controller.base.BaseController;
 import com.fh.entity.Page;
 import com.fh.util.AppUtil;
 import com.fh.util.ObjectExcelView;
 import com.fh.util.PageData;
 import com.fh.util.Jurisdiction;
-import com.fh.util.Tools;
 import com.fh.service.fhoa.cost.CostManager;
 
 /** 
@@ -422,15 +418,15 @@ public class CostController extends AcStartController {
 		List<String> titles = new ArrayList<String>();
 		titles.add("是否代理商付款");	//1
 		titles.add("项目编号");	//2
-		titles.add("项目名称");	//2
-		titles.add("总额");	//2
-		titles.add("部门");	//3
-		titles.add("日期");	//4
-		titles.add("报销人");	//5
-		titles.add("报销截止日期");	//6
-		titles.add("更新时间");	//6
-		titles.add("状态");	//6
-		titles.add("备注");	//7
+		titles.add("项目名称");	//3
+		titles.add("总额");	//4
+		titles.add("部门");	//5
+		titles.add("日期");	//6
+		titles.add("报销人");	//7
+		titles.add("报销截止日期");	//8
+		titles.add("更新时间");	//9
+		titles.add("状态");	//10
+		titles.add("备注");	//11
 		dataMap.put("titles", titles);
 		List<PageData> varOList = costService.listAll(pd);
 		List<PageData> varList = new ArrayList<PageData>();
