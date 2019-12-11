@@ -75,7 +75,7 @@
                                     <th class="center">上游</th>
 --%>
 									<th class="center">招标公司</th>
-									<th class="center">招标代表</th>
+									<%--<th class="center">招标代表</th>--%>
 									<th class="center">中标单位</th>
 									<th class="center">中标价格(元)</th>
 <%--
@@ -99,6 +99,8 @@
 									<th class="center">标书制作人</th>
 									<th class="center">投标状态</th>
 
+
+									<th class="center">更新时间</th>
 									<th class="center">备注</th>
 									<th class="center">产品</th>
 
@@ -132,7 +134,9 @@
                                             <td class='center'>${var.SUPPLIER}</td>
 --%>
 											<td class='center'>${var.TEBDERING}</td>
+<%--
 											<td class='center'>${var.REPRESENTATIVE}</td>
+--%>
 											<td class='center'>${var.WINNING_UNIT}</td>
 											<td class='center'>${var.WINNING_PRICE}</td>
 									<%--		<td class='center'>${var.GUARANTEE_MONEY}</td>
@@ -147,6 +151,8 @@
 										<%--	<td class='center'>${var.ISZILIAOQQ}</td>--%>
 											<td class='center'>${var.BIAOSHUZHIZUOREN}</td>
 											<td class='center'>${var.TOUBIAOZHUANGTAI}</td>
+											<td class='center'>${var.UPDATETIME}</td>
+
 											<td class='center'>${var.BZ}</td>
 											<td class='center'><a onclick="selectProject2('${var.PROJECT_BID_ID}')" style=" cursor:pointer;">查看产品</a></td>
 
