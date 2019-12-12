@@ -102,9 +102,7 @@ public class PicturesController extends BaseController {
 	 */
 	@RequestMapping(value="/save")
 	@ResponseBody
-	public Object save(
-			@RequestParam(required=false) MultipartFile file
-			) throws Exception{
+	public Object save(@RequestParam(required=false) MultipartFile file) throws Exception{
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "add")){return null;} //校验权限
 		logBefore(logger, Jurisdiction.getUsername()+"新增图片");
 		Map<String,String> map = new HashMap<String,String>();
