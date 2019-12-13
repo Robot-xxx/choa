@@ -220,6 +220,7 @@
             PAYEE LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             PAYEEBANK LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             BANKACCOUNT LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+            PROJECT_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             PROJECT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             BZ LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
             CONTRACT_NO LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')

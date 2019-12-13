@@ -52,7 +52,6 @@ public class PayRequestController extends AcStartController {
 		List<PageData> list = new ArrayList<>();
 		PageData pd = new PageData();
 		String errInfo = "success";
-
 		pd = this.getPageData();
 		pd.put("PROJECT_ID",pd.getString("PROJECT_ID").trim());
 		pd.put("REQUEST_TYPE",pd.getString("REQUEST_TYPE").trim());

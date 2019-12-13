@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fh.service.fhoa.accessoryfile.AccessoryFileManager;
@@ -33,7 +32,6 @@ import com.fh.util.PageData;
 import com.fh.util.Jurisdiction;
 import com.fh.util.PathUtil;
 import com.fh.util.Tools;
-import com.fh.service.fhoa.fhfile.FhfileManager;
 
 /**
  * 说明：附件管理
