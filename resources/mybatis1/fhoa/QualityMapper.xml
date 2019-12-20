@@ -110,6 +110,7 @@
 				(
 			PROJECT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			PROJECT_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			QUALITY_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			FUZEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 				<!--	根据需求自己加检索条件
 
@@ -127,6 +128,7 @@
 		<include refid="Field"></include>
 		from 
 		<include refid="tableName"></include> f
+		 order by UPDATETIME
 	</select>
 	
 	<!-- 批量删除 -->

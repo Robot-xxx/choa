@@ -145,6 +145,7 @@
 				(
 					PROJECT_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 					PROJECT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+					IDENTIFYMANAGEMENT_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 					RETURN_MONEY LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 				)
 		</if>

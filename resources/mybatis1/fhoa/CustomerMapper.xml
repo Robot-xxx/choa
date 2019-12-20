@@ -188,8 +188,10 @@
 			f.OPENING_BANK LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			f.FUZEREN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			f.BZ LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
-			f.LINKMAN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-				)
+			f.LINKMAN LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			f.CUSTOMER_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+
+			)
 		</if>
 		<if test="pd.CUSTOMER_ID!= null and pd.CUSTOMER_ID != ''"><!-- 关键词检索 -->
 			and SYS_ID=#{pd.CUSTOMER_ID}

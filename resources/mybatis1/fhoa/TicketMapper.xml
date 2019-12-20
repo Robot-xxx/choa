@@ -171,7 +171,10 @@
 		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
 			and
 				(
-			SYS_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+			SYS_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			TICKET_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			PROJECT_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			PROJECT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 				)
 		</if>
 		<if test="pd.ISSHENPI!= null and pd.ISSHENPI != ''"><!-- 关键词检索 -->

@@ -199,6 +199,7 @@
 			CLIENT_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			CLIENT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			BZ LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
+			PROJECT_MARKET_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') or
 			PROJECT_NAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 
 				)

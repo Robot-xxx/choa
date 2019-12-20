@@ -199,6 +199,8 @@
 			f.BANKACCOUNT LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 			or
 			f.BZ LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+			or
+			f.SUPPLIER_ID LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 
 
 			)
